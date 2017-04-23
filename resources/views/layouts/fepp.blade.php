@@ -14,7 +14,7 @@
 
 </head>
 
-<body>
+<body ng-app="AdycttoBett0">
 
     <div id="wrapper">
 
@@ -64,7 +64,7 @@
                         <a href="tables.html"><i class="fa fa-fw fa-table"></i> Registro</a>
                     </li>
                     <li class="@yield('menu4')">
-                        <a href="forms.html"><i class="fa fa-fw fa-edit"></i> Horario</a>
+                        <a href="{{asset('Horario')}}"><i class="fa fa-fw fa-edit"></i> Horario</a>
                     </li>
                     <li class="@yield('menu5')">
                         <a href="bootstrap-elements.html"><i class="fa fa-fw fa-file-pdf-o"></i> Reportes</a>
@@ -81,7 +81,7 @@
                     <li class="@yield('menu9')">
                         <a href="index-rtl.html"><i class="fa fa-fw fa-dashboard"></i> Cargo</a>
                     </li>
-                    
+
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -101,33 +101,27 @@
 
                 <div class="row">
                     <div class="col-lg-12">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h3 class="panel-title"><i class="@yield('icono')"></i> @yield('tituloPanel')</h3>
-                            </div>
-                            <div class="panel-body">
-                                @yield('cuerpo')
-                            </div>
-                        </div>
+                        @yield('cuerpo')
                     </div>
                 </div>
-                <!-- /.row -->
-
 
             </div>
-            <!-- /.container-fluid -->
-
         </div>
-        <!-- /#page-wrapper -->
-
     </div>
-    <!-- /#wrapper -->
+
 
     <script src="{{asset('assets/js/jquery.js')}}"></script>
     <script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
-    <script src="{{asset('assets/js/plugins/morris/raphael.min.js')}}"></script>
+    <!-- <script src="{{asset('assets/js/plugins/morris/raphael.min.js')}}"></script>
     <script src="{{asset('assets/js/plugins/morris/morris.min.js')}}"></script>
-    <script src="{{asset('assets/js/plugins/morris/morris-data.js')}}"></script>
+    <script src="{{asset('assets/js/plugins/morris/morris-data.js')}}"></script> -->
+
+    <script src="{{asset('assets/angular/angular.min.js')}}"></script>
+    <script src="{{asset('assets/angular/angular-resource.js')}}"></script>
+    <script src="{{asset('assets/angular/angular-route.js')}}"></script>
+    <script src="{{asset('assets/angular/angular-animate.js')}}"></script>
+    <script src="{{asset('assets/angular-datatables/angular-datatables.min.js')}}"></script>
+    <script src="{{asset('assets/angular-datatables/jquery.dataTables.min.js')}}"></script>
     @yield('js')
 </body>
 </html>

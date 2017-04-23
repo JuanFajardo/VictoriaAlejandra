@@ -1,0 +1,59 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+
+      <div class="row">
+        <div class="col-md-6">
+          <h3 class="panel-title"><i class="fa fa-clock-o"></i> {{titulo}} </h3>
+        </div>
+      </div>
+
+    </div>
+    <div class="panel-body">
+      <form autocomplete="off" ng-submit="guardarHorario()">
+                <div class="row">
+                  <div class="col-md-6">
+                    <label>Nombre de Horario</label>
+                    <input type="text" class="form-control"  placeholder="Número de Factura "  ng-model="Horario.horario" id="numero_factura" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label>Tiempo de tolerancia</label>
+                    <input type="text" class="form-control"  placeholder="Número de Factura "  ng-model="Horario.tolerancia" id="numero_factura" required>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-3">
+                    <label>Ingreso AM</label>
+                    <input type="text" class="form-control"  placeholder="Número de NIT"  ng-model="Horario.ingreso_am" id="ingreso_am" required></br>
+                  </div>
+                  <div class="col-md-3">
+                    <label>Salida AM</label>
+                    <input type="text" class="form-control"  placeholder="Título de Factura"  ng-model="Horario.salida_am" id="titulo" required>
+                  </div>
+                  <div class="col-md-3">
+                    <label>Ingreso PM</label>
+                    <input type="text" class="form-control"  placeholder="Número de NIT"  ng-model="Horario.ingreso_pm" id="ingreso_am" required></br>
+                  </div>
+                  <div class="col-md-3">
+                    <label>Salida PM</label>
+                    <input type="text" class="form-control"  placeholder="Título de Factura"  ng-model="Horario.salida_pm" id="titulo" required>
+                  </div>
+                </div>
+
+                <div class="row" style="margin-top:15px;">
+                  <div class="col-md-3">
+                    <button type="submit" name="button" class="{{accion}}" >
+                      <i class="{{botonIcono}}" aria-hidden="true"></i> {{boton}}
+                    </button>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="{{panel}}" role="alert"> <strong>{{msj}}</strong> </div>
+                  </div>
+                  <div class="col-md-3">
+                    <a href="#/lista" class="btn btn-info pull-right"> <i class="fa fa-times-circle" aria-hidden="true"></i> Cancelar</a>
+                  </div>
+                </div>
+              </form>
+
+    </div>
+</div>

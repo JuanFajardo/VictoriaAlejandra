@@ -28,3 +28,11 @@ Route::get('personal/{id}', 'PersonalController@show');
 Route::post('personal', 'PersonalController@store');
 Route::put('personal', 'PersonalController@update');
 Route::delete('personal/{id}', 'PersonalController@destroy');
+
+
+Route::get('Horario', 'HorarioController@angular');
+Route::get('horario', 'HorarioController@index');
+Route::get('horario/{id}', 'HorarioController@show');
+Route::post('horario', 'HorarioController@store');
+Route::put('horario/{id}', 'HorarioController@update');
+Route::delete('horario/{id}', 'HorarioController@destroy');
