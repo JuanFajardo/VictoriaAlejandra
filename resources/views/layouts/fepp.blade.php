@@ -79,7 +79,7 @@
                         <a href="index-rtl.html"><i class="fa fa-fw fa-dashboard"></i> Stands</a>
                     </li>
                     <li class="@yield('menu9')">
-                        <a href="index-rtl.html"><i class="fa fa-fw fa-dashboard"></i> Cargo</a>
+                        <a href="{{asset('Cargo')}}"><i class="fa fa-fw fa-dashboard"></i> Cargo</a>
                     </li>
 
                 </ul>
