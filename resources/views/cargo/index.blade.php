@@ -60,7 +60,7 @@ va.factory('CargoRecursos', function($resource){
   return $resource('../index.php/cargo/:id', { id:"@id"}, { update: { method: "PUT" } } );
 })
 va.factory('HorarioRecursos', function($resource){
-  return $resource('../index.php/horario/:id', { id:"@id"}, { update: { method: "PUT" } } );
+  return $resource('../index.php/horario/:id', { id:"@id"} );
 })
 ///Controladores de Angular para Dosificaciones
 .controller('ListaCtrl', ['$scope', 'CargoRecursos', 'HorarioRecursos', '$location', '$timeout', 'DTOptionsBuilder', 'DTColumnBuilder', function($scope, CargoRecursos, HorarioRecursos, $location, $timeout, DTOptionsBuilder, DTColumnBuilder){
@@ -110,11 +110,12 @@ va.factory('HorarioRecursos', function($resource){
     }, 1000);
   };
 }])
-.controller('EditarCtrl', ['$scope', 'HorarioRecursos', '$location', '$timeout', '$routeParams', function($scope, CargoRecursos, $location, $timeout, $routeParams){
+.controller('EditarCtrl', ['$scope', 'HorarioRecursos','CargoRecursos', '$location', '$timeout', '$routeParams', function($scope, HorarioRecursos, CargoRecursos, $location, $timeout, $routeParams){
   $scope.titulo = " Editar Cargo";
   $scope.botonIcono = "fa fa-pencil";
   $scope.boton = "Actualizar";
   $scope.accion = "btn btn-primary";
+	$scope.horarios = HorarioRecursos.query();
   $scope.Cargo = CargoRecursos.get({
     id: $routeParams.id
   });
@@ -128,9 +129,9 @@ va.factory('HorarioRecursos', function($resource){
   }
 }])
 .controller('EliminarCtrl', ['$scope', 'CargoRecursos', '$routeParams', '$location', '$timeout', function($scope, CargoRecursos, $routeParams, $location, $timeout){
-  $scope.titulo = "Eliminar horario";
+  $scope.titulo = "Eliminar cargo";
   $scope.icono = "file-text-o";
-  $scope.Cargo = HorarioCargo.get({
+  $scope.Cargo = CargoRecursos.get({
     id: $routeParams.id
   });
   $scope.eliminarCargo = function(id){

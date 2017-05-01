@@ -9,7 +9,7 @@
 
     </div>
     <div class="panel-body">
-      <form autocomplete="off" ng-submit="guardarHorario()">
+      <form autocomplete="off" ng-submit="guardarCargo()">
                 <div class="row">
                   <div class="col-md-6">
                     <label>Nombre del cargo</label>
@@ -18,17 +18,15 @@
                   <div class="col-md-6">
                     <label>Seleccionar horario</label>
                     <select class="form-control" name="horario_id" ng-model="Cargo.horario_id">
-                      <option  ng-repeat="horario is horarios" value="{{horario.id}}">{{horario.horario}}</option>
+                      <option  ng-repeat="horario in horarios" ng-selected="Cargo.horario_id == horario.id" value="{{horario.id}}">{{horario.horario}}</option>
                     </select>
-                    <input type="text" class="form-control"  placeholder="Tiempo de Tolerancia "  ng-model="Cargo.horario_id" id="horario_id" required>
                   </div>
                 </div>
 
                 <div class="row">
                   <div class="col-md-3">
                     <label>Descipcion</label>
-                    <input type="text" class="form-control"  placeholder="Ingreso AM"  ng-model="Horario.ingreso_am" id="ingreso_am" required></br>
-                    <textarea class="form-control" placeholder="Descripcion" ng-model="Horario.descripcion" required id="descripcion" rows="8" cols="80"></textarea>
+                    <textarea class="form-control" placeholder="Descripcion" ng-model="Cargo.descripcion" required id="descripcion" rows="8" cols="80"></textarea>
                   </div>
                 </div>
 
