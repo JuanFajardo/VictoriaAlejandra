@@ -34,7 +34,7 @@ angular.module('AdycttoBett0', ['ngResource', 'ngRoute', 'ngAnimate', 'datatable
 .config(function($routeProvider){
         $routeProvider
         .when('/lista', {
-          templateUrl: '../angular/views/cargo/lista.html',
+          templateUrl: '../angular/views/cargo/listar.html',
           controller: 'ListaCtrl'
         })
         .when('/crear', {
@@ -56,11 +56,14 @@ angular.module('AdycttoBett0', ['ngResource', 'ngRoute', 'ngAnimate', 'datatable
 });
 ///Servicio de Angular para Dosificaciones
 var va = angular.module('AdycttoBett0');
-va.factory('HorarioRecursos', function($resource){
+va.factory('CargoRecursos', function($resource){
   return $resource('../index.php/cargo/:id', { id:"@id"}, { update: { method: "PUT" } } );
 })
+va.factory('HorarioRecursos', function($resource){
+  return $resource('../index.php/horario/:id', { id:"@id"}, { update: { method: "PUT" } } );
+})
 ///Controladores de Angular para Dosificaciones
-.controller('ListaCtrl', ['$scope', 'HorarioRecursos', '$location', '$timeout', 'DTOptionsBuilder', 'DTColumnBuilder', function($scope, HorarioRecursos, $location, $timeout, DTOptionsBuilder, DTColumnBuilder){
+.controller('ListaCtrl', ['$scope', 'CargoRecursos', 'HorarioRecursos', '$location', '$timeout', 'DTOptionsBuilder', 'DTColumnBuilder', function($scope, CargoRecursos, HorarioRecursos, $location, $timeout, DTOptionsBuilder, DTColumnBuilder){
   $scope.cargos = CargoRecursos.query();
   $scope.vm = {};
   $scope.vm.dtOptions = DTOptionsBuilder.newOptions()
@@ -92,7 +95,8 @@ va.factory('HorarioRecursos', function($resource){
     )
   .withOption('order', [0, 'asc']);
 }])
-.controller('CrearCtrl', ['$scope', 'CargoRecursos', '$location', '$timeout', function($scope, CargoRecursos, $location, $timeout){
+.controller('CrearCtrl', ['$scope', 'HorarioRecursos', 'CargoRecursos', '$location', '$timeout', function($scope, HorarioRecursos, CargoRecursos, $location, $timeout){
+	$scope.horarios = HorarioRecursos.query();
   $scope.titulo = 'Crear Cargo';
   $scope.boton = "Guardar";
   $scope.accion = "btn btn-primary";

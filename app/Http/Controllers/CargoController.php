@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Horario;
+use App\Cargo;
 
 class CargoController extends Controller
 {
