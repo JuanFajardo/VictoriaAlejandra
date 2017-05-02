@@ -14,6 +14,9 @@ class CargoController extends Controller
 
   public function index(){
     $datos = Cargo::all();
+    $datos = \DB::table('cargos')->join('horarios', 'cargos.horario_id', '=', 'horarios.id')
+                                  ->where('cargos.deleted_at', '=', 'null')
+                                  ->select('cargos.*', 'horarios.horario')->get();
     return $datos;
   }
 
@@ -27,6 +30,7 @@ class CargoController extends Controller
     $dato = new Cargo;
     $dato->fill( $request->all() );
     $dato->save();
+
     return response()->json(array("respuesta"=>"200_OK"));
   }
 
