@@ -27,7 +27,7 @@ class CargoController extends Controller
 
   public function store(Request $request){
     $request['user_id'] = 1;
-    return  $request->all();
+    //return  $request->all();
     $dato = new Cargo;
     $dato->fill( $request->all() );
     $dato->save();
