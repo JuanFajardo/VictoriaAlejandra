@@ -62,7 +62,7 @@ va.factory('HorarioRecursos', function($resource){
 ///Controladores de Angular para Dosificaciones
 .controller('ListaCtrl', ['$scope', 'HorarioRecursos', '$location', '$timeout', 'DTOptionsBuilder', 'DTColumnBuilder', function($scope, HorarioRecursos, $location, $timeout, DTOptionsBuilder, DTColumnBuilder){
   $scope.horarios = HorarioRecursos.query();
-  $scope.vm = {};
+	$scope.vm = {};
   $scope.vm.dtOptions = DTOptionsBuilder.newOptions()
   .withOption(
     "language",{
@@ -95,32 +95,54 @@ va.factory('HorarioRecursos', function($resource){
 .controller('CrearCtrl', ['$scope', 'HorarioRecursos', '$location', '$timeout', function($scope, HorarioRecursos, $location, $timeout){
   $scope.titulo = 'Crear Horario';
   $scope.boton = "Guardar";
+	$scope.botonIcono = "fa fa-save"
   $scope.accion = "btn btn-primary";
-  $scope.Horario={};
+  $scope.Horario={
+		tolerancia: 0
+	};
+
   $scope.guardarHorario = function(){
-    HorarioRecursos.save($scope.Horario);
-    $scope.panel = "alert alert-info";
-    $scope.msj = "Se inserto el dato correctamente!";
+    HorarioRecursos.save($scope.Horario, function(data){
+          var respuesta = data['respuesta'];
+          if(respuesta == '200_OK'){
+            $scope.panel = "alert alert-info";
+            $scope.msj = "Se inserto el dato correctamente ";
+          }else{
+            $scope.panel = "alert alert-danger";
+            $scope.msj = "Error: Intente nuevamente ";
+          }
+    });
+
     $timeout(function(){
       $location.path('/lista');
-    }, 1000);
+    }, 1500);
   };
 }])
 .controller('EditarCtrl', ['$scope', 'HorarioRecursos', '$location', '$timeout', '$routeParams', function($scope, HorarioRecursos, $location, $timeout, $routeParams){
   $scope.titulo = " Editar Horario";
   $scope.botonIcono = "fa fa-pencil";
   $scope.boton = "Actualizar";
-  $scope.accion = "btn btn-primary";
+	$scope.botonIcono = "fa fa-save"
+  $scope.accion = "btn btn-warning";
   $scope.Horario = HorarioRecursos.get({
     id: $routeParams.id
   });
+
   $scope.guardarHorario = function(){
-    HorarioRecursos.update($scope.Horario);
-    $scope.msj = "Se Actualizo correctamente!";
-    $scope.panel = "alert alert-warning";
+    HorarioRecursos.update($scope.Horario, function(data){
+          var respuesta = data['respuesta'];
+          if(respuesta == '200_OK'){
+            $scope.panel = "alert alert-info";
+            $scope.msj = "Se inserto el dato correctamente ";
+          }else{
+            $scope.panel = "alert alert-danger";
+            $scope.msj = "Error: Intente nuevamente ";
+          }
+    });
+
     $timeout(function(){
       $location.path('/lista');
-    }, 1000);
+    }, 1500);
   }
 }])
 .controller('EliminarCtrl', ['$scope', 'HorarioRecursos', '$routeParams', '$location', '$timeout', function($scope, HorarioRecursos, $routeParams, $location, $timeout){

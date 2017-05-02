@@ -22,11 +22,28 @@ class HorarioController extends Controller
   }
 
   public function store(Request $request){
-    $request['user_id'] = 1;
-    $dato = new Horario;
-    $dato->fill( $request->all() );
-    $dato->save();
-    return response()->json(array("respuesta"=>"200_OK"));
+    try {
+      $request['user_id'] = 1;
+
+      $dato = new Horario;
+      $v = \Validator::make($request->all(), [
+            'ingreso_am' => 'required|date_format:HH:II:SS',
+            'salida_am'  => 'required|date_format:HH:II:SS',
+            'salida_pm'  => 'required|date_format:HH:II:SS',
+            'salida_pm'  => 'required|date_format:HH:II:SS',
+            'tolerancia' => 'required|numeric'
+        ]);
+        if ( $v->fails() ){
+            return response()->json(array("respuesta"=>"500_NO"));
+        }
+
+      $dato->fill( $request->all() );
+      $dato->save();
+      return response()->json(array("respuesta"=>"200_OK"));
+    } catch (Exception $e) {
+      return "MensajeError -> ".$e->getMessage();
+    }
+
   }
 
   public function update(Request $request, $id){

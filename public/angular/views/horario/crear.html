@@ -16,26 +16,26 @@
                     <input type="text" class="form-control"  placeholder="Nombre del horario "  ng-model="Horario.horario" id="horario" required>
                   </div>
                   <div class="col-md-6">
-                    <label>Tiempo de tolerancia</label>
-                    <input type="text" class="form-control"  placeholder="Tiempo de Tolerancia "  ng-model="Horario.tolerancia" id="tolerancia" required>
+                    <label>Tiempo de tolerancia en minutos</label>
+                    <input type="number" class="form-control"  placeholder="Tiempo de Tolerancia"  value="0" ng-model="Horario.tolerancia" id="tolerancia">
                   </div>
                 </div>
 
                 <div class="row">
                   <div class="col-md-3">
-                    <label>Ingreso AM</label>
+                    <label>Ingreso en la mañana</label>
                     <input type="text" class="form-control"  placeholder="Ingreso AM"  ng-model="Horario.ingreso_am" id="ingreso_am" required></br>
                   </div>
                   <div class="col-md-3">
-                    <label>Salida AM</label>
+                    <label>Salida en la mañana</label>
                     <input type="text" class="form-control"  placeholder="Salida AM"  ng-model="Horario.salida_am" id="salida_am" required>
                   </div>
                   <div class="col-md-3">
-                    <label>Ingreso PM</label>
+                    <label>Ingreso en la tarde</label>
                     <input type="text" class="form-control"  placeholder="Ingreso PM"  ng-model="Horario.ingreso_pm" id="ingreso_pm" required></br>
                   </div>
                   <div class="col-md-3">
-                    <label>Salida PM</label>
+                    <label>Salida en la tarde</label>
                     <input type="text" class="form-control"  placeholder="Salida PM"  ng-model="Horario.salida_pm" id="salida_pm" required>
                   </div>
                 </div>
@@ -57,3 +57,10 @@
 
     </div>
 </div>
+
+<script type="text/javascript">
+  $('#ingreso_am').timepicker({ 'timeFormat': 'H:i:s', 'step': 15  });
+  $('#salida_am').timepicker({ 'timeFormat': 'H:i:s', 'step': 15  });
+  $('#ingreso_pm').timepicker({ 'timeFormat': 'H:i:s', 'step': 15  });
+  $('#salida_pm').timepicker({ 'timeFormat': 'H:i:s', 'step': 15  });
+</script>
