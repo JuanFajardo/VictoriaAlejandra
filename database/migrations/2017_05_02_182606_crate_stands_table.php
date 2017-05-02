@@ -20,7 +20,7 @@ class CrateStandsTable extends Migration
           $table->string('descripcion');
           $table->string('encargado');
           $table->string('direccion');
-          $table->integer('telefono',8);
+          $table->string('telefono',50);
           $table->string('logo');
           $table->integer('user_id')->references('id')->on('users');
           $table->timestamps();
