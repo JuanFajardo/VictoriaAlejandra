@@ -13,7 +13,10 @@ class CargoController extends Controller
   }
 
   public function index(){
-    $datos = Cargo::all();
+    //$datos = Cargo::all();
+    $datos = \DB::table('cargos')->join('horarios', 'cargos.horario_id', '=', 'horarios.id')
+                                  ->where('cargos.deleted_at', '=', null)
+                                  ->select('cargos.*', 'horarios.horario')->get();
     return $datos;
   }
 
@@ -23,15 +26,17 @@ class CargoController extends Controller
   }
 
   public function store(Request $request){
-    $request['horario_id'] = 1;
+    $request['user_id'] = 1;
+    return  $request->all();
     $dato = new Cargo;
     $dato->fill( $request->all() );
     $dato->save();
+
     return response()->json(array("respuesta"=>"200_OK"));
   }
 
   public function update(Request $request, $id){
-    $request['horario_id'] = 1;
+    $request['user_id'] = 1;
     $dato = Cargo::find($id);
     $dato->fill( $request->all() );
     $dato->save();

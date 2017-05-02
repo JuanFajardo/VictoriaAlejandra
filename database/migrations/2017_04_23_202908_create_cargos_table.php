@@ -18,6 +18,7 @@ class CreateCargosTable extends Migration
             $table->string('cargo', 50);
             $table->string('descripcion',100);
             $table->integer('horario_id')->references('id')->on('horarios');
+            $table->integer('user_id')->references('id')->on('users');
             $table->timestamps();
             $table->softDeletes();
         });

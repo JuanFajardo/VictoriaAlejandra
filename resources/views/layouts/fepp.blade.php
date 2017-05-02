@@ -65,7 +65,7 @@
                         <a href="tables.html"><i class="fa fa-fw fa-table"></i> Registro</a>
                     </li>
                     <li class="@yield('menu4')">
-                        <a href="{{asset('Horario')}}"><i class="fa fa-fw fa-edit"></i> Horario</a>
+                        <a href="{{asset('index.php/Horario#/lista')}}"><i class="fa fa-fw fa-edit"></i> Horario</a>
                     </li>
                     <li class="@yield('menu5')">
                         <a href="bootstrap-elements.html"><i class="fa fa-fw fa-file-pdf-o"></i> Reportes</a>
@@ -80,7 +80,7 @@
                         <a href="index-rtl.html"><i class="fa fa-fw fa-dashboard"></i> Stands</a>
                     </li>
                     <li class="@yield('menu9')">
-                        <a href="{{asset('Cargo')}}"><i class="fa fa-fw fa-dashboard"></i> Cargo</a>
+                        <a href="{{asset('index.php/Cargo#/lista')}}"><i class="fa fa-fw fa-dashboard"></i> Cargo</a>
                     </li>
 
                 </ul>
