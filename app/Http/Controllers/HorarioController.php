@@ -49,10 +49,23 @@ class HorarioController extends Controller
 
   public function update(Request $request, $id){
     $request['user_id'] = 1;
-    $dato = Horario::find($id);
-    $dato->fill( $request->all() );
-    $dato->save();
-    return response()->json(array("respuesta"=>"200_OK"));
+    $v = \Validator::make($request->all(), [
+          'horario'    => 'required',
+          'ingreso_am' => 'required|date_format:H:i:s',
+          'salida_am'  => 'required|date_format:H:i:s',
+          'ingreso_pm'  => 'required|date_format:H:i:s',
+          'salida_pm'  => 'required|date_format:H:i:s',
+          'tolerancia' => 'required|numeric',
+          'user_id' => 'required'
+      ]);
+    if ( count($v->errors()) > 0 ){
+          return response()->json(array("respuesta"=>"500_NO"));
+    }else{
+      $dato = Horario::find($id);
+      $dato->fill( $request->all() );
+      $dato->save();
+      return response()->json(array("respuesta"=>"200_OK"));
+    }
   }
 
   public function destroy($id){
