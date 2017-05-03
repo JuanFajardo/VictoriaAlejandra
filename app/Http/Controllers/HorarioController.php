@@ -29,7 +29,7 @@ class HorarioController extends Controller
       $v = \Validator::make($request->all(), [
             'ingreso_am' => 'required|date_format:HH:II:SS',
             'salida_am'  => 'required|date_format:HH:II:SS',
-            'salida_pm'  => 'required|date_format:HH:II:SS',
+            'ingreso_pm'  => 'required|date_format:HH:II:SS',
             'salida_pm'  => 'required|date_format:HH:II:SS',
             'tolerancia' => 'required|numeric'
         ]);
