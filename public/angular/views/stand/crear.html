@@ -9,7 +9,7 @@
 
     </div>
     <div class="panel-body">
-      <form autocomplete="off" ng-submit="guardarStand()">
+      <form autocomplete="off" ng-submit="guardarStand()" enctype=”multipart/form-data">
                 <div class="row">
                   <div class="col-md-4">
                     <label>Nombre de la Empresa</label>
@@ -52,7 +52,7 @@
                       </div>
                       <div class="row">
                         <div class="col-md-12">
-                          <img src="">
+                          <img src="" class="form-control" ng-model="Stand.logo" id="logo">
                         </div>
                       </div>
                   </div>
