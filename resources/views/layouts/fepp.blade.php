@@ -77,7 +77,7 @@
                         <a href="blank-page.html"><i class="fa fa-fw fa-user"></i> Usuarios</a>
                     </li>
                     <li class="@yield('menu8')">
-                        <a href="index-rtl.html"><i class="fa fa-fw fa-dashboard"></i> Stands</a>
+                        <a href="{{asset('index.php/Stand#/lista')}}"><i class="fa fa-fw fa-dashboard"></i> Stands</a>
                     </li>
                     <li class="@yield('menu9')">
                         <a href="{{asset('index.php/Cargo#/lista')}}"><i class="fa fa-fw fa-dashboard"></i> Cargo</a>

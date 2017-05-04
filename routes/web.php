@@ -37,9 +37,18 @@ Route::post('horario', 'HorarioController@store');
 Route::put('horario/{id}', 'HorarioController@update');
 Route::delete('horario/{id}', 'HorarioController@destroy');
 
+
 Route::get('Cargo', 'CargoController@angular');
 Route::get('cargo', 'CargoController@index');
 Route::get('cargo/{id}', 'CargoController@show');
 Route::post('cargo', 'CargoController@store');
 Route::put('cargo/{id}', 'CargoController@update');
 Route::delete('cargo/{id}', 'CargoController@destroy');
+
+
+Route::get('Stand', 'StandController@angular');
+Route::get('stand', 'StandController@index');
+Route::get('stand/{id}', 'StandController@show');
+Route::post('stand', 'StandController@store');
+Route::put('stand/{id}', 'StandController@update');
+Route::delete('stand/{id}', 'StandController@destroy');

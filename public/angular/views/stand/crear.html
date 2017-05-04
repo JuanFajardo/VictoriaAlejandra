@@ -1,0 +1,77 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+
+      <div class="row">
+        <div class="col-md-6">
+          <h3 class="panel-title"><i class="glyphicon glyphicon-list-alt"></i> {{titulo}} </h3>
+        </div>
+      </div>
+
+    </div>
+    <div class="panel-body">
+      <form autocomplete="off" ng-submit="guardarStand()">
+                <div class="row">
+                  <div class="col-md-4">
+                    <label>Nombre de la Empresa</label>
+                    <input type="text" class="form-control"  placeholder="Nombre de la empresa "  ng-model="Stand.nom_empresa" id="nom_empresa" required>
+                  </div>
+                  <div class="col-md-4">
+                    <label>Direccion</label>
+                    <input type="text" class="form-control"  placeholder="Direccion de la empresa" ng-model="Stand.direccion" id="direccion" required>
+                  </div>
+                  <div class="col-md-4">
+                    <label>Telefono</label>
+                    <input type="number" class="form-control"  value="0" placeholder="Telefono" ng-model="Stand.telefono" id="telefon" required>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-4">
+                    <label>Descripcion</label>
+                    <textarea class="form-control" placeholder="Descripcion de la empresa" ng-model="Stand.descripcion" id="descripcion" rows="8" cols="80"></textarea>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <label>Encargado de la empresa</label>
+                        <input type="text" class="form-control" placeholder="Nombre del encargado" ng-model="Stand.encargado" id="encargado" required>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                          <label>Cantidad de personal</label>
+                          <input type="number" class="form-control" placeholder="Cantidad del personal" ng-model="Stand.cant_personal" id="cant_personal" required>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                      <div class="row">
+                        <div class="col-md-12">
+                          <label>Logotipo de la empresa</label>
+                          <input type="file" class="form-control" ng-model="Stand.logo" id="logo">
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-12">
+                          <img src="">
+                        </div>
+                      </div>
+                  </div>
+                </div>
+
+                <div class="row" style="margin-top:15px;">
+                  <div class="col-md-3">
+                    <button type="submit" name="button" class="{{accion}}" >
+                      <i class="{{botonIcono}}" aria-hidden="true"></i> {{boton}}
+                    </button>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="{{panel}}" role="alert"> <strong>{{msj}}</strong> </div>
+                  </div>
+                  <div class="col-md-3">
+                    <a href="#/lista" class="btn btn-info pull-right"> <i class="fa fa-times-circle" aria-hidden="true"></i> Cancelar</a>
+                  </div>
+                </div>
+              </form>
+
+    </div>
+</div>
