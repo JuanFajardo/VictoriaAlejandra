@@ -21,7 +21,7 @@
                   </div>
                   <div class="col-md-4">
                     <label>Telefono</label>
-                    <input type="number" class="form-control"  value="0" placeholder="Telefono" ng-model="Stand.telefono" id="telefon" required>
+                    <input type="text" class="form-control"  value="0" placeholder="Telefono" ng-model="Stand.telefono" id="telefono" required>
                   </div>
                 </div>
                 <div class="row">
@@ -39,7 +39,7 @@
                     <div class="row">
                       <div class="col-md-12">
                           <label>Cantidad de personal</label>
-                          <input type="number" class="form-control" placeholder="Cantidad del personal" ng-model="Stand.cant_personal" id="cant_personal" required>
+                          <input type="text" class="form-control" placeholder="Cantidad del personal" ng-model="Stand.cant_personal" id="cant_personal" required>
                       </div>
                     </div>
                   </div>
@@ -47,12 +47,12 @@
                       <div class="row">
                         <div class="col-md-12">
                           <label>Logotipo de la empresa</label>
-                          <input type="file" class="form-control" ng-model="Stand.logo" id="logo">
+                          <input type="file" class="form-control" ng-model="Stand.logo" name="imagen" id="imagen" multiple="false" accept="image/jpeg|image/png">
                         </div>
                       </div>
                       <div class="row">
-                        <div class="col-md-12">
-                          <img src="" class="form-control" ng-model="Stand.logo" id="logo">
+                        <div   class="col-md-12">
+                          
                         </div>
                       </div>
                   </div>
