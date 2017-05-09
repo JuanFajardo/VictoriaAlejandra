@@ -22,7 +22,7 @@ class CrateStandsTable extends Migration
           $table->string('encargado');
           $table->string('direccion');
           $table->string('telefono',50);
-          $table->string('logo');
+          $table->longtext('logo');
           $table->integer('user_id')->references('id')->on('users');
           $table->timestamps();
           $table->softDeletes();
@@ -37,6 +37,5 @@ class CrateStandsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('stands');
-
     }
 }
