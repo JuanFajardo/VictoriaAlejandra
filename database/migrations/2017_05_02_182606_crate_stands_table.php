@@ -17,7 +17,7 @@ class CrateStandsTable extends Migration
           $table->increments('id');
           $table->string('nom_empresa');
           $table->integer('cant_personal');
-          $table->integer('cant_per_reg')->comment("cantidad de personal registrado");
+          //$table->integer('cant_per_reg')->comment("cantidad de personal registrado");
           $table->string('descripcion');
           $table->string('encargado');
           $table->string('direccion');

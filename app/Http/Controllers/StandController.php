@@ -22,13 +22,15 @@ class StandController extends Controller
     return $dato;
   }
 
+  public function create(Request $request){
+    return view('Stand.create');
+  }
   public function store(Request $request){
     try {
       $request['user_id'] = 1;
       $v = \Validator::make($request->all(), [
             'nom_empresa'    => 'required',
             'cant_personal'    => 'required',
-            'cant_per_reg'    => 'required',
             'descripcion'    => 'required',
             'encargado'    => 'required',
             'direccion'    => 'required',
@@ -36,18 +38,14 @@ class StandController extends Controller
             'user_id' => 'required'
         ]);
       if ( count($v->errors()) > 0 ){
+          echo $v->errors();
             return response()->json(array("respuesta"=>"500_NO"));
       }else{
-        $imagen = Input::file('imagen');
-        $filename = $imagen->getClientOriginalName();
-        return response()->json(array("respuesta"=>"$imagen"));
-        $request['logo'] = $nombre;
-
         $dato = new Stand;
         $dato->fill( $request->all() );
         $dato->save();
-        //return response()->json(array("respuesta"=>"200_OK"));
       }
+      return redirect('Stand#/lista');
     } catch (Exception $e) {
       return "MensajeError -> ".$e->getMessage();
     }

@@ -97,11 +97,10 @@ va.factory('StandRecursos', function($resource){
   $scope.boton = "Guardar";
 	$scope.botonIcono = "fa fa-save"
   $scope.accion = "btn btn-primary";
-  $scope.Stand={
-		cant_per_reg: 0
-	};
+  $scope.Stand={};
 
   $scope.guardarStand = function(){
+    console.log($scope.Stand);
     StandRecursos.save($scope.Stand, function(data){
           var respuesta = data['respuesta'];
           if(respuesta == '200_OK'){
@@ -115,7 +114,6 @@ va.factory('StandRecursos', function($resource){
             $scope.msj = respuesta;
           }
     });
-
   /*$timeout(function(){
   $location.path('/lista');
   }, 1500);*/
