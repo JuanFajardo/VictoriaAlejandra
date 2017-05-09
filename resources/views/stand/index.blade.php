@@ -98,7 +98,7 @@ va.factory('StandRecursos', function($resource){
 	$scope.botonIcono = "fa fa-save"
   $scope.accion = "btn btn-primary";
   $scope.Stand={
-		tolerancia: 0
+		cant_per_reg: 0
 	};
 
   $scope.guardarStand = function(){
@@ -107,15 +107,18 @@ va.factory('StandRecursos', function($resource){
           if(respuesta == '200_OK'){
             $scope.panel = "alert alert-info";
             $scope.msj = "Se inserto el dato correctamente ";
+            $timeout(function(){
+              $location.path('/lista');
+            }, 1500);
           }else{
             $scope.panel = "alert alert-danger";
-            $scope.msj = "Error: Intente nuevamente ";
+            $scope.msj = respuesta;
           }
     });
 
-    $timeout(function(){
-      $location.path('/lista');
-    }, 1500);
+  /*$timeout(function(){
+  $location.path('/lista');
+  }, 1500);*/
   };
 }])
 .controller('EditarCtrl', ['$scope', 'StandRecursos', '$location', '$timeout', '$routeParams', function($scope, StandRecursos, $location, $timeout, $routeParams){
@@ -134,15 +137,18 @@ va.factory('StandRecursos', function($resource){
           if(respuesta == '200_OK'){
             $scope.panel = "alert alert-info";
             $scope.msj = "Se inserto el dato correctamente ";
+                $timeout(function(){
+                  $location.path('/lista');
+                }, 1500);
           }else{
             $scope.panel = "alert alert-danger";
             $scope.msj = "Error: Intente nuevamente ";
           }
     });
 
-    $timeout(function(){
+    /*$timeout(function(){
       $location.path('/lista');
-    }, 1500);
+    }, 1500);*/
   }
 }])
 .controller('EliminarCtrl', ['$scope', 'StandRecursos', '$routeParams', '$location', '$timeout', function($scope, StandRecursos, $routeParams, $location, $timeout){

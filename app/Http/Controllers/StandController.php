@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Stand;
-
+use Illuminate\Support\Facades\Input;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 class StandController extends Controller
 {
   public function angular(){
@@ -24,7 +25,6 @@ class StandController extends Controller
   public function store(Request $request){
     try {
       $request['user_id'] = 1;
-      //$request['cant_per_reg'] = 0;
       $v = \Validator::make($request->all(), [
             'nom_empresa'    => 'required',
             'cant_personal'    => 'required',
@@ -33,16 +33,20 @@ class StandController extends Controller
             'encargado'    => 'required',
             'direccion'    => 'required',
             'telefono'    => 'required',
-            'logo'    => 'required',
             'user_id' => 'required'
         ]);
       if ( count($v->errors()) > 0 ){
             return response()->json(array("respuesta"=>"500_NO"));
       }else{
+        $imagen = Input::file('imagen');
+        $filename = $imagen->getClientOriginalName();
+        return response()->json(array("respuesta"=>"$imagen"));
+        $request['logo'] = $nombre;
+
         $dato = new Stand;
         $dato->fill( $request->all() );
         $dato->save();
-        return response()->json(array("respuesta"=>"200_OK"));
+        //return response()->json(array("respuesta"=>"200_OK"));
       }
     } catch (Exception $e) {
       return "MensajeError -> ".$e->getMessage();

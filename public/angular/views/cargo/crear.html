@@ -9,7 +9,7 @@
 
     </div>
     <div class="panel-body">
-      <form autocomplete="off" ng-submit="guardarCargo()">
+      <form autocomplete="off" ng-submit="guardarCargo()" enctype=”multipart/form-data>
                 <div class="row">
                   <div class="col-md-6">
                     <label>Nombre del cargo</label>
@@ -24,9 +24,9 @@
                 </div>
 
                 <div class="row">
-                  <div class="col-md-3">
+                  <div class="col-md-12">
                     <label>Descipcion</label>
-                    <textarea class="form-control" placeholder="Descripcion" ng-model="Cargo.descripcion" required id="descripcion" rows="8" cols="80"></textarea>
+                    <textarea class="form-control" placeholder="Descripcion" ng-model="Cargo.descripcion" required id="descripcion" rows="8" cols="160"></textarea>
                   </div>
                 </div>
 
