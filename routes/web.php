@@ -22,12 +22,12 @@ Auth::routes();
 Route::get('/home', 'HomeController@index');
 
 
-Route::get('Personal', 'PersonalController@angular');
-Route::get('personal', 'PersonalController@index');
-Route::get('personal/{id}', 'PersonalController@show');
-Route::post('personal', 'PersonalController@store');
-Route::put('personal', 'PersonalController@update');
-Route::delete('personal/{id}', 'PersonalController@destroy');
+Route::get('Personal', 'PersonaController@angular');
+Route::get('personal', 'PersonaController@index');
+Route::get('personal/{id}', 'PersonaController@show');
+Route::post('personal', 'PersonaController@store');
+Route::put('personal', 'PersonaController@update');
+Route::delete('personal/{id}', 'PersonaController@destroy');
 
 
 Route::get('Horario', 'HorarioController@angular');
