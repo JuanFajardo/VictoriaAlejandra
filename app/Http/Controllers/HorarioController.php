@@ -24,7 +24,7 @@ class HorarioController extends Controller
   public function store(Request $request){
     try {
       $request['user_id'] = 1;
-      $v = \Validator::make($request->all(), [
+      /*$v = \Validator::make($request->all(), [
             'horario'    => 'required',
             'ingreso_am' => 'required|date_format:H:i:s',
             'salida_am'  => 'required|date_format:H:i:s',
@@ -32,7 +32,7 @@ class HorarioController extends Controller
             'salida_pm'  => 'required|date_format:H:i:s',
             'tolerancia' => 'required|numeric',
             'user_id' => 'required'
-        ]);
+        ]);*/
       if ( count($v->errors()) > 0 ){
             return response()->json(array("respuesta"=>"500_NO"));
       }else{

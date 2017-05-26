@@ -59,7 +59,7 @@
                         <a href="index.html"><i class="fa fa-fw fa-home"></i> Inicio</a>
                     </li>
                     <li class="@yield('menu2')">
-                        <a href="{{asset('Personal')}}"><i class="fa fa-fw fa-users"></i> Personal</a>
+                        <a href="{{asset('index.php/Trabajador#/lista')}}"><i class="fa fa-fw fa-users"></i> Personal</a>
                     </li>
                     <li class="@yield('menu3')">
                         <a href="tables.html"><i class="fa fa-fw fa-table"></i> Registro</a>

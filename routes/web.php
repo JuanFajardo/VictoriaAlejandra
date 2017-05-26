@@ -53,3 +53,13 @@ Route::get('stand/{id}', 'StandController@show');
 Route::post('stand', 'StandController@store');
 Route::put('stand/{id}', 'StandController@update');
 Route::delete('stand/{id}', 'StandController@destroy');
+
+
+
+Route::get('Trabajador', 'TrabajadorController@angular');
+Route::get('trabajador', 'TrabajadorController@index');
+Route::get('trabajador/crear', 'TrabajadorController@create');
+Route::get('trabajador/{id}', 'TrabajadorController@show');
+Route::post('trabajador', 'TrabajadorController@store');
+Route::put('trabajador/{id}', 'TrabajadorController@update');
+Route::delete('trabajador/{id}', 'TrabajadorController@destroy');
