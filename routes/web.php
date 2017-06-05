@@ -48,7 +48,6 @@ Route::delete('cargo/{id}', 'CargoController@destroy');
 
 Route::get('Stand', 'StandController@angular');
 Route::get('stand', 'StandController@index');
-Route::get('Stand/crear', 'StandController@create');
 Route::get('stand/{id}', 'StandController@show');
 Route::post('stand', 'StandController@store');
 Route::put('stand/{id}', 'StandController@update');
