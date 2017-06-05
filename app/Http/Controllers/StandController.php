@@ -26,6 +26,7 @@ class StandController extends Controller
     return view('Stand.create');
   }
   public function store(Request $request){
+
     try {
       $request['user_id'] = 1;
       $v = \Validator::make($request->all(), [
@@ -37,15 +38,27 @@ class StandController extends Controller
             'telefono'    => 'required',
             'user_id' => 'required'
         ]);
+
       if ( count($v->errors()) > 0 ){
-          echo $v->errors();
-            return response()->json(array("respuesta"=>"500_NO"));
+            $respuesta = array("respuesta"=>"500_NO");
+
       }else{
+        //return $request->all();
         $dato = new Stand;
-        $dato->fill( $request->all() );
+        $dato->nom_empresa  = $request->nom_empresa;
+        $dato->cant_personal= $request->cant_personal;
+        $dato->descripcion  = $request->descripcion;
+        $dato->encargado    = $request->encargado;
+        $dato->direccion    = $request->direccion;
+        $dato->telefono     = $request->telefono;
+        $dato->logo         = $request->logo;
+        $dato->user_id      = $request->user_id;
+        //$dato->fill( $request->all() );
         $dato->save();
+
+        $respuesta = array("respuesta"=>"200_OK");
       }
-      return redirect('Stand#/lista');
+      return response()->json($respuesta);
     } catch (Exception $e) {
       return "MensajeError -> ".$e->getMessage();
     }

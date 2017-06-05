@@ -99,27 +99,27 @@ va.factory('StandRecursos', function($resource){
   $scope.accion = "btn btn-primary";
   $scope.Stand={};
   var base64="";
+
+
   $(document).ready(function(){
   $("#logo").change(function(){
-    var ArchivoSeleccionado = document.getElementById("logo").files;
-    if(ArchivoSeleccionado.length > 0){
-      var FileToLoad = ArchivoSeleccionado[0];
-      var fileReader = new FileReader();
-      fileReader.onload = function(fileLoadedEvent){
-        base64 = fileLoadedEvent.target.result;
-        console.log(base64);
-        document.getElementById("preview").setAttribute("src",base64);
-        $("#preview").show();
-      };
-      fileReader.readAsDataURL(FileToLoad);
-    }
+      var ArchivoSeleccionado = document.getElementById("logo").files;
+      if(ArchivoSeleccionado.length > 0){
+        var FileToLoad = ArchivoSeleccionado[0];
+        var fileReader = new FileReader();
+        fileReader.onload = function(fileLoadedEvent){
+          base64 = fileLoadedEvent.target.result;
+          $scope.img = base64;
+          document.getElementById("preview").setAttribute("src",base64);
+          $("#preview").show();
+        };
+        fileReader.readAsDataURL(FileToLoad);
+      }
+    });
   });
-});
-
-
 
   $scope.guardarStand = function(){
-    $scope.Stand['logo'] = base64;
+    $scope.Stand.logo = $scope.img;
     StandRecursos.save($scope.Stand, function(data){
           var respuesta = data['respuesta'];
           if(respuesta == '200_OK'){
@@ -133,10 +133,8 @@ va.factory('StandRecursos', function($resource){
             $scope.msj = respuesta;
           }
     });
-  /*$timeout(function(){
-  $location.path('/lista');
-  }, 1500);*/
   };
+
 }])
 .controller('EditarCtrl', ['$scope', 'StandRecursos', '$location', '$timeout', '$routeParams', function($scope, StandRecursos, $location, $timeout, $routeParams){
   $scope.titulo = " Editar Stand";
@@ -144,11 +142,31 @@ va.factory('StandRecursos', function($resource){
   $scope.boton = "Actualizar";
 	$scope.botonIcono = "fa fa-save"
   $scope.accion = "btn btn-warning";
+  var base64 = "";
   $scope.Stand = StandRecursos.get({
     id: $routeParams.id
   });
+  $scope.img = $scope.Stand.logo;
+
+  $(document).ready(function(){
+  $("#logo").change(function(){
+      var ArchivoSeleccionado = document.getElementById("logo").files;
+      if(ArchivoSeleccionado.length > 0){
+        var FileToLoad = ArchivoSeleccionado[0];
+        var fileReader = new FileReader();
+        fileReader.onload = function(fileLoadedEvent){
+          base64 = fileLoadedEvent.target.result;
+          $scope.img = base64;
+          document.getElementById("preview").setAttribute("src",base64);
+          $("#preview").show();
+        };
+        fileReader.readAsDataURL(FileToLoad);
+      }
+    });
+  });
 
   $scope.guardarStand = function(){
+    $scope.Stand.logo = $scope.img;
     StandRecursos.update($scope.Stand, function(data){
           var respuesta = data['respuesta'];
           if(respuesta == '200_OK'){

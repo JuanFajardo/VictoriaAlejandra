@@ -39,7 +39,7 @@
                     <div class="row">
                       <div class="col-md-12">
                           <label>Cantidad de personal</label>
-                          <input type="text" class="form-control" placeholder="Cantidad del personal" ng-model="Stand.cant_personal" id="cant_personal" required>
+                          <input type="number" class="form-control" placeholder="Cantidad del personal" ng-model="Stand.cant_personal" id="cant_personal" required>
                       </div>
                     </div>
                   </div>
@@ -47,12 +47,22 @@
                       <div class="row">
                         <div class="col-md-12">
                           <label>Logotipo de la empresa</label>
-                          <input type="file" class="form-control" ng-model="Stand.logo" fileread="Stand.logo" spinner-on-load name="logo" id="logo" accept="image/jpeg|image/png">
+                          <input type="hidden" ng-model="img">
+                          <input type="file" class="form-control" ng-model="Stand.logo"  ng-blur="cargaImagen()"  fileread="Stand.logo" spinner-on-load name="logo" id="logo" accept="image/jpeg|image/png">
                         </div>
                       </div>
                       <div class="row">
                         <div   class="col-md-12">
-                          <img src="" id="preview" class="img-responsive" style="display:none;" >
+                          <picture>
+                            <img src="" ng-model="imagen" width="150" id="preview" class="img-thumbnail" style="display:none;" >
+                            <cite>Imagen Nueva</cite>
+                          </picture>
+
+                          <picture>
+                            <img ng-if="(Stand.logo).length > 0 " src="{{Stand.logo}}" width="150" class="img-thumbnail">
+                            <cite>Imagen Antigua</cite>
+                          </picture>
+
                         </div>
                       </div>
                   </div>
