@@ -73,12 +73,12 @@ Lista de Stands
                       <div class="row">
                         <div class="col-md-12">
                           <label>Logotipo de la empresa</label>
-                          <input type="file" class="form-control"   name="logo" id="logo" accept="image/jpeg|image/png">
+                          <input type="file" class="form-control" ng-model="Stand.logo" fileread="Stand.logo" spinner-on-load name="logo" id="logo" accept="image/jpeg|image/png">
                         </div>
                       </div>
                       <div class="row">
                         <div   class="col-md-12">
-
+                          <img src="" id="preview" class="img-responsive" style="display:none;" >
                         </div>
                       </div>
                   </div>

@@ -98,9 +98,28 @@ va.factory('StandRecursos', function($resource){
 	$scope.botonIcono = "fa fa-save"
   $scope.accion = "btn btn-primary";
   $scope.Stand={};
+  var base64="";
+  $(document).ready(function(){
+  $("#logo").change(function(){
+    var ArchivoSeleccionado = document.getElementById("logo").files;
+    if(ArchivoSeleccionado.length > 0){
+      var FileToLoad = ArchivoSeleccionado[0];
+      var fileReader = new FileReader();
+      fileReader.onload = function(fileLoadedEvent){
+        base64 = fileLoadedEvent.target.result;
+        console.log(base64);
+        document.getElementById("preview").setAttribute("src",base64);
+        $("#preview").show();
+      };
+      fileReader.readAsDataURL(FileToLoad);
+    }
+  });
+});
+
+
 
   $scope.guardarStand = function(){
-    console.log($scope.Stand);
+    $scope.Stand['logo'] = base64;
     StandRecursos.save($scope.Stand, function(data){
           var respuesta = data['respuesta'];
           if(respuesta == '200_OK'){
