@@ -11,11 +11,15 @@
     <div class="panel-body">
       <form autocomplete="off" ng-submit="guardarHorario()" enctype="multipart/form-data">
                 <div class="row">
-                  <div class="col-md-6">
+                  <div class="col-md-4">
                     <label>Nombre de Horario</label>
                     <input type="text" class="form-control"  placeholder="Nombre del horario "  ng-model="Horario.horario" id="horario" required>
                   </div>
-                  <div class="col-md-6">
+                  <div class="col-md-4">
+                    <label>Descripcion del Horario</label>
+                    <input type="text" class="form-control"  placeholder="Descripcion del horario"  ng-model="Horario.descripcion" id="descripcion" required>
+                  </div>
+                  <div class="col-md-4">
                     <label>Tiempo de tolerancia en minutos</label>
                     <input type="number" class="form-control"  placeholder="Tiempo de Tolerancia"  value="0" ng-model="Horario.tolerancia" id="tolerancia">
                   </div>

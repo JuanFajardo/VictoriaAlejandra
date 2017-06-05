@@ -17,7 +17,7 @@ class CreateTrabajadoresTable extends Migration
         $table->increments('id');
         $table->string('nom_empresa');
         $table->integer('ci')->unique();
-        //$table->integer('cant_per_reg')->comment("cantidad de personal registrado");
+        $table->string('tarjeta')->unique();
         $table->date('fech_nac');
         $table->string('direccion');
         $table->string('telefono');
@@ -25,9 +25,9 @@ class CreateTrabajadoresTable extends Migration
         $table->string('genero');
         $table->string('profesion');
         $table->string('email');
-        $table->integer('id_cargo')->references('id')->on('cargos');
+        $table->integer('id_horario')->references('id')->on('cargos');
         $table->integer('id_stand')->references('id')->on('stands');
-        $table->string('id_rfid')->references('id')->on('rfids')->unique();
+        //$table->string('id_rfid')->references('id')->on('rfids')->unique();
         $table->integer('user_id')->references('id')->on('users');
         $table->timestamps();
         $table->softDeletes();

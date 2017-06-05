@@ -30,6 +30,18 @@ Route::put('personal', 'PersonaController@update');
 Route::delete('personal/{id}', 'PersonaController@destroy');
 
 
+
+Route::get('Registro', 'RegistroController@angular');
+Route::get('registro', 'RegistroController@index');
+Route::get('registro/{id}', 'RegistroController@show');
+Route::get('registroPersona/{id}', 'RegistroController@showPersona');
+Route::get('registroTarjeta/{id}', 'RegistroController@showTarjeta');
+Route::post('registro', 'RegistroController@store');
+Route::put('registro', 'RegistroController@update');
+Route::delete('registro/{id}', 'RegistroController@destroy');
+
+
+
 Route::get('Horario', 'HorarioController@angular');
 Route::get('horario', 'HorarioController@index');
 Route::get('horario/{id}', 'HorarioController@show');

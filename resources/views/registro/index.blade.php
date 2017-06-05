@@ -1,15 +1,15 @@
 @extends('layouts.fepp')
 
 @section('title')
-	Personal
+	Registro
 @endsection
 
-@section('menu2')
+@section('menu3')
 active
 @endsection
 
 @section('titulo')
-Personal
+Registro
 @endsection
 
 
@@ -18,7 +18,7 @@ fa fa-user
 @endsection
 
 @section('tituloPanel')
-Lista de Personas
+Lista de Personas para administracion de registro
 @endsection
 
 @section('cuerpo')
@@ -34,34 +34,34 @@ angular.module('AdycttoBett0', ['ngResource', 'ngRoute', 'ngAnimate', 'datatable
 .config(function($routeProvider){
         $routeProvider
         .when('/lista', {
-          templateUrl: '../angular/views/personal/listar.html',
+          templateUrl: '../angular/views/registro/listar.html',
           controller: 'ListaCtrl'
         })
         .when('/crear', {
-          templateUrl: '../angular/views/personal/crear.html',
+          templateUrl: '../angular/views/registro/crear.html',
           controller: 'CrearCtrl'
         })
         .when('/editar/:id', {
-          templateUrl: '../angular/views/personal/crear.html',
+          templateUrl: '../angular/views/registro/crear.html',
           controller: 'EditarCtrl'
         })
         .when('/ver/:id', {
-          templateUrl: '../angular/views/personal/ver.html',
+          templateUrl: '../angular/views/registro/ver.html',
           controller: 'VerCtrl'
         })
         .when('/eliminar/:id', {
-          templateUrl: '../angular/views/personal/eliminar.html',
+          templateUrl: '../angular/views/registro/eliminar.html',
           controller: 'EliminarCtrl'
         })
 });
 ///Servicio de Angular para Dosificaciones
 var va = angular.module('AdycttoBett0');
-va.factory('PersonalRecursos', function($resource){
-  return $resource('../index.php/personal/:id', { id:"@id"}, { update: { method: "PUT" } } );
+va.factory('RegistroRecursos', function($resource){
+  return $resource('../index.php/registro/:id', { id:"@id"}, { update: { method: "PUT" } } );
 })
 ///Controladores de Angular para Dosificaciones
-.controller('ListaCtrl', ['$scope', 'PersonalRecursos', '$location', '$timeout', 'DTOptionsBuilder', 'DTColumnBuilder', function($scope, PersonalRecursos, $location, $timeout, DTOptionsBuilder, DTColumnBuilder){
-  $scope.personas = PersonalRecursos.query();
+.controller('ListaCtrl', ['$scope', 'RegistroRecursos', '$location', '$timeout', 'DTOptionsBuilder', 'DTColumnBuilder', function($scope, RegistroRecursos, $location, $timeout, DTOptionsBuilder, DTColumnBuilder){
+  $scope.personas = RegistroRecursos.query();
 	$scope.vm = {};
   $scope.vm.dtOptions = DTOptionsBuilder.newOptions()
   .withOption(
@@ -92,40 +92,34 @@ va.factory('PersonalRecursos', function($resource){
     )
   .withOption('order', [0, 'asc']);
 }])
-.controller('CrearCtrl', ['$scope', '$http', 'PersonalRecursos', '$location', '$timeout', function($scope, $http, PersonalRecursos, $location, $timeout){
-  $scope.titulo = 'Crear Personal';
+.controller('CrearCtrl', ['$scope', '$http', 'RegistroRecursos', '$location', '$timeout', function($scope, $http, RegistroRecursos, $location, $timeout){
+  $scope.titulo = 'Crear Registro';
   $scope.boton = "Guardar";
 	$scope.botonIcono = "fa fa-save"
   $scope.accion = "btn btn-primary";
-  $scope.Persona={
-		tolerancia: 0
-	};
 
-	var link = "../index.php/horario";
-	$http({url:link, method:"GET"}).success(function(data){
-		$scope.horarios = data;
-	});
-
-	var link = "../index.php/stand";
-	$http({url:link, method:"GET"}).success(function(data){
-		$scope.stands = data;
-	});
 
   $scope.guardarPersona = function(){
-    PersonalRecursos.save($scope.Persona, function(data){
-          var respuesta = data['respuesta'];
-          if(respuesta == '200_OK'){
-            $scope.panel = "alert alert-info";
-            $scope.msj = "Se inserto el dato correctamente ";
+    //RegistroRecursos.save($scope.Registro, function(data){
+			var link = "../index.php/registroTarjeta/"+$scope.Registro.tarjeta;
+			$http({url:link, method:"GET"}).success(function(data){
+          var respuesta = data[0]['respuesta'];
+					console.log(respuesta);
+					//"respuesta"=>"500_MAL", "msj"=>"Tarjeta NO VALIDA"
+          if(respuesta == '500_MAL'){
+						$scope.panel = "alert alert-danger";
+            $scope.msj = data['msj'];
           }else{
-            $scope.panel = "alert alert-danger";
-            $scope.msj = "Error: Intente nuevamente ";
+						$scope.nombres = data[0]['nombres'];
+						$scope.horario = data[0]['horario'];
+						$scope.stand 	 = data[0]['nom_empresa'];
+						$scope.foto 	 = data[0]['imagen'];
+
+						$scope.panel = "alert alert-info";
+            $scope.msj = "Registro correcto a horas"+Date();
           }
     });
-
-    $timeout(function(){
-      $location.path('/lista');
-    }, 1500);
+		$scope.Registro.tarjeta = "";
   };
 }])
 .controller('EditarCtrl', ['$scope', 'PersonalRecursos', '$location', '$timeout', '$routeParams', function($scope, PersonalRecursos, $location, $timeout, $routeParams){
@@ -155,20 +149,26 @@ va.factory('PersonalRecursos', function($resource){
     }, 1500);
   }
 }])
-.controller('EliminarCtrl', ['$scope', 'PersonalRecursos', '$routeParams', '$location', '$timeout', function($scope, PersonalRecursos, $routeParams, $location, $timeout){
-  $scope.titulo = "Eliminar horario";
-  $scope.icono = "file-text-o";
-  $scope.Personal = PersonalRecursos.get({
+
+.controller('VerCtrl', ['$scope', '$http', 'RegistroRecursos', '$location', '$timeout', '$routeParams', function($scope, $http, RegistroRecursos, $location, $timeout, $routeParams){
+  $scope.titulo = " Visualizar Registros";
+  $scope.botonIcono = "fa fa-pencil";
+  $scope.boton = "Actualizar";
+	$scope.botonIcono = "fa fa-save"
+  $scope.accion = "btn btn-warning";
+  $scope.registros = RegistroRecursos.get({
     id: $routeParams.id
   });
-  $scope.eliminarPersonal = function(id){
-    PersonalRecursos.delete({
-      id: id
-    });
-    $timeout(function(){
-      $location.path('/lista');
-    }, 100);
-  };
+
+	var link = "../index.php/registroPersona/"+$routeParams.id;
+	console.log(link);
+	$http({url:link, method:"GET"}).success(function(data){
+		$scope.nombres	= data[0].nombres;
+		$scope.foto			= data[0].imagen;
+		$scope.horario	= data[0].horario;
+		$scope.stand		= data[0].nom_empresa;
+	});
+
 }]);
 
 </script>

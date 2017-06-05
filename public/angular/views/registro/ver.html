@@ -1,0 +1,57 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+
+      <div class="row">
+        <div class="col-md-6">
+          <h3 class="panel-title"><i class="glyphicon glyphicon-list-alt"></i> Listar Personal para registro de ingreso/salidas</h3>
+        </div>
+        <div class="col-md-6">
+          <!-- <a href="#/crear" class="btn btn-info pull-right">Nuevo <i class="fa fa-plus"></i></a> -->
+          <a href="#/lista" class="btn btn-default pull-right"> <i class="fa fa-backward"></i> Atras </a>
+        </div>
+      </div>
+
+    </div>
+
+
+
+    <div class="panel-body">
+      <table>
+        <tr>
+          <td> <img src="{{foto}}" class="img-thumbnail"> </td>
+          <td>
+            <b>Nombre:</b>{{nombres}}<br>
+            <b>Horario:</b>{{horario}}<br>
+            <b>Stand:</b>{{stand}}<br>
+          </td>
+        </tr>
+      </table>
+
+      <table class="table table-responsive" datatable="ng" dt-options="vm.dtOptions" >
+          <thead>
+              <tr>
+                  <th>Nro.</th>
+                  <th>Ingreso AM</th>
+                  <th>Salida AM</th>
+                  <th>Ingreso PM</th>
+                  <th>Salida PM</th>
+                  <th>Retraso AM</th>
+                  <th>Retraso PM</th>
+                  <th>Justificacion</th>
+              </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="registro in registros">
+              <td> {{ $index + 1}} </td>
+              <td> {{registro.ingreso_am}} </td>
+              <td> {{registro.salida_am}} </td>
+              <td> {{registro.ingreso_pm}} </td>
+              <td> {{registro.salida_pm}} </td>
+              <td> {{registro.retraso_am}} </td>
+              <td> {{registro.retraso_pm}} </td>
+              <td> <input type="text" class="form-control" ng-model="registro.justificacion" name="justificacion" id="justificacion"> </td>
+            </tr>
+          </tbody>
+      </table>
+    </div>
+</div>

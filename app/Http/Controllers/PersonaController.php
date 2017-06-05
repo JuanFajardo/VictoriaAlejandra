@@ -13,9 +13,8 @@ class PersonaController extends Controller
 
   public function index(){
     //$datos = Persona::all();
-    $datos = \DB::table('personas')->join('cargos', 'personas.cargo_id', '=', 'cargos.id')
-                                   ->join('horarios', 'personas.horario_id', '=', 'horarios.id')
-    ->select('personas.*', 'horarios.horario', 'cargos.cargo')->get();
+    $datos = \DB::table('personas')->join('horarios', 'personas.horario_id', '=', 'horarios.id')
+    ->select('personas.*', 'horarios.horario' )->get();
 
     return $datos;
   }
@@ -26,6 +25,7 @@ class PersonaController extends Controller
   }
 
   public function store(Request $request){
+    //return $request->all();
     try {
       $request['user_id'] = 1;
       $v = \Validator::make($request->all(), [
@@ -35,13 +35,12 @@ class PersonaController extends Controller
             'clave'     => 'required',
             'fecha_nacimiento'  => 'required',
             'fecha_inscripcion' => 'required',
-            'cargo_id'  => 'required',
             'horario_id'=> 'required',
             'stand_id'  => 'required',
             'user_id'   => 'required'
         ]);
       if ( count($v->errors()) > 0 ){
-            return response()->json(array("respuesta"=>"500_NO"));
+            return response()->json(array("respuesta"=>"500_NO", "error"=>$v->errors()));
       }else{
         $dato = new Persona;
         $dato->fill( $request->all() );
@@ -63,7 +62,6 @@ class PersonaController extends Controller
             'clave'     => 'required',
             'fecha_nacimiento'  => 'required',
             'fecha_inscripcion' => 'required',
-            'cargo_id'  => 'required',
             'horario_id'=> 'required',
             'stand_id'  => 'required',
             'user_id'   => 'required'

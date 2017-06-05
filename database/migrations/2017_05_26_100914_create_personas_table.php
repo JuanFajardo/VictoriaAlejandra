@@ -14,6 +14,7 @@ class CreatePersonasTable extends Migration
             $table->string('direccion');
             $table->string('telefono');
             $table->string('carnet');
+            $table->integer('tarjeta')->unique();
             $table->string('estado_civil');
             $table->string('profesion', 50);
             $table->string('genero', 10);
@@ -21,7 +22,7 @@ class CreatePersonasTable extends Migration
             $table->longtext('imagen');
             $table->date('fecha_nacimiento');
             $table->date('fecha_inscripcion');
-            $table->integer('cargo_id')->references('id')->on('users');
+
             $table->integer('horario_id')->references('id')->on('users');
             $table->integer('stand_id')->references('id')->on('users');
             $table->integer('user_id')->references('id')->on('users');
