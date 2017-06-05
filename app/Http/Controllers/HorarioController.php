@@ -24,7 +24,13 @@ class HorarioController extends Controller
   public function store(Request $request){
     try {
       $request['user_id'] = 1;
-      /*$v = \Validator::make($request->all(), [
+
+      $request['ingreso_am'] =  strlen($request->ingreso_am) >0 ? $request->ingreso_am : "00:00:00";
+      $request['salida_am'] =  strlen($request->salida_am) >0 ? $request->salida_am : "00:00:00";
+      $request['ingreso_pm'] =  strlen($request->ingreso_pm) >0 ? $request->ingreso_pm : "00:00:00";
+      $request['salida_pm'] =  strlen($request->salida_pm) >0 ? $request->salida_pm : "00:00:00";
+
+      $v = \Validator::make($request->all(), [
             'horario'    => 'required',
             'ingreso_am' => 'required|date_format:H:i:s',
             'salida_am'  => 'required|date_format:H:i:s',
@@ -32,7 +38,7 @@ class HorarioController extends Controller
             'salida_pm'  => 'required|date_format:H:i:s',
             'tolerancia' => 'required|numeric',
             'user_id' => 'required'
-        ]);*/
+        ]);
       if ( count($v->errors()) > 0 ){
             return response()->json(array("respuesta"=>"500_NO"));
       }else{
@@ -49,6 +55,13 @@ class HorarioController extends Controller
 
   public function update(Request $request, $id){
     $request['user_id'] = 1;
+
+    $request['user_id'] = 1;
+    $request['ingreso_am'] =  strlen($request->ingreso_am) >0 ? $request->ingreso_am : "00:00:00";
+    $request['salida_am'] =  strlen($request->salida_am) >0 ? $request->salida_am : "00:00:00";
+    $request['ingreso_pm'] =  strlen($request->ingreso_pm) >0 ? $request->ingreso_pm : "00:00:00";
+    $request['salida_pm'] =  strlen($request->salida_pm) >0 ? $request->salida_pm : "00:00:00";
+
     $v = \Validator::make($request->all(), [
           'horario'    => 'required',
           'ingreso_am' => 'required|date_format:H:i:s',

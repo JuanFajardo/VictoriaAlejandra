@@ -118,8 +118,12 @@ va.factory('StandRecursos', function($resource){
     });
   });
 
+
   $scope.guardarStand = function(){
     $scope.Stand.logo = $scope.img;
+    var telefono =$scope.Stand.telefono;
+    var tel = telefono.split("-");
+    if(tel[0]=="62" && tel[1].length==4){
     StandRecursos.save($scope.Stand, function(data){
           var respuesta = data['respuesta'];
           if(respuesta == '200_OK'){
@@ -133,6 +137,11 @@ va.factory('StandRecursos', function($resource){
             $scope.msj = respuesta;
           }
     });
+    }
+    else{
+      $scope.panel = "alert alert-danger";
+      $scope.msj = "Error de formato de telefono";
+    }
   };
 
 }])
