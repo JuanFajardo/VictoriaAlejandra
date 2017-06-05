@@ -155,9 +155,9 @@ va.factory('PersonalRecursos', function($resource){
           if(respuesta == '200_OK'){
             $scope.panel = "alert alert-info";
             $scope.msj = "Se inserto el dato correctamente ";
-						/*$timeout(function(){
+						$timeout(function(){
 				      $location.path('/lista');
-				    }, 1500);*/
+				    }, 1000);
           }else{
             $scope.panel = "alert alert-danger";
             $scope.msj = "Error: Intente nuevamente ";
@@ -167,7 +167,7 @@ va.factory('PersonalRecursos', function($resource){
 
   };
 }])
-.controller('EditarCtrl', ['$scope', 'PersonalRecursos', '$location', '$timeout', '$routeParams', function($scope, PersonalRecursos, $location, $timeout, $routeParams){
+.controller('EditarCtrl', ['$scope','$http', 'PersonalRecursos', '$location', '$timeout', '$routeParams', function($scope, $http, PersonalRecursos, $location, $timeout, $routeParams){
   $scope.titulo = " Editar Horario";
   $scope.botonIcono = "fa fa-pencil";
   $scope.boton = "Actualizar";
@@ -197,6 +197,18 @@ va.factory('PersonalRecursos', function($resource){
 			$scope.Persona.imagen	= canvas.toDataURL('image/png');
 	}
 
+
+	var link = "../index.php/horario";
+	$http({url:link, method:"GET"}).success(function(data){
+		$scope.horarios = data;
+	});
+
+	var link = "../index.php/stand";
+	$http({url:link, method:"GET"}).success(function(data){
+		$scope.stands = data;
+	});
+
+
   $scope.guardarHorario = function(){
     HorarioRecursos.update($scope.Horario, function(data){
           var respuesta = data['respuesta'];
@@ -214,7 +226,7 @@ va.factory('PersonalRecursos', function($resource){
 
 
   }
-	
+
 
 }])
 .controller('EliminarCtrl', ['$scope', 'PersonalRecursos', '$routeParams', '$location', '$timeout', function($scope, PersonalRecursos, $routeParams, $location, $timeout){

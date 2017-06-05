@@ -123,7 +123,7 @@ va.factory('StandRecursos', function($resource){
     $scope.Stand.logo = $scope.img;
     var telefono =$scope.Stand.telefono;
     var tel = telefono.split("-");
-    if(tel[0]=="62" && tel[1].length==4){
+    if(tel[0]=="62" && tel[1].length==5 ){
     StandRecursos.save($scope.Stand, function(data){
           var respuesta = data['respuesta'];
           if(respuesta == '200_OK'){
