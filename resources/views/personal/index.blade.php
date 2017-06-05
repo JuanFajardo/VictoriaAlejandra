@@ -97,9 +97,43 @@ va.factory('PersonalRecursos', function($resource){
   $scope.boton = "Guardar";
 	$scope.botonIcono = "fa fa-save"
   $scope.accion = "btn btn-primary";
-  $scope.Persona={
-		tolerancia: 0
+
+
+	function fecha(date) {
+	  var mm = date.getMonth() + 1;
+	  var dd = date.getDate();
+
+	  return [date.getFullYear(),
+	          (mm>9 ? '-' : '-0') + mm,
+	          (dd>9 ? '-' : '-0') + dd
+	         ].join('');
 	};
+
+	var fecha = fecha(new Date());
+
+  $scope.Persona={
+		tolerancia: 0,
+		fecha_inscripcion: fecha
+	};
+
+	$scope.capturar = function(){
+		var video = document.getElementById('video'),
+	      canvas = document.getElementById('canvas'),
+	      context = canvas.getContext('2d'),
+	      photo = document.getElementById('photo'),
+	      imagen = document.getElementById('imagen'),
+	      vendorUrl = window.URL || window.weblkitURL;
+
+	  	 navigator.getMedia =  navigator.getUserMedia ||
+	                        navigator.webkitGetUserMedia ||
+	                        navigator.mozGetUserMedia ||
+	                        navigator.msGetUserMedia;
+
+	    context.drawImage(video, 0, 0, 200,200  );
+	    photo.setAttribute('src', canvas.toDataURL('image/png'));
+	    imagen.setAttribute('value', canvas.toDataURL('image/png'));
+			$scope.Persona.imagen	= canvas.toDataURL('image/png');
+	}
 
 	var link = "../index.php/horario";
 	$http({url:link, method:"GET"}).success(function(data){
@@ -111,21 +145,26 @@ va.factory('PersonalRecursos', function($resource){
 		$scope.stands = data;
 	});
 
+	$scope.asignar = function(){
+			$scope.Persona.clave = $scope.Persona.carnet;
+	}
+
   $scope.guardarPersona = function(){
     PersonalRecursos.save($scope.Persona, function(data){
           var respuesta = data['respuesta'];
           if(respuesta == '200_OK'){
             $scope.panel = "alert alert-info";
             $scope.msj = "Se inserto el dato correctamente ";
+						/*$timeout(function(){
+				      $location.path('/lista');
+				    }, 1500);*/
           }else{
             $scope.panel = "alert alert-danger";
             $scope.msj = "Error: Intente nuevamente ";
           }
     });
 
-    $timeout(function(){
-      $location.path('/lista');
-    }, 1500);
+
   };
 }])
 .controller('EditarCtrl', ['$scope', 'PersonalRecursos', '$location', '$timeout', '$routeParams', function($scope, PersonalRecursos, $location, $timeout, $routeParams){
@@ -138,22 +177,45 @@ va.factory('PersonalRecursos', function($resource){
     id: $routeParams.id
   });
 
+
+	$scope.capturar = function(){
+		var video = document.getElementById('video'),
+				canvas = document.getElementById('canvas'),
+				context = canvas.getContext('2d'),
+				photo = document.getElementById('photo'),
+				imagen = document.getElementById('imagen'),
+				vendorUrl = window.URL || window.weblkitURL;
+
+			 navigator.getMedia =  navigator.getUserMedia ||
+													navigator.webkitGetUserMedia ||
+													navigator.mozGetUserMedia ||
+													navigator.msGetUserMedia;
+
+			context.drawImage(video, 0, 0, 200,200  );
+			photo.setAttribute('src', canvas.toDataURL('image/png'));
+			imagen.setAttribute('value', canvas.toDataURL('image/png'));
+			$scope.Persona.imagen	= canvas.toDataURL('image/png');
+	}
+
   $scope.guardarHorario = function(){
     HorarioRecursos.update($scope.Horario, function(data){
           var respuesta = data['respuesta'];
           if(respuesta == '200_OK'){
             $scope.panel = "alert alert-info";
             $scope.msj = "Se inserto el dato correctamente ";
+						$timeout(function(){
+				      $location.path('/lista');
+				    }, 1500);
           }else{
             $scope.panel = "alert alert-danger";
             $scope.msj = "Error: Intente nuevamente ";
           }
     });
 
-    $timeout(function(){
-      $location.path('/lista');
-    }, 1500);
+
   }
+	
+
 }])
 .controller('EliminarCtrl', ['$scope', 'PersonalRecursos', '$routeParams', '$location', '$timeout', function($scope, PersonalRecursos, $routeParams, $location, $timeout){
   $scope.titulo = "Eliminar horario";

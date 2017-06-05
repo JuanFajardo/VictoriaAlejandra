@@ -100,23 +100,31 @@ va.factory('RegistroRecursos', function($resource){
 
 
   $scope.guardarPersona = function(){
-    //RegistroRecursos.save($scope.Registro, function(data){
 			var link = "../index.php/registroTarjeta/"+$scope.Registro.tarjeta;
 			$http({url:link, method:"GET"}).success(function(data){
-          var respuesta = data[0]['respuesta'];
-					console.log(respuesta);
+
 					//"respuesta"=>"500_MAL", "msj"=>"Tarjeta NO VALIDA"
-          if(respuesta == '500_MAL'){
-						$scope.panel = "alert alert-danger";
-            $scope.msj = data['msj'];
-          }else{
+          if( (data).length > 0){
 						$scope.nombres = data[0]['nombres'];
 						$scope.horario = data[0]['horario'];
 						$scope.stand 	 = data[0]['nom_empresa'];
 						$scope.foto 	 = data[0]['imagen'];
-
 						$scope.panel = "alert alert-info";
             $scope.msj = "Registro correcto a horas"+Date();
+          }else if((data['msj']).length >0 ){
+						$scope.nombres = '';
+						$scope.horario = '';
+						$scope.stand 	 = '';
+						$scope.foto 	 = '';
+						$scope.panel = "alert alert-danger";
+            $scope.msj = data['msj'];
+          }else{
+						$scope.nombres = '';
+						$scope.horario = '';
+						$scope.stand 	 = '';
+						$scope.foto 	 = '';
+						$scope.panel = "alert alert-danger";
+            $scope.msj = "Error de Tarjeta";
           }
     });
 		$scope.Registro.tarjeta = "";
@@ -160,8 +168,13 @@ va.factory('RegistroRecursos', function($resource){
     id: $routeParams.id
   });
 
+	var link = "../index.php/registro/"+$routeParams.id;
+	$http({url:link, method:"GET"}).success(function(data){
+		$scope.registros = data;
+	});
+
+
 	var link = "../index.php/registroPersona/"+$routeParams.id;
-	console.log(link);
 	$http({url:link, method:"GET"}).success(function(data){
 		$scope.nombres	= data[0].nombres;
 		$scope.foto			= data[0].imagen;
