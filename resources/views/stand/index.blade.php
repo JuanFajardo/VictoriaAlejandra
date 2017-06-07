@@ -116,14 +116,25 @@ va.factory('StandRecursos', function($resource){
         fileReader.readAsDataURL(FileToLoad);
       }
     });
+    $("#telefono").keypress(function(e){
+      var charcode = (e.which)? e.which :e.keyCode;
+      if(charcode != 45 && charcode >31 && (charcode<48 || charcode >57 )){
+        e.preventDefault();
+        return false;
+      }
+      if(e.keyCode == '45' || e.charcode == '45'){
+        if (this.value.indexOf("-")!=-1){
+          e.preventDefault();
+          return false;
+        }
+        return true;
+      }
+    });
   });
 
 
   $scope.guardarStand = function(){
     $scope.Stand.logo = $scope.img;
-    var telefono =$scope.Stand.telefono;
-    var tel = telefono.split("-");
-    if(tel[0]=="62" && tel[1].length==5 ){
     StandRecursos.save($scope.Stand, function(data){
           var respuesta = data['respuesta'];
           if(respuesta == '200_OK'){
@@ -137,11 +148,6 @@ va.factory('StandRecursos', function($resource){
             $scope.msj = respuesta;
           }
     });
-    }
-    else{
-      $scope.panel = "alert alert-danger";
-      $scope.msj = "Error de formato de telefono";
-    }
   };
 
 }])
@@ -172,24 +178,45 @@ va.factory('StandRecursos', function($resource){
         fileReader.readAsDataURL(FileToLoad);
       }
     });
+    $("#telefono").keypress(function(e){
+      var charcode = (e.which)? e.which :e.keyCode;
+      if(charcode != 45 && charcode >31 && (charcode<48 || charcode >57 )){
+        e.preventDefault();
+        return false;
+      }
+      if(e.keyCode == '45' || e.charcode == '45'){
+        if (this.value.indexOf("-")!=-1){
+          e.preventDefault();
+          return false;
+        }
+        return true;
+      }
+    });
   });
 
   $scope.guardarStand = function(){
     $scope.Stand.logo = $scope.img;
-    StandRecursos.update($scope.Stand, function(data){
-          var respuesta = data['respuesta'];
-          if(respuesta == '200_OK'){
-            $scope.panel = "alert alert-info";
-            $scope.msj = "Se inserto el dato correctamente ";
-                $timeout(function(){
-                  $location.path('/lista');
-                }, 1500);
-          }else{
-            $scope.panel = "alert alert-danger";
-            $scope.msj = "Error: Intente nuevamente ";
-          }
-    });
-
+    var telefono = $scope.Stand.telefono;
+    console.log(telefono);
+    if(telefono.length == 8  || telefono.length == 7){
+      StandRecursos.update($scope.Stand, function(data){
+        var respuesta = data['respuesta'];
+        if(respuesta == '200_OK'){
+          $scope.panel = "alert alert-info";
+          $scope.msj = "Se inserto el dato correctamente ";
+          $timeout(function(){
+            $location.path('/lista');
+          }, 1500);
+        }else{
+          $scope.panel = "alert alert-danger";
+          $scope.msj = "Error: Intente nuevamente ";
+        }
+      });
+    }
+    else{
+      $scope.panel = "alert alert-danger";
+      $scope.msj = "Numero de telefono erroneo";
+  }
     /*$timeout(function(){
       $location.path('/lista');
     }, 1500);*/
