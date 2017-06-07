@@ -99,6 +99,23 @@ va.factory('PersonalRecursos', function($resource){
   $scope.accion = "btn btn-primary";
 	$scope.mostrar = "NO";
 
+	$(document).ready(function(){
+		$("#telefono").keypress(function(e){
+      var charcode = (e.which)? e.which :e.keyCode;
+      if(charcode != 45 && charcode >31 && (charcode<48 || charcode >57 )){
+        e.preventDefault();
+        return false;
+      }
+      if(e.keyCode == '45' || e.charcode == '45'){
+        if (this.value.indexOf("-")!=-1){
+          e.preventDefault();
+          return false;
+        }
+        return true;
+      }
+    });
+	});
+
 	function fecha(date) {
 	  var mm = date.getMonth() + 1;
 	  var dd = date.getDate();
@@ -178,6 +195,22 @@ va.factory('PersonalRecursos', function($resource){
     id: $routeParams.id
   });
 
+		$(document).ready(function(){
+			$("#telefono").keypress(function(e){
+	      var charcode = (e.which)? e.which :e.keyCode;
+	      if(charcode != 45 && charcode >31 && (charcode<48 || charcode >57 )){
+	        e.preventDefault();
+	        return false;
+	      }
+	      if(e.keyCode == '45' || e.charcode == '45'){
+	        if (this.value.indexOf("-")!=-1){
+	          e.preventDefault();
+	          return false;
+	        }
+	        return true;
+	      }
+	    });
+		});
 
 	$scope.capturar = function(){
 		var video = document.getElementById('video'),

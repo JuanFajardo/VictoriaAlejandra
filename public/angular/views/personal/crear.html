@@ -21,7 +21,7 @@
                   </div>
                   <div class="col-md-3">
                     <label>Telefono</label>
-                    <input type="text" class="form-control"  placeholder="Telefono "  ng-model="Persona.telefono" id="telefono" required>
+                    <input type="text" class="form-control"  placeholder="Telefono "  ng-model="Persona.telefono" id="telefono"  maxlength="8" required>
                   </div>
                   <div class="col-md-2">
                     <label>Documento</label>
@@ -58,7 +58,7 @@
                 <div class="row">
                   <div class="col-md-4">
                     <label>Fecha Nacimiento</label>
-                    <input type="date" class="form-control"  placeholder="Fecha de nacimiento"  ng-model="Persona.fecha_nacimiento" id="fecha_nacimiento" required>
+                    <input type="date" class="form-control"   max="2000-01-01"  min="1950-01-01" ng-model="Persona.fecha_nacimiento" id="fecha_nacimiento" required>
                   </div>
                   <div class="col-md-4">
                     <label>Fecha Registro</label>
@@ -66,7 +66,7 @@
                   </div>
                   <div class="col-md-4">
                     <label>Tarjeta</label>
-                    <input type="text" class="form-control" placeholder="Numero de tarjeta" ng-model="Persona.tarjeta" id="tarjeta" name="tarjeta" required>
+                    <input type="number" class="form-control" placeholder="Numero de tarjeta" ng-model="Persona.tarjeta" id="tarjeta" name="tarjeta" maxlength="10" required>
                   </div>
                 </div>
 
@@ -123,7 +123,6 @@
 </div>
 
 <script type="text/javascript">
-
 (function(){
   var video = document.getElementById('video'),
       canvas = document.getElementById('canvas'),
@@ -148,6 +147,4 @@
   });
 
 })();
-
-
 </script>
