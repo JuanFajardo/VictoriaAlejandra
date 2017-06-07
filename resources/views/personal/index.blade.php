@@ -97,7 +97,7 @@ va.factory('PersonalRecursos', function($resource){
   $scope.boton = "Guardar";
 	$scope.botonIcono = "fa fa-save"
   $scope.accion = "btn btn-primary";
-
+	$scope.mostrar = "NO";
 
 	function fecha(date) {
 	  var mm = date.getMonth() + 1;
@@ -150,17 +150,18 @@ va.factory('PersonalRecursos', function($resource){
 	}
 
   $scope.guardarPersona = function(){
+		$scope.mostrar = "SI";
     PersonalRecursos.save($scope.Persona, function(data){
           var respuesta = data['respuesta'];
           if(respuesta == '200_OK'){
             $scope.panel = "alert alert-info";
-            $scope.msj = "Se inserto el dato correctamente ";
+            $scope.msj = "Se inserto el dato correctamente "+data['msj'];
 						$timeout(function(){
 				      $location.path('/lista');
 				    }, 1000);
           }else{
             $scope.panel = "alert alert-danger";
-            $scope.msj = "Error: Intente nuevamente ";
+            $scope.msj = "Error: Intente nuevamente "+data['msj'];
           }
     });
 

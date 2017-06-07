@@ -10,42 +10,104 @@
     </div>
     <div class="panel-body">
       <form autocomplete="off" ng-submit="guardarPersona()" enctype=”multipart/form-data>
+
                 <div class="row">
-                  <table>
-                    <tr>
-                      <td> <img src="{{foto}}" class="img-thumbnail"> </td>
-                      <td>
-                        <b>Nombre:</b>{{nombres}}<br>
-                        <b>Horario:</b>{{horario}}<br>
-                        <b>Stand:</b>{{stand}}<br>
-                      </td>
-                    </tr>
-                  </table>
+                  <div class="col-md-1"></div>
+                  <div class="col-md-4">
+                    <figure ng-if="foto.length > 0">
+
+
+                      <img src="{{foto}}" class="img-thumbnail" width="450">
+                      <figcaption>
+                        <b>FIPOSI</b>
+                      </figcaption>
+                    </figure>
+                  </div>
+                  <style media="screen">
+                      h1 {
+                    font-weight: bold;
+                    font-size: 40px;
+                    font-family: "Arial";
+                    text-shadow: 0 1px 0 #ccc,
+                                 0 2px 0 #c9c9c9,
+                                 0 3px 0 #bbb,
+                                 0 4px 0 #b9b9b9,
+                                 0 5px 0 #aaa,
+                                 0 6px 1px rgba(0,0,0,.1),
+                                 0 0 5px rgba(0,0,0,.1),
+                                 0 1px 3px rgba(0,0,0,.3),
+                                 0 3px 5px rgba(0,0,0,.2),
+                                 0 5px 10px rgba(0,0,0,.25),
+                                 0 10px 10px rgba(0,0,0,.2),
+                                 0 20px 20px rgba(0,0,0,.15);
+                    color: #bce8f1;
+                    }
+                  </style>
+                  <div class="col-md-4 text-left">
+                    <div class="row">
+                      <h1 ng-if="nombres.length > 0">
+                        <div class="col-md-4">
+                         <span class="label label-default form-control">NOMBRE:</span>
+                       </div>
+                       <div class="col-md-8">
+                        <span class="label label-primary form-control">{{nombres}}</span>
+                      </div>
+                    </h1>
+                  </div>
+                  <div class="row">
+                    <h1 ng-if="horario.length > 0">
+                      <div class="col-md-4">
+                       <span class="label label-default form-control">HORARIO:</span>
+                     </div>
+                     <div class="col-md-8">
+                      <span class="label label-primary form-control">{{horario}}</span>
+                    </div>
+                  </h1>
+                </div>
+                <div class="row">
+                  <h1 ng-if="stand.length > 0">
+                    <div class="col-md-4">
+                     <span class="label label-default form-control">EMPRESA:</span>
+                   </div>
+                   <div class="col-md-8">
+                    <span class="label label-primary form-control">{{stand}}</span>
+                  </div>
+                </h1>
+              </div>
+
+                  </div>
                 </div>
 
-
+                <div class="row">
+                  <div class="col-md-1"></div>
+                  <div class="col-md-10 text-center">
+                    <h2><div class="{{panel}}" role="alert"> <strong>{{msj}}</strong> </div></h2>
+                  </div>
+                  <div class="col-md-1"></div>
+                </div>
 
                 <br><br><br>
                 <div class="row">
-                  <div class="col-md-12">
+                  <div class="col-md-1"></div>
+                  <div class="col-md-10">
                     <input type="hidden" ng-model="Registro.persona" >
-                    <input type="text" class="form-control input-lg"  placeholder="Clave o contraseña"  ng-model="Registro.tarjeta" id="clave" autofocus>
+                    <input type="text" class="form-control input-lg"  ng-model="Registro.tarjeta" id="clave" autofocus style="font-size:65px; box-sizing: border: none; height: 80px; padding-left: 80px;">
                   </div>
                 </div>
 
 
-
                 <div class="row" style="margin-top:15px;">
+                  <div class="col-md-1"></div>
                   <div class="col-md-3">
                     <button type="submit" name="button" class="btn btn-primary" >
                       <i class="{{botonIcono}}" aria-hidden="true"></i> {{boton}}
                     </button>
                   </div>
-                  <div class="col-md-6">
-                    <div class="{{panel}}" role="alert"> <strong>{{msj}}</strong> </div>
+                  <div class="col-md-4">
+
                   </div>
-                  <div class="col-md-3">
-                    <a href="#/lista" class="btn btn-info pull-right"> <i class="fa fa-times-circle" aria-hidden="true"></i> Cancelar</a>
+                  <div class="col-md-3 text-right">
+                    <a href="Registro#/lista" class="btn btn-info pull-right"> <i class="fa fa-times-circle" aria-hidden="true"></i> Cancelar</a>
                   </div>
                 </div>
               </form>

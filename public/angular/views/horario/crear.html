@@ -28,25 +28,37 @@
                 <div class="row">
                   <div class="col-md-3">
                     <label>Ingreso en la mañana</label>
-                    <input type="text" class="form-control"  placeholder="HH:MM:SS"  ng-model="Horario.ingreso_am" id="ingreso_am" ></br>
+                    <input type="text" class="form-control"  placeholder="HH:MM:SS"  ng-model="Horario.ingreso_am" id="ingreso_am" list="list-ingreso_am" ng-blur="ingresoAm()"></br>
+                    <datalist id="list-ingreso_am">
+                      <<option ng-repeat="ingreso1 in ingresos1" value="{{ingreso1.hora}}"/>
+                    </datalist>
                   </div>
                   <div class="col-md-3">
                     <label>Salida en la mañana</label>
-                    <input type="text" class="form-control"  placeholder="HH:MM:SS"  ng-model="Horario.salida_am" id="salida_am" >
+                    <input type="text" class="form-control"  placeholder="HH:MM:SS"  ng-model="Horario.salida_am" id="salida_am" list="list-salida_am" ng-blur="salidaAm()">
+                    <datalist id="list-salida_am">
+                      <<option ng-repeat="ingreso2 in ingresos2" value="{{ingreso2.hora}}"/>
+                    </datalist>
                   </div>
                   <div class="col-md-3">
                     <label>Ingreso en la tarde</label>
-                    <input type="text" class="form-control"  placeholder="HH:MM:SS"  ng-model="Horario.ingreso_pm" id="ingreso_pm" ></br>
+                    <input type="text" class="form-control"  placeholder="HH:MM:SS"  ng-model="Horario.ingreso_pm" id="ingreso_pm" list="list-ingreso_pm" ng-blur="ingresoPm()"></br>
+                    <datalist id="list-ingreso_pm">
+                      <<option ng-repeat="ingreso3 in ingresos3" value="{{ingreso3.hora}}"/>
+                    </datalist>
                   </div>
                   <div class="col-md-3">
                     <label>Salida en la tarde</label>
-                    <input type="text" class="form-control"  placeholder="HH:MM:SS"  ng-model="Horario.salida_pm" id="salida_pm">
+                    <input type="text" class="form-control"  placeholder="HH:MM:SS"  ng-model="Horario.salida_pm" id="salida_pm" list="list-salida_pm">
+                    <datalist id="list-salida_pm">
+                      <<option ng-repeat="ingreso4 in ingresos4" value="{{ingreso4.hora}}"/>
+                    </datalist>
                   </div>
                 </div>
 
                 <div class="row" style="margin-top:15px;">
-                  <div class="col-md-3">
-                    <button type="submit" name="button" class="{{accion}}" >
+                  <div ng-if="mostrar == 'SI'" class="col-md-3" >
+                    <button  type="submit" name="button" class="{{accion}}" >
                       <i class="{{botonIcono}}" aria-hidden="true"></i> {{boton}}
                     </button>
                   </div>
@@ -63,8 +75,8 @@
 </div>
 
 <script type="text/javascript">
-  $('#ingreso_am').timepicker({ 'timeFormat': 'H:i:s', 'step': 15  });
-  $('#salida_am').timepicker({ 'timeFormat': 'H:i:s', 'step': 15  });
-  $('#ingreso_pm').timepicker({ 'timeFormat': 'H:i:s', 'step': 15  });
-  $('#salida_pm').timepicker({ 'timeFormat': 'H:i:s', 'step': 15  });
+  $('#ingreso_am').timepicker({ 'timeFormat': 'H:i:s', 'step': 30  });
+//  $('#salida_am').timepicker({ 'timeFormat': 'H:i:s', 'step': 15  });
+//  $('#ingreso_pm').timepicker({ 'timeFormat': 'H:i:s', 'step': 15  });
+//  $('#salida_pm').timepicker({ 'timeFormat': 'H:i:s', 'step': 15  });
 </script>

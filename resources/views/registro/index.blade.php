@@ -97,7 +97,7 @@ va.factory('RegistroRecursos', function($resource){
   $scope.boton = "Guardar";
 	$scope.botonIcono = "fa fa-save"
   $scope.accion = "btn btn-primary";
-
+	$scope.mostrar = "SI";
 
   $scope.guardarPersona = function(){
 			var link = "../index.php/registroTarjeta/"+$scope.Registro.tarjeta;

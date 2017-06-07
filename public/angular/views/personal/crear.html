@@ -58,7 +58,7 @@
                 <div class="row">
                   <div class="col-md-4">
                     <label>Fecha Nacimiento</label>
-                    <input type="text" class="form-control"  placeholder="Fecha de nacimiento"  ng-model="Persona.fecha_nacimiento" id="fecha_nacimiento" required>
+                    <input type="date" class="form-control"  placeholder="Fecha de nacimiento"  ng-model="Persona.fecha_nacimiento" id="fecha_nacimiento" required>
                   </div>
                   <div class="col-md-4">
                     <label>Fecha Registro</label>
@@ -105,7 +105,7 @@
 
 
                 <div class="row" style="margin-top:15px;">
-                  <div class="col-md-3">
+                  <div  ng-if="mostrar == 'SI'" class="col-md-3">
                     <button type="submit" name="button" class="{{accion}}" >
                       <i class="{{botonIcono}}" aria-hidden="true"></i> {{boton}}
                     </button>
@@ -123,6 +123,7 @@
 </div>
 
 <script type="text/javascript">
+
 (function(){
   var video = document.getElementById('video'),
       canvas = document.getElementById('canvas'),
@@ -147,4 +148,6 @@
   });
 
 })();
+
+
 </script>

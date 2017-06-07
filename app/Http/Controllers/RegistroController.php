@@ -9,6 +9,11 @@ use App\Registro;
 class RegistroController extends Controller
 {
 
+
+  public function angularfid(){
+    return view('registro.registro');
+  }
+
   public function angular(){
     return view('registro.index');
   }
@@ -46,27 +51,24 @@ class RegistroController extends Controller
         $hora   = date('H');
         $minuto = date('i');
         $fecha  = date('Y-m-d');
+
         $tarjeta  = \DB::table('personas')->join('horarios', 'personas.horario_id',  '=', 'horarios.id')
-                                          ->select('horarios.*', 'personas.*', 'horarios.id as horarioId', 'personas.id as personaID' )
+                                          ->join('stands', 'personas.stand_id',  '=', 'stands.id')
+                                          ->select('horarios.*', 'personas.*', 'horarios.id as horarioId', 'personas.id as personaID' , 'stands.nom_empresa' )
                                           ->where('tarjeta', '=', $id)->get();
-        $dato = explode(":", $tarjeta[0]->ingreso_am);
-        $IngresoAmHora = $dato[0];
-        $IngresoAmMinuto = $dato[1] + $tarjeta[0]->tolerancia;
-
-        $dato = explode(":", $tarjeta[0]->salida_am);
-        $SalidaAmHora = $dato[0];
-
-        $dato = explode(":", $tarjeta[0]->ingreso_pm);
-        $IngresoPmHora = $dato[0];
-        $IngresoPmMinuto = $dato[1] + $tarjeta[0]->tolerancia;
-
-        $dato = explode(":", $tarjeta[0]->salida_pm);
-        $SalidaPmHora = $dato[0];
-
         $id="";
-
-
         if( count($tarjeta) > 0) {
+
+          $dato = explode(":", $tarjeta[0]->ingreso_am);
+          $IngresoAmHora = $dato[0];
+          $IngresoAmMinuto = $dato[1] + $tarjeta[0]->tolerancia;
+          $dato = explode(":", $tarjeta[0]->salida_am);
+          $SalidaAmHora = $dato[0];
+          $dato = explode(":", $tarjeta[0]->ingreso_pm);
+          $IngresoPmHora = $dato[0];
+          $IngresoPmMinuto = $dato[1] + $tarjeta[0]->tolerancia;
+          $dato = explode(":", $tarjeta[0]->salida_pm);
+          $SalidaPmHora = $dato[0];
 
           $persona = $tarjeta[0]->personaID;
           $horario = $tarjeta[0]->horarioId;

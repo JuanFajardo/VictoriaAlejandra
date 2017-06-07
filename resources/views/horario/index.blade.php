@@ -97,11 +97,60 @@ va.factory('HorarioRecursos', function($resource){
   $scope.boton = "Guardar";
 	$scope.botonIcono = "fa fa-save"
   $scope.accion = "btn btn-primary";
+	$scope.mostrar = "SI";
   $scope.Horario={
 		tolerancia: 0
 	};
 
+	$scope.ingresoAm = function(){
+		var horario = $scope.Horario.ingreso_am;
+		horario = horario.split(':');
+		var tiempos = [{hora:"00:00:00"}];
+		for(var i=horario[0]; i<=24; i++){
+			if(tiempos[0].hora == '00:00:00')
+        tiempos.shift();
+			if(i.length == 1)
+				tiempos.push({hora: "0"+i+":00:00"});
+			else
+				tiempos.push({hora: i+":00:00"});
+		}
+		$scope.ingresos2 = tiempos;
+	}
+
+	$scope.salidaAm = function(){
+		var horario = $scope.Horario.salida_am;
+		horario = horario.split(':');
+		var tiempos = [{hora:"00:00:00"}];
+		for(var i=horario[0]; i<=24; i++){
+			if(tiempos[0].hora == '00:00:00')
+        tiempos.shift();
+			if(i.length == 1)
+				tiempos.push({hora: "0"+i+":00:00"});
+			else
+				tiempos.push({hora: i+":00:00"});
+		}
+		$scope.ingresos3 = tiempos;
+	}
+
+	$scope.ingresoPm = function(){
+		var horario = $scope.Horario.ingreso_pm;
+		horario = horario.split(':');
+		var tiempos = [{hora:"00:00:00"}];
+		for(var i=horario[0]; i<=24; i++){
+			if(tiempos[0].hora == '00:00:00')
+        tiempos.shift();
+
+			if(i.length == 1)
+				tiempos.push({hora: "0"+i+":00:00"});
+			else
+				tiempos.push({hora: i+":00:00"});
+		}
+		$scope.ingresos4 = tiempos;
+	}
+
+
   $scope.guardarHorario = function(){
+		$scope.mostrar = "NO";
     HorarioRecursos.save($scope.Horario, function(data){
           var respuesta = data['respuesta'];
           if(respuesta == '200_OK'){

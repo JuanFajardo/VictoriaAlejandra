@@ -98,6 +98,7 @@ va.factory('StandRecursos', function($resource){
 	$scope.botonIcono = "fa fa-save"
   $scope.accion = "btn btn-primary";
   $scope.Stand={};
+  $scope.mostrar = "SI";
   var base64="";
 
 
@@ -120,6 +121,7 @@ va.factory('StandRecursos', function($resource){
 
 
   $scope.guardarStand = function(){
+    $scope.mostrar = "NO";
     $scope.Stand.logo = $scope.img;
     var telefono =$scope.Stand.telefono;
     var tel = telefono.split("-");

@@ -19,8 +19,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
-
+//Route::get('/home', 'HomeController@index');
+Route::get('/home', function(){
+  return view('layouts.blank');
+});
 
 Route::get('Personal', 'PersonaController@angular');
 Route::get('personal', 'PersonaController@index');
@@ -32,6 +34,7 @@ Route::delete('personal/{id}', 'PersonaController@destroy');
 
 
 Route::get('Registro', 'RegistroController@angular');
+Route::get('RegistroRFID', 'RegistroController@angularfid');
 Route::get('registro', 'RegistroController@index');
 Route::get('registro/{id}', 'RegistroController@show');
 Route::get('registroPersona/{id}', 'RegistroController@showPersona');

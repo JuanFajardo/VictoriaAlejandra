@@ -42,10 +42,19 @@ class PersonaController extends Controller
       if ( count($v->errors()) > 0 ){
             return response()->json(array("respuesta"=>"500_NO", "error"=>$v->errors()));
       }else{
-        $dato = new Persona;
-        $dato->fill( $request->all() );
-        $dato->save();
-        return response()->json(array("respuesta"=>"200_OK"));
+        $stand = \DB::table('stands')->where('id', '=', $request->stand_id)->get();
+        $personas  = \DB::table('personas')->where('stand_id', '=', $request->stand_id)->count();
+        if($stand[0]->cant_personal >= $personas){
+          $msj = "Aun tiene cupo ";
+          $respuesta = "200_OK";
+          $dato = new Persona;
+          $dato->fill( $request->all() );
+          $dato->save();
+          $respuesta = "500_OK";
+        }else{
+          $msj = "No ay cupo";
+        }
+        return response()->json(array("respuesta"=>"200_OK", "msj"=>$msj));
       }
     } catch (Exception $e) {
       return "MensajeError -> ".$e->getMessage();
