@@ -4,39 +4,39 @@
               <h2 class="center-align">{{titulo}}</h2>
             </div>
             <div class="row">
-                <form class="col s12">
+                <form class="col s12" autocomplete="off" ng-submit="guardarPreventa()" enctype="multipart/form-data">
                     <div class="row">
                         <div class="input-field col m6 s12">
-                            <input id="nombres" type="text" class="validate">
+                            <input ng-model="Preventa.nombres" id="nombres" type="text" class="validate">
                             <label for="nombres">Nombre(s)</label>
                         </div>
                         <div class="input-field col m6 s12">
-                            <input id="apellidos" type="text" class="validate">
+                            <input ng-model="Preventa.apellidos" id="apellidos" type="text" class="validate">
                             <label for="apellidos">Apellido(s)</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col m6 s12">
                             <!-- <i class="mdi-content-mail prefix"></i> -->
-                            <input id="email" type="email" class="validate" required>
-                            <label for="email">Correo Electronico</label>
+                            <input ng-model="Preventa.correo" id="nombres" type="correo" class="validate" required>
+                            <label for="correo">Correo Electronico</label>
                         </div>
                         <div class="input-field col m6 s12">
                             <!-- <i class="mdi-maps-store-mall-directory prefix"></i> -->
-                            <input id="cedIdent" type="number" maxlength = "9" class="validate" required>
-                            <label for="cedIdent">Cedula de identidad</label>
+                            <input ng-model="Preventa.carnet" id="carnet" type="number" maxlength = "9" class="validate" required>
+                            <label for="carnet">Cedula de identidad</label>
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="input-field col m6 s12">
                             <!-- <i class="mdi-content-mail prefix"></i> -->
-                            <input id="fecha_nac" type="date" class="datepicker" required>
+                            <input ng-model="Preventa.fecha_nacimiento" id="fecha_nacimiento" type="date" class="datepicker" required>
                             <!-- <label for="fecha_nac">dd/mm/aaaa</label> -->
                         </div>
                         <div class="input-field col m6 s12">
                             <!-- <i class="mdi-maps-store-mall-directory prefix"></i> -->
-                            <input id="telefono" type="number" class="validate" required>
+                            <input ng-model="Preventa.telefono" id="telefono" type="number" class="validate" required>
                             <label for="telefono">Numero de Telefono / Celular</label>
                         </div>
                     </div>
@@ -57,27 +57,29 @@
                     <div class="row">
                       <div class="input-field col m6 s12">
                         <!-- <i class="mdi-content-mail prefix"></i> -->
-                        <input id="direccion" type="text" class="validate" required>
-                        <label for="direccion">Domicilio</label>
+                        <input type="hidden" ng-model="img">
+                        <input type="file" class="form-control" ng-model="Preventa.imagen"  ng-blur="cargaImagen()"  fileread="Preventa.imagen" spinner-on-load name="imagen" id="imagen" accept="image/jpeg|image/png">
+                        <!-- <input id="direccion" type="text" class="validate" required> -->
+                        <label for="imagen">Fotografia</label>
                       </div>
-                      <div class="input-field col m6 s12">
+                      <!-- <div class="input-field col m6 s12"> -->
                         <!-- <i class="mdi-content-mail prefix"></i> -->
-                        <input id="cant" type="Number" class="validate" required>
+                        <!-- <input id="cant" type="Number" class="validate" required>
                         <label for="cant">Cantidad de Entradas a reservar</label>
-                      </div>
+                      </div> -->
                     </div>
-                    <div class="divider"></div>
+                    <!-- <div class="divider"></div>
                     <div class="row">
-                      <div class="input-field col m5 s12">
+                      <div class="input-field col m5 s12"> -->
                         <!-- <i class="mdi-content-mail prefix"></i> -->
-                        <input id="nombre1" type="text" class="validate" required>
+                        <!-- <input id="nombre1" type="text" class="validate" required>
                         <label for="nombre1">Nombre Completo 1. entrada</label>
-                      </div>
-                      <div class="input-field col m3 s12">
+                      </div> -->
+                      <!-- <div class="input-field col m3 s12"> -->
                         <!-- <i class="mdi-content-mail prefix"></i> -->
-                        <input id="fecha_nac1" type="date" class="validate" required>
+                        <!-- <input id="fecha_nac1" type="date" class="validate" required> -->
                         <!-- <label for="cant">Cantidad de Entradas a reservar</label> -->
-                      </div>
+                      <!-- </div>
 
                       <div class="input-field col m4 s12">
                         <div class="input-field col m6 s12 center-align">
@@ -89,11 +91,17 @@
                           <label for="feme1">Femenino</label>
                         </div>
                       </div>
-                    </div>
+                    </div> -->
                     <div class="divider"></div>
                     <div class="row">
                         <div class="col m12">
-                         <p class="center-align"><button class="btn btn-large waves-effect waves-light" type="button" name="action">Reservar</button></p>
+                         <p class="center-align">
+                           <button type="submit" name="button" class="btn btn-large waves-effect waves-light" >
+                             <i class="{{botonIcono}}" aria-hidden="true"></i> {{boton}}
+                           </button></p>
+                           <div class="col-md-6">
+                             <div class="{{panel}}" role="alert"> <strong>{{msj}}</strong> </div>
+                           </div>
                         </div>
                     </div>
                 </form>

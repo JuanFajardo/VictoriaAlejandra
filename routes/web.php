@@ -71,8 +71,8 @@ Route::delete('stand/{id}', 'StandController@destroy');
 
 Route::get('Preventa', 'PreventaController@angular');
 Route::get('preventa', 'PreventaController@index');
-Route::get('preventa/{id}', 'StandController@show');
-Route::post('preventa', 'StandController@store');
+Route::get('preventa/{id}', 'PreventaController@show');
+Route::post('preventa', 'PreventaController@store');
 
 
 

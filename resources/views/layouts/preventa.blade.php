@@ -9,6 +9,8 @@
   </head>
   <body>
     <div class="container">
+
+        @yield('cuerpo')
     </div>
 
     <script src="{{asset('assets/js/jquery.js')}}"></script>
