@@ -69,7 +69,7 @@
                         <a href="{{asset('index.php/Horario#/lista')}}"><i class="fa fa-fw fa-edit"></i> Horario</a>
                     </li>
                     <li class="@yield('menu5')">
-                        <a href="bootstrap-elements.html"><i class="fa fa-fw fa-file-pdf-o"></i> Reportes</a>
+                        <a href="{{asset('index.php/Reporte#/lista')}}"><i class="fa fa-fw fa-file-pdf-o"></i> Reportes</a>
                     </li>
                     <li class="@yield('menu6')">
                         <a href="bootstrap-grid.html"><i class="fa fa-fw fa-bar-chart-o"></i> Estadisticas</a>

@@ -14,8 +14,23 @@ class DatabaseSeeder extends Seeder
         // $this->call(UsersTableSeeder::class);
 
         \DB::table('horarios')->insert(array(
-          'id'=>'1', 'horario'=>'Contador', 'descripcion'=>'Horario de los contadores', 'ingreso_am'=>'08:00:00', 'salida_am'=>'08:00:00', 'ingreso_pm'=>'08:00:00', 'salida_pm'=>'08:00:00', 'salida_pm'=>'08:00:00', 'tolerancia'=>'15', 'user_id'=>'1'
+          'id'=>'1', 'horario'=>'Normal', 'descripcion'=>'Horario de oficina', 'ingreso_am'=>'08:00:00', 'salida_am'=>'12:00:00', 'ingreso_pm'=>'14:00:00', 'salida_pm'=>'18:00:00', 'tolerancia'=>'15', 'user_id'=>'1'
         ));
+        \DB::table('horarios')->insert(array(
+          'id'=>'2', 'horario'=>'Tarde', 'descripcion'=>'Horario solo por la tarde', 'ingreso_am'=>'00:00:00', 'salida_am'=>'00:00:00', 'ingreso_pm'=>'14:00:00', 'salida_pm'=>'18:00:00', 'tolerancia'=>'15', 'user_id'=>'1'
+        ));
+        \DB::table('horarios')->insert(array(
+          'id'=>'3', 'horario'=>'Mañana', 'descripcion'=>'Horario solo por la mañana', 'ingreso_am'=>'08:00:00', 'salida_am'=>'12:00:00', 'ingreso_pm'=>'00:00:00', 'salida_pm'=>'00:00:00', 'tolerancia'=>'15', 'user_id'=>'1'
+        ));
+
+        \DB::table('horarios')->insert(array(
+          'id'=>'4', 'horario'=>'Feria Expositorires', 'descripcion'=>'Horario para el ingreso y salidad de los expositores', 'ingreso_am'=>'00:00:00', 'salida_am'=>'00:00:00', 'ingreso_pm'=>'15:00:00', 'salida_pm'=>'23:59:59', 'tolerancia'=>'15', 'user_id'=>'1'
+        ));
+
+        \DB::table('horarios')->insert(array(
+          'id'=>'5', 'horario'=>'Feria Fin de semana', 'descripcion'=>'Horario para el ingreso y salidad de los expositores en fin de semana', 'ingreso_am'=>'00:00:00', 'salida_am'=>'00:00:00', 'ingreso_pm'=>'12:00:00', 'salida_pm'=>'23:59:59', 'tolerancia'=>'15', 'user_id'=>'1'
+        ));
+
 
         \DB::table('cargos')->insert(array(
           'id'      =>'1',

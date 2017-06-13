@@ -1,0 +1,102 @@
+<div class="row card-panel grey lighten-2">
+        <div class="col m10 offset-m1 s10">
+            <div class="">
+              <h2 class="center-align">{{titulo}}</h2>
+            </div>
+            <div class="row">
+                <form class="col s12">
+                    <div class="row">
+                        <div class="input-field col m6 s12">
+                            <input id="nombres" type="text" class="validate">
+                            <label for="nombres">Nombre(s)</label>
+                        </div>
+                        <div class="input-field col m6 s12">
+                            <input id="apellidos" type="text" class="validate">
+                            <label for="apellidos">Apellido(s)</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col m6 s12">
+                            <!-- <i class="mdi-content-mail prefix"></i> -->
+                            <input id="email" type="email" class="validate" required>
+                            <label for="email">Correo Electronico</label>
+                        </div>
+                        <div class="input-field col m6 s12">
+                            <!-- <i class="mdi-maps-store-mall-directory prefix"></i> -->
+                            <input id="cedIdent" type="number" maxlength = "9" class="validate" required>
+                            <label for="cedIdent">Cedula de identidad</label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-field col m6 s12">
+                            <!-- <i class="mdi-content-mail prefix"></i> -->
+                            <input id="fecha_nac" type="date" class="datepicker" required>
+                            <!-- <label for="fecha_nac">dd/mm/aaaa</label> -->
+                        </div>
+                        <div class="input-field col m6 s12">
+                            <!-- <i class="mdi-maps-store-mall-directory prefix"></i> -->
+                            <input id="telefono" type="number" class="validate" required>
+                            <label for="telefono">Numero de Telefono / Celular</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                      <div class="input-field col s12">
+                        <label>Sexo</label>
+                        <br/>
+                      </div>
+                      <div class="input-field col m6 s12 center-align">
+                        <input name="group1" type="radio" id="masc" />
+                        <label for="masc">Masculino</label>
+                      </div>
+                      <div class="input-field col m6 s12 center-align">
+                        <input name="group1" type="radio" id="feme" />
+                        <label for="feme">Femenino</label>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="input-field col m6 s12">
+                        <!-- <i class="mdi-content-mail prefix"></i> -->
+                        <input id="direccion" type="text" class="validate" required>
+                        <label for="direccion">Domicilio</label>
+                      </div>
+                      <div class="input-field col m6 s12">
+                        <!-- <i class="mdi-content-mail prefix"></i> -->
+                        <input id="cant" type="Number" class="validate" required>
+                        <label for="cant">Cantidad de Entradas a reservar</label>
+                      </div>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="row">
+                      <div class="input-field col m5 s12">
+                        <!-- <i class="mdi-content-mail prefix"></i> -->
+                        <input id="nombre1" type="text" class="validate" required>
+                        <label for="nombre1">Nombre Completo 1. entrada</label>
+                      </div>
+                      <div class="input-field col m3 s12">
+                        <!-- <i class="mdi-content-mail prefix"></i> -->
+                        <input id="fecha_nac1" type="date" class="validate" required>
+                        <!-- <label for="cant">Cantidad de Entradas a reservar</label> -->
+                      </div>
+
+                      <div class="input-field col m4 s12">
+                        <div class="input-field col m6 s12 center-align">
+                          <input name="group2" type="radio" id="masc1" />
+                          <label for="masc1">Masculino</label>
+                        </div>
+                        <div class="input-field col m6 s12 center-align">
+                          <input name="group2" type="radio" id="feme1" />
+                          <label for="feme1">Femenino</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="row">
+                        <div class="col m12">
+                         <p class="center-align"><button class="btn btn-large waves-effect waves-light" type="button" name="action">Reservar</button></p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>

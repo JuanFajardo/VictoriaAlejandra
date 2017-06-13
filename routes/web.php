@@ -61,19 +61,31 @@ Route::put('cargo/{id}', 'CargoController@update');
 Route::delete('cargo/{id}', 'CargoController@destroy');
 
 
+Route::put('stand/{id}', 'StandController@update');
 Route::get('Stand', 'StandController@angular');
 Route::get('stand', 'StandController@index');
 Route::get('stand/{id}', 'StandController@show');
 Route::post('stand', 'StandController@store');
-Route::put('stand/{id}', 'StandController@update');
 Route::delete('stand/{id}', 'StandController@destroy');
 
 
+Route::get('Preventa', 'PreventaController@angular');
+Route::get('preventa', 'PreventaController@index');
+Route::get('preventa/{id}', 'StandController@show');
+Route::post('preventa', 'StandController@store');
 
+
+
+Route::get('trabajador/crear', 'TrabajadorController@create');
 Route::get('Trabajador', 'TrabajadorController@angular');
 Route::get('trabajador', 'TrabajadorController@index');
-Route::get('trabajador/crear', 'TrabajadorController@create');
 Route::get('trabajador/{id}', 'TrabajadorController@show');
 Route::post('trabajador', 'TrabajadorController@store');
 Route::put('trabajador/{id}', 'TrabajadorController@update');
 Route::delete('trabajador/{id}', 'TrabajadorController@destroy');
+
+
+Route::get('Reporte', 'ReporteController@angular');
+Route::get('reporte', 'ReporteController@index');
+Route::get('reporte/{id}', 'ReporteController@show');
+Route::post('reporte', 'ReporteController@store');
