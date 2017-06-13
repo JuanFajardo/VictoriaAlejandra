@@ -83,6 +83,10 @@
                     <li class="@yield('menu9')">
                         <a href="{{asset('index.php/Cargo#/lista')}}"><i class="fa fa-fw fa-dashboard"></i> Cargo</a>
                     </li>
+                    
+                    <li class="@yield('menu10')">
+                        <a href="{{asset('index.php/Preventa#/lista')}}"><i class="fa fa-fw fa-dashboard"></i> Preventa</a>
+                    </li>
 
                 </ul>
             </div>
