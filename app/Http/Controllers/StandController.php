@@ -13,7 +13,9 @@ class StandController extends Controller
   }
 
   public function index(){
-    $datos = Stand::all();
+    $datos = Stand::select(
+      'id', 'nom_empresa', 'cant_personal', 'descripcion', 'encargado', 'direccion', 'telefono', 'user_id'
+    )->get();
     return $datos;
   }
 

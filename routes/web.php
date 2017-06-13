@@ -87,5 +87,4 @@ Route::delete('trabajador/{id}', 'TrabajadorController@destroy');
 
 Route::get('Reporte', 'ReporteController@angular');
 Route::get('reporte', 'ReporteController@index');
-Route::get('reporte/{id}', 'ReporteController@show');
 Route::post('reporte', 'ReporteController@store');

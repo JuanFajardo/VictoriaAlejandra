@@ -21,7 +21,9 @@ class RegistroController extends Controller
   public function index(){
     //$datos = Persona::all();
     $datos = \DB::table('personas')->join('horarios', 'personas.horario_id', '=', 'horarios.id')
-    ->select('personas.*', 'horarios.horario' )->get();
+    ->select(
+    'personas.id', 'personas.nombres', 'personas.direccion', 'personas.telefono', 'personas.carnet', 'personas.tarjeta', 'personas.estado_civil', 'personas.profesion', 'personas.genero',
+    'personas.clave',  'personas.fecha_nacimiento', 'personas.fecha_inscripcion', 'personas.horario_id', 'personas.stand_id', 'personas.user_id','horarios.horario' )->get();
 
     return $datos;
   }

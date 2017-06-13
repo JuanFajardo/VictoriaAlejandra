@@ -1,12 +1,15 @@
 Horario cambiar horarios AM<PM
 
-Desabilitar boton de Insertar Actualizar al momento de dar click
-Personal Verificar que no sea mayor a la cantidad en STAND
-Personal DataTimePicker Fecha 
+--Desabilitar boton de Insertar Actualizar al momento de dar click
 
-Registro registrar RFID y Carnet al mismo tiempo
+Personal Verificar que no sea mayor a la cantidad en STAND
+
+--Personal DataTimePicker Fecha 
+
+--Registro registrar RFID y Carnet al mismo tiempo
 --Registro registrar RFID limpiar datos despues de 5
 --Registro registrar RFID Pantalla completa
+
 CASOS Hipoteticos de ingreso o salida
 Ver biensito
 
