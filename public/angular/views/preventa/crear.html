@@ -31,7 +31,7 @@
                     <div class="row">
                         <div class="input-field col m6 s12">
                             <!-- <i class="mdi-content-mail prefix"></i> -->
-                            <input ng-model="Preventa.fecha_nacimiento" id="fecha_nacimiento" type="date" class="datepicker" required>
+                            <input ng-model="Preventa.fecha_nacimiento" id="fecha_nacimiento" type="date"  required>
                             <!-- <label for="fecha_nac">dd/mm/aaaa</label> -->
                         </div>
                         <div class="input-field col m6 s12">
@@ -42,29 +42,30 @@
                     </div>
                     <div class="row">
                       <div class="input-field col s12">
-                        <label>Sexo</label>
+                        <label>Genero</label>
                         <br/>
                       </div>
                       <div class="input-field col m6 s12 center-align">
-                        <input name="group1" type="radio" id="masc" />
-                        <label for="masc">Masculino</label>
+                        <label for="genero">Masculino</label>
+                        <input ng-model="Preventa.genero" name="group1" type="radio" id="genero" value="masculino"/>
                       </div>
                       <div class="input-field col m6 s12 center-align">
-                        <input name="group1" type="radio" id="feme" />
-                        <label for="feme">Femenino</label>
+                        <input  ng-model="Preventa.genero" name="group1" type="radio" id="genero"  value="femenino"/>
+                        <label for="genero">Femenino</label>
                       </div>
                     </div>
-                    
+
                     <div class="divider"></div>
                     <div class="row">
                         <div class="col m12">
-                         <p class="center-align">
-                           <button type="submit" name="button" class="btn btn-large waves-effect waves-light" >
-                             <i class="{{botonIcono}}" aria-hidden="true"></i> {{boton}}
-                           </button></p>
-                           <div class="col-md-6">
-                             <div class="{{panel}}" role="alert"> <strong>{{msj}}</strong> </div>
-                           </div>
+                          <p class="center-align">
+                             <button type="submit" name="button" class="btn btn-large waves-effect waves-light" >
+                               <i class="{{botonIcono}}" aria-hidden="true"></i> {{boton}}
+                             </button>
+                          </p>
+                             <div class="col-md-6">
+                               <div class="{{panel}}" role="alert"> <strong>{{msj}}</strong> </div>
+                             </div>
                         </div>
                     </div>
                 </form>

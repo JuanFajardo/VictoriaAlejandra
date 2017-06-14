@@ -26,7 +26,7 @@ angular.module('AdycttoBett0', ['ngResource', 'ngRoute', 'ngAnimate'])
 
 var va = angular.module('AdycttoBett0');
 va.factory('PreventaRecursos', function($resource){
-  return $resource('../index.php/registro/:id', { id:"@id"}, { update: { method: "PUT" } } );
+  return $resource('../index.php/preventa/:id', { id:"@id"}, { update: { method: "PUT" } } );
 })
 
 .controller('CrearCtrl', ['$scope', '$http', 'PreventaRecursos', '$location', '$timeout', function($scope, $http, PreventaRecursos, $location, $timeout){
@@ -35,13 +35,12 @@ va.factory('PreventaRecursos', function($resource){
 	$scope.botonIcono = "fa fa-save"
   $scope.accion = "btn btn-primary";
 	$scope.Preventa={};
-	$scope.mostrar = "SI";
-	var base64="";
 
-	/*
   $scope.guardarPreventa = function(){
     PreventaRecursos.save($scope.Preventa, function(data){
-          var respuesta = data['respuesta'];
+					$scope.Preventa.imagen = "";
+					var respuesta = data['respuesta'];
+					console.log(respuesta);
           if(respuesta == '200_OK'){
             $scope.panel = "alert alert-info";
             $scope.msj = "Se realizo correctamente la reserva";
@@ -54,7 +53,6 @@ va.factory('PreventaRecursos', function($resource){
           }
     });
   };
-	*/
 
 }]);
 </script>
