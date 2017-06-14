@@ -148,7 +148,6 @@ va.factory('HorarioRecursos', function($resource){
 		$scope.ingresos4 = tiempos;
 	}
 
-
   $scope.guardarHorario = function(){
 		$scope.mostrar = "NO";
     HorarioRecursos.save($scope.Horario, function(data){
@@ -173,16 +172,18 @@ va.factory('HorarioRecursos', function($resource){
   $scope.boton = "Actualizar";
 	$scope.botonIcono = "fa fa-save"
   $scope.accion = "btn btn-warning";
+	$scope.mostrar = "SI";
   $scope.Horario = HorarioRecursos.get({
     id: $routeParams.id
   });
 
   $scope.guardarHorario = function(){
+		$scope.mostrar = "NO";
     HorarioRecursos.update($scope.Horario, function(data){
           var respuesta = data['respuesta'];
           if(respuesta == '200_OK'){
-            $scope.panel = "alert alert-info";
-            $scope.msj = "Se inserto el dato correctamente ";
+            $scope.panel = "alert alert-warning";
+            $scope.msj = "Se Actualizo el dato correctamente ";
 						    $timeout(function(){
 						      $location.path('/lista');
 						    }, 1500);

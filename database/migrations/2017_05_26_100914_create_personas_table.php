@@ -19,6 +19,8 @@ class CreatePersonasTable extends Migration
             $table->string('profesion', 50);
             $table->string('genero', 10);
             $table->string('clave');
+            $table->string('reserva', 3);
+            $table->string('encargado', 3);
             $table->longtext('imagen');
             $table->date('fecha_nacimiento');
             $table->date('fecha_inscripcion');

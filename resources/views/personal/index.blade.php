@@ -97,7 +97,7 @@ va.factory('PersonalRecursos', function($resource){
   $scope.boton = "Guardar";
 	$scope.botonIcono = "fa fa-save"
   $scope.accion = "btn btn-primary";
-	$scope.mostrar = "NO";
+	$scope.mostrar = "SI";
 
 	$(document).ready(function(){
 		$("#telefono").keypress(function(e){
@@ -140,12 +140,10 @@ va.factory('PersonalRecursos', function($resource){
 	      photo = document.getElementById('photo'),
 	      imagen = document.getElementById('imagen'),
 	      vendorUrl = window.URL || window.weblkitURL;
-
 	  	 navigator.getMedia =  navigator.getUserMedia ||
 	                        navigator.webkitGetUserMedia ||
 	                        navigator.mozGetUserMedia ||
 	                        navigator.msGetUserMedia;
-
 	    context.drawImage(video, 0, 0, 200,200  );
 	    photo.setAttribute('src', canvas.toDataURL('image/png'));
 	    imagen.setAttribute('value', canvas.toDataURL('image/png'));
@@ -166,8 +164,11 @@ va.factory('PersonalRecursos', function($resource){
 			$scope.Persona.clave = $scope.Persona.carnet;
 	}
 
+	$scope.Persona.reserva = "Victoria Alejandra";
+	$scope.Persona.encargado = "Victoria Alejandra";
+
   $scope.guardarPersona = function(){
-		$scope.mostrar = "SI";
+		$scope.mostrar = "NO";
     PersonalRecursos.save($scope.Persona, function(data){
           var respuesta = data['respuesta'];
           if(respuesta == '200_OK'){
@@ -191,6 +192,7 @@ va.factory('PersonalRecursos', function($resource){
   $scope.boton = "Actualizar";
 	$scope.botonIcono = "fa fa-save"
   $scope.accion = "btn btn-warning";
+	$scope.mostrar = "SI";
   $scope.Persona = PersonalRecursos.get({
     id: $routeParams.id
   });
@@ -244,6 +246,7 @@ va.factory('PersonalRecursos', function($resource){
 
 
   $scope.guardarHorario = function(){
+		$scope.mostrar = "NO";
     HorarioRecursos.update($scope.Horario, function(data){
           var respuesta = data['respuesta'];
           if(respuesta == '200_OK'){

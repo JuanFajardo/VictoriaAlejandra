@@ -20,6 +20,7 @@ class CreateHorariosTable extends Migration
             $table->time('salida_am');
             $table->time('ingreso_pm');
             $table->time('salida_pm');
+            $table->string('fijo', 3);
             $table->text('descripcion');
             $table->smallInteger('tolerancia');
             $table->integer('user_id')->references('id')->on('users');

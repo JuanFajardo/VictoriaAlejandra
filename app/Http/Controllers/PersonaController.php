@@ -14,9 +14,9 @@ class PersonaController extends Controller
   public function index(){
     //$datos = Persona::all();
     $datos = \DB::table('personas')->join('horarios', 'personas.horario_id', '=', 'horarios.id')
-    ->select(
-      'personas.id', 'personas.nombres', 'personas.direccion', 'personas.telefono', 'personas.carnet', 'personas.tarjeta', 'personas.estado_civil', 'personas.profesion', 'personas.genero',
-      'personas.clave',  'personas.fecha_nacimiento', 'personas.fecha_inscripcion', 'personas.horario_id', 'personas.stand_id', 'personas.user_id','horarios.horario' )->get();
+                                  ->join('stands', 'personas.stand_id', '=', 'stands.id')
+    ->select('personas.id', 'personas.nombres', 'personas.telefono', 'personas.encargado',  'personas.reserva',
+       'personas.fecha_inscripcion', 'personas.horario_id', 'personas.stand_id','horarios.horario','stands.descripcion' )->get();
 
     return $datos;
   }
@@ -27,9 +27,13 @@ class PersonaController extends Controller
   }
 
   public function store(Request $request){
-    //return $request->all();
     try {
       $request['user_id'] = 1;
+
+      $request['reserva']   = ($request->reserva == "Victoria Alejandra") ? 'NO' : 'SI';
+      $request['encargado'] = isset($request->encargado) ? "SI" : "NO";
+      $request['fecha_nacimiento'] = date('Y-m-d', strtotime($request->fecha_nacimiento) );
+
       $v = \Validator::make($request->all(), [
             'nombres'   => 'required',
             'telefono'  => 'required',
@@ -39,6 +43,8 @@ class PersonaController extends Controller
             'fecha_inscripcion' => 'required',
             'horario_id'=> 'required',
             'stand_id'  => 'required',
+            'encargado' => 'required',
+            'reserva'   => 'required',
             'user_id'   => 'required'
         ]);
       if ( count($v->errors()) > 0 ){

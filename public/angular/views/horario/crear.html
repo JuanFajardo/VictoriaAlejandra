@@ -11,17 +11,21 @@
     <div class="panel-body">
       <form autocomplete="off" ng-submit="guardarHorario()" enctype="multipart/form-data">
                 <div class="row">
-                  <div class="col-md-4">
+                  <div class="col-md-3">
                     <label>Nombre de Horario</label>
                     <input type="text" class="form-control"  placeholder="Nombre del horario "  ng-model="Horario.horario" id="horario" required>
                   </div>
-                  <div class="col-md-4">
+                  <div class="col-md-5">
                     <label>Descripcion del Horario</label>
                     <input type="text" class="form-control"  placeholder="Descripcion del horario"  ng-model="Horario.descripcion" id="descripcion" required>
                   </div>
-                  <div class="col-md-4">
-                    <label>Tiempo de tolerancia en minutos</label>
+                  <div class="col-md-2">
+                    <label>Tolerancia en minutos</label>
                     <input type="number" class="form-control"  placeholder="Tiempo de Tolerancia"  value="0" ng-model="Horario.tolerancia" id="tolerancia">
+                  </div>
+                  <div class="col-md-2">
+                    <label>Tipo Horario </label><br/>
+                    <input type="checkbox"  value="0" ng-model="Horario.fijo" id="fijo"> Repetir Ingreso/Salida
                   </div>
                 </div>
 
@@ -55,9 +59,8 @@
                     </datalist>
                   </div>
                 </div>
-
                 <div class="row" style="margin-top:15px;">
-                  <div ng-if="mostrar == 'SI'" class="col-md-3" >
+                  <div ng-if="mostrar == 'SI' " class="col-md-3" >
                     <button  type="submit" name="button" class="{{accion}}" >
                       <i class="{{botonIcono}}" aria-hidden="true"></i> {{boton}}
                     </button>

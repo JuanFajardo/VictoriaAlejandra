@@ -159,6 +159,7 @@ va.factory('StandRecursos', function($resource){
   $scope.boton = "Actualizar";
 	$scope.botonIcono = "fa fa-save"
   $scope.accion = "btn btn-warning";
+  $scope.mostrar = "SI";
   var base64 = "";
   $scope.Stand = StandRecursos.get({
     id: $routeParams.id
@@ -197,6 +198,7 @@ va.factory('StandRecursos', function($resource){
   });
 
   $scope.guardarStand = function(){
+    $scope.mostrar = "NO";
     $scope.Stand.logo = $scope.img;
     var telefono = $scope.Stand.telefono;
     console.log(telefono);

@@ -55,6 +55,7 @@ va.factory('RegistroRecursos', function($resource){
 			var link = "../index.php/registroTarjeta/"+$scope.Registro.tarjeta;
 			$http({url:link, method:"GET"}).success(function(data){
 
+					var hora = (Date()).split(' ');
 					//"respuesta"=>"500_MAL", "msj"=>"Tarjeta NO VALIDA"
           if( (data).length > 0){
 						$scope.nombres = data[0]['nombres'];
@@ -62,7 +63,7 @@ va.factory('RegistroRecursos', function($resource){
 						$scope.stand 	 = data[0]['nom_empresa'];
 						$scope.foto 	 = data[0]['imagen'];
 						$scope.panel = "alert alert-info";
-            $scope.msj = "Registro correcto a horas"+Date();
+            $scope.msj = "Registro a horas: "+ hora[4];
           }else if((data['msj']).length >0 ){
 						$scope.nombres = '';
 						$scope.horario = '';

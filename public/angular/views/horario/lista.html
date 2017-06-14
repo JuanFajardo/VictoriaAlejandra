@@ -21,6 +21,7 @@
                   <th>Salida AM</th>
                   <th>Ingreso PM</th>
                   <th>Salida PM</th>
+                  <th>Repetir</th>
                   <th>Tolerancia</th>
                   <th>Editar</th>
                   <th>Eliminar</th>
@@ -30,10 +31,12 @@
             <tr ng-repeat="horario in horarios">
               <td> {{ $index + 1}} </td>
               <td> {{horario.horario}} </td>
-              <td> {{horario.ingreso_am}} </td>
-              <td> {{horario.salida_am}} </td>
-              <td> {{horario.ingreso_pm}} </td>
-              <td> {{horario.salida_pm}} </td>
+              <td> <p ng-if="horario.ingreso_am == '00:00:00'" class="label label-danger">{{horario.ingreso_am}}</p> <p ng-if="horario.ingreso_am != '00:00:00'" >{{horario.ingreso_am}}</p> </td>
+              <td> <p ng-if="horario.salida_am == '00:00:00'" class="label label-danger">{{horario.salida_am}}</p> <p ng-if="horario.salida_am != '00:00:00'" >{{horario.salida_am}}</p>     </td>
+              <td> <p ng-if="horario.ingreso_pm == '00:00:00'" class="label label-danger">{{horario.ingreso_pm}}</p> <p ng-if="horario.ingreso_pm != '00:00:00'" >{{horario.ingreso_pm}}</p> </td>
+              <td> <p ng-if="horario.salida_pm == '00:00:00'" class="label label-danger">{{horario.salida_pm}}</p> <p ng-if="horario.salida_pm != '00:00:00'" >{{horario.salida_pm}}</p>     </td>
+              <td> <label ng-if="horario.fijo == 'SI' " class="label label-success">Repetir</label>
+                   <label ng-if="horario.fijo == 'NO' " class="label label-primary">Fijo</label> </td>
               <td> {{horario.tolerancia}} Minutos </td>
               <td> <a href="#/editar/{{horario.id}}" style="color:#f0ad4e;"> <i class="fa fa-pencil" aria-hidden="true"></i>    </a> </td>
               <td> <a href="#/eliminar/{{horario.id}}" style="color:#c12e2a;"> <i class="fa fa-trash-o" aria-hidden="true"></i> </a> </td>

@@ -52,67 +52,64 @@ class RegistroController extends Controller
     try {
         $hora   = date('H');
         $minuto = date('i');
+        $tiqueoHora = strtotime(date('H:i:s'));
         $fecha  = date('Y-m-d');
 
         $tarjeta  = \DB::table('personas')->join('horarios', 'personas.horario_id',  '=', 'horarios.id')
                                           ->join('stands', 'personas.stand_id',  '=', 'stands.id')
-                                          ->select('horarios.*', 'personas.*', 'horarios.id as horarioId', 'personas.id as personaID' , 'stands.nom_empresa' )
+                                          ->select(
+                                            'horarios.id as horarioId',
+                                            'horarios.horario', 'horarios.ingreso_am', 'horarios.salida_am', 'horarios.ingreso_pm',
+                                            'horarios.salida_pm', 'horarios.tolerancia', 'horarios.fijo',
+                                            'personas.id as personaId', 'personas.nombres', 'personas.imagen',
+                                            'stands.nom_empresa' )
                                           ->where('tarjeta', '=', $id)->get();
         $id="";
         if( count($tarjeta) > 0) {
 
-          $dato = explode(":", $tarjeta[0]->ingreso_am);
-          $IngresoAmHora = $dato[0];
-          $IngresoAmMinuto = $dato[1] + $tarjeta[0]->tolerancia;
-          $dato = explode(":", $tarjeta[0]->salida_am);
-          $SalidaAmHora = $dato[0];
-          $dato = explode(":", $tarjeta[0]->ingreso_pm);
-          $IngresoPmHora = $dato[0];
-          $IngresoPmMinuto = $dato[1] + $tarjeta[0]->tolerancia;
-          $dato = explode(":", $tarjeta[0]->salida_pm);
-          $SalidaPmHora = $dato[0];
+          $ingresoAM = $tarjeta[0]->ingreso_am == '00:00:00' ? '00:00:00' : strtotime($tarjeta[0]->ingreso_am) + $tarjeta[0]->tolerancia;
+          $salidaAM  = $tarjeta[0]->salida_am == '00:00:00' ? '00:00:00' : strtotime($tarjeta[0]->ingreso_pm);
+          $ingresoPM = $tarjeta[0]->ingreso_pm == '00:00:00' ? '00:00:00' : strtotime($tarjeta[0]->ingreso_pm) + $tarjeta[0]->tolerancia;
+          $salidaPM  = $tarjeta[0]->salida_pm == '00:00:00' ? '00:00:00' : strtotime($tarjeta[0]->salida_pm);
 
-          $persona = $tarjeta[0]->personaID;
-          $horario = $tarjeta[0]->horarioId;
-          $contador  = \DB::table('registros')->where('fecha', '=', $fecha)
+          if($tarjeta[0]->fijo == "NO" ){
+
+          }else{
+            $persona = $tarjeta[0]->personaId;
+            $horario = $tarjeta[0]->horarioId;
+            $contador= \DB::table('registros')->where('fecha', '=', $fecha)
                                               ->where('persona_id', '=', $persona)
                                               ->where('horario_id', '=', $horario)
                                               ->get();
-          $respuesta = $tarjeta;
-          if(count($contador) == 0){
-              $dato = new Registro;
-              $dato->fecha      = $fecha;
-              $dato->ingreso_am = $hora == $IngresoAmHora || ($hora-1) == $IngresoAmHora || ($hora+1) == $IngresoAmHora  ? date('H:i:s') : '00:00:00';
-              $dato->salida_am  = $hora == $SalidaAmHora  || ($hora-1) == $SalidaAmHora  || ($hora+1) == $SalidaAmHora  ? date('H:i:s') : '00:00:00';
-              $dato->ingreso_pm = $hora == $IngresoPmHora || ($hora-1) == $IngresoPmHora || ($hora+1) == $IngresoPmHora  ? date('H:i:s') : '00:00:00';
-              $dato->salida_pm  = $hora == $SalidaPmHora  || ($hora-1) == $SalidaPmHora  || ($hora+1) == $SalidaPmHora  ? date('H:i:s') : '00:00:00';
-              $dato->justificacion='';
-              $dato->retraso_am = '0';
-              $dato->retraso_pm = '0';
-              $dato->persona_id = $persona;
-              $dato->horario_id = $horario;
-              $dato->user_id    = 1;//\Auth::user()->id;
-              $dato->save();
-          }else{
-            $id = $contador[0]->id;
-
-            if($SalidaAmHora == $hora || $SalidaAmHora == (1-$hora) || $SalidaAmHora == (1+$hora) ){
-              $dato = Registro::find($id);
-              $dato->salida_am  = date('H:i:s');
-              $dato->save();
-            }elseif ($SalidaPmHora == $hora || $SalidaPmHora == (1-$hora) || $SalidaPmHora == (1+$hora) ){
-              $dato = Registro::find($id);
-              $dato->salida_pm  = date('H:i:s');
-              $dato->save();
-            }elseif ($IngresoPmHora == $hora || $IngresoPmHora == (1-$hora) || $IngresoPmHora == (1+$hora) ){
-              $dato = Registro::find($id);
-              $dato->ingreso_am  = date('H:i:s');
-              $dato->save();
-            }elseif ($IngresoAmHora == $hora || $IngresoAmHora == (1-$hora) || $IngresoAmHora == (1+$hora) ){
-              $dato->ingreso_pm  = date('H:i:s');
-            }else{
-              $respuesta = array("respuesta"=>"500_MAL", "msj"=>"REGISTRO FUERA DE HORARIO");
+            if(count($contador) == 0){
+                $dato = new Registro;
+                $dato->fecha      = $fecha;
+                $dato->ingreso_am = '00:00:00';
+                $dato->salida_am  = '00:00:00';
+                $dato->ingreso_pm = '00:00:00';
+                $dato->salida_pm  = '00:00:00';
+                $dato->justificacion='';
+                $dato->retraso_am = 0;
+                $dato->retraso_pm = 0;
+                $dato->persona_id = $persona;
+                $dato->horario_id = $horario;
+                $dato->user_id    = 1;//\Auth::user()->id;
+                $dato->save();
             }
+
+            $registro = \DB::table('registros')->where('fecha', '=', $fecha)
+                                               ->where('persona_id', '=', $persona)
+                                               ->where('horario_id', '=', $horario)
+                                              ->get();
+
+            
+
+            $dato = Registro::find($registro[0]->id);
+            $dato->retraso_am = ;
+            $dato->retraso_pm = ;
+            $dato->save();
+
+            $respuesta = $tarjeta;
           }
         }else {
             $respuesta = array("respuesta"=>"500_MAL", "msj"=>"Tarjeta NO VALIDA");
@@ -121,8 +118,9 @@ class RegistroController extends Controller
     } catch (Exception $e) {
       return "MensajeError -> ".$e->getMessage();
     }
-
   }
+
+
 
   public function update(Request $request, $id){
     $request['user_id'] = 1;

@@ -26,9 +26,10 @@ class HorarioController extends Controller
       $request['user_id'] = 1;
 
       $request['ingreso_am'] =  strlen($request->ingreso_am) >0 ? $request->ingreso_am : "00:00:00";
-      $request['salida_am'] =  strlen($request->salida_am) >0 ? $request->salida_am : "00:00:00";
+      $request['salida_am']  =  strlen($request->salida_am) >0 ? $request->salida_am : "00:00:00";
       $request['ingreso_pm'] =  strlen($request->ingreso_pm) >0 ? $request->ingreso_pm : "00:00:00";
-      $request['salida_pm'] =  strlen($request->salida_pm) >0 ? $request->salida_pm : "00:00:00";
+      $request['salida_pm']  =  strlen($request->salida_pm) >0 ? $request->salida_pm : "00:00:00";
+      $request['fijo']       =  isset($request->fijo)  ? "SI" : "NO";
 
       $v = \Validator::make($request->all(), [
             'horario'    => 'required',
@@ -50,7 +51,6 @@ class HorarioController extends Controller
     } catch (Exception $e) {
       return "MensajeError -> ".$e->getMessage();
     }
-
   }
 
   public function update(Request $request, $id){
