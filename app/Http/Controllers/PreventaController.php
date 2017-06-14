@@ -30,8 +30,7 @@ class PreventaController extends Controller
             'carnet'    => 'required|numeric',
             'fecha_nacimiento' => 'required|date_format:H:i:s',
             'telefono'    => 'required|numeric',
-            'genero'    =>  'required',
-            'imagen'    =>  'required'
+            'genero'    =>  'required'
         ]);
       if ( count($v->errors()) > 0 ){
             return response()->json(array("respuesta"=>"500_NO"));

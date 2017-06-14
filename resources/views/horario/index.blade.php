@@ -152,7 +152,7 @@ va.factory('HorarioRecursos', function($resource){
 		$scope.mostrar = "NO";
     HorarioRecursos.save($scope.Horario, function(data){
           var respuesta = data['respuesta'];
-          if(respuesta == '200_OK'){
+					if(respuesta == '200_OK'){
             $scope.panel = "alert alert-info";
             $scope.msj = "Se inserto el dato correctamente ";
 						    $timeout(function(){
