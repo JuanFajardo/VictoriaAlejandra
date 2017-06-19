@@ -1,0 +1,46 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+
+      <div class="row">
+        <div class="col-md-6">
+          <h3 class="panel-title"><i class="glyphicon glyphicon-list-alt"></i> Listar Pre-venta</h3>
+        </div>
+        <div class="col-md-6">
+          <!-- <a href="#/crear" class="btn btn-info pull-right">Nuevo <i class="fa fa-plus"></i></a> -->
+          <!-- <a href="#/crear" class="btn btn-info pull-right">Nuevo <i class="fa fa-plus"></i></a> -->
+        </div>
+      </div>
+
+    </div>
+    <div class="panel-body">
+      <table class="table table-responsive" datatable="ng" dt-options="vm.dtOptions" >
+          <thead>
+              <tr>
+                  <th>Nro.</th>
+                  <th>Nombres Apellidos</th>
+                  <th>Correo</th>
+                  <th>carnet</th>
+                  <th>telefono</th>
+                  <th>fecha de nacimiento</th>
+                  <th>genero</th>
+                  <th>Confirmar</th>
+              </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="preventa in preventas">
+              <td> {{ $index + 1}} </td>
+              <td> {{preventa.nombres}} {{preventa.apellidos}} </td>
+              <td> {{preventa.correo}} </td>
+              <td> {{preventa.carnet}} </td>
+              <td> {{preventa.telefono}} </td>
+              <td> {{preventa.fecha_nacimiento}} </td>
+              <td> {{preventa.genero}} </td>
+
+              <!-- <td> <a href="#/editar/{{persona.id}}" style="color:#f0ad4e;"> <i class="fa fa-pencil" aria-hidden="true"></i>    </a> </td> -->
+              <!--<td> <a href="#/eliminar/{{persona.id}}" style="color:#c12e2a;"> <i class="fa fa-trash-o" aria-hidden="true"></i> </a> </td>-->
+              <td> <a href="#/confirmar/{{preventa.id}}" style="color:#c12e2a;"> <i class="glyphicon glyphicon-ok" aria-hidden="true"></i>  </a> </td>
+            </tr>
+          </tbody>
+      </table>
+    </div>
+</div>

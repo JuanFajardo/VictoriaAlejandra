@@ -171,7 +171,7 @@ va.factory('PersonalRecursos', function($resource){
 		$scope.mostrar = "NO";
     PersonalRecursos.save($scope.Persona, function(data){
 					var respuesta = data['respuesta'];
-          if(respuesta == '200_OK'){
+				  if(respuesta == '200_OK'){
             $scope.panel = "alert alert-info";
             $scope.msj = "Se inserto el dato correctamente "+data['msj'];
 						$timeout(function(){

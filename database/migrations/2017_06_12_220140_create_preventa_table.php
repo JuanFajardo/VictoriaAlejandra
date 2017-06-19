@@ -14,10 +14,12 @@ class CreatePreventaTable extends Migration
             $table->string('apellidos');
             $table->string('correo');
             $table->string('carnet');
-            $table->date('fecha_nacimiento');
+            $table->string('fecha_nacimiento');
             $table->string('telefono');
             $table->string('genero', 10);
             $table->longtext('imagen');
+            $table->integer('tarjeta')->unique();
+            $table->integer('reserva');
             $table->softDeletes();
             $table->timestamps();
         });

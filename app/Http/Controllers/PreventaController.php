@@ -10,9 +10,12 @@ class PreventaController extends Controller
   public function angular(){
     return view('preventa.index');
   }
+  public function angularlistar(){
+    return view('preventa.listar');
+  }
 
   public function index(){
-    $datos = Preventa::all();
+    $datos = Preventa::all()->where('reserva','=','0');
     return $datos;
   }
 
@@ -28,13 +31,15 @@ class PreventaController extends Controller
             'apellidos'    => 'required',
             'correo'    => 'required',
             'carnet'    => 'required|numeric',
-            'fecha_nacimiento' => 'required|date_format:H:i:s',
+
             'telefono'    => 'required|numeric',
             'genero'    =>  'required'
         ]);
       if ( count($v->errors()) > 0 ){
             return response()->json(array("respuesta"=>"500_NO"));
       }else{
+        $request['reserva'] = 0;
+        $request['imagen'] = "";
         $dato = new Preventa;
         $dato->fill( $request->all() );
         $dato->save();
@@ -45,11 +50,19 @@ class PreventaController extends Controller
     }
 
   }
+  public function update(Request $request){
+    try {
+          $dato = Preventa::find($id);
+          $dato->fill( $request->all() );
+          $dato->save();
+          return response()->json(array("respuesta"=>"200_OK"));
+    } catch (Exception $e) {
+      return "MensajeError -> ".$e->getMessage();
+    }
+
+  }
 
   public function destroy($id){
-    $dato = Horario::find($id);
-    $dato->delete();
-    return response()->json(array("respuesta"=>"200_OK"));
   }
 
 }

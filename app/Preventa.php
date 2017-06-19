@@ -9,6 +9,6 @@ class Preventa extends Model
 {
   use SoftDeletes;
   protected $table    = 'preventa';
-  protected $fillable = ['id', 'nombres', 'apellidos', 'correo', 'carnet', 'fecha_nacimiento', 'telefono', 'genero', 'imagen'];
+  protected $fillable = ['id', 'nombres', 'apellidos', 'correo', 'carnet', 'fecha_nacimiento', 'telefono', 'genero', 'imagen', 'tarjeta', 'reserva'];
   protected $dates    = ['deleted_at'];
 }

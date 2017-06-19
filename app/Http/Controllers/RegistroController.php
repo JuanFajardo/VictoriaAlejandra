@@ -102,11 +102,11 @@ class RegistroController extends Controller
                                                ->where('horario_id', '=', $horario)
                                               ->get();
 
-            
+
 
             $dato = Registro::find($registro[0]->id);
-            $dato->retraso_am = ;
-            $dato->retraso_pm = ;
+            $dato->retraso_am = "";
+            $dato->retraso_pm = "";
             $dato->save();
 
             $respuesta = $tarjeta;
