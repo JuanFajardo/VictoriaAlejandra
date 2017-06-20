@@ -28,19 +28,17 @@ var va = angular.module('AdycttoBett0');
 va.factory('PreventaRecursos', function($resource){
   return $resource('../index.php/preventa/:id', { id:"@id"}, { update: { method: "PUT" } } );
 })
-
 .controller('CrearCtrl', ['$scope', '$http', 'PreventaRecursos', '$location', '$timeout', function($scope, $http, PreventaRecursos, $location, $timeout){
-  $scope.titulo = 'Preventa';
+  $scope.titulo = 'Preventa Entradas FEIPOBOL';
   $scope.boton = "Reservar";
-	$scope.botonIcono = "fa fa-save"
+	$scope.botonIcono = "material-icons"
   $scope.accion = "btn btn-primary";
 	$scope.Preventa={};
 
   $scope.guardarPreventa = function(){
+		$scope.Preventa.fecha_nacimiento = '1992-06-02';
     PreventaRecursos.save($scope.Preventa, function(data){
-					$scope.Preventa.imagen = "";
 					var respuesta = data['respuesta'];
-					console.log(respuesta);
           if(respuesta == '200_OK'){
             $scope.panel = "alert alert-info";
             $scope.msj = "Se realizo correctamente la reserva";

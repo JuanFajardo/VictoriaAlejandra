@@ -7,8 +7,8 @@
 
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   </head>
-  <body ng-app="AdycttoBett0">
-    <div class="container">
+  <body ng-app="AdycttoBett0" class="grey darken-2">
+    <div class="container ">
 
       <div class="row">
           <div class="col-lg-12">

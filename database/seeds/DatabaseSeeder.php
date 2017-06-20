@@ -30,6 +30,13 @@ class DatabaseSeeder extends Seeder
         ));
 
 
+        \DB::table('preventa')->insert(array(
+          'id'=>'1', 'nombres'=>'Guido Alberto','apellidos'=>'Lopez Meriles', 'correo'=>'adyctto@gmail.com','carnet'=>'8600518', 'fecha_nacimiento'=>'1992-06-10', 'telefono'=>'79443613','genero'=>'masculino', 'imagen'=>'', 'tarjeta'=>'0', 'reserva'=>'0'
+        ));
+
+        \DB::table('preventa')->insert(array(
+          'id'=>'2', 'nombres'=>'Juan Alberto','apellidos'=>'Fajardo Canaza', 'correo'=>'bett0@gmail.com','carnet'=>'12345678', 'fecha_nacimiento'=>'2017-06-16', 'telefono'=>'7999999','genero'=>'masculino', 'imagen'=>'', 'tarjeta'=>'12345678', 'reserva'=>'1'
+        ));
         \DB::table('cargos')->insert(array(
           'id'      =>'1',
           'cargo'   =>'Empleado',
