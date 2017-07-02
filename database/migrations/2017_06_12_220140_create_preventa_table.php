@@ -18,7 +18,7 @@ class CreatePreventaTable extends Migration
             $table->string('telefono');
             $table->string('genero', 10);
             $table->longtext('imagen');
-            $table->integer('tarjeta')->unique();
+            $table->integer('tarjeta')->unique()->nullable();
             $table->integer('reserva');
             $table->softDeletes();
             $table->timestamps();
