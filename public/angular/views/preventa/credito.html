@@ -1,0 +1,74 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+
+      <div class="row">
+        <div class="col-md-6">
+          <h3 class="panel-title"><i class="glyphicon glyphicon-lock"></i> {{titulo}} </h3>
+        </div>
+      </div>
+
+    </div>
+    <div class="panel-body">
+      <form autocomplete="off" ng-submit="confirmarRecarga()" enctype=”multipart/form-data>
+                <div class="row">
+                  <div class="col-md-3">
+                    <div  ng-if="(Preventa.imagen).length > 0">
+                      <img src="{{Preventa.imagen}}" class="img-thumbnail" id="foto" ><br>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label>Nombre:</label>
+                      </div>
+                      <div class="col-md-6">
+                        <label>{{Preventa.nombres}} {{Preventa.apellidos}}</label>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label>Documento de Identidad:</label>
+                      </div>
+                      <div class="col-md-6">
+                        <label>{{Preventa.carnet}} </label>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label>Codigo tarjeta:</label>
+                      </div>
+                      <div class="col-md-6">
+                        <label>{{Preventa.tarjeta}} </label>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label for="cantidad">Monto a recargar (Bs.):</label>
+                      </div>
+                      <div class="col-md-6">
+                        <input type="text" class="form-control" placeholder="Recarga en Bs." ng-model="Preventa.cantidad" id="cantidad" name="cantidad" maxlength="6" required>
+                      </div>
+
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                  </div>
+                </div>
+                <div class="row" style="margin-top:15px;">
+                  <div  ng-if="mostrar == 'SI'" class="col-md-3">
+                    <button type="submit" name="button" class="{{accion}}" >
+                      <i class="{{botonIcono}}" aria-hidden="true"></i>{{boton}}
+                    </button>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="{{panel}}" role="alert"> <strong>{{msj}}</strong> </div>
+                  </div>
+                  <div class="col-md-3">
+                    <a href="#/lista" class="btn btn-info pull-right"> <i class="fa fa-times-circle" aria-hidden="true"></i> Cancelar</a>
+                  </div>
+                </div>
+              </form>
+
+    </div>
+</div>
