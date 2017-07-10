@@ -6,10 +6,10 @@
       <div class="col-md-10">
           <div class="panel panel-default">
               <div class="panel-heading">
-                  <h3 class="panel-title"><strong>Nuevo  usuario</strong> </h3>
+                  <h3 class="panel-title"><strong>Editar  usuario</strong> </h3>
               </div>
               <div class="panel-body">
-                {!! Form::open(['action'=>'UsuarioController@create', 'method'=>'POST', 'id'=>'form-create', 'class'=>'form-horizontal', 'role'=>'form' ])!!}
+                {!! Form::model($user, [ 'id'=>'form-create', 'class'=>'form-horizontal', 'role'=>'form' ])!!}
                   <h4>Datos de usuario</h4>
                   <hr>
                   <div class="form-group">
@@ -21,7 +21,7 @@
                   <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                       <label for="name" class="col-md-4 control-label">Usuario</label>
                       <div class="col-md-6">
-                          {!! Form::text('name',  old('name'), ['id'=>'name', 'class'=>'form-control', 'placeholder'=>'nombre y apellidos']) !!}
+                          {!! Form::text('name',  old('name'), ['id'=>'name', 'class'=>'form-control', 'placeholder'=>'nombres y apellidos']) !!}
                           @if ($errors->has('name'))
                               <span class="help-block">{{ $errors->first('name') }}</span>
                           @endif
@@ -33,15 +33,6 @@
                           {!! Form::email('email',  old('email'), ['id'=>'email', 'class'=>'form-control', 'placeholder'=>'correo@correo.com']) !!}
                           @if ($errors->has('email'))
                               <span class="help-block">{{ $errors->first('email') }}</span>
-                          @endif
-                      </div>
-                  </div>
-                  <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                      <label for="password" class="col-md-4 control-label">Contraseña</label>
-                      <div class="col-md-6">
-                          {!! Form::password('password', ['id'=>'password', 'class'=>'form-control', 'placeholder'=>'Clave s3cr3t4']) !!}
-                          @if ($errors->has('password'))
-                              <span class="help-block">{{ $errors->first('password') }}</span>
                           @endif
                       </div>
                   </div>
@@ -94,9 +85,9 @@
                       </div>
                   </div>
                   <div class="form-group{{ $errors->has('observacion') ? ' has-error' : '' }}">
-                      <label for="observacion" class="col-md-4 control-label">Observación</label>
+                      <label for="observacion" class="col-md-4 control-label">Observacion</label>
                       <div class="col-md-6">
-                          {!! Form::text('observacion',  old('observacion'), ['id'=>'observacion', 'class'=>'form-control', 'placeholder'=>'Observación del usuario']) !!}
+                          {!! Form::text('observacion',  old('observacion'), ['id'=>'observacion', 'class'=>'form-control', 'placeholder'=>'Observacion del usuario']) !!}
                           @if ($errors->has('observacion'))
                               <span class="help-block">{{ $errors->first('observacion') }}</span>
                           @endif
@@ -110,9 +101,6 @@
                   </div>
                   <div class="form-group">
                       <div class="col-md-6 col-md-offset-4">
-                          <button type="submit" class="btn btn-primary">
-                              <i class="fa fa-btn fa-user"></i> Nuevo
-                          </button>
                           <a href="{{asset('/usuarios')}}" class="btn btn-primary">
                             <i class="fa fa-btn fa-times-circle"></i> Cancelar</a>
                       </div>

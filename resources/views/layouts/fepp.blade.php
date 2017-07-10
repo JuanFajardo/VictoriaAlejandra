@@ -46,10 +46,10 @@
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> John Smith <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> {{ \Auth::user()->name }} <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#"><i class="fa fa-fw fa-user"></i> Profile</a></li>
-                        <li><a href="#"><i class="fa fa-fw fa-power-off"></i> Log Out</a></li>
+                        <li><a href="#"><i class="fa fa-fw fa-user"></i> Datos Personales</a></li>
+                        <li><a href="{{asset('index.php/logout')}}"><i class="fa fa-fw fa-power-off"></i> Cerrar Sesion</a></li>
                     </ul>
                 </li>
             </ul>
@@ -75,7 +75,7 @@
                         <a href="bootstrap-grid.html"><i class="fa fa-fw fa-bar-chart-o"></i> Estadisticas</a>
                     </li>
                     <li class="@yield('menu7')">
-                        <a href="blank-page.html"><i class="fa fa-fw fa-user"></i> Usuarios</a>
+                        <a href="{{asset('index.php/usuarios')}}"><i class="fa fa-fw fa-user"></i> Usuarios</a>
                     </li>
                     <li class="@yield('menu8')">
                         <a href="{{asset('index.php/Stand#/lista')}}"><i class="fa fa-fw fa-dashboard"></i> Stands</a>

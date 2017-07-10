@@ -1,4 +1,7 @@
 @extends('layouts.angular')
+@section('info')
+active
+@endsection
 
 @section('contenido')
 <div class="container">
@@ -6,10 +9,15 @@
       <div class="col-md-10">
           <div class="panel panel-default">
               <div class="panel-heading">
-                  <h3 class="panel-title"><strong>Nuevo  usuario</strong> </h3>
+                  <h3 class="panel-title"><strong>Actulizar informacion: <b>{{$user->nombres}} {{$user->apellidos}}</b> </strong> </h3>
+                  @if( isset($_GET['msj']))
+                  <div class="alert alert-success text-center">
+                    <b>Actualizacion correcta </b>
+                  </div>
+                  @endif
               </div>
               <div class="panel-body">
-                {!! Form::open(['action'=>'UsuarioController@create', 'method'=>'POST', 'id'=>'form-create', 'class'=>'form-horizontal', 'role'=>'form' ])!!}
+                {!! Form::model($user, ['action'=>'UsuarioController@profileActulizar', 'method'=>'POST', 'id'=>'form-create', 'class'=>'form-horizontal', 'role'=>'form' ])!!}
                   <h4>Datos de usuario</h4>
                   <hr>
                   <div class="form-group">
@@ -21,7 +29,7 @@
                   <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                       <label for="name" class="col-md-4 control-label">Usuario</label>
                       <div class="col-md-6">
-                          {!! Form::text('name',  old('name'), ['id'=>'name', 'class'=>'form-control', 'placeholder'=>'nombre y apellidos']) !!}
+                          {!! Form::text('name',  old('name'), ['id'=>'name', 'class'=>'form-control', 'placeholder'=>'nombreapellido']) !!}
                           @if ($errors->has('name'))
                               <span class="help-block">{{ $errors->first('name') }}</span>
                           @endif
@@ -87,7 +95,7 @@
                   <div class="form-group{{ $errors->has('telefono') ? ' has-error' : '' }}">
                       <label for="telefono" class="col-md-4 control-label">Teléfono</label>
                       <div class="col-md-6">
-                          {!! Form::text('telefono',  old('telefono'), ['id'=>'telefono', 'class'=>'form-control', 'placeholder'=>'Número de teléfono']) !!}
+                          {!! Form::text('telefono',  old('telefono'), ['id'=>'telefono', 'class'=>'form-control', 'placeholder'=>'Numero de teléfono']) !!}
                           @if ($errors->has('telefono'))
                               <span class="help-block">{{ $errors->first('telefono') }}</span>
                           @endif
@@ -110,8 +118,8 @@
                   </div>
                   <div class="form-group">
                       <div class="col-md-6 col-md-offset-4">
-                          <button type="submit" class="btn btn-primary">
-                              <i class="fa fa-btn fa-user"></i> Nuevo
+                          <button type="submit" class="btn btn-warning">
+                              <i class="fa fa-btn fa-user"></i> Actualizar
                           </button>
                           <a href="{{asset('/usuarios')}}" class="btn btn-primary">
                             <i class="fa fa-btn fa-times-circle"></i> Cancelar</a>

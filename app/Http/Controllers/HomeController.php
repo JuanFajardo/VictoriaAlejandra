@@ -6,21 +6,17 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
+
+    public function __construct(){
+      $this->middleware('auth');
+      if( \Auth::guest() )
+        return redirect('index.php/login');
+      //elseif(\Auth::user()->grupo != '2' && \Auth::user()->grupo_id != 3 && \Auth::user()->grupo_id != 1)
+      //  return abort(503);
     }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+
     public function index()
     {
         return view('home');
