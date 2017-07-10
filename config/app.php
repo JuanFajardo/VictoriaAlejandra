@@ -164,6 +164,9 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
 
+        //Complemento para la generacion de FORMULARIOS
+        Collective\Html\HtmlServiceProvider::class,
+
         /*
          * Package Service Providers...
          */
@@ -231,6 +234,9 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,
         'Input' => Illuminate\Support\Facades\Input::class,
+        //Complemento para la generacion de FORMULARIOS
+        'Form'	    => Collective\Html\FormFacade::class,
+      	'Html'      => Collective\Html\HtmlFacade::class,
     ],
 
 ];
