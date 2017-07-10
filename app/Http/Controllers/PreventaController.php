@@ -54,17 +54,17 @@ class PreventaController extends Controller
     }
 
   }
-  public function credito(Request $request, $id){
-    try {
-         $datos = \DB::table('credito')->select('id','cantidad')
-         ->where('persona_id','=',$request->user_id)->get();
-          $request->cantidad = $datos['cantidad'] + $request->cantidad;
-         \DB::table('credito')->where('persona_id',$request->user_id)->update(['cantidad' => $request->cantidad]);
-        return response()->json(array("respuesta"=>"200_OK"));
-    } catch (Exception $e) {
-      return "MensajeError -> ".$e->getMessage();
-    }
-  }
+  // public function credito(Request $request, $id){
+  //   try {
+  //        $datos = \DB::table('credito')->select('id','cantidad')
+  //        ->where('persona_id','=',$request->user_id)->get();
+  //         // $request->cantidad = $datos['cantidad'] + $request->cantidad;
+  //        \DB::table('credito')->where('persona_id',$request->user_id)->update(['cantidad' => $request->cantidad]);
+  //       return response()->json(array("respuesta"=>"200_OK"));
+  //   } catch (Exception $e) {
+  //     return "MensajeError -> ".$e->getMessage();
+  //   }
+  // }
   public function update(Request $request, $id){
     try {
 

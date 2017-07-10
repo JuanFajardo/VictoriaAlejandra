@@ -83,6 +83,7 @@ Route::delete('stand/{id}', 'StandController@destroy');
 
 Route::get('Preventa', 'PreventaController@angular');
 Route::put('preventa/{id}', 'PreventaController@update');
+Route::put('preventa/{id}', 'PreventaController@credito');
 Route::get('PreventaLista', 'PreventaController@angularlistar');
 Route::get('preventa', 'PreventaController@index');
 Route::get('preventa/{id}', 'PreventaController@show');
