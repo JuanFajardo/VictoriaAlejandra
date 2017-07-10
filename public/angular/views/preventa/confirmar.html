@@ -67,9 +67,18 @@
                     <img src="{{Preventa.imagen}}" class="img-thumbnail" id="foto" ><br>
                   </div>
                 </div>
+                <div class="row">
+                  <div class="col-md-4">
 
+                  </div>
+                  <div class="col-md-4">
+                    <label for="cantidad">Monto inicial de recarga (Bs.):</label>
+                    <input type="text" class="form-control" placeholder="Recarga en Bs." ng-model="Preventa.cantidad" id="cantidad" name="cantidad" maxlength="6" required>
+                  </div>
+                  <div class="col-md-4">
 
-
+                  </div>
+                </div>
                 <div class="row" style="margin-top:15px;">
                   <div  ng-if="mostrar == 'SI'" class="col-md-3">
                     <button type="submit" name="button" class="{{accion}}" >

@@ -6,7 +6,7 @@
     <!-- <link href="{{asset('assets/css/bootstrap.min.css')}}" rel="stylesheet"> -->
     <link rel="stylesheet" href="{{asset('css/pdf.css')}}">
   </head>
-  <body>
+  <body style="width:21cm;">
 
     <main>
       <div class="col md-12">
@@ -15,7 +15,7 @@
       <div id="details" class="clearfix">
         <div id="invoice center-align">
           <h1>INVOICE {{ $invoice }}</h1>
-          <div class="date">Fecha de generacion: {{ date('d/m/Y') }}</div>
+          <div >Fecha de generacion: {{ date('d/m/Y') }}</div>
         </div>
       </div>
       <table border="0" cellspacing="0" cellpadding="0">
@@ -30,16 +30,16 @@
           </tr>
         </thead>
         <tbody>
-
+          @foreach($datos as $data)
           <tr>
-            <td class="no">{{ $datos['nombres'] }}</td>
-            <td class="desc">{{ $datos['carnet'] }}</td>
-            <td class="unit">{{ $datos['fecha_inscripcion'] }}</td>
-            <td class="total">{{ $datos['horario_id'] }} </td>
-            <td class="unit">{{ $datos['stand_id'] }}</td>
-            <!-- <td class="">{{ $datos['total'] }} </td> -->
+            <td class="no">1</td>
+            <td class="desc">{{ $data->nombres }}</td>
+            <td class="unit">{{ $data->carnet }}</td>
+            <td class="total">{{ $data->fecha_nacimiento }} </td>
+            <td class="unit">{{ $data->horario_id }}</td>
+            <td class="">{{ $data->stand_id }} </td>
           </tr>
-
+          @endforeach
         </tbody>
         <tfoot>
           <tr>

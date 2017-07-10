@@ -31,6 +31,10 @@ angular.module('AdycttoBett0', ['ngResource', 'ngRoute', 'ngAnimate', 'datatable
           templateUrl: '../angular/views/preventa/confirmar.html',
           controller: 'EditarCtrl'
         })
+				.when('/recargar/:id', {
+          templateUrl: '../angular/views/preventa/credito.html',
+          controller: 'CreditoCtrl'
+        })
 });
 ///Servicio de Angular para Dosificaciones
 var va = angular.module('AdycttoBett0');
@@ -96,6 +100,20 @@ va.factory('PreventaRecursos', function($resource){
 	        return true;
 	      }
 	    });
+			$("#cantidad").keypress(function(e){
+	      var charcode = (e.which)? e.which :e.keyCode;
+	      if(charcode != 46 && charcode >31 && (charcode<48 || charcode >57 )){
+	        e.preventDefault();
+	        return false;
+	      }
+	      if(e.keyCode == '46' || e.charcode == '46'){
+	        if (this.value.indexOf(".")!=-1){
+	          e.preventDefault();
+	          return false;
+	        }
+	        return true;
+	      }
+	    });
 		});
 
 	$scope.capturar = function(){
@@ -128,6 +146,58 @@ va.factory('PreventaRecursos', function($resource){
           if(respuesta == '200_OK'){
             $scope.panel = "alert alert-info";
             $scope.msj = "Se inserto el dato correctamente ";
+						$timeout(function(){
+				      $location.path('/lista');
+				    }, 1500);
+          }else{
+            $scope.panel = "alert alert-danger";
+            $scope.msj = "Error: Intente nuevamente ";
+          }
+    });
+
+
+  }
+
+
+}])
+.controller('CreditoCtrl', ['$scope','$http', 'PreventaRecursos', '$location', '$timeout', '$routeParams', function($scope, $http, PreventaRecursos, $location, $timeout, $routeParams){
+  $scope.titulo = "Recarga de Credito";
+  $scope.botonIcono = "glyphicon glyphicon-ok";
+  $scope.boton = "Confirmar";
+	$scope.botonIcono = "fa fa-save"
+  $scope.accion = "btn btn-warning";
+	$scope.mostrar = "SI";
+  $scope.Preventa = PreventaRecursos.get({
+    id: $routeParams.id
+  });
+
+		$(document).ready(function(){
+
+			$("#cantidad").keypress(function(e){
+	      var charcode = (e.which)? e.which :e.keyCode;
+	      if(charcode != 46 && charcode >31 && (charcode<48 || charcode >57 )){
+	        e.preventDefault();
+	        return false;
+	      }
+	      if(e.keyCode == '46' || e.charcode == '46'){
+	        if (this.value.indexOf(".")!=-1){
+	          e.preventDefault();
+	          return false;
+	        }
+	        return true;
+	      }
+	    });
+		});
+
+  $scope.confirmarRecarga = function(){
+		$scope.mostrar = "NO";
+		console.log($scope.Preventa);
+    PreventaRecursos.update($scope.Preventa, function(data){
+
+          var respuesta = data['respuesta'];
+          if(respuesta == '200_OK'){
+            $scope.panel = "alert alert-info";
+            $scope.msj = "Se actualizo el credito ";
 						$timeout(function(){
 				      $location.path('/lista');
 				    }, 1500);

@@ -102,7 +102,3 @@ Route::get('Estadistica', 'EstadisticaController@angular');
 Route::get('Reporte', 'ReporteController@angular');
 Route::get('reporte', 'ReporteController@index');
 Route::post('reporte', 'ReporteController@store');
-
-
-
-});

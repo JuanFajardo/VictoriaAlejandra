@@ -24,6 +24,7 @@
                   <th>fecha de nacimiento</th>
                   <th>genero</th>
                   <th>Confirmar</th>
+                  <th>Recarga de Credito</th>
               </tr>
           </thead>
           <tbody>
@@ -36,9 +37,10 @@
               <td> {{preventa.fecha_nacimiento}} </td>
               <td> {{preventa.genero}} </td>
 
-              <!-- <td> <a href="#/editar/{{persona.id}}" style="color:#f0ad4e;"> <i class="fa fa-pencil" aria-hidden="true"></i>    </a> </td> -->
               <!--<td> <a href="#/eliminar/{{persona.id}}" style="color:#c12e2a;"> <i class="fa fa-trash-o" aria-hidden="true"></i> </a> </td>-->
-              <td> <a href="#/confirmar/{{preventa.id}}" style="color:#c12e2a;"> <i class="glyphicon glyphicon-ok" aria-hidden="true"></i>  </a> </td>
+              <!-- <td> <a href="#/recarga/{{persona.id}}" style="color:#f0ad4e;"> <i class="fa fa-pencil" aria-hidden="true"></i>    </a> </td> -->
+              <td> <a ng-if="preventa.reserva == '0'" href="#/confirmar/{{preventa.id}}" style="color:#c12e2a;"> <i class="glyphicon glyphicon-ok" aria-hidden="true"></i>  </a> </td>
+              <td> <a ng-if="preventa.reserva == '1'" href="#/recargar/{{preventa.id}}" style="color:blue;"> <i class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></i>  </a> </td>
             </tr>
           </tbody>
       </table>

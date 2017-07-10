@@ -15,7 +15,7 @@ Pre-Venta FEIPOBOL
 @section('js')
 <script type="text/javascript">
 'use strict';
-angular.module('AdycttoBett0', ['ngResource', 'ngRoute', 'ngAnimate', 'vcRecaptcha'])
+angular.module('AdycttoBett0', ['ngResource', 'ngRoute', 'ngAnimate'])
 .config(function($routeProvider){
         $routeProvider
         .when('/crear', {
@@ -33,36 +33,8 @@ va.factory('PreventaRecursos', function($resource){
   $scope.boton = "Reservar";
 	$scope.botonIcono = "material-icons"
   $scope.accion = "btn btn-primary";
-		// $scope.response = null;
-		// $scope.widgetId = null;
-		// $scope.model = {
-		// 	key: '6LdGVycUAAAAADYk0vbqvt2-ZPEuYTaB6quUoXXQ'
-		// };
-		// $scope.setResponse = function (response) {
-		// 	 console.info('Response available');
-		// 	 $scope.response = response;
-	 // 	};
-	  // $scope.setWidgetId = function (widgetId) {
-	  //    console.info('Created widget ID: %s', widgetId);
-	  //    $scope.widgetId = widgetId;
-	  // };
-		// $scope.cbExpiration = function() {
-	  //   console.info('Captcha expired. Resetting response object');
-	  //   vcRecaptchaService.reload($scope.widgetId);
-	  //   $scope.response = null;
-	  // };
 $scope.Preventa={};
   $scope.guardarPreventa = function(){
-
-
-		// var valid;
-    // console.log('sending the captcha response to the server', $scope.response);
-    // if (valid) {
-    //     console.log('Success');
-    // } else {
-    //     console.log('Failed validation');
-    //     vcRecaptchaService.reload($scope.widgetId);
-    // }
 
     PreventaRecursos.save($scope.Preventa, function(data){
 					var respuesta = data['respuesta'];

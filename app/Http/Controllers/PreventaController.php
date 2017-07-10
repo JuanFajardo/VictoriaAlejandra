@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use Input;
 use App\Preventa;
 use App\Persona;
-use ReCaptcha\ReCaptcha;
 class PreventaController extends Controller
 {
   public function angular(){
@@ -19,9 +18,7 @@ class PreventaController extends Controller
   public function index(){
     // $datos = Preventa::all()->where('reserva','=','0');
     $datos = \DB::table('preventa')->select('id', 'nombres', 'apellidos', 'correo',  'carnet',
-       'fecha_nacimiento', 'telefono', 'genero','imagen','tarjeta','reserva' )
-       ->where('reserva','=','0')->get();
-
+       'fecha_nacimiento', 'telefono', 'genero','imagen','tarjeta','reserva','user_id' )->get();
     return $datos;
   }
 
@@ -29,23 +26,7 @@ class PreventaController extends Controller
     $dato = Preventa::find($id);
     return $dato;
   }
-  public function captchaCheck()
-  {
-
-      $response = Input::get('g-recaptcha-response');
-      $remoteip = $_SERVER['REMOTE_ADDR'];
-      $secret   = env('NOCAPTCHA_SECRET');
-
-      $recaptcha = new ReCaptcha($secret);
-      $resp = $recaptcha->verify($response, $remoteip);
-      if ($resp->isSuccess()) {
-          return 1;
-      } else {
-          return 0;
-      }
-  }
   public function store(Request $request){
-     $request['captcha'] = $this->captchaCheck();
     try {
       $v = \Validator::make($request->all(), [
             'nombres'    => 'required',
@@ -55,14 +36,13 @@ class PreventaController extends Controller
 
             'telefono'    => 'required|numeric',
             'genero'    =>  'required',
-            'g-recaptcha-response'  => 'required',
-                'recaptcha'               => 'required|min:1'
         ]);
       if ( count($v->errors()) > 0 ){
             return response()->json(array("respuesta"=>$v->errors()));
       }else{
         $request['reserva'] = 0;
         $request['imagen'] = "";
+        $request['user_id'] = 0;
         $request['fecha_nacimiento'] = date('Y-m-d', strtotime($request->fecha_nacimiento));
         $dato = new Preventa;
         $dato->fill( $request->all() );
@@ -74,6 +54,17 @@ class PreventaController extends Controller
     }
 
   }
+  public function credito(Request $request, $id){
+    try {
+         $datos = \DB::table('credito')->select('id','cantidad')
+         ->where('persona_id','=',$request->user_id)->get();
+          $request->cantidad = $datos['cantidad'] + $request->cantidad;
+         \DB::table('credito')->where('persona_id',$request->user_id)->update(['cantidad' => $request->cantidad]);
+        return response()->json(array("respuesta"=>"200_OK"));
+    } catch (Exception $e) {
+      return "MensajeError -> ".$e->getMessage();
+    }
+  }
   public function update(Request $request, $id){
     try {
 
@@ -81,7 +72,7 @@ class PreventaController extends Controller
           $dato = Preventa::find($id);
           $dato->fill( $request->all() );
           $dato->save();
-          \DB::table('personas')->insert([
+          $ids =\DB::table('personas')->insertGetId([
             'nombres' => $request->nombres.' '.$request->apellidos,
             'direccion' => 'NaN',
             'telefono' => $request->telefono,
@@ -99,6 +90,13 @@ class PreventaController extends Controller
              'horario_id' => '20',
              'stand_id' => '20',
              'user_id' => '1'
+          ]);
+          \DB::table('preventa')->where('tarjeta',$request->tarjeta)->update(['user_id' => $ids]);
+          \DB::table('credito')->insert([
+            'cantidad' => $request->cantidad,
+            'cod_tarjeta' => $request->tarjeta,
+            'persona_id' => $id,
+            'user_id' => '1'
           ]);
           return response()->json(array("respuesta"=>"200_OK"));
     } catch (Exception $e) {
