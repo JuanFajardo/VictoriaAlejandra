@@ -4,12 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-<<<<<<< HEAD
-    "content-hash": "21892c67d4159718e3cf67391966f241",
-=======
-    "hash": "d6bf58a87a0355a8166166711fa7d0c8",
     "content-hash": "94664cbf4581a72e895872b1169aecd5",
->>>>>>> c064b329fbdf342de9db5871e9c0b4fa8d0fb8dc
     "packages": [
         {
             "name": "anhskohbo/no-captcha",
@@ -866,7 +861,7 @@
             ],
             "description": "HTML and Form Builders for the Laravel Framework",
             "homepage": "http://laravelcollective.com",
-            "time": "2017-05-22 06:35:07"
+            "time": "2017-05-22T06:35:07+00:00"
         },
         {
             "name": "league/flysystem",

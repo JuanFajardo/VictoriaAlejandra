@@ -43,11 +43,11 @@ class DatabaseSeeder extends Seeder
         ));
 
         \DB::table('preventa')->insert(array(
-          'id'=>'1', 'nombres'=>'Guido Alberto','apellidos'=>'Lopez Meriles', 'correo'=>'adyctto@gmail.com','carnet'=>'8600518', 'fecha_nacimiento'=>'1992-06-10', 'telefono'=>'79443613','genero'=>'masculino', 'imagen'=>'', 'reserva'=>'0', 'user_id'=>'0'
+          'id'=>'1', 'nombres'=>'Guido Alberto','apellidos'=>'Lopez Meriles', 'correo'=>'adyctto@gmail.com','carnet'=>'8600518', 'fecha_nacimiento'=>'1992-06-10', 'telefono'=>'79443613','genero'=>'masculino', 'imagen'=>'', 'reserva'=>'0', 'persona_id'=>'0'
         ));
 
         \DB::table('preventa')->insert(array(
-          'id'=>'2', 'nombres'=>'Juan Alberto','apellidos'=>'Fajardo Canaza', 'correo'=>'bett0@gmail.com','carnet'=>'12345678', 'fecha_nacimiento'=>'2017-06-16', 'telefono'=>'7999999','genero'=>'masculino', 'imagen'=>'',  'reserva'=>'0', 'user_id'=>'0'
+          'id'=>'2', 'nombres'=>'Juan Alberto','apellidos'=>'Fajardo Canaza', 'correo'=>'bett0@gmail.com','carnet'=>'12345678', 'fecha_nacimiento'=>'2017-06-16', 'telefono'=>'7999999','genero'=>'masculino', 'imagen'=>'',  'reserva'=>'0', 'persona_id'=>'0'
         ));
         \DB::table('cargos')->insert(array(
           'id'      =>'1',
