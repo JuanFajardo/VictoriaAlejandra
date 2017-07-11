@@ -11,8 +11,8 @@
     <link href="{{asset('assets/css/sb-admin.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/plugins/morris.css')}}" rel="stylesheet">
     <link href="{{asset('assets/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
-    <link href="{{asset('assets/timepicker/jquery.timepicker.css')}}" rel="stylesheet" type="text/css">
-    <link href="{{asset('assets/timepicker/jquery.datetimepicker.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{asset('assets/datatimepicker/datetimepicker.css')}}" rel="stylesheet" type="text/css">
+
 
 </head>
 
@@ -72,7 +72,7 @@
                         <a href="{{asset('index.php/Reporte#/lista')}}"><i class="fa fa-fw fa-file-pdf-o"></i> Reportes</a>
                     </li>
                     <li class="@yield('menu6')">
-                        <a href="bootstrap-grid.html"><i class="fa fa-fw fa-bar-chart-o"></i> Estadisticas</a>
+                        <a href="{{asset('index.php/Estadistica')}}"><i class="fa fa-fw fa-bar-chart-o"></i> Estadisticas</a>
                     </li>
                     <li class="@yield('menu7')">
                         <a href="{{asset('index.php/usuarios')}}"><i class="fa fa-fw fa-user"></i> Usuarios</a>
@@ -117,12 +117,9 @@
 
     <script src="{{asset('assets/js/jquery.js')}}"></script>
     <script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
-    <script src="{{asset('assets/timepicker/jquery.timepicker.js')}}"></script>
-    <script src="{{asset('assets/timepicker/jquery.datetimepicker.js')}}"></script>
-    <!-- <script src="{{asset('assets/js/plugins/morris/raphael.min.js')}}"></script>
-    <script src="{{asset('assets/js/plugins/morris/morris.min.js')}}"></script>
-    <script src="{{asset('assets/js/plugins/morris/morris-data.js')}}"></script> -->
-
+    <script src="{{asset('assets/datatimepicker/moment.js')}}"></script>
+    <script src="{{asset('assets/datatimepicker/datetimepicker.js')}}"></script>
+    @yield('morris')
     <script src="{{asset('assets/angular/angular.min.js')}}"></script>
     <script src="{{asset('assets/angular/angular-resource.js')}}"></script>
     <script src="{{asset('assets/angular/angular-route.js')}}"></script>
