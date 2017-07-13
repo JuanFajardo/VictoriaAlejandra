@@ -171,6 +171,7 @@ va.factory('PreventaRecursos', function($resource){
 
 		$(document).ready(function(){
 
+			$scope.Preventa.cantidad = 0;
 			$("#cantidad").keypress(function(e){
 	      var charcode = (e.which)? e.which :e.keyCode;
 	      if(charcode != 46 && charcode >31 && (charcode<48 || charcode >57 )){
@@ -189,9 +190,11 @@ va.factory('PreventaRecursos', function($resource){
 
   $scope.confirmarRecarga = function(){
 		$scope.mostrar = "NO";
-		console.log($scope.Preventa);
-    PreventaRecursos.update($scope.Preventa, function(data){
+    // PreventaRecursos.save($scope.Preventa, function(data){
 
+		var link = "../index.php/preventas/"+$scope.Preventa.persona_id+"/"+$scope.Preventa.cantidad;
+		$http({url:link, method:"GET"}).success(function(data){
+					console.log($scope.Preventa);
           var respuesta = data['respuesta'];
           if(respuesta == '200_OK'){
             $scope.panel = "alert alert-info";

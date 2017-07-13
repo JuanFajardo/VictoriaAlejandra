@@ -54,14 +54,15 @@ class PreventaController extends Controller
     }
 
   }
-  public function credito(Request $request, $id){
+  public function credito($id,$cantidad){
     try {
-        //  $datos = \DB::table('credito')->select('id','cantidad')
-        //  ->where('persona_id','=',$request->persona_id)->get();
-        //  $dat = (array) $datos;
-          // $request->cantidad = $dat[1] + $request->cantidad;
-         \DB::table('credito')->where('persona_id',$request->persona_id)->update(['cantidad' => $request->cantidad]);
-        return response()->json(array("respuesta"=>"200_OK"));
+         $datos = \DB::table('credito')->select('id','cantidad')
+         ->where('persona_id','=',$id)->get();
+          // $result = (array) json_decode($datos);
+          $cantidad =$datos->first()->cantidad + $cantidad;
+         \DB::table('credito')->where('persona_id',$id)->update(['cantidad' => $cantidad]);
+         \DB::table('preventa')->where('persona_id',$id)->update(['cantidad' => $cantidad]);
+        return response()->json(array("respuesta"=>$datos));
     } catch (Exception $e) {
       return "MensajeError -> ".$e->getMessage();
     }
@@ -92,7 +93,7 @@ class PreventaController extends Controller
              'stand_id' => '20',
              'user_id' => '1'
           ]);
-          \DB::table('preventa')->where('tarjeta',$request->tarjeta)->update(['persona_id' => $ids]);
+        \DB::table('preventa')->where('tarjeta',$request->tarjeta)->update(['persona_id' => $ids/*, 'cantidad'=>$request->cantidad*/]);
           \DB::table('credito')->insert([
             'cantidad' => $request->cantidad,
             'cod_tarjeta' => $request->tarjeta,

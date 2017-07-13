@@ -104,8 +104,8 @@ Datos Estadisticos
 	</div>
 </div>
 
-<script type="text/javascript">
-	$(document).ready(function() {
+<script>
+	$(function() {
 		 $('#fecha_inicio').datetimepicker();
 	});
 </script>
@@ -116,6 +116,56 @@ Datos Estadisticos
 
 <script src="{{asset('assets/js/plugins/morris/raphael.min.js')}}"></script>
 <script src="{{asset('assets/js/plugins/morris/morris.min.js')}}"></script>
-<script src="{{asset('assets/js/plugins/morris/morris-data.js')}}"></script>
+<script >
+$(function() {
+
+    // Area Chart
+    Morris.Area({
+        element: 'morris-area-chart',
+        data: [
+							@foreach($datos as $dato)
+									{
+										period: '{{$dato->fecha}}',
+										<?php $ninos = $varon = $mujer = $mayor = 0;
+											$ninos = \DB::table('repetitivos')->where('categoria', '=', 'niños')->where('fecha', '=', $dato->fecha)->count();
+											$varon = \DB::table('repetitivos')->where('categoria', '=', 'hombres')->where('fecha', '=', $dato->fecha)->count();
+											$mujer = \DB::table('repetitivos')->where('categoria', '=', 'mujeres')->where('fecha', '=', $dato->fecha)->count();
+											$mayor = \DB::table('repetitivos')->where('categoria', '=', 'mayor')->where('fecha', '=', $dato->fecha)->count();
+										 ?>
+										infantes: {{$ninos}},
+										mujeres: {{$varon}},
+										varones: {{$mujer}},
+										mayor:  {{$mayor}},
+									},
+							@endforeach
+					],
+        xkey: 'period',
+        ykeys: ['infantes', 'mujeres', 'varones', 'mayor'],
+        labels: ['Niños', 'Mujeres', 'Varones', 'Adulto Mayor'],
+        pointSize: 2,
+        hideHover: 'auto',
+        resize: true
+    });
+
+    // Donut Chart
+    Morris.Donut({
+        element: 'morris-donut-chart',
+        data: [{
+            label: "Download Sales",
+            value: 12
+        }, {
+            label: "In-Store Sales",
+            value: 30
+        }, {
+            label: "In-Store Sales",
+            value: 30
+        }, {
+            label: "sdfdsfsd",
+            value: 40
+        }],
+        resize: true
+    });
+});
+</script>
 
 @endsection
