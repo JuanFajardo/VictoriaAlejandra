@@ -21,6 +21,8 @@ class CreateDetalleVentasTable extends Migration
           $table->decimal('precio',6,2);
           $table->integer('cantidad');
           $table->decimal('total',8,2);
+          $table->date('fecha_registro');
+          $table->time('hora_regitro');
           $table->integer('user_id')->references('id')->on('users');
           $table->softDeletes();
           $table->timestamps();

@@ -18,7 +18,7 @@ class PreventaController extends Controller
   public function index(){
     // $datos = Preventa::all()->where('reserva','=','0');
     $datos = \DB::table('preventa')->select('id', 'nombres', 'apellidos', 'correo',  'carnet',
-       'fecha_nacimiento', 'telefono', 'genero','imagen','tarjeta','reserva','user_id' )->get();
+       'fecha_nacimiento', 'telefono', 'genero','imagen','tarjeta','reserva','persona_id' )->get();
     return $datos;
   }
 
@@ -42,7 +42,7 @@ class PreventaController extends Controller
       }else{
         $request['reserva'] = 0;
         $request['imagen'] = "";
-        $request['user_id'] = 0;
+        $request['persona_id'] = '0';
         $request['fecha_nacimiento'] = date('Y-m-d', strtotime($request->fecha_nacimiento));
         $dato = new Preventa;
         $dato->fill( $request->all() );
@@ -54,13 +54,15 @@ class PreventaController extends Controller
     }
 
   }
-  public function credito(Request $request, $id){
+  public function credito($id,$cantidad){
     try {
          $datos = \DB::table('credito')->select('id','cantidad')
-         ->where('persona_id','=',$request->user_id)->get();
-          $request->cantidad = $datos['cantidad'] + $request->cantidad;
-         \DB::table('credito')->where('persona_id',$request->user_id)->update(['cantidad' => $request->cantidad]);
-        return response()->json(array("respuesta"=>"200_OK"));
+         ->where('persona_id','=',$id)->get();
+          // $result = (array) json_decode($datos);
+          $cantidad =$datos->first()->cantidad + $cantidad;
+         \DB::table('credito')->where('persona_id',$id)->update(['cantidad' => $cantidad]);
+         \DB::table('preventa')->where('persona_id',$id)->update(['cantidad' => $cantidad]);
+        return response()->json(array("respuesta"=>$datos));
     } catch (Exception $e) {
       return "MensajeError -> ".$e->getMessage();
     }
@@ -91,7 +93,7 @@ class PreventaController extends Controller
              'stand_id' => '20',
              'user_id' => '1'
           ]);
-          \DB::table('preventa')->where('tarjeta',$request->tarjeta)->update(['user_id' => $ids]);
+        \DB::table('preventa')->where('tarjeta',$request->tarjeta)->update(['persona_id' => $ids/*, 'cantidad'=>$request->cantidad*/]);
           \DB::table('credito')->insert([
             'cantidad' => $request->cantidad,
             'cod_tarjeta' => $request->tarjeta,

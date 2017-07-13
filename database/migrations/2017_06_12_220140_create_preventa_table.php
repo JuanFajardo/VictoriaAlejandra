@@ -21,7 +21,7 @@ class CreatePreventaTable extends Migration
             $table->integer('reserva');
             $table->integer('tarjeta')->unique()->nullable();
             $table->decimal('cantidad',4,2)->nullable();
-            $table->integer('user_id')->references('id')->on('personas');
+            $table->integer('persona_id')->references('id')->on('personas')->nullable();
 
             $table->softDeletes();
             $table->timestamps();

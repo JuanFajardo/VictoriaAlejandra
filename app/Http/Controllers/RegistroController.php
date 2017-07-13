@@ -55,7 +55,6 @@ class RegistroController extends Controller
         $minuto = date('i');
         $tiqueoHora = strtotime(date('H:i:s'));
         $fecha  = date('Y-m-d');
-
         $tarjeta  = \DB::table('personas')->join('horarios', 'personas.horario_id',  '=', 'horarios.id')
                                           ->join('stands', 'personas.stand_id',  '=', 'stands.id')
                                           ->select(
@@ -63,84 +62,109 @@ class RegistroController extends Controller
                                             'horarios.horario', 'horarios.ingreso_am', 'horarios.salida_am', 'horarios.ingreso_pm',
                                             'horarios.salida_pm', 'horarios.tolerancia', 'horarios.fijo',
                                             'personas.id as personaId', 'personas.nombres', 'personas.genero', 'personas.fecha_nacimiento',  'personas.imagen',
-                                            'stands.nom_empresa' )
+                                            'stands.nom_empresa','stands.id as ids' )
                                           ->where('tarjeta', '=', $id)->get();
         $id="";
         if( count($tarjeta) > 0) {
-
-          $ingresoAM = $tarjeta[0]->ingreso_am == '00:00:00' ? '00:00:00' : strtotime($tarjeta[0]->ingreso_am) + $tarjeta[0]->tolerancia;
-          $salidaAM  = $tarjeta[0]->salida_am == '00:00:00' ? '00:00:00' : strtotime($tarjeta[0]->ingreso_pm);
-          $ingresoPM = $tarjeta[0]->ingreso_pm == '00:00:00' ? '00:00:00' : strtotime($tarjeta[0]->ingreso_pm) + $tarjeta[0]->tolerancia;
-          $salidaPM  = $tarjeta[0]->salida_pm == '00:00:00' ? '00:00:00' : strtotime($tarjeta[0]->salida_pm);
-
-          $persona = $tarjeta[0]->personaId;
-          $horario = $tarjeta[0]->horarioId;
-
-          if($tarjeta[0]->fijo == "NO" ){
-            $cont  = \DB::table('repetitivos')->where('persona_id','=', $persona)
-                                                ->where('fecha',      '=', $fecha)
-                                                ->count();
-            $ingreso = ( $cont % 2 == 0 ) ? 'INGRESO' : 'SALIDA';
-
-            $edad = date('Y') - date('Y',  strtotime($tarjeta[0]->fecha_nacimiento));
-
-            if( $edad > 0 && $edad < 12  )
-              $categoria = "NIÑO";
-            elseif ($edad >= 12 && $edad < 18  )
-              $categoria = "ADOLECENTE";
-            elseif ($edad >= 18 && $edad < 65  )
-              $categoria = "ADULTO";
-            elseif ($edad >= 18 && $edad < 65  )
-              $categoria = "ADULTO MAYOR";
-
-            $dato = new \App\Repetitivo;
-            $dato->fecha      = $fecha;
-            $dato->hora       = date('H:i:s');
-            $dato->categoria  = $categoria;
-            $dato->sexo       = $tarjeta[0]->genero;
-            $dato->marcado    = $ingreso;
-            $dato->persona_id = $persona;
-            $dato->horario_id = $horario;
-            $dato->user_id    = 1;//\Auth::user()->id;
-            $dato->save();
-
-            $respuesta = $tarjeta;
-          }else{
-            $contador= \DB::table('registros')->where('fecha=', $fecha)
-                                              ->where('persona_id', '=', $persona)
-                                              ->where('horario_id', '=', $horario)
-                                              ->get();
-            if(count($contador) == 0){
-                $dato = new Registro;
-                $dato->fecha      = $fecha;
-                $dato->ingreso_am = '00:00:00';
-                $dato->salida_am  = '00:00:00';
-                $dato->ingreso_pm = '00:00:00';
-                $dato->salida_pm  = '00:00:00';
-                $dato->justificacion='';
-                $dato->retraso_am = 0;
-                $dato->retraso_pm = 0;
-                $dato->persona_id = $persona;
-                $dato->horario_id = $horario;
-                $dato->user_id    = 1;//\Auth::user()->id;
-                $dato->save();
+          if($tarjeta[0]->ids ==20){
+            $dat  = \BD::table('credito')->select('id','cantidad','gastado')
+            ->where('persona_id','=',$tarjeta[0]->personaId)->get();
+            $precioEntrada = 20; //Precio de entrada en Bs que se descontara
+            $saldoActual = $dat->first()->cantidad - $precioEntrada;
+            if($saldoActual<0){
+              $respuesta = array("respuesta"=>"500_MAL", "msj"=>"Saldo Insuficiente");
             }
+            else{
+              $totalGastado = $dat->first()->gastado + $precioEntrada;
+              \DB::table('credito')->where('persona_id',$tarjeta[0]->personaId)->update(['cantidad' => $saldoActual, 'gastado' => $totalGastado]);
+              \DB::table('detalle_ventas')->insert([
+                'persona_id' => $tarjeta[0]->personaId,
+                'horarios_id' => '20',
+                'asunto' => 'Entrada FEIPOBOL',
+                'precio' => $precioEntrada,
+                'cantidad' => '1',
+                'total' => $precioEntrada,
+                'fecha_registro' => date("Y-m-d"),
+                'hora_registro' => time("HH-mm-ss"),
+                'user_id' => '1'
+              ]);
+            }
+          }
+          else{
+            $ingresoAM = $tarjeta[0]->ingreso_am == '00:00:00' ? '00:00:00' : strtotime($tarjeta[0]->ingreso_am) + $tarjeta[0]->tolerancia;
+            $salidaAM  = $tarjeta[0]->salida_am == '00:00:00' ? '00:00:00' : strtotime($tarjeta[0]->ingreso_pm);
+            $ingresoPM = $tarjeta[0]->ingreso_pm == '00:00:00' ? '00:00:00' : strtotime($tarjeta[0]->ingreso_pm) + $tarjeta[0]->tolerancia;
+            $salidaPM  = $tarjeta[0]->salida_pm == '00:00:00' ? '00:00:00' : strtotime($tarjeta[0]->salida_pm);
 
-            $registro = \DB::table('registros')->where('fecha', '=', $fecha)
-                                               ->where('persona_id', '=', $persona)
-                                               ->where('horario_id', '=', $horario)
-                                              ->get();
+            $persona = $tarjeta[0]->personaId;
+            $horario = $tarjeta[0]->horarioId;
 
-            $dato = Registro::find($registro[0]->id);
-            $dato->ingreso_am = $tiqueoHora;
-            $dato->salida_am  = $tiqueoHora;
-            $dato->ingreso_pm = $tiqueoHora;
-            $dato->salida_pm  = $tiqueoHora;
-            $dato->retraso_am = ($tiqueoHora - $registro[0]->ingreso_am );
-            $dato->retraso_pm = ($tiqueoHora - $registro[0]->ingreso_pm );
-            $dato->save();
+            if($tarjeta[0]->fijo == "NO" ){
+              $cont  = \DB::table('repetitivos')->where('persona_id','=', $persona)
+                                                  ->where('fecha',      '=', $fecha)
+                                                  ->count();
+              $ingreso = ( $cont % 2 == 0 ) ? 'INGRESO' : 'SALIDA';
 
-            $respuesta = $tarjeta;
+              $edad = date('Y') - date('Y',  strtotime($tarjeta[0]->fecha_nacimiento));
+
+              if( $edad > 0 && $edad < 12  )
+                $categoria = "NIÑO";
+              elseif ($edad >= 12 && $edad < 18  )
+                $categoria = "ADOLECENTE";
+              elseif ($edad >= 18 && $edad < 65  )
+                $categoria = "ADULTO";
+              elseif ($edad >= 18 && $edad < 65  )
+                $categoria = "ADULTO MAYOR";
+
+              $dato = new \App\Repetitivo;
+              $dato->fecha      = $fecha;
+              $dato->hora       = date('H:i:s');
+              $dato->categoria  = $categoria;
+              $dato->sexo       = $tarjeta[0]->genero;
+              $dato->marcado    = $ingreso;
+              $dato->persona_id = $persona;
+              $dato->horario_id = $horario;
+              $dato->user_id    = 1;//\Auth::user()->id;
+              $dato->save();
+
+              $respuesta = $tarjeta;
+            }else{
+              $contador= \DB::table('registros')->where('fecha=', $fecha)
+                                                ->where('persona_id', '=', $persona)
+                                                ->where('horario_id', '=', $horario)
+                                                ->get();
+              if(count($contador) == 0){
+                  $dato = new Registro;
+                  $dato->fecha      = $fecha;
+                  $dato->ingreso_am = '00:00:00';
+                  $dato->salida_am  = '00:00:00';
+                  $dato->ingreso_pm = '00:00:00';
+                  $dato->salida_pm  = '00:00:00';
+                  $dato->justificacion='';
+                  $dato->retraso_am = 0;
+                  $dato->retraso_pm = 0;
+                  $dato->persona_id = $persona;
+                  $dato->horario_id = $horario;
+                  $dato->user_id    = 1;//\Auth::user()->id;
+                  $dato->save();
+              }
+
+              $registro = \DB::table('registros')->where('fecha', '=', $fecha)
+                                                 ->where('persona_id', '=', $persona)
+                                                 ->where('horario_id', '=', $horario)
+                                                ->get();
+
+              $dato = Registro::find($registro[0]->id);
+              $dato->ingreso_am = $tiqueoHora;
+              $dato->salida_am  = $tiqueoHora;
+              $dato->ingreso_pm = $tiqueoHora;
+              $dato->salida_pm  = $tiqueoHora;
+              $dato->retraso_am = ($tiqueoHora - $registro[0]->ingreso_am );
+              $dato->retraso_pm = ($tiqueoHora - $registro[0]->ingreso_pm );
+              $dato->save();
+
+              $respuesta = $tarjeta;
+            }
           }
         }else {
             $respuesta = array("respuesta"=>"500_MAL", "msj"=>"Tarjeta NO VALIDA");
