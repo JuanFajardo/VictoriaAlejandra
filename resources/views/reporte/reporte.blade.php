@@ -10,6 +10,8 @@
 
     <main>
       <div id="details" class="clearfix">
+
+        <img src="{{asset('img/logo_fepp.jpg')}}" width="50" style="float:left; width:50px;">
         <label for=""><strong><h2>FEDERACION DE EMPRESARIOS PRIVADOS POTOSI</h2></strong></label>
         <div class=""><strong>Reporte Registros</strong></div>
         <label for=""><strong><h3>del {{$fecha_inicio}} al {{$fecha_fin}}</h3></strong></label>
