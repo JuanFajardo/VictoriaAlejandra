@@ -101,6 +101,7 @@ Route::delete('trabajador/{id}', 'TrabajadorController@destroy');
 Route::get('Estadistica', 'EstadisticaController@angular');
 Route::get('estadistica', 'EstadisticaController@index');
 Route::get('estadistica/{id}', 'EstadisticaController@show');
+Route::get('estadisticaDona/{inicio}/{fin}/{horario}/{persona}', 'EstadisticaController@dona');
 
 Route::get('Reporte', 'ReporteController@angular');
 Route::get('reporte', 'ReporteController@index');

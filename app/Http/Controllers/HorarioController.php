@@ -23,6 +23,7 @@ class HorarioController extends Controller
 
   public function store(Request $request){
     try {
+
       $request['user_id'] = 1;
 
       $request['ingreso_am'] =  strlen($request->ingreso_am) >0 ? $request->ingreso_am : "00:00:00";
@@ -33,10 +34,10 @@ class HorarioController extends Controller
 
       $v = \Validator::make($request->all(), [
             'horario'    => 'required',
-            'ingreso_am' => 'required|date_format:H:i:s',
-            'salida_am'  => 'required|date_format:H:i:s',
-            'ingreso_pm'  => 'required|date_format:H:i:s',
-            'salida_pm'  => 'required|date_format:H:i:s',
+            'ingreso_am' => 'required',//|date_format:H:i:s',
+            'salida_am'  => 'required',//|date_format:H:i:s',
+            'ingreso_pm'  => 'required',//|date_format:H:i:s',
+            'salida_pm'  => 'required',//|date_format:H:i:s',
             'tolerancia' => 'required|numeric',
             'user_id' => 'required'
         ]);
@@ -64,10 +65,10 @@ class HorarioController extends Controller
 
     $v = \Validator::make($request->all(), [
           'horario'    => 'required',
-          'ingreso_am' => 'required|date_format:H:i:s',
-          'salida_am'  => 'required|date_format:H:i:s',
-          'ingreso_pm'  => 'required|date_format:H:i:s',
-          'salida_pm'  => 'required|date_format:H:i:s',
+          'ingreso_am' => 'required',//|date_format:H:i:s',
+          'salida_am'  => 'required',//|date_format:H:i:s',
+          'ingreso_pm'  => 'required',//|date_format:H:i:s',
+          'salida_pm'  => 'required',//|date_format:H:i:s',
           'tolerancia' => 'required|numeric',
           'user_id' => 'required'
       ]);

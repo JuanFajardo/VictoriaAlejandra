@@ -102,14 +102,18 @@ va.factory('HorarioRecursos', function($resource){
 		tolerancia: 0
 	};
 
+	$scope.ingresos1 = [ {hora:'00:00:00'}, { hora:'01:00:00'}, { hora:'02:00:00'}, { hora:'03:00:00'}, { hora:'04:00:00'}, { hora:'05:00:00'}, { hora:'06:00:00'}, { hora:'07:00:00'}, { hora:'08:00:00'}, { hora:'09:00:00'}, { hora:'10:00:00'}, { hora:'11:00:00'}, { hora:'12:00:00'}, { hora:'13:00:00'}, { hora:'14:00:00'},
+	{ hora:'15:00:00'}, { hora:'16:00:00'}, { hora:'17:00:00'}, { hora:'18:00:00'}, { hora:'19:00:00'}, { hora:'20:00:00'}, { hora:'21:00:00'}, { hora:'22:00:00'}, { hora:'23:00:00'}, { hora:'24:00:00'} ];
+
 	$scope.ingresoAm = function(){
 		var horario = $scope.Horario.ingreso_am;
 		horario = horario.split(':');
 		var tiempos = [{hora:"00:00:00"}];
-		for(var i=horario[0]; i<=24; i++){
+		var inicio = parseInt(horario[0]) + 1;
+		for(var i=inicio; i<=24; i++){
 			if(tiempos[0].hora == '00:00:00')
         tiempos.shift();
-			if(i.length == 1)
+			if(i.length < 10)
 				tiempos.push({hora: "0"+i+":00:00"});
 			else
 				tiempos.push({hora: i+":00:00"});
@@ -120,12 +124,14 @@ va.factory('HorarioRecursos', function($resource){
 	$scope.salidaAm = function(){
 		var horario = $scope.Horario.salida_am;
 		horario = horario.split(':');
-		var tiempos = [{hora:"00:00:00"}];
-		for(var i=horario[0]; i<=24; i++){
+		var tiempos= [{hora:"00:00:00"}];
+		var inicio = parseInt(horario[0]) + 1;
+		var valor  = "";
+		for(var i=inicio; i<=24; i++){
 			if(tiempos[0].hora == '00:00:00')
         tiempos.shift();
-			if(i.length == 1)
-				tiempos.push({hora: "0"+i+":00:00"});
+			if(i.length < 10)
+				tiempos.push({hora: "0"+i+":00:00" });
 			else
 				tiempos.push({hora: i+":00:00"});
 		}
@@ -136,11 +142,11 @@ va.factory('HorarioRecursos', function($resource){
 		var horario = $scope.Horario.ingreso_pm;
 		horario = horario.split(':');
 		var tiempos = [{hora:"00:00:00"}];
-		for(var i=horario[0]; i<=24; i++){
+		var inicio = parseInt(horario[0]) + 1;
+		for(var i=inicio; i<=24; i++){
 			if(tiempos[0].hora == '00:00:00')
         tiempos.shift();
-
-			if(i.length == 1)
+			if(i.length < 10)
 				tiempos.push({hora: "0"+i+":00:00"});
 			else
 				tiempos.push({hora: i+":00:00"});

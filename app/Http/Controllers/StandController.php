@@ -73,12 +73,11 @@ class StandController extends Controller
     $v = \Validator::make($request->all(), [
         'nom_empresa'    => 'required',
         'cant_personal'    => 'required',
-        'cant_per_reg'    => 'required',
+        //'cant_per_reg'    => 'required',
         'descripcion'    => 'required',
         'encargado'    => 'required',
         'direccion'    => 'required',
         'telefono'    => 'required',
-        'logo'    => 'required',
         'user_id' => 'required'
       ]);
     if ( count($v->errors()) > 0 ){

@@ -98,6 +98,8 @@ va.factory('PersonalRecursos', function($resource){
 	$scope.botonIcono = "fa fa-save"
   $scope.accion = "btn btn-primary";
 	$scope.mostrar = "SI";
+	$scope.civiles = [{id:"soltero", valor:"Soltera(o)"}, {id:"casado", valor:"Casada(o)"}, {id:"viudo", valor:"Viuda(o)"} ];
+	$scope.sexos = [ {id:"femenino", valor:"Femenino"},  {id:"masculino", valor:"Masculino"} ];
 
 	$(document).ready(function(){
 		$("#telefono").keypress(function(e){
@@ -127,7 +129,6 @@ va.factory('PersonalRecursos', function($resource){
 	};
 
 	var fecha = fecha(new Date());
-
   $scope.Persona={
 		tolerancia: 0,
 		fecha_inscripcion: fecha
@@ -193,26 +194,28 @@ va.factory('PersonalRecursos', function($resource){
 	$scope.botonIcono = "fa fa-save"
   $scope.accion = "btn btn-warning";
 	$scope.mostrar = "SI";
+	$scope.civiles = [{id:"soltero", valor:"Soltera(o)"}, {id:"casado", valor:"Casada(o)"}, {id:"viudo", valor:"Viuda(o)"} ];
+	$scope.sexos = [ {id:"femenino", valor:"Femenino"},  {id:"masculino", valor:"Masculino"} ];
   $scope.Persona = PersonalRecursos.get({
     id: $routeParams.id
   });
 
-		$(document).ready(function(){
-			$("#telefono").keypress(function(e){
-	      var charcode = (e.which)? e.which :e.keyCode;
-	      if(charcode != 45 && charcode >31 && (charcode<48 || charcode >57 )){
-	        e.preventDefault();
-	        return false;
-	      }
-	      if(e.keyCode == '45' || e.charcode == '45'){
-	        if (this.value.indexOf("-")!=-1){
-	          e.preventDefault();
-	          return false;
-	        }
-	        return true;
-	      }
-	    });
-		});
+	$(document).ready(function(){
+		$("#telefono").keypress(function(e){
+	     var charcode = (e.which)? e.which :e.keyCode;
+	     if(charcode != 45 && charcode >31 && (charcode<48 || charcode >57 )){
+	       e.preventDefault();
+	       return false;
+	     }
+	     if(e.keyCode == '45' || e.charcode == '45'){
+	       if (this.value.indexOf("-")!=-1){
+	         e.preventDefault();
+	         return false;
+	       }
+	       return true;
+	     }
+	   });
+	});
 
 	$scope.capturar = function(){
 		var video = document.getElementById('video'),
@@ -226,13 +229,11 @@ va.factory('PersonalRecursos', function($resource){
 													navigator.webkitGetUserMedia ||
 													navigator.mozGetUserMedia ||
 													navigator.msGetUserMedia;
-
 			context.drawImage(video, 0, 0, 200,200  );
 			photo.setAttribute('src', canvas.toDataURL('image/png'));
 			imagen.setAttribute('value', canvas.toDataURL('image/png'));
 			$scope.Persona.imagen	= canvas.toDataURL('image/png');
 	}
-
 
 	var link = "../index.php/horario";
 	$http({url:link, method:"GET"}).success(function(data){
@@ -243,28 +244,21 @@ va.factory('PersonalRecursos', function($resource){
 	$http({url:link, method:"GET"}).success(function(data){
 		$scope.stands = data;
 	});
-
-
-  $scope.guardarHorario = function(){
-		$scope.mostrar = "NO";
-    HorarioRecursos.update($scope.Horario, function(data){
+	//guardarHorario
+  $scope.guardarPersona = function(){
+		//$scope.mostrar = "NO";
+    PersonalRecursos.update($scope.Persona, function(data){
           var respuesta = data['respuesta'];
           if(respuesta == '200_OK'){
             $scope.panel = "alert alert-info";
-            $scope.msj = "Se inserto el dato correctamente ";
-						$timeout(function(){
-				      $location.path('/lista');
-				    }, 1500);
+            $scope.msj = "Se actualizo el dato correctamente ";
+						$timeout(function(){ $location.path('/lista'); }, 1500);
           }else{
             $scope.panel = "alert alert-danger";
             $scope.msj = "Error: Intente nuevamente ";
           }
     });
-
-
   }
-
-
 }])
 .controller('EliminarCtrl', ['$scope', 'PersonalRecursos', '$routeParams', '$location', '$timeout', function($scope, PersonalRecursos, $routeParams, $location, $timeout){
   $scope.titulo = "Eliminar horario";

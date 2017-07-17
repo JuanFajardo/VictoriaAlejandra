@@ -4,7 +4,7 @@
 	Estadisticas
 @endsection
 
-@section('menu4')
+@section('menu6')
 active
 @endsection
 
@@ -51,7 +51,7 @@ Datos Estadisticos
 										@endforeach
 				          </datalist>
 				        </div>
-				        <div class="col-md-12">
+				        <!--<div class="col-md-12">
 				          <label> Stand </label>
 				          <input type="text" class="form-control" name="stand" id="stand" list="stand-lista">
 				          <datalist id="stand-lista">
@@ -59,7 +59,7 @@ Datos Estadisticos
 					          	<option  value="{{$stand->id}} {{$stand->nom_empresa}}">
 										@endforeach
 				          </datalist>
-				        </div>
+				        </div>-->
 				        <div class="col-md-12">
 				          <label> Persona </label>
 				          <input type="text" class="form-control" name="persona" id="persona" list="persona-lista">
@@ -70,7 +70,7 @@ Datos Estadisticos
 				          </datalist>
 				        </div>
 								<div class="col-md-12">
-								 <br/><a class="btn btn-info " >Generar Estadistica <i class="fa fa-fw fa-bar-chart-o"></i></a>
+								 <br/><a class="btn btn-info" id="graficar" >Generar Estadistica <i class="fa fa-fw fa-bar-chart-o"></i></a>
 							 </div>
 				      </div>
 				    </form>
@@ -92,7 +92,7 @@ Datos Estadisticos
 					<div class="col-md-12">
 						<div class="panel panel-green">
             	<div class="panel-heading"> Reporte Estadistico </div>
-              <div class="panel-body">
+              <div class="panel-body" id="graficarDona">
             		<div id="morris-donut-chart"></div>
               </div>
             </div>
@@ -104,21 +104,13 @@ Datos Estadisticos
 	</div>
 </div>
 
-<script>
-	$(function() {
-		 $('#fecha_inicio').datetimepicker();
-	});
-</script>
 @endsection
 
-
 @section('morris')
-
 <script src="{{asset('assets/js/plugins/morris/raphael.min.js')}}"></script>
 <script src="{{asset('assets/js/plugins/morris/morris.min.js')}}"></script>
 <script >
 $(function() {
-
     // Area Chart
     Morris.Area({
         element: 'morris-area-chart',
@@ -147,25 +139,30 @@ $(function() {
         resize: true
     });
 
-    // Donut Chart
-    Morris.Donut({
-        element: 'morris-donut-chart',
-        data: [{
-            label: "Download Sales",
-            value: 12
-        }, {
-            label: "In-Store Sales",
-            value: 30
-        }, {
-            label: "In-Store Sales",
-            value: 30
-        }, {
-            label: "sdfdsfsd",
-            value: 40
-        }],
-        resize: true
-    });
+
 });
+
+ $('#graficar').click(function(){
+	 var inicio  = $('#fecha_inicio').val();
+	 var fin 		 = $('#fecha_fin').val();
+	 var horario = ($('#horario').val()).split(' ')[0];
+	 var persona = ($('#persona').val()).split(' ')[0];
+
+	 var link = "{{asset('index.php/estadisticaDona/')}}/"+inicio+"/"+fin+"/"+horario+"/"+persona;
+
+	 $.get(link, function( datos ){
+		 var informacion = JSON.parse(datos);
+		 var donut = new Morris.Donut({
+ 			 element: 'morris-donut-chart',
+ 			 data: informacion,
+ 			 backgroundColor: '#ccc',
+  		 	 labelColor: '#060',
+  			 colors: ['#DD4B39','#4486F7','#FAC504','#019C5A'],
+ 			 hideHover: 'auto'
+ 	 	});
+	 });
+
+ });
 </script>
 
 @endsection
