@@ -139,7 +139,6 @@ $(function() {
         resize: true
     });
 
-
 });
 
  $('#graficar').click(function(){

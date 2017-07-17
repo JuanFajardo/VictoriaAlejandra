@@ -20,49 +20,73 @@ class ReporteController extends Controller
 
   public function store(Request $request){
         //return $request->all();
+        $horario = explode(' ', $request->horario);
+        $stand = explode(' ', $request->stand);
+        $persona = explode(' ', $request->persona);
 
-        $persona    = explode(' ', $request->horario);
-        $fecha_fin    = $request->fecha_fin;
+        $fecha_fin = $request->fecha_fin;
+        $fecha_fin = date_format( date_create($fecha_fin), 'Y-m-d' );
         $fecha_inicio = $request->fecha_inicio;
-        $datos = \DB::table('personas')->select('nombres', 'carnet',
-           'fecha_inscripcion', 'horario_id', 'stand_id')
-           ->where([['fecha_inscripcion','>=','$fecha_inicio'],
-           ['fecha_inscripcion','<=','$fecha_fin'],
-           ['horario_id','=',"'".$persona[0]."'"],])->get();
-        // $datos2 = \DB::table('horarios')->select('horario')
-        //     ->where('id','=',"'".$datos['horario_id']."'")->get();
-        // $datos['horario_id']=$datos2['horario'];
-        //
-        //  $datos3 = \DB::table('stands')->select('nom_empresa')
-        //      ->where('id','=',"'".$datos['stadn_id']."'")->get();
-        // $datos['stand_id']`=$datos3['nom_empresa'];
-        //   $sqlPersona = " and  '".$persona[0]."' ";
-        // }else {
-        //   $sqlPersona = "";
-        // }
-        // if( isset($request->horario)){
-        //   $horario    = explode(' ', $request->horario);
-        //   $sqlHorario = "and '".$horario[0]."' ";
-        // }else {
-        //   $sqlHorario = " ";
-        // }
-        // if( isset($request->stand) ){
-        //   $stand      = explode(' ', $request->stand);
-        //   $sqlStand = "and '".$stand[0]."' ";
-        // }else {
-        //   $sqlStand = "";
-        // }
-        //
-        // $datos = \DB::table('registros')->join('personas', 'registros.persona_id', '=', 'personas.id')
-        //                                 ->whereRaw($sqlHorario)
-        //                                ->select('registros.*', 'personas.nombres')
-        //                                ->get();
-        // return $datos;
-
-        // $data = $this->getData();
-        $date = date('Y-m-d');
+        $fecha_inicio = date_format( date_create($fecha_inicio), 'Y-m-d' );
+        if(isset($request->horario) && !isset($request->stand) && !isset($request->persona)){
+          $datos = \DB::table('registros')
+            ->join('personas', 'registros.persona_id', '=', 'personas.id')
+            ->join('horarios', 'registros.horario_id', '=', 'horarios.id')
+            ->join('stands', 'personas.stand_id', '=', 'stands.id')
+            ->select('personas.nombres as no','horarios.horario','stands.nom_empresa',
+                     'registros.fecha','registros.ingreso_am','registros.salida_am',
+                     'registros.ingreso_pm','registros.salida_pm','registros.retraso_am',
+                     'registros.retraso_pm','registros.justificacion','registros.horario_id')
+            ->where([
+              ['registros.fecha','>',$fecha_inicio],
+              ['registros.fecha','<',$fecha_fin],
+              ['registros.horario_id','=',$horario[0]],
+            ])
+            ->orderBy('registros.fecha', 'desc')
+            ->get();
+        }
+        else{
+          if(!isset($request->horario) && !isset($request->stand) && isset($request->persona)){
+            $datos = \DB::table('registros')
+              ->join('personas', 'registros.persona_id', '=', 'personas.id')
+              ->join('horarios', 'registros.horario_id', '=', 'horarios.id')
+              ->join('stands', 'personas.stand_id', '=', 'stands.id')
+              ->select('personas.nombres as no','horarios.horario','stands.nom_empresa',
+                       'registros.fecha','registros.ingreso_am','registros.salida_am',
+                       'registros.ingreso_pm','registros.salida_pm','registros.retraso_am',
+                       'registros.retraso_pm','registros.justificacion','registros.horario_id')
+              ->where([
+                ['registros.fecha','>',$fecha_inicio],
+                ['registros.fecha','<',$fecha_fin],
+                ['registros.persona_id','=',$persona[0]],
+              ])
+              ->orderBy('registros.fecha', 'desc')
+              ->get();
+          }
+          else{
+            if(isset($request->horario) && !isset($request->stand) && isset($request->persona)){
+              $datos = \DB::table('registros')
+                ->join('personas', 'registros.persona_id', '=', 'personas.id')
+                ->join('horarios', 'registros.horario_id', '=', 'horarios.id')
+                ->join('stands', 'personas.stand_id', '=', 'stands.id')
+                ->select('personas.nombres as no','horarios.horario','stands.nom_empresa',
+                         'registros.fecha','registros.ingreso_am','registros.salida_am',
+                         'registros.ingreso_pm','registros.salida_pm','registros.retraso_am',
+                         'registros.retraso_pm','registros.justificacion','registros.horario_id')
+                ->where([
+                  ['registros.fecha','>',$fecha_inicio],
+                  ['registros.fecha','<',$fecha_fin],
+                  ['registros.persona_id','=',$persona[0]],
+                  ['registros.horario_id','=',$horario[0]],
+                ])
+                ->orderBy('registros.fecha', 'desc')
+                ->get();
+            }
+          }
+        }
+        $data = date('Y-m-d');
         $invoice = "2222";
-        $view =  \View::make('reporte.reporte', compact('datos', 'date', 'invoice'))->render();
+        $view =  \View::make('reporte.reporte', compact('datos', 'fecha_inicio','fecha_fin', 'horario', 'stand', 'personas'))->render();
         $pdf = \App::make('dompdf.wrapper');
         $pdf->setPaper('letter', 'landscape');
         $pdf->loadHTML($view);

@@ -15,6 +15,7 @@ Pre-Venta FEIPOBOL
 @section('js')
 <script type="text/javascript">
 'use strict';
+
 angular.module('AdycttoBett0', ['ngResource', 'ngRoute', 'ngAnimate'])
 .config(function($routeProvider){
         $routeProvider
@@ -33,18 +34,23 @@ va.factory('PreventaRecursos', function($resource){
   $scope.boton = "Reservar";
 	$scope.botonIcono = "material-icons"
   $scope.accion = "btn btn-primary";
+	$scope.numero1 = Math.round((Math.random()*10+1));
+	$scope.numero2 = Math.round((Math.random()*10+1));
 $scope.Preventa={};
   $scope.guardarPreventa = function(){
-
+		$scope.Preventa.num1 = $scope.numero1;
+		$scope.Preventa.num2 = $scope.numero2;
+		console.log($scope.Preventa);
     PreventaRecursos.save($scope.Preventa, function(data){
 					var respuesta = data['respuesta'];
           if(respuesta == '200_OK'){
             $scope.panel = "alert alert-info";
-            $scope.msj = "Se realizo correctamente la reserva";
-						$timeout(function(){
-              $location.path('/crear');
-            }, 1500);
+						$scope.msj = "Se realizo correctamente la reserva";
+						$('.collapsible').collapsible('close', 0);
+						$scope.Preventa  = "";
           }else{
+						$scope.numero1 = Math.round((Math.random()*10+1));
+						$scope.numero2 = Math.round((Math.random()*10+1));
             $scope.panel = "alert alert-danger";
             $scope.msj = respuesta;
           }

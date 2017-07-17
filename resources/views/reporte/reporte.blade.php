@@ -9,35 +9,38 @@
   <body style="width:21cm;">
 
     <main>
-      <div class="col md-12">
-        guido lopez
-      </div>
       <div id="details" class="clearfix">
-        <div id="invoice center-align">
-          <h1>INVOICE {{ $invoice }}</h1>
-          <div >Fecha de generacion: {{ date('d/m/Y') }}</div>
-        </div>
+        <label for=""><strong><h2>FEDERACION DE EMPRESARIOS PRIVADOS POTOSI</h2></strong></label>
+        <div class=""><strong>Reporte Registros</strong></div>
+        <label for=""><strong><h3>del {{$fecha_inicio}} al {{$fecha_fin}}</h3></strong></label>
+        <div >Fecha de generacion: {{ date('d/m/Y') }}</div>
       </div>
       <table border="0" cellspacing="0" cellpadding="0">
         <thead>
           <tr>
-            <th class="no">N°</th>
-            <th class="desc">Nombres y Apellidos</th>
-            <th class="unit">C.I.</th>
-            <th class="total">Fecha Inscripcion</th>
-            <th class="unit">Horario</th>
-            <th class="total">Stand</th>
+            <th class="total">N°</th>
+            <th class="total">Fecha</th>
+            <th class="total">Nombres y Apellidos</th>
+            <th class="total">Ingreso A.M.</th>
+            <th class="total">Salida A.M.</th>
+            <th class="total">Retraso A.M.</th>
+            <th class="total">Ingreso P.M.</th>
+            <th class="total">Salida P.M.</th>
+            <th class="total">Retraso P.M.</th>
           </tr>
         </thead>
         <tbody>
           @foreach($datos as $data)
           <tr>
-            <td class="no">1</td>
-            <td class="desc">{{ $data->nombres }}</td>
-            <td class="unit">{{ $data->carnet }}</td>
-            <td class="total">{{ $data->fecha_nacimiento }} </td>
-            <td class="unit">{{ $data->horario_id }}</td>
-            <td class="">{{ $data->stand_id }} </td>
+            <td class="unit">1</td>
+            <td class="unit">{{ $data->fecha }}</td>
+            <td class="unit">{{ $data->no }}</td>
+            <td class="unit">{{ $data->ingreso_am }} </td>
+            <td class="unit">{{ $data->salida_am }}</td>
+            <td class="unit">{{ $data->retraso_am }}</td>
+            <td class="unit">{{ $data->ingreso_pm }} </td>
+            <td class="unit">{{ $data->salida_pm }} </td>
+            <td class="unit">{{ $data->retraso_pm }} </td>
           </tr>
           @endforeach
         </tbody>
