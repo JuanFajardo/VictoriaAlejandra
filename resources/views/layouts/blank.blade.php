@@ -11,7 +11,8 @@
 
     <link href="{{asset('assets/css/plugins/morris.css')}}" rel="stylesheet">
     <link href="{{asset('assets/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
-    <link href="{{asset('assets/timepicker/jquery.timepicker.css')}}" rel="stylesheet" type="text/css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.10.0/jquery.timepicker.css
+" rel="stylesheet" type="text/css">
 
 </head>
 
@@ -23,7 +24,8 @@
       </div>
     <script src="{{asset('assets/js/jquery.js')}}"></script>
     <script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
-    <script src="{{asset('assets/timepicker/jquery.timepicker.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.10.0/jquery.timepicker.js
+"></script>
     <!-- <script src="{{asset('assets/js/plugins/morris/raphael.min.js')}}"></script>
     <script src="{{asset('assets/js/plugins/morris/morris.min.js')}}"></script>
     <script src="{{asset('assets/js/plugins/morris/morris-data.js')}}"></script> -->

@@ -105,9 +105,10 @@ Datos Estadisticos
 </div>
 
 <script>
-	$(function() {
-		 $('#fecha_inicio').datetimepicker();
-	});
+	$( function() {
+		$( "#fecha_inicio" ).datepicker();
+			$( "#fecha_fin" ).datepicker();
+	} );
 </script>
 @endsection
 

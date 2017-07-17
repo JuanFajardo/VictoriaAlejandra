@@ -46,7 +46,7 @@ $scope.Preventa={};
           if(respuesta == '200_OK'){
             $scope.panel = "alert alert-info";
 						$scope.msj = "Se realizo correctamente la reserva";
-						$('.collapsible').collapsible('close', 4);
+						$('.collapsible').collapsible('close', 0);
 						$scope.Preventa  = "";
           }else{
 						$scope.numero1 = Math.round((Math.random()*10+1));

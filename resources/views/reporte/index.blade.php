@@ -34,11 +34,11 @@ Listar
       <div class="row">
         <div class="col-md-6">
           <label> Fecha Inicio</label>
-          <input type="date"  class="form-control" name="fecha_inicio" id="fecha_inicio" required>
+          <input type="text"  class="form-control" name="fecha_inicio" id="fecha_inicio" required>
         </div>
         <div class="col-md-6">
           <label> Fecha Fin</label>
-          <input type="date"  class="form-control" name="fecha_fin" id="fecha_fin" required>
+          <input type="text"  class="form-control" name="fecha_fin" id="fecha_fin" required>
         </div>
       </div>
 
@@ -86,5 +86,10 @@ Listar
     </form>
     </div>
 </div>
-
+<script type="text/javascript">
+$( function() {
+	$( "#fecha_inicio" ).datepicker();
+		$( "#fecha_fin" ).datepicker();
+});
+</script>
 @endsection

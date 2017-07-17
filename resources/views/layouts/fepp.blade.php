@@ -11,8 +11,11 @@
     <link href="{{asset('assets/css/sb-admin.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/plugins/morris.css')}}" rel="stylesheet">
     <link href="{{asset('assets/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
-    <link href="{{asset('assets/datatimepicker/datetimepicker.css')}}" rel="stylesheet" type="text/css">
-
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.10.0/jquery.timepicker.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 </head>
 
@@ -115,10 +118,11 @@
     </div>
 
 
-    <script src="{{asset('assets/js/jquery.js')}}"></script>
+    <!-- <script src="{{asset('assets/js/jquery.js')}}"></script> -->
     <script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
-    <script src="{{asset('assets/datatimepicker/moment.js')}}"></script>
-    <script src="{{asset('assets/datatimepicker/datetimepicker.js')}}"></script>
+
+    <!-- <script src="{{asset('assets/datatimepicker/moment.js')}}"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.10.0/jquery.timepicker.js"></script>
     @yield('morris')
     <script src="{{asset('assets/angular/angular.min.js')}}"></script>
     <script src="{{asset('assets/angular/angular-resource.js')}}"></script>
