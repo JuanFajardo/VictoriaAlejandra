@@ -36,18 +36,25 @@ class PreventaController extends Controller
 
             'telefono'    => 'required|numeric',
             'genero'    =>  'required',
+            'captcha' => 'required|numeric'
         ]);
       if ( count($v->errors()) > 0 ){
             return response()->json(array("respuesta"=>$v->errors()));
       }else{
-        $request['reserva'] = 0;
-        $request['imagen'] = "";
-        $request['persona_id'] = '0';
-        $request['fecha_nacimiento'] = date('Y-m-d', strtotime($request->fecha_nacimiento));
-        $dato = new Preventa;
-        $dato->fill( $request->all() );
-        $dato->save();
-        return response()->json(array("respuesta"=>"200_OK"));
+        $num = $request['num1'] + $request['num2'];
+        if($num == $request['captcha']){
+          $request['reserva'] = 0;
+          $request['imagen'] = "";
+          $request['persona_id'] = '0';
+          $request['fecha_nacimiento'] = date('Y-m-d', strtotime($request->fecha_nacimiento));
+          $dato = new Preventa;
+          $dato->fill( $request->all() );
+          $dato->save();
+          return response()->json(array("respuesta"=>"200_OK"));
+        }
+        else{
+          return response()->json(array("respuesta"=>"Suma Incorrecta..."));
+        }
       }
     } catch (Exception $e) {
       return "MensajeError -> ".$e->getMessage();

@@ -11,79 +11,91 @@
 
               </div>
             </div>
-            <div class="row">
-              <div class="col s12">
-                <h2 class="center-align">{{titulo}}</h2>
-              </div>
+            <ul class="collapsible" data-collapsible="accordion">
+              <li>
+                <div class="collapsible-header ">
+                  <h2 class="center-align">{{titulo}}</h2>
+                </div>
+                <div class="collapsible-body">
+                  <div class="row">
+                      <form class="col s12" autocomplete="off" ng-submit="guardarPreventa()" enctype="multipart/form-data">
+                          <div class="row">
+                              <div class="input-field col m6 s12">
+                                  <i class="material-icons prefix">contacts</i>
+                                  <input ng-model="Preventa.nombres" id="nombres" type="text" class="validate" required="required" data-parsley-required-message="Campo obligatorio"
+                                  data-parsley-trigger="change focusout" data-parsley-pattern="/^[a-zA-Z]*$/">
+                                  <label for="nombres">Nombre(s)</label>
+                              </div>
+                              <div class="input-field col m6 s12">
+                                  <input ng-model="Preventa.apellidos" id="apellidos" type="text" class="validate">
+                                  <label for="apellidos">Apellido(s)</label>
+                              </div>
+                          </div>
+                          <div class="row">
+                              <div class="input-field col m6 s12">
+                                  <i class="material-icons prefix">email</i>
+                                  <input ng-model="Preventa.correo" id="correo" type="email" class="validate" required>
+                                  <label for="correo">Correo Electronico</label>
+                              </div>
+                              <div class="input-field col m6 s12">
+                                  <i class="material-icons prefix">web</i>
+                                  <input ng-model="Preventa.carnet" id="carnet" type="number" maxlength = "9" class="validate" required>
+                                  <label for="carnet">Cedula de identidad</label>
+                              </div>
+                          </div>
 
-            </div>
-            <div class="row">
-                <form class="col s12" autocomplete="off" ng-submit="guardarPreventa()" enctype="multipart/form-data">
-                    <div class="row">
-                        <div class="input-field col m6 s12">
-                            <i class="material-icons prefix">contacts</i>
-                            <input ng-model="Preventa.nombres" id="nombres" type="text" class="validate" required="required" data-parsley-required-message="Campo obligatorio"
-                            data-parsley-trigger="change focusout" data-parsley-pattern="/^[a-zA-Z]*$/">
-                            <label for="nombres">Nombre(s)</label>
-                        </div>
-                        <div class="input-field col m6 s12">
-                            <input ng-model="Preventa.apellidos" id="apellidos" type="text" class="validate">
-                            <label for="apellidos">Apellido(s)</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col m6 s12">
-                            <i class="material-icons prefix">email</i>
-                            <input ng-model="Preventa.correo" id="correo" type="email" class="validate" required>
-                            <label for="correo">Correo Electronico</label>
-                        </div>
-                        <div class="input-field col m6 s12">
-                            <i class="material-icons prefix">web</i>
-                            <input ng-model="Preventa.carnet" id="carnet" type="number" maxlength = "9" class="validate" required>
-                            <label for="carnet">Cedula de identidad</label>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="input-field col m6 s12">
-                              <i class="material-icons prefix">today</i>
-                            <input type="text" ng-model="Preventa.fecha_nacimiento" id="fecha_nacimiento">
-                            <label for="fecha_nacimiento">Fecha de Nacimiento. Ej. 10/02/1992</label>
-                        </div>
-                        <div class="input-field col m6 s12">
-                            <i class="material-icons prefix">contact_phone</i>
-                            <input ng-model="Preventa.telefono" id="telefono" type="number" class="validate" required>
-                            <label for="telefono">Numero de Telefono / Celular</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                      <div class="input-field col s12">
-                        <label>Genero</label>
-                        <br/>
-                      </div>
-                      <div class="input-field col m6 s12 center-align">
-                        <input ng-model="Preventa.genero" name="group1" type="radio" id="mas" value="masculino"/>
-                        <label for="mas">Masculino</label>
-                      </div>
-                      <div class="input-field col m6 s12 center-align">
-                        <input  ng-model="Preventa.genero" name="group1" type="radio" id="fem"  value="femenino"/>
-                        <label for="fem">Femenino</label>
-                      </div>
-                    </div>
-                    <div class="row">
-                        <div class="col m12">
-                          <p class="center-align">
-                             <button type="submit" name="button" class="btn waves-effect waves-light pulse btn-large red darken-4" data-target="modal1">{{boton}}
-                               <i class="{{botonIcono}}">send</i>
-                             </button>
-                          </p>
-                             <div class="col-md-6">
-                               <div class="{{panel}}" role="alert"> <strong>{{msj}}</strong> </div>
-                             </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
+                          <div class="row">
+                              <div class="input-field col m6 s12">
+                                    <i class="material-icons prefix">today</i>
+                                  <input type="text" ng-model="Preventa.fecha_nacimiento" id="fecha_nacimiento">
+                                  <label for="fecha_nacimiento">Fecha de Nacimiento. Ej. 10/02/1992</label>
+                              </div>
+                              <div class="input-field col m6 s12">
+                                  <i class="material-icons prefix">contact_phone</i>
+                                  <input ng-model="Preventa.telefono" id="telefono" type="number" class="validate" required>
+                                  <label for="telefono">Numero de Telefono / Celular</label>
+                              </div>
+                          </div>
+                          <div class="row">
+                            <div class="input-field col s12">
+                              <label>Genero</label>
+                              <br/>
+                            </div>
+                            <div class="input-field col m6 s12 center-align">
+                              <input ng-model="Preventa.genero" name="group1" type="radio" id="mas" value="masculino"/>
+                              <label for="mas">Masculino</label>
+                            </div>
+                            <div class="input-field col m6 s12 center-align">
+                              <input  ng-model="Preventa.genero" name="group1" type="radio" id="fem"  value="femenino"/>
+                              <label for="fem">Femenino</label>
+                            </div>
+                          </div>
+                          <div class="row">
+                              <div class="input-field col m12 s12">
+                                  <i class="material-icons prefix">verified_user</i>
+                                  <input ng-model="Preventa.captcha" id="captcha" type="number" class="validate" required>
+                                  <label for="telefono">La suma de {{numero1}} + {{numero2}} es?</label>
+                              </div>
+                          </div>
+                          <div class="row">
+                              <div class="col m12">
+                                <p class="center-align">
+                                   <button type="submit" name="button" class="btn waves-effect waves-light pulse btn-large red darken-4" data-target="modal1">{{boton}}
+                                     <i class="{{botonIcono}}">send</i>
+                                   </button>
+                                </p>
+                              </div>
+                          </div>
+                      </form>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div class="collapsible-header ">
+                  <div class="{{panel}} center-align" role="alert"> <strong><h5>{{msj}}</h5></strong> </div>
+                </div>
+              </li>
+            </ul>
         </div>
     </div>
   </div>
@@ -91,5 +103,7 @@
       $( function() {
         $( "#fecha_nacimiento" ).datepicker();
       } );
-
+      $(document).ready(function(){
+          $('.collapsible').collapsible();
+        });
     </script>
