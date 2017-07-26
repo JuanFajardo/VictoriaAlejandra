@@ -44,12 +44,18 @@ Datos Estadisticos
 				      <div class="row">
 				        <div class="col-md-12">
 				          <label> Horario </label>
-				          <input type="text" class="form-control" name="horario" id="horario" list="horario-lista">
+									<select class="form-control selectpicker" data-live-search="true" name="horario" id="horario">
+										@foreach($horarios as $horario)
+				            	<option  value="{{$horario->id}}"> {{$horario->horario}} </option>
+										@endforeach
+									</select>
+
+				          <!--<input type="text" class="form-control" name="horario" id="horario" list="horario-lista">
 				          <datalist id="horario-lista">
 										@foreach($horarios as $horario)
 				            	<option  value="{{$horario->id}} {{$horario->horario}}">
 										@endforeach
-				          </datalist>
+				          </datalist>-->
 				        </div>
 				        <!--<div class="col-md-12">
 				          <label> Stand </label>
@@ -62,12 +68,28 @@ Datos Estadisticos
 				        </div>-->
 				        <div class="col-md-12">
 				          <label> Persona </label>
+									<select class="form-control selectpicker" data-live-search="true" name="persona" id="persona">
+										@foreach($personas as $persona)
+						        	<option  value="{{$persona->id}}">{{$persona->nombres}}</option>
+										@endforeach
+									</select>
+									<!--
 				          <input type="text" class="form-control" name="persona" id="persona" list="persona-lista">
 				          <datalist id="persona-lista">
 										@foreach($personas as $persona)
 						        	<option  value="{{$persona->id}} {{$persona->nombres}}">
 										@endforeach
 				          </datalist>
+								-->
+
+								<div class="input-group clockpicker"  data-align="top" data-autoclose="true">
+    <input type="text" class="form-control" value="13:14">
+    <span class="input-group-addon">
+        <span class="glyphicon glyphicon-time"></span>
+    </span>
+</div>
+
+
 				        </div>
 								<div class="col-md-12">
 								 <br/><a class="btn btn-info" id="graficar" >Generar Estadistica <i class="fa fa-fw fa-bar-chart-o"></i></a>
@@ -110,6 +132,9 @@ Datos Estadisticos
 <script src="{{asset('assets/js/plugins/morris/raphael.min.js')}}"></script>
 <script src="{{asset('assets/js/plugins/morris/morris.min.js')}}"></script>
 <script >
+
+$('.clockpicker').clockpicker();
+
 $(function() {
     // Area Chart
     Morris.Area({
@@ -146,9 +171,7 @@ $(function() {
 	 var fin 		 = $('#fecha_fin').val();
 	 var horario = ($('#horario').val()).split(' ')[0];
 	 var persona = ($('#persona').val()).split(' ')[0];
-
 	 var link = "{{asset('index.php/estadisticaDona/')}}/"+inicio+"/"+fin+"/"+horario+"/"+persona;
-
 	 $.get(link, function( datos ){
 		 var informacion = JSON.parse(datos);
 		 var donut = new Morris.Donut({
@@ -160,7 +183,6 @@ $(function() {
  			 hideHover: 'auto'
  	 	});
 	 });
-
  });
 
  $.datepicker.regional['es'] = {
@@ -184,5 +206,4 @@ $(function() {
  $( "#fecha_inicio" ).datepicker({ dateFormat: 'yy-mm-dd' });
  $( "#fecha_fin" ).datepicker({ dateFormat: 'yy-mm-dd' });
 </script>
-
 @endsection
