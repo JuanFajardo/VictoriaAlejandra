@@ -49,23 +49,17 @@ Datos Estadisticos
 				            	<option  value="{{$horario->id}}"> {{$horario->horario}} </option>
 										@endforeach
 									</select>
-
-				          <!--<input type="text" class="form-control" name="horario" id="horario" list="horario-lista">
-				          <datalist id="horario-lista">
-										@foreach($horarios as $horario)
-				            	<option  value="{{$horario->id}} {{$horario->horario}}">
-										@endforeach
-				          </datalist>-->
 				        </div>
-				        <!--<div class="col-md-12">
+
+				        <div class="col-md-12">
 				          <label> Stand </label>
-				          <input type="text" class="form-control" name="stand" id="stand" list="stand-lista">
-				          <datalist id="stand-lista">
+									<select class="form-control selectpicker" data-live-search="true" name="stand" id="stand">
 										@foreach($stands as $stand)
-					          	<option  value="{{$stand->id}} {{$stand->nom_empresa}}">
+											<option  value="{{$stand->id}}"> {{$stand->nom_empresa}} </option>
 										@endforeach
-				          </datalist>
-				        </div>-->
+									</select>
+				        </div>
+
 				        <div class="col-md-12">
 				          <label> Persona </label>
 									<select class="form-control selectpicker" data-live-search="true" name="persona" id="persona">
@@ -73,24 +67,8 @@ Datos Estadisticos
 						        	<option  value="{{$persona->id}}">{{$persona->nombres}}</option>
 										@endforeach
 									</select>
-									<!--
-				          <input type="text" class="form-control" name="persona" id="persona" list="persona-lista">
-				          <datalist id="persona-lista">
-										@foreach($personas as $persona)
-						        	<option  value="{{$persona->id}} {{$persona->nombres}}">
-										@endforeach
-				          </datalist>
-								-->
+								</div>
 
-								<div class="input-group clockpicker"  data-align="top" data-autoclose="true">
-    <input type="text" class="form-control" value="13:14">
-    <span class="input-group-addon">
-        <span class="glyphicon glyphicon-time"></span>
-    </span>
-</div>
-
-
-				        </div>
 								<div class="col-md-12">
 								 <br/><a class="btn btn-info" id="graficar" >Generar Estadistica <i class="fa fa-fw fa-bar-chart-o"></i></a>
 							 </div>
