@@ -48,6 +48,10 @@ $scope.Preventa={};
 						$scope.msj = "Se realizo correctamente la reserva";
 						$('.collapsible').collapsible('close', 0);
 						$scope.Preventa  = "";
+						$timeout(function(){
+							$('#crear').modal('close');
+              $location.path('/crear');
+            }, 3000);
           }else{
 						$scope.numero1 = Math.round((Math.random()*10+1));
 						$scope.numero2 = Math.round((Math.random()*10+1));
