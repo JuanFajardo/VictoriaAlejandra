@@ -20,6 +20,7 @@ class CreateRegistrosTable extends Migration
             $table->string('retraso_pm');
             $table->integer('persona_id')->references('id')->on('personas');
             $table->integer('horario_id')->references('id')->on('horarios');
+            $table->integer('stand_id')->references('id')->on('stands');
             $table->integer('user_id')->references('id')->on('users');
             $table->softDeletes();
             $table->timestamps();

@@ -44,31 +44,31 @@ Datos Estadisticos
 				      <div class="row">
 				        <div class="col-md-12">
 				          <label> Horario </label>
-				          <input type="text" class="form-control" name="horario" id="horario" list="horario-lista">
-				          <datalist id="horario-lista">
+									<select class="form-control selectpicker" data-live-search="true" name="horario" id="horario">
 										@foreach($horarios as $horario)
-				            	<option  value="{{$horario->id}} {{$horario->horario}}">
+				            	<option  value="{{$horario->id}}"> {{$horario->horario}} </option>
 										@endforeach
-				          </datalist>
+									</select>
 				        </div>
-				        <!--<div class="col-md-12">
+
+				        <div class="col-md-12">
 				          <label> Stand </label>
-				          <input type="text" class="form-control" name="stand" id="stand" list="stand-lista">
-				          <datalist id="stand-lista">
+									<select class="form-control selectpicker" data-live-search="true" name="stand" id="stand">
 										@foreach($stands as $stand)
-					          	<option  value="{{$stand->id}} {{$stand->nom_empresa}}">
+											<option  value="{{$stand->id}}"> {{$stand->nom_empresa}} </option>
 										@endforeach
-				          </datalist>
-				        </div>-->
+									</select>
+				        </div>
+
 				        <div class="col-md-12">
 				          <label> Persona </label>
-				          <input type="text" class="form-control" name="persona" id="persona" list="persona-lista">
-				          <datalist id="persona-lista">
+									<select class="form-control selectpicker" data-live-search="true" name="persona" id="persona">
 										@foreach($personas as $persona)
-						        	<option  value="{{$persona->id}} {{$persona->nombres}}">
+						        	<option  value="{{$persona->id}}">{{$persona->nombres}}</option>
 										@endforeach
-				          </datalist>
-				        </div>
+									</select>
+								</div>
+
 								<div class="col-md-12">
 								 <br/><a class="btn btn-info" id="graficar" >Generar Estadistica <i class="fa fa-fw fa-bar-chart-o"></i></a>
 							 </div>
@@ -110,6 +110,9 @@ Datos Estadisticos
 <script src="{{asset('assets/js/plugins/morris/raphael.min.js')}}"></script>
 <script src="{{asset('assets/js/plugins/morris/morris.min.js')}}"></script>
 <script >
+
+$('.clockpicker').clockpicker();
+
 $(function() {
     // Area Chart
     Morris.Area({
@@ -146,9 +149,7 @@ $(function() {
 	 var fin 		 = $('#fecha_fin').val();
 	 var horario = ($('#horario').val()).split(' ')[0];
 	 var persona = ($('#persona').val()).split(' ')[0];
-
 	 var link = "{{asset('index.php/estadisticaDona/')}}/"+inicio+"/"+fin+"/"+horario+"/"+persona;
-
 	 $.get(link, function( datos ){
 		 var informacion = JSON.parse(datos);
 		 var donut = new Morris.Donut({
@@ -160,7 +161,6 @@ $(function() {
  			 hideHover: 'auto'
  	 	});
 	 });
-
  });
 
  $.datepicker.regional['es'] = {
@@ -184,5 +184,4 @@ $(function() {
  $( "#fecha_inicio" ).datepicker({ dateFormat: 'yy-mm-dd' });
  $( "#fecha_fin" ).datepicker({ dateFormat: 'yy-mm-dd' });
 </script>
-
 @endsection

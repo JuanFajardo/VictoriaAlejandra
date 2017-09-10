@@ -45,30 +45,28 @@ Listar
       <div class="row">
         <div class="col-md-4">
           <label> Horario </label>
-          <input type="text" class="form-control" name="horario" id="horario" list="horario-lista">
-          <datalist id="horario-lista">
+					<select class="form-control selectpicker" data-live-search="true" name="horario" id="horario">
 						@foreach($horarios as $horario)
-            	<option   value="{{$horario->id}} {{$horario->horario}}">
+							<option value="{{$horario->id}}">{{$horario->horario}}</option>
 						@endforeach
-          </datalist>
+					</select>
         </div>
         <div class="col-md-4">
           <label> Stand </label>
-          <input type="text" class="form-control" name="stand" id="stand" list="stand-lista">
-          <datalist id="stand-lista">
+					<select class="form-control selectpicker" data-live-search="true" name="stand" id="stand">
 						@foreach($stands as $stand)
-            	<option  value="{{$stand->id}} {{$stand->descripcion}}">
+            	<option  value="{{$stand->id}}">{{$stand->descripcion}}</option>
 						@endforeach
-          </datalist>
+					</select>
         </div>
         <div class="col-md-4">
           <label> Persona </label>
-          <input type="text" class="form-control" name="persona" id="persona" list="persona-lista">
-          <datalist id="persona-lista">
+					<select class="form-control selectpicker" data-live-search="true" name="persona" id="persona">
 						@foreach($personas as $persona)
-            	<option  value="{{$persona->id}} {{$persona->nombres}}">
+            	<option  value="{{$persona->id}}">{{$persona->nombres}}</option>
 						@endforeach
-          </datalist>
+					</select>
+
         </div>
       </div>
 
@@ -88,7 +86,6 @@ Listar
 </div>
 <script type="text/javascript">
 $( function() {
-
 	$.datepicker.regional['es'] = {
      closeText: 'Cerrar',
      prevText: '< Ant',

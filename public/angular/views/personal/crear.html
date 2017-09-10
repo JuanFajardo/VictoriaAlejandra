@@ -89,8 +89,86 @@
                 <div class="row">
                   <div class="col-md-1">
                   </div>
+<<<<<<< HEAD
                   <div class="col-md-10">
                     <div class="col-md-12">
+=======
+                  <div class="col-md-3">
+                    <label>Direccion</label>
+                    <input type="text" class="form-control"  placeholder="Direccion "  ng-model="Persona.direccion" id="direccion" required>
+                  </div>
+                  <div class="col-md-3">
+                    <label>Telefono</label>
+                    <input type="text" class="form-control"  placeholder="Telefono "  ng-model="Persona.telefono" id="telefono"  maxlength="8" required>
+                  </div>
+                  <div class="col-md-2">
+                    <label>Documento</label>
+                    <input type="text" class="form-control"  placeholder="Documento "  ng-model="Persona.carnet" id="carnet" ng-blur="asignar()" required>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-3">
+                    <label>Estado Civil</label>
+                    <select class="form-control" ng-model="Persona.estado_civil" id="estado_civil">
+                      <option ng-repeat="civil in civiles" ng-selected="civil.id == Persona.estado_civil"  value="{{civil.id}}">{{civil.valor}}</option>
+                    </select>
+                  </div>
+                  <div class="col-md-3">
+                    <label>Genero</label>
+                    <select class="form-control" ng-model="Persona.genero" id="genero">
+                      <option ng-repeat="sexo in sexos" ng-selected="sexo.id == Persona.genero"  value="{{sexo.id}}">{{sexo.valor}}</option>
+                    </select>
+                  </div>
+                  <div class="col-md-3">
+                    <label>Profesion</label>
+                    <input type="text" class="form-control" ng-model="Persona.profesion" id="profesion" required>
+                  </div>
+                  <div class="col-md-3">
+                    <label>Clave</label>
+                    <input type="text" class="form-control" ng-model="Persona.clave"  ng-bind="Persona.carnet" id="clave"  required>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-4">
+                    <label>Fecha Nacimiento</label>
+                    <input type="text" class="form-control"   max="2000-01-01"  min="1950-01-01" ng-model="Persona.fecha_nacimiento" id="fecha_nacimiento" required>
+                  </div>
+                  <div class="col-md-4">
+                    <label>Fecha Registro</label>
+                    <input type="text" class="form-control"  placeholder="Fecha de registro"  ng-model="Persona.fecha_inscripcion" id="fecha_inscripcion" readonly>
+                  </div>
+                  <div class="col-md-4">
+                    <label>Tarjeta</label>
+                    <input type="number" class="form-control" placeholder="Numero de tarjeta" ng-model="Persona.tarjeta" id="tarjeta" name="tarjeta" maxlength="10" required>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-4">
+                    <label>Horario</label>
+                    <select class="form-control" ng-model="Persona.horario_id" id="horario_id" required>
+                      <option ng-repeat="horario in horarios"  ng-selected="Persona.horario_id == horario.id" value="{{horario.id}}">{{horario.horario}}</option>
+                    </select>
+                  </div>
+                  <div class="col-md-4">
+                    <label>Stand</label>
+                    <select class="form-control" ng-model="Persona.stand_id" id="stand_id" required>
+                      <option ng-repeat="stand in stands" ng-selected="Persona.stand_id == stand.id" value="{{stand.id}}">{{stand.nom_empresa  }}</option>
+                    </select>
+                  </div>
+                  <div class="col-md-4">
+                    <label>Encargado </label><br>
+                    <input type="checkbox" ng-model="Persona.encargado" id="stand_id" > Marque si es un encargado
+                    <input type="hidden" ng-model="Persona.reserva" id="stand_id" >
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-4">
+                      <label>Imgen</label><br>
+>>>>>>> 5036e016b65d3b51beff9935973120041cd308c9
                       <input type="hidden"  ng-model="Persona.imagen" id="imagen" required >
                       <video id="video" width="200" height="200"  class="img-thumbnail"></video><br/>
                       <a  id="capture" ng-click="capturar()"> <i class="fa fa-camera"> </i> Tomar foto </a>
@@ -155,7 +233,7 @@
      yearSuffix: ''
    };
   $.datepicker.setDefaults($.datepicker.regional['es']);
-  $( "#fecha_nacimiento" ).datepicker({ dateFormat: 'yy-mm-dd' });
+  $("#fecha_nacimiento" ).datepicker({ dateFormat: 'yy-mm-dd' });
 
   $('input').blur(function(data){
     //console.log( (this.value).toUpperCase() );
