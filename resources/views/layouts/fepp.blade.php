@@ -10,8 +10,7 @@
     <link href="{{asset('assets/css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/sb-admin.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/plugins/morris.css')}}" rel="stylesheet">
-    <link href="{{asset('assets/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
-
+    <link href="{{asset('assets/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css
     <link rel="stylesheet" href="{{asset('assets/select/css/bootstrap-select.css')}}">
     <link rel="stylesheet" href="{{asset('assets/time/clockpicker.css')}}">
     <link rel="stylesheet" href="{{asset('assets/time/standalone.css')}}">
@@ -91,6 +90,9 @@
                     <!--<li class="@yield('menu9')">
                         <a href="{{asset('index.php/Cargo#/lista')}}"><i class="fa fa-fw fa-dashboard"></i> Cargo</a>
                     </li>-->
+                    <li class="@yield('menu9')">
+                      <a href="{{asset('index.php/RegistroManual#/crear')}}"><i class="fa fa-fw fa-dashboard"></i> Registro Manual</a>
+                    </li>
 
                     <li class="@yield('menu10')">
                         <a href="{{asset('index.php/PreventaLista#/lista')}}"><i class="fa fa-fw fa-dashboard"></i> Preventa</a>

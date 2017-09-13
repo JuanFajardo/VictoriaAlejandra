@@ -45,10 +45,13 @@ $scope.Preventa={};
 					var respuesta = data['respuesta'];
           if(respuesta == '200_OK'){
             $scope.panel = "alert alert-info";
-						$scope.msj = "Se realizo correctamente la reserva";
+						Materialize.toast('Se realizo correctamente a reserva, tiene un plazo de 7 dias para confirmar ', 3000, 'rounded')
 						$('.collapsible').collapsible('close', 0);
 						$scope.Preventa  = "";
+						$scope.numero1 = Math.round((Math.random()*10+1));
+						$scope.numero2 = Math.round((Math.random()*10+1));
 						$timeout(function(){
+							$scope.msj = "";
 							$('#crear').modal('close');
               $location.path('/crear');
             }, 3000);
