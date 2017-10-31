@@ -1,109 +1,110 @@
-<div class="row card-panel gray lighten-2 z-depth-5">
-        <div class="col m10 offset-m1 s10 ">
-            <div class="row">
-              <div class="col s4">
+<div class="row"></div>
+<div class="row"></div>
+<div class="row"></div>
 
-              </div>
-              <div class="col s4 ">
-                <img src="http://oi68.tinypic.com/oh4is9.jpg" alt="" class="circle responsive-img center-align pulse"> <!-- notice the "circle" class -->
-              </div>
-              <div class="col s4">
-
-              </div>
-            </div>
-            <ul class="collapsible" data-collapsible="accordion">
-              <li>
-                <div class="collapsible-header ">
-                  <h2 class="center-align">{{titulo}}</h2>
-                </div>
-                <div class="collapsible-body">
-                  <div class="row">
-                      <form class="col s12" autocomplete="off" ng-submit="guardarPreventa()" enctype="multipart/form-data">
-                          <div class="row">
-                              <div class="input-field col m6 s12">
-                                  <i class="material-icons prefix">contacts</i>
-                                  <input ng-model="Preventa.nombres" id="nombres" type="text" class="validate" required="required" data-parsley-required-message="Campo obligatorio"
-                                  data-parsley-trigger="change focusout" data-parsley-pattern="/^[a-zA-Z]*$/">
-                                  <label for="nombres">Nombre(s)</label>
-                              </div>
-                              <div class="input-field col m6 s12">
-                                  <input ng-model="Preventa.apellidos" id="apellidos" type="text" class="validate">
-                                  <label for="apellidos">Apellido(s)</label>
-                              </div>
-                          </div>
-                          <div class="row">
-                              <div class="input-field col m6 s12">
-                                  <i class="material-icons prefix">email</i>
-                                  <input ng-model="Preventa.correo" id="correo" type="email" class="validate" required>
-                                  <label for="correo">Correo Electronico</label>
-                              </div>
-                              <div class="input-field col m6 s12">
-                                  <i class="material-icons prefix">web</i>
-                                  <input ng-model="Preventa.carnet" id="carnet" type="number" maxlength = "9" class="validate" required>
-                                  <label for="carnet">Cedula de identidad</label>
-                              </div>
-                          </div>
-
-                          <div class="row">
-                              <div class="input-field col m6 s12">
-                                    <i class="material-icons prefix">today</i>
-                                  <input type="text" ng-model="Preventa.fecha_nacimiento" id="fecha_nacimiento">
-                                  <label for="fecha_nacimiento">Fecha de Nacimiento. Ej. 10/02/1992</label>
-                              </div>
-                              <div class="input-field col m6 s12">
-                                  <i class="material-icons prefix">contact_phone</i>
-                                  <input ng-model="Preventa.telefono" id="telefono" type="number" class="validate" required>
-                                  <label for="telefono">Numero de Telefono / Celular</label>
-                              </div>
-                          </div>
-                          <div class="row">
-                            <div class="input-field col s12">
-                              <label>Genero</label>
-                              <br/>
-                            </div>
-                            <div class="input-field col m6 s12 center-align">
-                              <input ng-model="Preventa.genero" name="group1" type="radio" id="mas" value="masculino"/>
-                              <label for="mas">Masculino</label>
-                            </div>
-                            <div class="input-field col m6 s12 center-align">
-                              <input  ng-model="Preventa.genero" name="group1" type="radio" id="fem"  value="femenino"/>
-                              <label for="fem">Femenino</label>
-                            </div>
-                          </div>
-                          <div class="row">
-                              <div class="input-field col m12 s12">
-                                  <i class="material-icons prefix">verified_user</i>
-                                  <input ng-model="Preventa.captcha" id="captcha" type="number" class="validate" required>
-                                  <label for="telefono">La suma de {{numero1}} + {{numero2}} es?</label>
-                              </div>
-                          </div>
-                          <div class="row">
-                              <div class="col m12">
-                                <p class="center-align">
-                                   <button type="submit" name="button" class="btn waves-effect waves-light pulse btn-large red darken-4" data-target="modal1">{{boton}}
-                                     <i class="{{botonIcono}}">send</i>
-                                   </button>
-                                </p>
-                              </div>
-                          </div>
-                      </form>
-                  </div>
-                </div>
-              </li>
-              <li>
-                <div class="collapsible-header ">
-                  <div class="{{panel}} center-align" role="alert"> <strong><h5>{{msj}}</h5></strong> </div>
-                </div>
-              </li>
-            </ul>
-        </div>
+<div class="row">
+  <div class="col s1 m3"></div>
+  <div class="col s10 m6">
+    <div class="row">
+      <img src="http://oi68.tinypic.com/oh4is9.jpg" alt="" class="circle responsive-img center-align pulse">
+    </div>
+    <div class="row">
+      <div class="col s12 m12">
+        <a class="waves-effect waves-light red darken-4 btn-large modal-trigger" href="#crear">Reserva tu Tarjeta</a>
+      </div>
+    </div>
+    <div class="row">
+      <a href="#informacion" class ="modal-trigger">¿Para que sirven las tarjetas?</a>
     </div>
   </div>
-    <script>
-      $( function() {
-        $( "#fecha_nacimiento" ).datepicker();
-      } );
-      $(document).ready(function(){
-          $('.collapsible').collapsible();
-        });
-    </script>
+  <div class="col s1 m3"></div>
+  <div id="crear" class="modal">
+    <div class="modal-content">
+      <form class="col s12" autocomplete="off" ng-submit="guardarPreventa()" enctype="multipart/form-data">
+          <div class="row">
+              <div class="input-field col m6 s12">
+                  <i class="material-icons prefix">contacts</i>
+                  <input ng-model="Preventa.nombres" id="nombres" type="text" class="validate" required="required" data-parsley-required-message="Campo obligatorio"
+                  data-parsley-trigger="change focusout" data-parsley-pattern="/^[a-zA-Z]*$/">
+                  <label for="nombres">Nombre(s)</label>
+              </div>
+              <div class="input-field col m6 s12">
+                  <input ng-model="Preventa.apellidos" id="apellidos" type="text" class="validate">
+                  <label for="apellidos">Apellido(s)</label>
+              </div>
+          </div>
+          <div class="row">
+              <div class="input-field col m6 s12">
+                  <i class="material-icons prefix">email</i>
+                  <input ng-model="Preventa.correo" id="correo" type="email" class="validate" required>
+                  <label for="correo">Correo Electronico</label>
+              </div>
+              <div class="input-field col m6 s12">
+                  <i class="material-icons prefix">web</i>
+                  <input ng-model="Preventa.carnet" id="carnet" type="number" maxlength = "9" class="validate" required>
+                  <label for="carnet">Cedula de identidad</label>
+              </div>
+          </div>
+
+          <div class="row">
+              <div class="input-field col m6 s12">
+                    <i class="material-icons prefix">today</i>
+                  <input type="text" ng-model="Preventa.fecha_nacimiento" id="fecha_nacimiento">
+                  <label for="fecha_nacimiento">Fecha de Nacimiento. Ej. 10/02/1992</label>
+              </div>
+              <div class="input-field col m6 s12">
+                  <i class="material-icons prefix">contact_phone</i>
+                  <input ng-model="Preventa.telefono" id="telefono" type="number" class="validate" required>
+                  <label for="telefono">Numero de Telefono / Celular</label>
+              </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <label>Genero</label>
+              <br/>
+            </div>
+            <div class="input-field col m6 s12 center-align">
+              <input ng-model="Preventa.genero" name="group1" type="radio" id="mas" value="masculino"/>
+              <label for="mas">Masculino</label>
+            </div>
+            <div class="input-field col m6 s12 center-align">
+              <input  ng-model="Preventa.genero" name="group1" type="radio" id="fem"  value="femenino"/>
+              <label for="fem">Femenino</label>
+            </div>
+          </div>
+          <div class="row">
+              <div class="input-field col m12 s12">
+                  <i class="material-icons prefix">verified_user</i>
+                  <input ng-model="Preventa.captcha" id="captcha" type="number" class="validate" required>
+                  <label for="telefono">La suma de {{numero1}} + {{numero2}} es?</label>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col m12">
+                <p class="center-align">
+                   <button type="submit" name="button" class="btn waves-effect waves-light btn-large red darken-4">{{boton}}
+                   </button>
+                </p>
+              </div>
+              <div class="{{panel}} center-align" role="alert"> <strong><h5>{{msj}}</h5></strong> </div>
+          </div>
+      </form>
+    </div>
+  </div>
+  <div class="modal" id="informacion">
+    <div class="modal-content ">
+      h
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  $( function() {
+    $( "#fecha_nacimiento" ).datepicker();
+  } );
+  $(document).ready(function(){
+  // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
+    $('.modal').modal();
+    $('.collapsible').collapsible();
+    $('.tooltipped').tooltip({delay: 50});
+  });
+</script>

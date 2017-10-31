@@ -10,90 +10,116 @@
     </div>
     <div class="panel-body">
       <form autocomplete="off" ng-submit="confirmarPreventa()" enctype=”multipart/form-data>
-                <div class="row">
-                  <div class="col-md-3">
-                    <label>Nombres</label>
-                    <input type="text" class="form-control"  placeholder="Nombres"  ng-model="Preventa.nombres" id="nombres" required>
-                  </div>
-                  <div class="col-md-3">
-                    <label>Apellidos</label>
-                    <input type="text" class="form-control"  placeholder="Apellidos"  ng-model="Preventa.apellidos" id="apellidos" required>
-                  </div>
-                  <div class="col-md-3">
-                    <label>Correo Electronico</label>
-                    <input type="email" class="form-control"  placeholder="Correo Electronico"  ng-model="Preventa.correo" id="correo" required>
-                  </div>
-                  <div class="col-md-3">
-                    <label>Documento de Identidad</label>
-                    <input type="text" class="form-control"  placeholder="Documento de Identidad "  ng-model="Preventa.carnet" id="carnet"  maxlength="8" required>
-                  </div>
+        <div class="row">
+          <div class="col-md-8">
+            <div class="row">
+              <div class="col-md-6">
+                <div>
+                  <label>Nombres</label>
+                  <input type="text" class="form-control"  placeholder="Nombres"  ng-model="Preventa.nombres" id="nombres" required>
                 </div>
-
-                <div class="row">
-                  <div class="col-md-3">
-                    <label>Fecha de Nacimiento</label>
-                    <input type="text" class="form-control"  ng-model="Preventa.fecha_nacimiento" id="fecha_nacimiento" required>
-                  </div>
-                  <div class="col-md-3">
-                    <label>Telefono</label>
-                    <input type="text" class="form-control"  placeholder="Telefono "  ng-model="Preventa.telefono" id="telefono"  maxlength="8" required>
-                  </div>
-                  <div class="col-md-3">
-                    <label>Genero</label>
-                    <select class="form-control" ng-model="Preventa.genero" id="genero">
-                      <option value="Femenino">Femenino</option>
-                      <option value="Masculino">Masculino</option>
-                    </select>
-                  </div>
-                  <div class="col-md-3">
-                    <label>Tarjeta</label>
-                    <input type="text" class="form-control" placeholder="Numero de tarjeta" ng-model="Preventa.tarjeta" id="tarjeta" name="tarjeta" maxlength="10" required>
-                  </div>
+                <div>
+                  <label>Apellidos</label>
+                  <input type="text" class="form-control"  placeholder="Apellidos"  ng-model="Preventa.apellidos" id="apellidos" required>
                 </div>
+                <div>
+                  <label>Documento de Identidad</label>
+                  <input type="text" class="form-control"  placeholder="Documento de Identidad "  ng-model="Preventa.carnet" id="carnet"  maxlength="8" required>
+                </div>
+                <div>
+                  <label>Fecha de Nacimiento</label>
+                  <input type="text" class="form-control"  ng-model="Preventa.fecha_nacimiento" id="fecha_nacimiento" required>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div>
+                  <label>Correo Electronico</label>
+                  <input type="email" class="form-control"  placeholder="Correo Electronico"  ng-model="Preventa.correo" id="correo" required>
+                </div>
+                <div>
+                  <label>Telefono</label>
+                  <input type="text" class="form-control"  placeholder="Telefono "  ng-model="Preventa.telefono" id="telefono"  maxlength="8" required>
+                </div>
+                <div>
+                  <label>Genero</label>
+                  <select class="form-control" ng-model="Preventa.genero" id="genero">
+                    <option value="Femenino">Femenino</option>
+                    <option value="Masculino">Masculino</option>
+                  </select>
+                </div>
+                <div>
+                  <label>Tarjeta</label>
+                  <input type="text" class="form-control" placeholder="Numero de tarjeta" ng-model="Preventa.tarjeta" id="tarjeta" name="tarjeta" maxlength="10" required>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+            <div class="col-md-3">
 
+            </div>
+            <div class="col-md-6">
+              <label for="cantidad">Monto inicial de recarga (Bs.):</label>
+              <input type="text" class="form-control" placeholder="Recarga en Bs." ng-model="Preventa.cantidad" id="cantidad" name="cantidad" maxlength="6" required>
+            </div>
+            <div class="col-md-3">
+
+            </div>
+          </div>
+          </div>
+          <div class="col-md-4">
+            <div class="panel panel-info">
+              <div class="panel-body">
+                <label>Imgen</label>
+              </div>
+              <div class="panel-footer">
                 <div class="row">
-                  <div class="col-md-4">
-                      <label>Imgen</label><br>
-                      <input type="hidden"  ng-model="Preventa.imagen" id="imagen" required >
+                  <div class="col-md-1">
+                  </div>
+                  <div class="col-md-10">
+                    <div class="col-md-12">
+                      <input type="hidden"  ng-model="Persona.imagen" id="imagen" required >
                       <video id="video" width="200" height="200"  class="img-thumbnail"></video><br/>
                       <a  id="capture" ng-click="capturar()"> <i class="fa fa-camera"> </i> Tomar foto </a>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <canvas id="canvas" width="200" height="200" style="display: none;"></canvas>
+                        <img class="img-thumbnail" id="photo" ><br>
+                      </div>
+                      <div class="col-md-6" ng-if="(Persona.imagen).length > 0">
+                        <img src="{{Persona.imagen}}" class="img-thumbnail" id="foto" ><br>
+                      </div>
+                    </div>
                   </div>
-                  <div class="col-md-4">
-                    <canvas id="canvas" width="200" height="200" style="display: none;"></canvas>
-                    <img class="img-thumbnail" id="photo" ><br>
-                  </div>
-
-                  <div class="col-md-4" ng-if="(Preventa.imagen).length > 0">
-                    <img src="{{Preventa.imagen}}" class="img-thumbnail" id="foto" ><br>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-4">
-
-                  </div>
-                  <div class="col-md-4">
-                    <label for="cantidad">Monto inicial de recarga (Bs.):</label>
-                    <input type="text" class="form-control" placeholder="Recarga en Bs." ng-model="Preventa.cantidad" id="cantidad" name="cantidad" maxlength="6" required>
-                  </div>
-                  <div class="col-md-4">
-
+                  <div class="col-md-1">
                   </div>
                 </div>
-                <div class="row" style="margin-top:15px;">
-                  <div  ng-if="mostrar == 'SI'" class="col-md-3">
-                    <button type="submit" name="button" class="{{accion}}" >
-                      <i class="{{botonIcono}}" aria-hidden="true"></i>{{boton}}
-                    </button>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="{{panel}}" role="alert"> <strong>{{msj}}</strong> </div>
-                  </div>
-                  <div class="col-md-3">
-                    <a href="#/lista" class="btn btn-info pull-right"> <i class="fa fa-times-circle" aria-hidden="true"></i> Cancelar</a>
-                  </div>
-                </div>
-              </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row" style="margin-top:15px;">
+          <div class="col-md-4">
 
+          </div>
+          <div  ng-if="mostrar == 'SI'" class="col-md-2">
+            <button type="submit" name="button" class="{{accion}} pull-center" >
+              <i class="{{botonIcono}}" aria-hidden="true"></i>{{boton}}
+            </button>
+          </div>
+          <div class="col-md-2">
+            <a href="#/lista" class="btn btn-info pull-center"> <i class="fa fa-times-circle" aria-hidden="true"></i> Cancelar</a>
+          </div>
+          <div class="col-md-4">
+
+          </div>
+        </div>
+        <div class="row">
+          <div class="collapsible-header ">
+            <div class="{{panel}} center-align" role="alert"> <strong><h5>{{msj}}</h5></strong> </div>
+          </div>
+        </div>
+      </form>
     </div>
 </div>
 

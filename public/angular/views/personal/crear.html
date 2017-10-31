@@ -10,11 +10,89 @@
     </div>
     <div class="panel-body">
       <form autocomplete="off" ng-submit="guardarPersona()" enctype=”multipart/form-data>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="col-md-12">
+              <label>Nombres y Apellido</label>
+              <input type="text" class="form-control"  placeholder="Nombres y Apellido "  ng-model="Persona.nombres" id="nombres" required>
+            </div>
+            <div class="col-md-12">
+              <label>Direccion</label>
+              <input type="text" class="form-control"  placeholder="Direccion "  ng-model="Persona.direccion" id="direccion" required>
+            </div>
+            <div class="col-md-12">
+              <label>Profesion</label>
+              <input type="text" class="form-control"  placeholder="Profesion "  ng-model="Persona.profesion" id="profesion" required>
+            </div>
+            <div class="col-md-12">
+              <label>Estado Civil</label>
+              <select class="form-control" ng-model="Persona.estado_civil" id="estado_civil">
+                <option ng-repeat="civil in civiles" ng-selected="civil.id == Persona.estado_civil"  value="{{civil.id}}">{{civil.valor}}</option>
+              </select>
+            </div>
+            <div class="col-md-12">
+              <label>Fecha Nacimiento</label>
+              <input type="text" class="form-control"   max="2000-01-01"  min="1950-01-01" ng-model="Persona.fecha_nacimiento" id="fecha_nacimiento" required>
+            </div>
+            <div class="col-md-12">
+              <label>Genero</label>
+              <select class="form-control" ng-model="Persona.genero" id="genero">
+                <option ng-repeat="sexo in sexos" ng-selected="sexo.id == Persona.genero"  value="{{sexo.id}}">{{sexo.valor}}</option>
+              </select>
+            </div>
+            <div class="col-md-12">
+              <label>Telefono</label>
+              <input type="text" class="form-control"  placeholder="Telefono "  ng-model="Persona.telefono" id="telefono"  maxlength="8" required>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="col-md-12">
+              <label>Documento</label>
+              <input type="text" class="form-control"  placeholder="Documento "  ng-model="Persona.carnet" id="carnet" ng-blur="asignar()" required>
+            </div>
+            <div class="col-md-12">
+              <label>Tarjeta</label>
+              <input type="number" class="form-control" placeholder="Numero de tarjeta" ng-model="Persona.tarjeta" id="tarjeta" name="tarjeta" maxlength="10" required>
+            </div>
+            <div class="col-md-12">
+              <label>Clave</label>
+              <input type="text" class="form-control"  placeholder="Clave o contraseña"  ng-model="Persona.clave"  ng-bind="Persona.carnet" id="clave"  required>
+            </div>
+            <div class="col-md-12">
+              <label>Horario</label>
+              <select class="form-control" ng-model="Persona.horario_id" id="horario_id" required>
+                <option ng-repeat="horario in horarios"  ng-selected="Persona.horario_id == horario.id" value="{{horario.id}}">{{horario.horario}}</option>
+              </select>
+            </div>
+            <div class="col-md-12">
+              <label>Stand</label>
+              <select class="form-control" ng-model="Persona.stand_id" id="stand_id" required>
+                <option ng-repeat="stand in stands" ng-selected="Persona.stand_id == stand.id" value="{{stand.id}}">{{stand.nom_empresa  }}</option>
+              </select>
+            </div>
+            <div class="col-md-12">
+              <label>Fecha Registro</label>
+              <input type="text" class="form-control"  placeholder="Fecha de registro"  ng-model="Persona.fecha_inscripcion" id="fecha_inscripcion" readonly>
+            </div>
+            <div class="col-md-12">
+              <label>Encargado </label><br>
+              <input type="checkbox" ng-model="Persona.encargado" id="stand_id" > Marque si es un encargado
+              <input type="hidden" ng-model="Persona.reserva" id="stand_id" >
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="panel panel-info">
+              <div class="panel-body">
+                <label>Imgen</label>
+              </div>
+              <div class="panel-footer">
                 <div class="row">
-                  <div class="col-md-4">
-                    <label>Nombres y Apellido</label>
-                    <input type="text" class="form-control"  placeholder="Nombres y Apellido "  ng-model="Persona.nombres" id="nombres" required>
+                  <div class="col-md-1">
                   </div>
+<<<<<<< HEAD
+                  <div class="col-md-10">
+                    <div class="col-md-12">
+=======
                   <div class="col-md-3">
                     <label>Direccion</label>
                     <input type="text" class="form-control"  placeholder="Direccion "  ng-model="Persona.direccion" id="direccion" required>
@@ -90,36 +168,49 @@
                 <div class="row">
                   <div class="col-md-4">
                       <label>Imgen</label><br>
+>>>>>>> 5036e016b65d3b51beff9935973120041cd308c9
                       <input type="hidden"  ng-model="Persona.imagen" id="imagen" required >
                       <video id="video" width="200" height="200"  class="img-thumbnail"></video><br/>
                       <a  id="capture" ng-click="capturar()"> <i class="fa fa-camera"> </i> Tomar foto </a>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <canvas id="canvas" width="200" height="200" style="display: none;"></canvas>
+                        <img class="img-thumbnail" id="photo" ><br>
+                      </div>
+                      <div class="col-md-6" ng-if="(Persona.imagen).length > 0">
+                        <img src="{{Persona.imagen}}" class="img-thumbnail" id="foto" ><br>
+                      </div>
+                    </div>
                   </div>
-                  <div class="col-md-4">
-                    <canvas id="canvas" width="200" height="200" style="display: none;"></canvas>
-                    <img class="img-thumbnail" id="photo" ><br>
-                  </div>
-
-                  <div class="col-md-4" ng-if="(Persona.imagen).length > 0">
-                    <img src="{{Persona.imagen}}" class="img-thumbnail" id="foto" ><br>
-                  </div>
-                </div>
-
-
-                <div class="row" style="margin-top:15px;">
-                  <div  ng-if="mostrar == 'SI'" class="col-md-3">
-                    <button type="submit" name="button" class="{{accion}}" >
-                      <i class="{{botonIcono}}" aria-hidden="true"></i>{{boton}}
-                    </button>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="{{panel}}" role="alert"> <strong>{{msj}}</strong> </div>
-                  </div>
-                  <div class="col-md-3">
-                    <a href="#/lista" class="btn btn-info pull-right"> <i class="fa fa-times-circle" aria-hidden="true"></i> Cancelar</a>
+                  <div class="col-md-1">
                   </div>
                 </div>
-              </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row" style="margin-top:15px;">
+          <div class="col-md-4">
 
+          </div>
+          <div  ng-if="mostrar == 'SI'" class="col-md-2 ">
+            <button type="submit" name="button" class="{{accion}} pull-center" >
+              <i class="{{botonIcono}}" aria-hidden="true"></i>{{boton}}
+            </button>
+        </div>
+        <div class="col-md-2">
+          <a href="#/lista" class="btn btn-info pull-center"> <i class="fa fa-times-circle" aria-hidden="true"></i> Cancelar</a>
+        </div>
+        <div class="col-md-4">
+
+        </div>
+      </form>
+      <div class="row">
+        <div class="collapsible-header ">
+          <div class="{{panel}} center-align" role="alert"> <strong><h5>{{msj}}</h5></strong> </div>
+        </div>
+      </div>
     </div>
 </div>
 

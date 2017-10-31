@@ -5,13 +5,14 @@
     <title>@yield('title')</title>
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
      <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css" rel="stylesheet">
-    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
       <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.js"></script> -->
   </head>
-  <body ng-app="AdycttoBett0" class="grey darken-2">
+  <body ng-app="AdycttoBett0" background="{{asset('img/potosi.jpg')}}" style="background-size: cover;
+background-repeat: no-repeat;" class = "responsive-img center-align">
     <div class="container ">
 
       <div class="row">

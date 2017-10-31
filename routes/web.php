@@ -89,6 +89,10 @@ Route::get('preventa', 'PreventaController@index');
 Route::get('preventa/{id}', 'PreventaController@show');
 Route::post('preventa', 'PreventaController@store');
 
+Route::get('RegistroManual','RegistroManualController@angular');
+Route::get('registromanual', 'RegistroManualController@index');
+Route::post('registromanual', 'RegistroManualController@store');
+
 /*
 Route::get('trabajador/crear', 'TrabajadorController@create');
 Route::get('Trabajador', 'TrabajadorController@angular');
