@@ -14,7 +14,7 @@ class CreatePersonasTable extends Migration
             $table->string('direccion');
             $table->string('telefono');
             $table->string('carnet');
-            $table->integer('tarjeta')->unique();
+            $table->string('tarjeta')->unique();
             $table->string('estado_civil');
             $table->string('profesion', 50);
             $table->string('genero', 10);

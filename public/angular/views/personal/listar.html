@@ -21,9 +21,9 @@
                   <th>Nombres Apellidos</th>
                   <th>Celular</th>
                   <th>Institucion</th>
+                  <!--<th>Horario</th>-->
                   <th>Horario</th>
-                  <th>Encargado</th>
-                  <th>Ver</th>
+                  <!--<th>Ver</th>-->
                   <th>Editar</th>
                   <th>Reservado</th>
               </tr>
@@ -35,10 +35,10 @@
               <td> {{persona.nombres}} </td>
               <td> {{persona.telefono}} </td>
               <td> {{persona.descripcion}} </td>
-              <td> {{persona.horario}} </td>
+              <!--<td> {{persona.horario}} </td>-->
               <td> <label ng-if="persona.encargado == 'SI'" class="label label-success"> Encargado  </label>
                    <label ng-if="persona.encargado == 'NO'" class="label label-danger"> Normal </label>
-              <td> <a href="#/ver/{{persona.id}}" style="color:#46b8da;"> <i class="fa fa-eye" aria-hidden="true"></i>    </a> </td>
+              <!--<td> <a href="#/ver/{{persona.id}}" style="color:#46b8da;"> <i class="fa fa-eye" aria-hidden="true"></i>    </a> </td>-->
               <td> <a href="#/editar/{{persona.id}}" style="color:#f0ad4e;"> <i class="fa fa-pencil" aria-hidden="true"></i>    </a> </td>
               <!--<td> <a href="#/eliminar/{{persona.id}}" style="color:#c12e2a;"> <i class="fa fa-trash-o" aria-hidden="true"></i> </a> </td>-->
               <td> <a ng-if="persona.reserva == 'SI'" href="#/editar/{{persona.id}}" style="color:#c12e2a;"> <i class="fa fa-qrcode" aria-hidden="true"></i> Activar </a> </td>
