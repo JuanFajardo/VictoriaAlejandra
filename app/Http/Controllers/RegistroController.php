@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Persona;
 use App\Registro;
+use App\Repetitivo;
 
 class RegistroController extends Controller
 {
@@ -50,6 +51,7 @@ class RegistroController extends Controller
 
   public function showTarjeta($id){
     try {
+      /*
         $respuesta = "VictoriaAlejandra";
         $hora   = date('H');
         $minuto = date('i');
@@ -169,13 +171,59 @@ class RegistroController extends Controller
         }else {
             $respuesta = array("respuesta"=>"500_MAL", "msj"=>"Tarjeta NO VALIDA");
         }
+        */
+
+        $fecha    = date('Y-m-d');
+        $persona  = \DB::table('personas')->join('horarios', 'personas.horario_id',  '=', 'horarios.id')
+                                          ->join('stands', 'personas.stand_id',  '=', 'stands.id')
+                                          ->where('personas.tarjeta', '=', $id)
+                                          ->select(
+                                            'horarios.id as horarioId',
+                                            'horarios.horario', 'horarios.ingreso_am', 'horarios.salida_am', 'horarios.ingreso_pm',
+                                            'horarios.salida_pm', 'horarios.tolerancia', 'horarios.fijo',
+                                            'personas.id as personaId', 'personas.nombres', 'personas.genero', 'personas.fecha_nacimiento',  'personas.imagen',
+                                            'stands.nom_empresa','stands.id as ids' )
+                                          ->get();
+        if(count($persona)>0  ){
+          $personas = $persona;
+          $persona = $persona[0];
+          $repetitivo = \DB::table('repetitivos')->where('fecha', '=', $fecha)->where('persona_id', '=', $persona->personaId)->get();
+          if( !count($repetitivo) > 0 ){
+
+            $dato = new Repetitivo;
+            $dato->fecha      = date('Y-m-d');
+            $dato->hora       = date('H:i:s');
+            $dato->categoria  = "hombres/muejres";
+            $dato->sexo       = "NaN";
+            $dato->marcado    = "ingreso";
+            $dato->persona_id = $persona->personaId;
+            $dato->horario_id = $persona->horarioId;
+            $dato->stand_id   = $persona->ids;
+            $dato->user_id    = \Auth::user()->id;
+            $dato->save();
+            /*
+            $respuesta = array(
+              "respuesta" => "200_OK",
+              "nombres"   => $persona->nombres,
+              "horario"   => $persona->horario,
+              "nom_empresa"=> $persona->nom_empresa,
+              "imagen"    => $persona->imagen
+            );*/
+            $respuesta = $personas;
+          }else{
+            $repetitivo = $repetitivo[0];
+            $respuesta = array("respuesta"=>"500_MAL", "msj"=> strtoupper($persona->nombres)." USUARIO YA INGRESO A HRAS. ".$repetitivo->hora);
+          }
+        }else {
+          $respuesta = array("respuesta"=>"500_MAL", "msj"=>"Tarjeta NO VALIDA");
+        }
+
+
         return response()->json($respuesta);
     } catch (Exception $e) {
       return "MensajeError -> ".$e->getMessage();
     }
   }
-
-
 
   public function update(Request $request, $id){
     $request['user_id'] = 1;
