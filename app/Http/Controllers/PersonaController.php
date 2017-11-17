@@ -15,8 +15,10 @@ class PersonaController extends Controller
     //$datos = Persona::all();
     $datos = \DB::table('personas')->join('horarios', 'personas.horario_id', '=', 'horarios.id')
                                   ->join('stands', 'personas.stand_id', '=', 'stands.id')
-    ->select('personas.id', 'personas.nombres', 'personas.telefono', 'personas.encargado',  'personas.reserva',
-       'personas.fecha_inscripcion', 'personas.horario_id', 'personas.stand_id','horarios.horario','stands.descripcion' )->get();
+    ->select('personas.id', 'personas.nombres', 'personas.telefono', 'personas.encargado',
+       'personas.reserva', 'personas.tarjeta', 'personas.updated_at',
+       'personas.fecha_inscripcion', 'personas.horario_id', 'personas.stand_id','horarios.horario',
+       'stands.nom_empresa as descripcion' )->get();
 
     return $datos;
   }
@@ -71,6 +73,7 @@ class PersonaController extends Controller
   }
 
   public function update(Request $request, $id){
+
     $request['user_id'] = 1;
     $v = \Validator::make($request->all(), [
             'nombres'   => 'required',

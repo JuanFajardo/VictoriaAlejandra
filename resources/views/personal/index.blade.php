@@ -247,6 +247,7 @@ va.factory('PersonalRecursos', function($resource){
 	//guardarHorario
   $scope.guardarPersona = function(){
 		//$scope.mostrar = "NO";
+		console.log($scope.Persona);
     PersonalRecursos.update($scope.Persona, function(data){
           var respuesta = data['respuesta'];
           if(respuesta == '200_OK'){

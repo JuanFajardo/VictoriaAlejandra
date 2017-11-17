@@ -46,7 +46,7 @@ Route::get('Personal', 'PersonaController@angular');
 Route::get('personal', 'PersonaController@index');
 Route::get('personal/{id}', 'PersonaController@show');
 Route::post('personal', 'PersonaController@store');
-Route::put('personal', 'PersonaController@update');
+Route::put('personal/{id}', 'PersonaController@update');
 Route::delete('personal/{id}', 'PersonaController@destroy');
 
 
