@@ -111,4 +111,50 @@ Route::get('Reporte', 'ReporteController@angular');
 Route::get('reporte', 'ReporteController@index');
 Route::post('reporte', 'ReporteController@store');
 
+
+Route::get('Cargo', 'CargoController@angular');
+Route::get('cargo', 'CargoController@index');
+Route::get('cargo/{id}', 'CargoController@show');
+Route::post('cargo', 'CargoController@store');
+Route::put('cargo/{id}', 'CargoController@update');
+Route::delete('cargo/{id}', 'CargoController@destroy');
+
+
+Route::get('Costo', 'CostoController@angular');
+Route::get('costo', 'CostoController@index');
+Route::get('costo/{id}', 'CostoController@show');
+Route::post('costo', 'CostoController@store');
+Route::put('costo/{id}', 'CostoController@update');
+Route::delete('costo/{id}', 'CostoController@destroy');
+
+Route::get('Nivel', 'NivelController@angular');
+Route::get('nivel', 'NivelController@index');
+Route::get('nivel/{id}', 'NivelController@show');
+Route::post('nivel', 'NivelController@store');
+Route::put('nivel/{id}', 'NivelController@update');
+Route::delete('nivel/{id}', 'NivelController@destroy');
+
+Route::get('Puesto', 'PuestoController@angular');
+Route::get('puesto', 'PuestoController@index');
+Route::get('puesto/{id}', 'PuestoController@show');
+Route::post('puesto', 'PuestoController@store');
+Route::put('puesto/{id}', 'PuestoController@update');
+Route::delete('puesto/{id}', 'PuestoController@destroy');
+
+Route::get('Cobro', 'CobroController@angular');
+Route::get('cobro', 'CobroController@index');
+Route::get('cobro/{id}', 'CobroController@show');
+Route::post('cobro', 'CobroController@store');
+Route::put('cobro/{id}', 'CobroController@update');
+Route::delete('cobro/{id}', 'CobroController@destroy');
+
+Route::get('Cobro/Piso/{id}', 'CobroController@piso');
+
+Route::get('Log', 'LogController@angular');
+Route::get('log', 'LogController@index');
+Route::get('log/{id}', 'LogController@show');
+Route::post('log', 'LogController@store');
+Route::put('log/{id}', 'LogController@update');
+Route::delete('log/{id}', 'LogController@destroy');
+
 });

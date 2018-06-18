@@ -7,7 +7,7 @@ use Illuminate\Database\Migrations\Migration;
 class CreatePersonasTable extends Migration
 {
     public function up()
-    {
+    {/*
         Schema::create('personas', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombres');
@@ -31,10 +31,10 @@ class CreatePersonasTable extends Migration
             $table->softDeletes();
             $table->timestamps();
         });
-    }
+    */}
 
     public function down()
     {
-        Schema::dropIfExists('personas');
+        //Schema::dropIfExists('personas');
     }
 }

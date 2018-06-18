@@ -1,0 +1,40 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+
+      <div class="row">
+        <div class="col-md-6">
+          <h3 class="panel-title"><i class="glyphicon glyphicon-list-alt"></i> {{titulo}} </h3>
+        </div>
+      </div>
+
+    </div>
+    <div class="panel-body">
+      <form autocomplete="off" ng-submit="guardarCosto()" enctype="multipart/form-data">
+                <div class="row">
+                  <div class="col-md-6">
+                    <label>Tipo de Costo</label>
+                    <input type="text" class="form-control"  placeholder="Nombre de la empresa "  ng-model="Costo.tipo" id="tipo" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label>Precio</label>
+                    <input type="text" class="form-control"  placeholder="Direccion de la empresa" ng-model="Costo.precio" id="precio" required>
+                  </div>
+                </div>
+
+                <div class="row" style="margin-top:15px;">
+                  <div  ng-if="mostrar == 'SI'"  class="col-md-3">
+                    <button type="submit" name="button" class="{{accion}}" >
+                      <i class="{{botonIcono}}" aria-hidden="true"></i> {{boton}}
+                    </button>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="{{panel}}" role="alert"> <strong>{{msj}}</strong> </div>
+                  </div>
+                  <div class="col-md-3">
+                    <a href="#/lista" class="btn btn-info pull-right"> <i class="fa fa-times-circle" aria-hidden="true"></i> Cancelar</a>
+                  </div>
+                </div>
+              </form>
+
+    </div>
+</div>

@@ -1,0 +1,45 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+
+      <div class="row">
+        <div class="col-md-6">
+          <h3 class="panel-title"><i class="glyphicon glyphicon-list-alt"></i> Listar Puesto</h3>
+        </div>
+        <div class="col-md-6">
+          <!-- <a href="#/crear" class="btn btn-info pull-right">Nuevo <i class="fa fa-plus"></i></a> -->
+          <a href="#/crear" class="btn btn-info pull-right">Nuevo <i class="fa fa-plus"></i></a>
+        </div>
+      </div>
+
+    </div>
+    <div class="panel-body">
+      <table class="table table-responsive" datatable="ng" dt-options="vm.dtOptions" >
+          <thead>
+              <tr>
+                  <th>Nro.</th>
+                  <th>Nombre</th>
+                  <th>Lado</th>
+                  <th>Tipo y Dimension</th>
+                  <th>Estado</th>
+                  <th>Costo y Nivel</th>
+                  <th>Editar</th>
+                  <th>Entrega</th>
+              </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="puesto in Puestos">
+              <td> {{ $index + 1}} </td>
+              <td> {{ puesto.nombre }} </td>
+              <td> {{ puesto.lado }} </td>
+              <td> {{ puesto.tipo }} - {{ puesto.dimension }}  </td>
+              <td> {{ puesto.estado }} </td>
+              <td> {{ puesto.precio}} - {{ puesto.piso }} </td>
+
+              <td> <a href="#/editar/{{ puesto.id }}" style="color:#f0ad4e;"> <i class="fa fa-pencil" aria-hidden="true"></i>    </a> </td>
+              <td> <a href="#/eliminar/{{ puesto.id }}" style="color:#c12e2a;"> <i class="fa fa-trash-o" aria-hidden="true"></i> </a> </td>
+
+            </tr>
+          </tbody>
+      </table>
+    </div>
+</div>

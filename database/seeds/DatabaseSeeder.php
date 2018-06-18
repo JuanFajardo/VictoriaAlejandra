@@ -15,8 +15,7 @@ class DatabaseSeeder extends Seeder
 
         \DB::table('users')->insert( [ 'id' => '1', 'name'=>'Federacion Empresarios Privados', 'username'=> 'admin', 'password'=> \Hash::make('123'), 'email'=> 'fepp@correo.com', 'grupo'=> 'Administrador', 'estado'=> '1' ]);
 
-        /*
-        \DB::table('horarios')->insert(array(
+        /*\DB::table('horarios')->insert(array(
           'id'=>'1', 'horario'=>'Normal', 'descripcion'=>'Horario de oficina', 'ingreso_am'=>'08:00:00', 'salida_am'=>'12:00:00', 'ingreso_pm'=>'14:00:00', 'salida_pm'=>'18:00:00', 'tolerancia'=>'15', 'fijo'=>'SI', 'user_id'=>'1' ));
         \DB::table('horarios')->insert(array(
           'id'=>'2', 'horario'=>'Tarde', 'descripcion'=>'Horario solo por la tarde', 'ingreso_am'=>'00:00:00', 'salida_am'=>'00:00:00', 'ingreso_pm'=>'14:00:00', 'salida_pm'=>'18:00:00', 'tolerancia'=>'15', 'fijo'=>'SI', 'user_id'=>'1' ));
@@ -26,16 +25,14 @@ class DatabaseSeeder extends Seeder
           'id'=>'4', 'horario'=>'Feria Expositorires', 'descripcion'=>'Horario para el ingreso y salidad de los expositores', 'ingreso_am'=>'00:00:00', 'salida_am'=>'00:00:00', 'ingreso_pm'=>'15:00:00', 'salida_pm'=>'23:59:59', 'tolerancia'=>'15', 'fijo'=>'NO', 'user_id'=>'1' ));
         \DB::table('horarios')->insert(array(
           'id'=>'5', 'horario'=>'Feria Fin de semana', 'descripcion'=>'Horario para el ingreso y salidad de los expositores en fin de semana', 'ingreso_am'=>'00:00:00', 'salida_am'=>'00:00:00', 'ingreso_pm'=>'12:00:00', 'salida_pm'=>'23:59:59', 'tolerancia'=>'15', 'fijo'=>'NO', 'user_id'=>'1' ));
-          */
         \DB::table('horarios')->insert(array(
-          'id'=>'1', 'horario'=>'FEIPOBOL', 'descripcion'=>'Horario disponible en que los visitantes pueden ingresar a la feria', 'ingreso_am'=>'00:00:00', 'salida_am'=>'00:00:00', 'ingreso_pm'=>'12:00:00', 'salida_pm'=>'23:59:59', 'tolerancia'=>'0', 'fijo'=>'NO', 'user_id'=>'1' ));
-        /*
-        \DB::table('preventa')->insert([
+          'id'=>'1', 'horario'=>'FEIPOBOL', 'descripcion'=>'Horario disponible en que los visitantes pueden ingresar a la feria', 'ingreso_am'=>'00:00:00', 'salida_am'=>'00:00:00', 'ingreso_pm'=>'12:00:00', 'salida_pm'=>'23:59:59', 'tolerancia'=>'0', 'fijo'=>'NO', 'user_id'=>'1' )); */
+
+        /*\DB::table('preventa')->insert([
           'id'=>'1', 'nombres'=>'Guido Alberto','apellidos'=>'Lopez Meriles', 'correo'=>'adyctto@gmail.com','carnet'=>'8600518', 'fecha_nacimiento'=>'1992-06-10', 'telefono'=>'79443613','genero'=>'masculino', 'imagen'=>'', 'reserva'=>'0', 'persona_id'=>'1']);
         \DB::table('preventa')->insert([
           'id'=>'2', 'nombres'=>'Juan Alberto','apellidos'=>'Fajardo Canaza', 'correo'=>'bett0@gmail.com','carnet'=>'12345678', 'fecha_nacimiento'=>'1990-01-01', 'telefono'=>'77889944','genero'=>'masculino', 'imagen'=>'',  'reserva'=>'0', 'persona_id'=>'1']);
-        */
-        \DB::table('cargos')->insert(['id' =>'1', 'cargo'   =>'Empleado', 'descripcion'=>'Empleado de la FEPP', 'horario_id' =>'1', 'user_id' =>'1']);
+        \DB::table('cargos')->insert(['id' =>'1', 'cargo'   =>'Empleado', 'descripcion'=>'Empleado de la FEPP', 'horario_id' =>'1', 'user_id' =>'1']);  */
 
 
         \DB::table('stands')->insert(array(

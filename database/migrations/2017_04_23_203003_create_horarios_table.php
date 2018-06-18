@@ -6,13 +6,8 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateHorariosTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
-    {
+    {/*
         Schema::create('horarios', function (Blueprint $table) {
             $table->increments('id');
             $table->string('horario', 50);
@@ -27,15 +22,11 @@ class CreateHorariosTable extends Migration
             $table->timestamps();
             $table->softDeletes();
         });
-    }
+    */}
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
+
     public function down()
     {
-        Schema::dropIfExists('horarios');
+        //Schema::dropIfExists('horarios');
     }
 }

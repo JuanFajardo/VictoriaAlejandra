@@ -7,7 +7,7 @@ use Illuminate\Database\Migrations\Migration;
 class CreateRepetitivosTable extends Migration
 {
     public function up()
-    {
+    {/*
         Schema::create('repetitivos', function (Blueprint $table) {
             $table->increments('id');
             $table->date('fecha');
@@ -21,10 +21,11 @@ class CreateRepetitivosTable extends Migration
             $table->integer('user_id')->references('id')->on('users');
             $table->timestamps();
         });
+        */
     }
 
     public function down()
     {
-        Schema::dropIfExists('repetitivos');
+        //Schema::dropIfExists('repetitivos');
     }
 }

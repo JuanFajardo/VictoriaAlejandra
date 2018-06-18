@@ -11,7 +11,9 @@ class CreateRegistrosTable extends Migration
         Schema::create('registros', function (Blueprint $table) {
             $table->increments('id');
             $table->date('fecha');
-            $table->time('ingreso_am');
+            $table->time('ingreso');
+            $table->time('salida');
+            /*$table->time('ingreso_am');
             $table->time('salida_am');
             $table->time('ingreso_pm');
             $table->time('salida_pm');
@@ -19,7 +21,8 @@ class CreateRegistrosTable extends Migration
             $table->string('retraso_am');
             $table->string('retraso_pm');
             $table->integer('persona_id')->references('id')->on('personas');
-            $table->integer('horario_id')->references('id')->on('horarios');
+            $table->integer('horario_id')->references('id')->on('horarios');*/
+            $table->integer('tarjeta_id')->references('id')->on('stands');
             $table->integer('stand_id')->references('id')->on('stands');
             $table->integer('user_id')->references('id')->on('users');
             $table->softDeletes();

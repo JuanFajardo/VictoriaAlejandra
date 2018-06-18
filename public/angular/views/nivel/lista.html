@@ -1,0 +1,37 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+
+      <div class="row">
+        <div class="col-md-6">
+          <h3 class="panel-title"><i class="glyphicon glyphicon-list-alt"></i> Listar Niveles</h3>
+        </div>
+        <div class="col-md-6">
+          <!-- <a href="#/crear" class="btn btn-info pull-right">Nuevo <i class="fa fa-plus"></i></a> -->
+          <a href="../index.php/Nivel#/crear" class="btn btn-info pull-right">Nuevo <i class="fa fa-plus"></i></a>
+        </div>
+      </div>
+
+    </div>
+    <div class="panel-body">
+      <table class="table table-responsive" datatable="ng" dt-options="vm.dtOptions" >
+          <thead>
+              <tr>
+                  <th>Nro.</th>
+                  <th>Piso</th>
+                  <th>Bloque</th>
+                  <th>Editar</th>
+                  <th>Eliminar</th>
+              </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="nivel in Niveles">
+              <td> {{ $index + 1 }} </td>
+              <td> {{ nivel.piso }} </td>
+              <td> {{ nivel.bloque }} </td>
+              <td> <a href="#/editar/{{nivel.id}}" style="color:#f0ad4e;"> <i class="fa fa-pencil" aria-hidden="true"></i>    </a> </td>
+              <td> <a href="#/eliminar/{{nivel.id}}" style="color:#c12e2a;"> <i class="fa fa-trash-o" aria-hidden="true"></i> </a> </td>
+            </tr>
+          </tbody>
+      </table>
+    </div>
+</div>
