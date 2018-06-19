@@ -3,12 +3,13 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title> FEPP - Feipobol </title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/font-awesome.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="estilo.css">
+    <title> @yield('titulo') </title>
+    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/font-awesome/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/estiloPuestos.css') }}">
+
+    <script src="{{ asset('assets/js/jquery.js') }}"></script>
+    <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
   </head>
 
   <?php/*
@@ -21,131 +22,102 @@
     }
     include("cabecera.php");*/
   ?>
-    <div class="container theme-showcase">
-      <div class="row">
-        <div class="col-md-12"> &nbsp; </div>
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">FEIPOBOL </a>
       </div>
-
-
-      <br><br>
-      <div class="row">
-        <div class="col-md-3">
-          <div class="card card-inverse text-center" style="background-color:#5cc0de; color:#fff; -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px;">
-              <blockquote class="card-blockquote">
-                <p>Puestos Reservados:
-                  <?php/*
-                   $sql = "";
-                   if($_SESSION['tipo'] == '2'){
-                      $sql = mysqli_query($cn, "select count(*) from puestos where estado='R' ");
-                   }else{
-                     $sql = mysqli_query($cn, "select count(*) from puestos where estado='R' and id_usuario='".$usuario."'");
-                   }
-                    $f = mysqli_fetch_array($sql); */
-                  ?>
-                   <button type="button" class="btn btn-primary"  id="vender" data-toggle="modal" data-target="#myModal"> Vender <span class="badge"> 000 <?php // echo $f[0];  ?> </span></button>
-                </p>
-              </blockquote>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="card card-inverse card-primary mb-3 text-center" style="background-color:#5cc0de; color:#fff; -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px;">
-            <div class="card-block">
-              <blockquote class="card-blockquote">
-                <p>Puestos Vendidos:
-                  <?php/*
-                  $sql = "";
-                  if($_SESSION['tipo'] == '2'){
-                    $sql = mysqli_query($cn, "select count(*) from puestos where estado='V' ");
-                  }else{
-                    $sql = mysqli_query($cn, "select count(*) from puestos where estado='V' and id_usuario='".$usuario."'");
-                  }
-                    $f = mysqli_fetch_array($sql);
-                    */
-                  ?>
-                  <button type="button" class="btn btn-primary"> Total <span class="badge"> 0001 <?php // echo $f[0];  ?> </span></button>
-                </p>
-              </blockquote>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="card card-inverse card-primary mb-3 text-center" style="background-color:#5cc0de; color:#fff; -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px;">
-            <div class="card-block">
-              <blockquote class="card-blockquote">
-                <p>Monto Total en Bs:
-                  <?php /*
-                    $sql = "";
-                    if($_SESSION['tipo'] == '2'){
-                      $sql = mysqli_query($cn, "select monto from cobro group by empresa, encargado");
-                    }else{
-                      $sql = mysqli_query($cn, "select monto from cobro where id_usuario='".$usuario."' group by empresa, encargado");
-                    }
-                    $suma = 0;
-                    while ( $f   = mysqli_fetch_array($sql) ){
-                        $suma = $suma + $f[0];
-                    } */
-                  ?>
-                  <button type="button" class="btn btn-primary"> Total <span class="badge"> 0002 <?php // echo $suma;  ?> </span></button>
-                </p>
-              </blockquote>
-            </div>
-          </div>
-        </div>
+      <div id="navbar" class="navbar-collapse collapse my-2 my-lg-0">
+        <ul class="nav navbar-nav">
+          <li><a href="index.php?planta=5">Reporte</a></li>
+          <li><a href="reporteGeneral.php">Reporte General</a></li>
+          <li><a href="index.php?planta=6">Eliminar</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li class="active"><a href="#">AAAAAA</a></li>
+          <li><a href="destruirSesion.php">Cerrar Sesion</a></li>
+        </ul>
       </div>
+    </div>
+  </nav>
 
+  <div class="container theme-showcase">
+    <div class="row">
+      <div class="col-md-12"> &nbsp; </div>
+    </div>
+    <br>
       <div class="row">
-        <div class="col-md-12">
-          <form action="index.php" method="get">
+        <div class="col-md-6">
             <div class="form-inline">
-              <?php// if($_SESSION['tipo'] =='1' || $_SESSION['tipo'] =='2' ){?>
-              <div class="col-md-2">
-                <label class="label" style="color:black;"> Elegir la planta : </label>
+              <div class="col-md-12">
+                <a href="{{asset('index.php/Cobro/Piso/1')}}" class="@yield('1')"> MOVILIDADS </a>
+                <a href="{{asset('index.php/Cobro/Piso/2')}}" class="@yield('2')"> COMIDAS </a>
+                <a href="{{asset('index.php/Cobro/Piso/3')}}" class="@yield('3')"> PYMES </a>
+                <a href="{{asset('index.php/Cobro/Piso/4')}}" class="@yield('4')"> BEBIDAS </a>
+                <a href="{{asset('index.php/Cobro/Piso/5')}}" class="@yield('5')"> EXTRA </a>
               </div>
-              <div class="col-md-3">
-                <select class="form-control" name="planta">
-                  <?php // if( isset($_GET['planta']) ) { ?>
-
-                  <?php// }else{ ?>
-                    <option value=""> </option>
-                    <option value="1"> Planta Baja - Movilidades</option>
-                    <option value="2"> Planta 1 - Comidas</option>
-                    <option value="3"> Planta 2 - Pymes</option>
-                    <option value="4"> Planta Baja - Bebidas</option>
-                  <?php // } ?>
-                </select>
-              </div>
-              <div class="col-md-3">
-                <input type="submit" name="" value="Seleccionar" class="btn btn-primary">
-              </div>
-            <?php // } ?>
             </div>
-          </form>
+        </div>
+
+        <div class="col-md-2">
+          <p>
+            <?php/*
+             $sql = "";
+             if($_SESSION['tipo'] == '2'){
+                $sql = mysqli_query($cn, "select count(*) from puestos where estado='R' ");
+             }else{
+               $sql = mysqli_query($cn, "select count(*) from puestos where estado='R' and id_usuario='".$usuario."'");
+             }
+              $f = mysqli_fetch_array($sql); */
+            ?>
+             <button type="button" class="btn btn-primary"  id="vender" data-toggle="modal" data-target="#myModal"> Reservados: <span class="badge"> 000 <?php // echo $f[0];  ?> </span></button>
+          </p>
+        </div>
+        <div class="col-md-2">
+          <p>
+            <?php/*
+            $sql = "";
+            if($_SESSION['tipo'] == '2'){
+              $sql = mysqli_query($cn, "select count(*) from puestos where estado='V' ");
+            }else{
+              $sql = mysqli_query($cn, "select count(*) from puestos where estado='V' and id_usuario='".$usuario."'");
+            }
+              $f = mysqli_fetch_array($sql);
+              */
+            ?>
+            <button type="button" class="btn btn-primary"> Vendidos: <span class="badge"> 0001 <?php // echo $f[0];  ?> </span></button>
+          </p>
+        </div>
+        <div class="col-md-2">
+          <p>
+            <?php /*
+              $sql = "";
+              if($_SESSION['tipo'] == '2'){
+                $sql = mysqli_query($cn, "select monto from cobro group by empresa, encargado");
+              }else{
+                $sql = mysqli_query($cn, "select monto from cobro where id_usuario='".$usuario."' group by empresa, encargado");
+              }
+              $suma = 0;
+              while ( $f   = mysqli_fetch_array($sql) ){
+                  $suma = $suma + $f[0];
+              } */
+            ?>
+            <button type="button" class="btn btn-primary"> Total  <span class="badge"> 0002 <?php // echo $suma;  ?> </span> Bs.</button>
+          </p>
         </div>
       </div>
 
       <div class="row">
         <div class="col-md-12">
-          <br/>
+            <br/>
           @yield('cuerpo')
-          <?php
-          /*
-            $op = isset( $_GET['planta']  ) ? $_GET['planta'] : " fepp";
-            switch ($op) {
-              case '1': include('pisoUno.php'); break;
-              case '2': include('pisoDos.php'); break;
-              case '3': include('pisoTres.php'); break;
-              case '4': include('pisoCuatro.php'); break;
-              /*
-              case '5': include('lista.php'); break;
-              case '6': include('eliminarVenta.php'); break;
-
-              case '7': include('listaDinero.php'); break;
-              case '8': include('listaImagen.php'); break;
-              ///
-              default: include('saludo.php'); break;
-            }
-            */
-          ?>
         </div>
       </div>
     </div>

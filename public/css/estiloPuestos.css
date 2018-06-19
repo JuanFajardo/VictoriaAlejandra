@@ -1,0 +1,108 @@
+body{
+  font-size: 15px;
+}
+.puestoArriba{
+  width: 48px;
+  height: 112px;
+  background-color: #CFF4D3;
+}
+.puestoCostado{
+  width: 100px;
+  height: 35px; /* 48px*/
+  background-color: #CFF4D3;
+}
+.passillo1{
+  width: 144px;
+  height: 30px;
+}
+.passilloMedio{
+  width: 80px;
+}
+.escalera{
+  width: 20px;
+}
+.banio{
+  width: 112px;
+  height: 112px;
+  background-color: #F84646;
+}
+.mesas{
+  width: 100px;
+  background-color: white;
+  height: 410px;
+}
+.ladoIzquiero{
+  -webkit-border-bottom-left-radius: 2000px;
+  -moz-border-radius-bottomleft: 2000px;
+  border-bottom-left-radius: 2000px;
+  width: 112px;
+  height: 112px;
+  background-color: gray;
+}
+.ladoDerecho{
+  -webkit-border-bottom-right-radius: 2000px;
+  -moz-border-radius-bottomright: 2000px;
+  border-bottom-right-radius: 2000px;
+  width: 112px;
+  height: 112px;
+  background-color: gray;
+}
+/*GUIDO*/
+/*GUIDO*/
+.escaleraGuido1{
+
+    width: 20px;
+    height: 430px;
+}
+
+/*GUIDO*/
+.escaleraGuido{
+  width: 20px;
+  height: 490px;
+}
+.escaleraGuido2{
+  width: 20px;
+  height: 350px;
+}
+.escaleraGuido3{
+  width: 20px;
+  height: 500px;
+}
+
+.vestidoresGuido{
+  width: 288px;
+  height: 112px; /* 48px*/
+  background-color: #0987f7;
+}
+.banioGuido{
+  width: 94px;
+  height: 112px;
+  background-color: #f7952d;
+}
+.puestoCostadoGuido{
+  width: 60px;
+  height: 50px; /* 48px*/
+  background-color: #CFF4D3;
+}
+.pasilloCostadoGuido{
+  width: 60px;
+  height: 50px; /* 48px*/
+}
+.puestoArriba3Guido{
+  width: 96px;
+  height: 112px;
+  background-color: #CFF4D3;
+}
+.juegosGuido{
+  width: 288px;
+  height: 662px; /* 48px*/
+  background-color: #0987f7;
+}
+.puestoCostadoGuido3{
+  width: 50px;
+  height: 50px; /* 48px*/
+  background-color: #CFF4D3;
+}
+.passilloMedioGuido1{
+  width: 35px;
+}
