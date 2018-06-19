@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Cobro extends Model
 {
   use SoftDeletes;
-  protected $table    = 'horarios';
+  protected $table    = 'cobros';
   protected $fillable = ['id', 'empresa', 'encargado', 'telefono', 'monto', 'fecha', 'puesto_id', 'precio_id', 'stand_id', 'user_id'];
   protected $dates    = ['deleted_at'];
 }

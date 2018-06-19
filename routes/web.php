@@ -149,6 +149,10 @@ Route::put('cobro/{id}', 'CobroController@update');
 Route::delete('cobro/{id}', 'CobroController@destroy');
 
 Route::get('Cobro/Piso/{id}', 'CobroController@piso');
+Route::get('Cobro/Reserva/{id}', 'CobroController@reserva');
+Route::get('Cobro/Eliminar/{id}', 'CobroController@eliminar');
+Route::post('Cobro/Vender', 'CobroController@vender');
+
 
 Route::get('Log', 'LogController@angular');
 Route::get('log', 'LogController@index');

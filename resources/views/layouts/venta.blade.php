@@ -36,12 +36,11 @@
       </div>
       <div id="navbar" class="navbar-collapse collapse my-2 my-lg-0">
         <ul class="nav navbar-nav">
-          <li><a href="index.php?planta=5">Reporte</a></li>
-          <li><a href="reporteGeneral.php">Reporte General</a></li>
-          <li><a href="index.php?planta=6">Eliminar</a></li>
+          <li><a href="{{asset('index.php/Cobro/Reporte/Ver')}}">Reporte</a></li>
+          <li><a href="{{asset('index.php/Cobro/Eliminados/Ver')}}">Eliminar</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li class="active"><a href="#">AAAAAA</a></li>
+          <li class="active"><a href="#"> {{ \Auth::user()->username }} </a></li>
           <li><a href="destruirSesion.php">Cerrar Sesion</a></li>
         </ul>
       </div>
@@ -68,48 +67,30 @@
 
         <div class="col-md-2">
           <p>
-            <?php/*
-             $sql = "";
-             if($_SESSION['tipo'] == '2'){
-                $sql = mysqli_query($cn, "select count(*) from puestos where estado='R' ");
-             }else{
-               $sql = mysqli_query($cn, "select count(*) from puestos where estado='R' and id_usuario='".$usuario."'");
-             }
-              $f = mysqli_fetch_array($sql); */
+            <?php
+              $reservaPersonal = \DB::table('puestos')->where('estado', '=', 'R')->where('user_id', '=', \Auth::user()->id)->count();
             ?>
-             <button type="button" class="btn btn-primary"  id="vender" data-toggle="modal" data-target="#myModal"> Reservados: <span class="badge"> 000 <?php // echo $f[0];  ?> </span></button>
+             <button type="button" class="btn btn-primary"  id="vender" data-toggle="modal" data-target="#myModal"> Reservados: <span class="badge"> {{$reservaPersonal}} </span></button>
           </p>
         </div>
         <div class="col-md-2">
           <p>
-            <?php/*
-            $sql = "";
-            if($_SESSION['tipo'] == '2'){
-              $sql = mysqli_query($cn, "select count(*) from puestos where estado='V' ");
-            }else{
-              $sql = mysqli_query($cn, "select count(*) from puestos where estado='V' and id_usuario='".$usuario."'");
+            <?php
+              $vendidoPersonal = \DB::table('puestos')->where('estado', '=', 'V')->where('user_id', '=', \Auth::user()->id)->count();
+            ?>
+            <button type="button" class="btn btn-primary"> Vendidos: <span class="badge"> {{$vendidoPersonal}} </span></button>
+          </p>
+        </div>
+        <div class="col-md-2">
+          <p>
+            <?php
+            $montoPersonal = \DB::table('cobros')->where('user_id', '=', \Auth::user()->id)->get();
+            $suma = 0;
+            foreach ($montoPersonal as $dato) {
+              $suma = $suma + $dato->monto;
             }
-              $f = mysqli_fetch_array($sql);
-              */
             ?>
-            <button type="button" class="btn btn-primary"> Vendidos: <span class="badge"> 0001 <?php // echo $f[0];  ?> </span></button>
-          </p>
-        </div>
-        <div class="col-md-2">
-          <p>
-            <?php /*
-              $sql = "";
-              if($_SESSION['tipo'] == '2'){
-                $sql = mysqli_query($cn, "select monto from cobro group by empresa, encargado");
-              }else{
-                $sql = mysqli_query($cn, "select monto from cobro where id_usuario='".$usuario."' group by empresa, encargado");
-              }
-              $suma = 0;
-              while ( $f   = mysqli_fetch_array($sql) ){
-                  $suma = $suma + $f[0];
-              } */
-            ?>
-            <button type="button" class="btn btn-primary"> Total  <span class="badge"> 0002 <?php // echo $suma;  ?> </span> Bs.</button>
+            <button type="button" class="btn btn-primary"> Total  <span class="badge"> {{$suma}} </span> Bs.</button>
           </p>
         </div>
       </div>
@@ -131,9 +112,15 @@
             <h4 class="modal-title">Venta de puestos</h4>
           </div>
           <div class="modal-body">
-            <form action="venderReserva.php" method="post">
+              {!! Form::open(['accept-charset'=>'UTF-8', 'method'=>'POST', 'autocomplete'=>'off', 'id'=>'form-insert', 'action'=>'CobroController@vender']) !!}
               <label for=""> Nombre de la Empresa:</label>
-              <input type="text" name="empresa" value="" class="form-control" placeholder="Nombre de la Empresa" required>
+              <input type="text" name="empresa" value="" class="form-control" placeholder="Nombre de la Empresa" list="lista-stand" required>
+              <?php $stands = \DB::table('stands')->select('nom_empresa')->get(); ?>
+              <datalist id="lista-stand">
+                @foreach($stands as $stand)
+                  <option value="{{ $stand->nom_empresa }}">
+                @endforeach
+              </datalist>
               <div class="row">
                 <div class="col-md-8">
                   <label for=""> Nombre del Encargado:</label>
@@ -142,7 +129,6 @@
                 <div class="col-md-4">
                   <label for=""> Telefono/Celular:</label>
                   <input type="text" name="telefono" value="" class="form-control" placeholder="Telefono/Celular" required>
-
                 </div>
               </div>
               <div class="row">
@@ -153,7 +139,7 @@
                 <div class="col-md-6">
                   <label for="">  Otro Precio Total  o Adelanto:</label>
                   <input type="text" name="precio2" value="" class="form-control" placeholder="Bs.">
-                  <input type="hidden" name="planta" value="0008  <?php // echo $_GET['planta']; ?>" >
+                  <input type="hidden" name="planta" value="@yield('piso')" >
                 </div>
               </div>
               <input type="submit" class="btn btn-primary"  value="Vender">
@@ -164,21 +150,43 @@
                   </tr>
                 </thead>
                 <tbody id="puestosVenta">
-
+                  <?php
+                  $reservas = \DB::table('puestos')->join('costos', 'puestos.costo_id', 'costos.id')
+                                               ->where('puestos.user_id', '=', \Auth::user()->id)
+                                               ->where('puestos.estado', '=', 'R')
+                                               ->select('puestos.*', 'costos.tipo', 'costos.precio')->get();
+                  ?>
+                  @foreach($reservas as $reserva)
+                  <tr>
+                    <td> <input type='checkbox' onclick="marcar('{{$reserva->id}}','{{$reserva->precio}}','{{$reserva->nombre}}')"> Puesto {{$reserva->id}}</td>
+                    <td> {{$reserva->dimension}} </td>
+                    <td> {{$reserva->precio}}  </td>
+                    <td> <a href="{{ asset('index.php/Cobro/Eliminar/'.$reserva->id)}}-@yield('piso')" class='btn btn-danger'> Eliminar </td>
+                  </tr>
+                  @endforeach
                 </tbody>
               </table>
               <br>
               <input type="hidden" name="ventas" id="ventas">
               <input type="hidden" name="numero" id="numero">
               <input type="submit" class="btn btn-primary"  value="Vender">
-            </form>
+            {!! Form::close() !!}
           </div>
         </div>
       </div>
     </div>
 
   </body>
-  <script>
+  <script type="text/javascript">
+    $('a').click(function(e){
+      e.preventDefault();
+      var link = $(this).attr('href');
+      if(confirm('¿ Ejecutar el comando ? ')) {
+        alert(link);
+         window.location = link;
+      }
+    });
+
     $(document).ready(function(){
         $('[data-toggle="tooltip"]').tooltip();
     });
@@ -186,7 +194,6 @@
     var numero = 0;
     var total  = 0.0;
     function marcar(id, precio, nombre){
-
       var ventas = $('#ventas').val();
       ventas = ventas + id + "|" + precio + "|" + nombre + ", ";
       $('#ventas').val(ventas);
