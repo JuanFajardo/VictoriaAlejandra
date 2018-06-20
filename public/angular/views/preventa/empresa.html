@@ -23,55 +23,62 @@
       <form class="col s12" autocomplete="off" ng-submit="guardarPreventa()" enctype="multipart/form-data">
           <div class="row">
               <div class="input-field col m6 s12">
-                  <i class="material-icons prefix">contacts</i>
-                  <input ng-model="Preventa.nombres" id="nombres" type="text" class="validate" required="required" data-parsley-required-message="Campo obligatorio"
+                  <i class="material-icons prefix">business</i>
+                  <input ng-model="Preventa.nom_empresa" id="nom_empresa" type="text" class="validate" required="required" data-parsley-required-message="Campo obligatorio"
                   data-parsley-trigger="change focusout" data-parsley-pattern="/^[a-zA-Z]*$/">
-                  <label for="nombres">Nombre(s)</label>
+                  <label for="nom_empresa">Nombre de la Empresa</label>
               </div>
               <div class="input-field col m6 s12">
-                  <input ng-model="Preventa.apellidos" id="apellidos" type="text" class="validate">
-                  <label for="apellidos">Apellido(s)</label>
+                <i class="material-icons prefix">receipt</i>
+                  <input ng-model="Preventa.descripcion" id="descripcion" type="text" class="validate">
+                  <label for="descripcion">Resumen de su actividad Empresarial</label>
               </div>
           </div>
           <div class="row">
               <div class="input-field col m6 s12">
-                  <i class="material-icons prefix">email</i>
-                  <input ng-model="Preventa.correo" id="correo" type="email" class="validate" required>
-                  <label for="correo">Correo Electronico</label>
+                  <i class="material-icons prefix">how_to_reg</i>
+                  <input ng-model="Preventa.encargado" id="encargado" type="text" class="validate" required>
+                  <label for="encargado">Nombre Compelto del Responsable</label>
               </div>
               <div class="input-field col m6 s12">
-                  <i class="material-icons prefix">web</i>
-                  <input ng-model="Preventa.carnet" id="carnet" type="number" maxlength = "9" class="validate" required>
-                  <label for="carnet">Cedula de identidad</label>
+                  <i class="material-icons prefix">place</i>
+                  <input ng-model="Preventa.direccion" id="carnet" type="text" class="validate" required>
+                  <label for="direccion">Direccion de la empresa</label>
               </div>
           </div>
 
           <div class="row">
               <div class="input-field col m6 s12">
-                    <i class="material-icons prefix">today</i>
-                  <input type="text" ng-model="Preventa.fecha_nacimiento" id="fecha_nacimiento">
-                  <label for="fecha_nacimiento">Fecha de Nacimiento. Ej. 10/02/1992</label>
+                    <i class="material-icons prefix">call</i>
+                  <input type="text" ng-model="Preventa.telefono" id="telefono">
+                  <label for="telefono">Numero telefono de la empresa</label>
               </div>
               <div class="input-field col m6 s12">
-                  <i class="material-icons prefix">contact_phone</i>
-                  <input ng-model="Preventa.telefono" id="telefono" type="number" class="validate" required>
-                  <label for="telefono">Numero de Telefono / Celular</label>
+
+
+                <div class="row">
+                  <div class="col-md-12">
+                    <i class="material-icons prefix">cloud_upload</i>
+                    <input type="hidden" ng-model="img">
+                    <input type="file" class="form-control" ng-model="Preventa.logo"  ng-blur="cargaImagen()"  fileread="Stand.logo" spinner-on-load name="logo" id="logo" accept="image/jpeg|image/png">
+                  </div>
+                </div>
+                <div class="row">
+                  <div   class="col-md-12">
+                    <picture>
+                      <img src="" ng-model="imagen" width="150" id="preview" class="img-thumbnail" style="display:none;" >
+                    </picture>
+                  </div>
+                </div>
+
+                 <!--
+                  <i class="material-icons prefix">cloud_upload</i>
+                  <input ng-model="Preventa.logo" id="logo" type="file" class="validate" required>
+                  <label for="logo">Logo de la empresa en PNG</label>
+                  <img src="" id="img"/>-->
               </div>
           </div>
-          <div class="row">
-            <div class="input-field col s12">
-              <label>Genero</label>
-              <br/>
-            </div>
-            <div class="input-field col m6 s12 center-align">
-              <input ng-model="Preventa.genero" name="group1" type="radio" id="mas" value="masculino"/>
-              <label for="mas">Masculino</label>
-            </div>
-            <div class="input-field col m6 s12 center-align">
-              <input  ng-model="Preventa.genero" name="group1" type="radio" id="fem"  value="femenino"/>
-              <label for="fem">Femenino</label>
-            </div>
-          </div>
+
           <div class="row">
               <div class="input-field col m12 s12">
                   <i class="material-icons prefix">verified_user</i>

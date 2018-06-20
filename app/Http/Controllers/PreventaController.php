@@ -26,14 +26,15 @@ class PreventaController extends Controller
     $dato = Preventa::find($id);
     return $dato;
   }
+
   public function store(Request $request){
+    /*
     try {
       $v = \Validator::make($request->all(), [
             'nombres'    => 'required',
             'apellidos'    => 'required',
             'correo'    => 'required',
             'carnet'    => 'required|numeric',
-
             'telefono'    => 'required|numeric',
             'genero'    =>  'required',
             'captcha' => 'required|numeric'
@@ -59,8 +60,40 @@ class PreventaController extends Controller
     } catch (Exception $e) {
       return "MensajeError -> ".$e->getMessage();
     }
+    */
+//
+
+    //'nom_empresa', 'cant_personal', 'descripcion', 'encargado', 'direccion', 'telefono', 'logo',
+    try {
+      $v = \Validator::make($request->all(), [
+            'nom_empresa' => 'required',
+            'descripcion' => 'required',
+            'encargado'   => 'required',
+            'direccion'   => 'required',
+            'telefono'    => 'required'
+        ]);
+      if ( count($v->errors()) > 0 ){
+            return response()->json(array("respuesta"=>$v->errors()));
+      }else{
+        $num = $request['num1'] + $request['num2'];
+        if($num == $request['captcha']){
+          $request['user_id'] = '1';
+          $request['cant_personal'] = '3';
+          $dato = new \App\Stand;//Preventa;
+          $dato->fill( $request->all() );
+          $dato->save();
+          return response()->json(array("respuesta"=>"200_OK"));
+        }
+        else{
+          return response()->json(array("respuesta"=>"Suma Incorrecta..."));
+        }
+      }
+    } catch (Exception $e) {
+      return "MensajeError -> ".$e->getMessage();
+    }
 
   }
+
   public function credito($id,$cantidad){
     try {
          $datos = \DB::table('credito')->select('id','cantidad')

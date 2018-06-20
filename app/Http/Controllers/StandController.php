@@ -28,7 +28,6 @@ class StandController extends Controller
     return view('Stand.create');
   }
   public function store(Request $request){
-
     try {
       $request['user_id'] = 1;
       $v = \Validator::make($request->all(), [
@@ -40,10 +39,8 @@ class StandController extends Controller
             'telefono'    => 'required',
             'user_id' => 'required'
         ]);
-
       if ( count($v->errors()) > 0 ){
             $respuesta = array("respuesta"=>"500_NO");
-
       }else{
         //return $request->all();
         $dato = new Stand;
