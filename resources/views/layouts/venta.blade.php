@@ -32,16 +32,16 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">FEIPOBOL </a>
+        <a class="navbar-brand" href="#"> FEIPOBOL {{date('Y')}} </a>
       </div>
       <div id="navbar" class="navbar-collapse collapse my-2 my-lg-0">
         <ul class="nav navbar-nav">
           <li><a href="{{asset('index.php/Cobro/Reporte/Ver')}}">Reporte</a></li>
-          <li><a href="{{asset('index.php/Cobro/Eliminados/Ver')}}">Eliminar</a></li>
+          <!--<li><a href="{{asset('index.php/Cobro/Eliminados/Ver')}}">Eliminar</a></li> -->
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li class="active"><a href="#"> {{ \Auth::user()->username }} </a></li>
-          <li><a href="destruirSesion.php">Cerrar Sesion</a></li>
+          <li><a href="{{asset('index.php/logout')}}">Cerrar Sesion</a></li>
         </ul>
       </div>
     </div>
@@ -182,7 +182,6 @@
       e.preventDefault();
       var link = $(this).attr('href');
       if(confirm('¿ Ejecutar el comando ? ')) {
-        alert(link);
          window.location = link;
       }
     });

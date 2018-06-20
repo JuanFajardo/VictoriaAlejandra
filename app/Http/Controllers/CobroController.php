@@ -115,8 +115,6 @@ class CobroController extends Controller
       $direccion = 'cobro.pisoa';
       $pagina = '1';
     }
-
-
     return view( $direccion, compact('pagina'));
   }
 
@@ -148,6 +146,21 @@ class CobroController extends Controller
     	->update(['estado' => 'N', 'user_id'=>'1']);
     }
     return redirect('Cobro/Piso/'.$pagina);
+  }
+
+  public function reporte($id){
+    $usuarios = \DB::table('users')->select('id', 'username')->get();
+    $stands   = \DB::table('stands')->select('id', 'nom_empresa')->get();
+    $datos    = \DB::table('cobros')->join('puestos', 'cobros.puesto_id', '=', 'puestos.id')
+                                    ->join('costos', 'cobros.precio_id', '=', 'costos.id')
+                                    ->join('users', 'cobros.user_id', '=', 'users.id')
+                                    ->where('cobros.user_id', '=', \Auth::user()->id )
+                                    ->select(
+                                      'cobros.*', 'puestos.id as puestoId', 'puestos.dimension', 'puestos.tipo',
+                                      'costos.precio', 'users.username'
+                                    )->get();
+                                    //return $datos;
+    return view('cobro.reporte', compact('usuarios', 'stands', 'datos'));
   }
 
 
