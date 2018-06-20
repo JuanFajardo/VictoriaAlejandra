@@ -163,5 +163,18 @@ class CobroController extends Controller
     return view('cobro.reporte', compact('usuarios', 'stands', 'datos'));
   }
 
+  public function eliminarVenta($id){
+    $cobro = Cobro::find($id);
+    $puesto = \App\Puesto::find($cobro->puesto_id);
+    $puesto->estado = 'N';
+    $puesto->user_id = '1';
+    $puesto->save();
+    $cobro = Cobro::find($id);
+    $cobro->puesto_id = "1000".$cobro->puesto_id;
+    $cobro->save();
+    return redirect('Cobro/Reporte/2018');
+    //'empresa', 'encargado', 'telefono', 'monto', 'fecha', 'puesto_id', 'precio_id', 'stand_id', 'user_id'];
+  }
+
 
 }

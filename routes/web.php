@@ -153,6 +153,8 @@ Route::get('Cobro/Reserva/{id}', 'CobroController@reserva');
 Route::get('Cobro/Eliminar/{id}', 'CobroController@eliminar');
 Route::post('Cobro/Vender', 'CobroController@vender');
 Route::get('Cobro/Reporte/{id}', 'CobroController@reporte');
+Route::get('Cobro/EliminarVenta/{id}', 'CobroController@eliminarVenta');
+
 
 
 Route::get('Log', 'LogController@angular');

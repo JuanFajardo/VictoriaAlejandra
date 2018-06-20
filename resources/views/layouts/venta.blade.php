@@ -36,7 +36,7 @@
       </div>
       <div id="navbar" class="navbar-collapse collapse my-2 my-lg-0">
         <ul class="nav navbar-nav">
-          <li><a href="{{asset('index.php/Cobro/Reporte/Ver')}}">Reporte</a></li>
+          <li><a class="Bett0" href="{{asset('index.php/Cobro/Reporte/Ver')}}">Reporte</a></li>
           <!--<li><a href="{{asset('index.php/Cobro/Eliminados/Ver')}}">Eliminar</a></li> -->
         </ul>
         <ul class="nav navbar-nav navbar-right">
@@ -56,11 +56,11 @@
         <div class="col-md-6">
             <div class="form-inline">
               <div class="col-md-12">
-                <a href="{{asset('index.php/Cobro/Piso/1')}}" class="@yield('1')"> MOVILIDADS </a>
-                <a href="{{asset('index.php/Cobro/Piso/2')}}" class="@yield('2')"> COMIDAS </a>
-                <a href="{{asset('index.php/Cobro/Piso/3')}}" class="@yield('3')"> PYMES </a>
-                <a href="{{asset('index.php/Cobro/Piso/4')}}" class="@yield('4')"> BEBIDAS </a>
-                <a href="{{asset('index.php/Cobro/Piso/5')}}" class="@yield('5')"> EXTRA </a>
+                <a href="{{asset('index.php/Cobro/Piso/1')}}" class="Bett0 @yield('1')"> MOVILIDADS </a>
+                <a href="{{asset('index.php/Cobro/Piso/2')}}" class="Bett0 @yield('2')"> COMIDAS </a>
+                <a href="{{asset('index.php/Cobro/Piso/3')}}" class="Bett0 @yield('3')"> PYMES </a>
+                <a href="{{asset('index.php/Cobro/Piso/4')}}" class="Bett0 @yield('4')"> BEBIDAS </a>
+                <a href="{{asset('index.php/Cobro/Piso/5')}}" class="Bett0 @yield('5')"> EXTRA </a>
               </div>
             </div>
         </div>
@@ -178,11 +178,17 @@
 
   </body>
   <script type="text/javascript">
+  
     $('a').click(function(e){
-      e.preventDefault();
-      var link = $(this).attr('href');
-      if(confirm('¿ Ejecutar el comando ? ')) {
-         window.location = link;
+      var clase = $(this).attr('class');
+      clase = clase[0]+clase[1]+clase[2]+clase[3]+clase[4];
+      alet(clase);
+      if(clase != "Bett0"){
+        e.preventDefault();
+        var link = $(this).attr('href');
+        if(confirm('¿ Ejecutar el comando ? ')) {
+           window.location = link;
+        }
       }
     });
 
