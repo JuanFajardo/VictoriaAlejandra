@@ -72,31 +72,52 @@
                     <li class="@yield('menu3')">
                         <a href="{{asset('index.php/Registro#/lista')}}"><i class="fa fa-fw fa-table"></i> Registro</a>
                     </li>
-                    <li class="@yield('menu4')">
-                        <a href="{{asset('index.php/Horario#/lista')}}"><i class="fa fa-fw fa-edit"></i> Horario</a>
-                    </li>
-                    <li class="@yield('menu5')">
+                    <!--
+                    <li class="@yield('menu5')">/////Reporetes de todo Ay que mejorarlo
                         <a href="{{asset('index.php/Reporte#/lista')}}"><i class="fa fa-fw fa-file-pdf-o"></i> Reportes</a>
                     </li>
-                    <li class="@yield('menu6')">
+                    <li class="@yield('menu4')">/////// Horarios
+                        <a href="{{asset('index.php/Horario#/lista')}}"><i class="fa fa-fw fa-edit"></i> Horario</a>
+                    </li>
+                    <li class="@yield('menu6')">////Estadistica De ingreso y Salida
                         <a href="{{asset('index.php/Estadistica')}}"><i class="fa fa-fw fa-bar-chart-o"></i> Estadisticas</a>
                     </li>
-                    <li class="@yield('menu7')">
-                        <a href="{{asset('index.php/usuarios')}}"><i class="fa fa-fw fa-user"></i> Usuarios</a>
+                    <li class="@yield('menu9')">///////Nose
+                        <a href="{{asset('index.php/Cargo#/lista')}}"><i class="fa fa-fw fa-dashboard"></i> Cargo</a>
                     </li>
+                    <li class="@yield('menu9')">///////Nose
+                      <a href="{{asset('index.php/RegistroManual#/crear')}}"><i class="fa fa-fw fa-dashboard"></i> Registro Manual</a>
+                    </li>-->
                     <li class="@yield('menu8')">
                         <a href="{{asset('index.php/Stand#/lista')}}"><i class="fa fa-fw fa-dashboard"></i> Stands</a>
                     </li>
-                    <!--<li class="@yield('menu9')">
-                        <a href="{{asset('index.php/Cargo#/lista')}}"><i class="fa fa-fw fa-dashboard"></i> Cargo</a>
-                    </li>
-                    <li class="@yield('menu9')">
-                      <a href="{{asset('index.php/RegistroManual#/crear')}}"><i class="fa fa-fw fa-dashboard"></i> Registro Manual</a>
-                    </li>-->
 
                     <li class="@yield('menu10')">
-                        <a href="{{asset('index.php/PreventaLista#/lista')}}"><i class="fa fa-fw fa-dashboard"></i> Preventa</a>
+                        <!--<a href="{{asset('index.php/PreventaLista#/lista')}}"><i class="fa fa-fw fa-gear"></i> Preventa</a>-->
+                        <a href="{{asset('index.php/Preventa#/crear')}}"><i class="fa fa-fw fa-gears"></i> Preventa Puestos</a>
                     </li>
+
+                    <li class="@yield('menu11')">
+                        <a href="{{asset('index.php/Cobro/Piso/1')}}"><i class="fa fa-fw fa-gears"></i> Venta de Puestos</a>
+                    </li>
+
+                    <li class="@yield('menu12')">
+                        <a href="{{asset('index.php/Cobro#/lista')}}"><i class="fa fa-fw fa-university"></i> Cobro de Puestos</a>
+                    </li>
+                    <li class="@yield('menu13')">
+                        <a href="{{asset('index.php/Costo#/lista')}}"><i class="fa fa-fw fa-money"></i> Precio de Puestos</a>
+                    </li>
+                    <li class="@yield('menu14')">
+                        <a href="{{asset('index.php/Nivel#/lista')}}"><i class="fa fa-fw fa-navicon"></i> Niveles</a>
+                    </li>
+                    <li class="@yield('menu15')">
+                        <a href="{{asset('index.php/Puesto#/lista')}}"><i class="fa fa-fw fa-retweet"></i> Puesto</a>
+                    </li>
+                    @if(\Auth::user()->id == '1' )
+                    <li class="@yield('menu7')">
+                        <a href="{{asset('index.php/usuarios')}}"><i class="fa fa-fw fa-user"></i> Usuarios</a>
+                    </li>
+                    @endif
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -121,7 +142,9 @@
                 </div>
 
             </div>
+
         </div>
+        <b> Sistema de FEIPOBOL por Juan Fajardo y Guido Meriles </b>
     </div>
 
 

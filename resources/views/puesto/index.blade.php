@@ -4,7 +4,7 @@
 Puesto
 @endsection
 
-@section('menu8')
+@section('menu15')
 active
 @endsection
 

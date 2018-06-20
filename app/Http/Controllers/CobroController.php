@@ -19,7 +19,16 @@ class CobroController extends Controller
   }
 
   public function index(){
-    $datos = Cobro::all();
+    //$datos = Cobro::all();
+    $datos = \DB::table('cobros')->join('puestos', 'cobros.puesto_id', '=', 'puestos.id')
+                                 ->join('costos', 'cobros.precio_id', '=', 'costos.id')
+                                 ->join('stands', 'cobros.stand_id', '=', 'stands.id')
+                                 ->join('users', 'cobros.user_id', '=', 'users.id')
+                                 ->select('cobros.*', 'costos.precio', 'puestos.id as puestoId', 'puestos.dimension'
+                                 , 'stands.direccion', 'stands.telefono', 'stands.cant_personal'
+                                 , 'users.username'
+                                 )->get();
+    //empresa', 'encargado', 'telefono', 'monto', 'fecha', 'puesto_id', 'precio_id', 'stand_id', 'user_id'];
     return $datos;
   }
 
@@ -28,13 +37,13 @@ class CobroController extends Controller
     return $dato;
   }
 
-  public function store(Request $request){
+  public function store(Request $request){/*
     $request['user_id'] = 1;
     $dato = new Cobro;
     $dato->fill( $request->all() );
     $dato->save();
-
     return response()->json(array("respuesta"=>"200_OK"));
+    */
   }
 
   public function update(Request $request, $id){
@@ -45,10 +54,11 @@ class CobroController extends Controller
     return response()->json(array("respuesta"=>"200_OK"));
   }
 
-  public function destroy($id){
+  public function destroy($id){/*
     $dato = Cobro::find($id);
     $dato->delete();
     return response()->json(array("respuesta"=>"200_OK"));
+    */
   }
 
   public function vender(Request $request){
@@ -75,6 +85,8 @@ class CobroController extends Controller
     }
 
     $datos = explode(',', $request->ventas);
+    $nro_venta = \DB::table('cobros')->max('nro_venta');
+    $nro_venta = $nro_venta + 1;
     for($i=0; $i<$request->numero; $i++){
       $columnas = explode('|', $datos[$i]);
       $puesto = \App\Puesto::find($columnas[0]);
@@ -83,6 +95,7 @@ class CobroController extends Controller
       $cobro->empresa     = $empresa;
       $cobro->encargado   = $request->nombre;
       $cobro->telefono    = $request->telefono;
+      $cobro->nro_venta   = $nro_venta;
       $cobro->monto       = $request->precio2 === null ? $request->precio1 : $request->precio2;
       $cobro->fecha       = date('Y-m-d');
       $cobro->puesto_id   = $puesto->id;
@@ -164,16 +177,20 @@ class CobroController extends Controller
   }
 
   public function eliminarVenta($id){
-    $cobro = Cobro::find($id);
-    $puesto = \App\Puesto::find($cobro->puesto_id);
-    $puesto->estado = 'N';
-    $puesto->user_id = '1';
-    $puesto->save();
-    $cobro = Cobro::find($id);
-    $cobro->puesto_id = "1000".$cobro->puesto_id;
-    $cobro->save();
+    $cobros = Cobro::Where('nro_venta', '=', $id)->get();
+
+    foreach ($cobros as $cobro) {
+      $puesto = \App\Puesto::find($cobro->puesto_id);
+      $puesto->estado = 'N';
+      $puesto->user_id = '1';
+      $puesto->save();
+
+      $cobro = Cobro::find($cobro->id);
+      $cobro->puesto_id = "1000".$cobro->puesto_id;
+      $cobro->save();
+    }
+
     return redirect('Cobro/Reporte/2018');
-    //'empresa', 'encargado', 'telefono', 'monto', 'fecha', 'puesto_id', 'precio_id', 'stand_id', 'user_id'];
   }
 
 

@@ -4,7 +4,7 @@
 Cobros
 @endsection
 
-@section('menu8')
+@section('menu12')
 active
 @endsection
 
@@ -37,17 +37,9 @@ angular.module('AdycttoBett0', ['ngResource', 'ngRoute', 'ngAnimate', 'datatable
           templateUrl: '../angular/views/cobro/lista.html',
           controller: 'ListaCtrl'
         })
-        .when('/crear', {
-          templateUrl: '../angular/views/cobro/crear.html',
-          controller: 'CrearCtrl'
-        })
         .when('/editar/:id', {
           templateUrl: '../angular/views/cobro/crear.html',
           controller: 'EditarCtrl'
-        })
-        .when('/ver/:id', {
-          templateUrl: '../angular/views/cobro/ver.html',
-          controller: 'VerCtrl'
         })
         .when('/eliminar/:id', {
           templateUrl: '../angular/views/cobro/eliminar.html',
@@ -92,33 +84,7 @@ va.factory('CobroRecursos', function($resource){
     )
   .withOption('order', [0, 'asc']);
 }])
-.controller('CrearCtrl', ['$scope', 'CobroRecursos', '$location', '$timeout', function($scope, CobroRecursos, $location, $timeout){
-  $scope.titulo = 'Crear Cobro';
-  $scope.boton = "Guardar";
-	$scope.botonIcono = "fa fa-save"
-  $scope.accion = "btn btn-primary";
-  $scope.Cobro={};
-  $scope.mostrar = "SI";
-  var base64="";
 
-  $scope.guardarCobro = function(){
-    $scope.mostrar = "NO";
-    CobroRecursos.save($scope.Cobro, function(data){
-          var respuesta = data['respuesta'];
-          if(respuesta == '200_OK'){
-            $scope.panel = "alert alert-info";
-            $scope.msj = "Se inserto el dato correctamente ";
-            $timeout(function(){
-              $location.path('/lista');
-            }, 1500);
-          }else{
-            $scope.panel = "alert alert-danger";
-            $scope.msj = respuesta;
-          }
-    });
-  };
-
-}])
 .controller('EditarCtrl', ['$scope', 'CobroRecursos', '$location', '$timeout', '$routeParams', function($scope, CobroRecursos, $location, $timeout, $routeParams){
   $scope.titulo = " Editar Cobro";
   $scope.botonIcono = "fa fa-pencil";

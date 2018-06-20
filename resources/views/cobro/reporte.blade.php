@@ -49,7 +49,7 @@
         </tr>
         <tr>
           <th> Fecha y Hora </th> <th> Nombre del Puesto</th> <th> Empresa</th> <th> Encargado</th> <th> Dimension</th>
-          <th> Monto Unidad</th>  <th> Usuario </th> <th> Eliminar </th>
+          <th> Nro Venta </th> <th> Monto Unidad</th> <th> Monto Total</th>  <th> Usuario </th> <th> Eliminar </th>
         </tr>
       </thead>
       <tbody>
@@ -67,9 +67,11 @@
             <td>{{$dato->empresa}}</td>
             <td>{{$dato->encargado}}</td>
             <td>{{$dato->dimension}}</td>
+            <td>{{$dato->nro_venta}}</td>
+            <td>{{$dato->precio}}</td>
             <td>{{$dato->monto}}</td>
             <td>{{$dato->username}}</td>
-            <td> <a href="{{asset('index.php/Cobro/EliminarVenta/'.$dato->id)}}"> <i class="fa fa-trash">Elimnar</i> </a></td>
+            <td> <a href="{{asset('index.php/Cobro/EliminarVenta/'.$dato->nro_venta)}}"> <i class="fa fa-trash">Elimnar</i> </a></td>
           </tr>
         @endforeach
         <tr> <td colspan='4'>&nbsp;</td> <td> <b>{{$alto}}x{{$ancho}} m.<b/> </td> <td><b>{{$suma}}<b/></td> </tr>

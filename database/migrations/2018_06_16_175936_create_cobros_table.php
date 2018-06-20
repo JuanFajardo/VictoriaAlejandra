@@ -14,6 +14,7 @@ class CreateCobrosTable extends Migration
             $table->string('encargado');
             $table->string('telefono');
             $table->float('monto', 8,2);
+            $table->integer('nro_venta');
             $table->dateTime('fecha');
             $table->integer('puesto_id');
             $table->integer('precio_id');

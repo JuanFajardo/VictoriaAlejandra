@@ -17,27 +17,33 @@
           <thead>
               <tr>
                   <th>Nro.</th>
+                  <th>Fecha</th>
                   <th>Empresa</th>
                   <th>Encargado</th>
                   <th>Direccion</th>
                   <th>Telefono</th>
-                  <th>Descripcion</th>
-                  <th>Cantidad de personal</th>
+                  <th>Nro Venta</th>
+                  <th>Puesto</th>
+                  <th>Nro / Unitario / Total</th>
+                  <th>Usuario</th>
                   <th>Editar</th>
                   <th>Eliminar</th>
               </tr>
           </thead>
           <tbody>
-            <tr ng-repeat="stand in stands">
+            <tr ng-repeat="cobro in cobros">
               <td> {{ $index + 1}} </td>
-              <td> {{stand.nom_empresa}} </td>
-              <td> {{stand.encargado}} </td>
-              <td> {{stand.direccion}} </td>
-              <td> {{stand.telefono}} </td>
-              <td> {{stand.descripcion}} </td>
-              <td> {{stand.cant_personal}} </td>
-              <td> <a href="#/editar/{{stand.id}}" style="color:#f0ad4e;"> <i class="fa fa-pencil" aria-hidden="true"></i>    </a> </td>
-              <td> <a href="#/eliminar/{{stand.id}}" style="color:#c12e2a;"> <i class="fa fa-trash-o" aria-hidden="true"></i> </a> </td>
+              <td> {{cobro.created_at}} </td>
+              <td> {{cobro.empresa}} </td>
+              <td> {{cobro.encargado}} </td>
+              <td> {{cobro.direccion}} </td>
+              <td> {{cobro.telefono}} </td>
+              <td> {{cobro.nro_venta}} </td>
+              <td> Puesto {{cobro.puestoId}} </td>
+              <td> {{cobro.precio}} / {{cobro.monto}} </td>
+              <td> {{cobro.username}} </td>
+              <td> <a href="#/editar/{{cobro.id}}" style="color:#f0ad4e;"> <i class="fa fa-pencil" aria-hidden="true"></i>    </a> </td>
+              <td> <a href="#/eliminar/{{cobro.id}}" style="color:#c12e2a;"> <i class="fa fa-trash-o" aria-hidden="true"></i> </a> </td>
             </tr>
           </tbody>
       </table>

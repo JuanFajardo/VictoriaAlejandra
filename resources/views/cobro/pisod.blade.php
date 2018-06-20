@@ -1,75 +1,93 @@
-<table border="1">
+@extends('layouts.venta')
+
+@section('titulo')
+Automoviles
+@endsection
+
+@section('piso')
+4
+@endsection
+@section('1') btn btn-default @endsection
+@section('2') btn btn-default @endsection
+@section('3') btn btn-default @endsection
+@section('4') btn btn-info @endsection
+@section('5') btn btn-default @endsection
+
+@section('cuerpo')
+  <table border="1">
   <tr>
     <td>
       <table border="1">
         <tr>
           <td class="banio" style=" background-color:#f7952d;; color:white;"> BAÑO </td>
           <?php
-          $sql = mysql_query(
-            "select puestos.*, costos.tipo, costos.precio, usuarios.nombres from puestos ".
-            "INNER JOIN costos ON puestos.id_costo = costos.id  ".
-            "INNER JOIN usuarios ON puestos.id_usuario = usuarios.id  ".
-            "where puestos.lado = 'P3A1' order by puestos.nombre asc ", $cn);
-            while( $f = mysql_fetch_array($sql) ){
-              $area = explode('x', $f[6]);
+            $datos = \DB::table('puestos')->join('costos', 'puestos.costo_id', '=', 'costos.id')
+                                        ->join('users', 'puestos.user_id', '=', 'users.id')
+                                        ->where('puestos.lado', '=', 'P3A1')
+                                        ->select('puestos.*', 'costos.tipo', 'costos.precio', 'users.name')->orderBy('puestos.id', 'asc')->get();
+            ?>
+            @foreach($datos as $dato)
+            <?php
+              $area = explode(" x ", $dato->dimension);
               $area = $area[0] * $area[1];
-              if($f[7] == 'N') {
-                $estado = "No vendido";  $estilo="background-color:#cff4d3; ";
-                echo '<td class="puestoArriba" style="'.$estilo.'"> <a href="reserva.php?puesto='.$f[0].'&planta='.$_GET['planta'].'" data-toggle="tooltip" data-placement="left" data-html="true" title="<b>Nombre:</b> '.$f[3].'<br>  <b>Precio:</b> '.$f[10].' Bs.<br> <b>Tipo:</b> '.$f[9].'<br> <b>Dimension:</b>  '.$f[6].' m. <br> <b>Estado:</b>  '.$estado.' <br> <b>Area:</b>  '.$area.' <br> <b>Usuario:</b>  '.$f[11].' ">'.$f[3].'</a> </td>';
-              }
-              elseif ($f[7] == 'R') {$estado = "Reservado"; $estilo="background-color:#ffd49c;";
-                echo '<td class="puestoArriba" style="'.$estilo.'"> <a data-toggle="tooltip" data-placement="left" data-html="true" title="<b>Nombre:</b> '.$f[3].'<br>  <b>Precio:</b> '.$f[10].' Bs.<br> <b>Tipo:</b> '.$f[9].'<br> <b>Dimension:</b>  '.$f[6].' m. <br> <b>Estado:</b>  '.$estado.' <br> <b>Area:</b>  '.$area.' <br> <b>Usuario:</b>  '.$f[11].' ">'.$f[3].'</a>   <a href="eliminarReserva.php?id='.$f[0].'&planta='. addslashes($_GET['planta']).'" style="color:#ff5555;"> <i class="fa fa-trash"></i> </a>   </td>';
-              }
-              elseif ($f[7] == 'V') {$estado = "Vendido";   $estilo="background-color:#ff5d5d;";
-                echo '<td class="puestoArriba" style="'.$estilo.'"> <a data-toggle="tooltip" data-placement="left" data-html="true" title="<b>Nombre:</b> '.$f[3].'<br>  <b>Precio:</b> '.$f[10].' Bs.<br> <b>Tipo:</b> '.$f[9].'<br> <b>Dimension:</b>  '.$f[6].' m. <br> <b>Estado:</b>  '.$estado.' <br> <b>Area:</b>  '.$area.' <br> <b>Usuario:</b>  '.$f[11].' ">'.$f[3].'</a> </td>';
-              }
-            }
-          ?>
+            ?>
+            @if( $dato->estado == 'N' )
+              <?php $estado = "No vendido"; $estilo="background-color:#cff4d3;"; ?>
+              <td class="puestoArriba" style="{{ $estilo }}"> <a href="{{ asset('index.php/Cobro/Reserva/'.$dato->id.'-'.$pagina)}}" data-toggle="tooltip" data-placement="left" data-html="true" title="<b>Nombre:</b> {{ $dato->id }} <br>  <b>Precio:</b> {{ $dato->precio }} Bs.<br> <b>Tipo:</b> {{ $dato->tipo }} <br> <b>Dimension:</b>  {{ $dato->dimension }} m. <br> <b>Estado:</b>  {{ $estado }} <br> <b>Area:</b>  {{ $area }} <br> <b>Usuario:</b>  {{ $dato->name }} "> Puesto {{ $dato->id }}</a> </td>
+            @elseif( $dato->estado == 'R' )
+              <?php $estado = "Reservado"; $estilo="background-color:#ffd49c;";  ?>
+              <td class="puestoArriba" style="{{ $estilo }}"> <a data-toggle="tooltip" data-placement="left" data-html="true" title="<b>Nombre:</b> {{ $dato->id }} <br>  <b>Precio:</b> {{ $dato->precio }} Bs.<br> <b>Tipo:</b> {{ $dato->tipo }} <br> <b>Dimension:</b>  {{ $dato->dimension }} m. <br> <b>Estado:</b>  {{ $estado }}  <br> <b>Area:</b>  {{ $area }} <br> <b>Usuario:</b> {{ $dato->name }} " href="{{ asset('index.php/Cobro/Eliminar/'.$dato->id.'-'.$pagina)}}" style="color:#ff5555;"> Puesto {{ $dato->id }} <i class="fa fa-trash"></i> </a>   </td>
+            @elseif( $dato->estado == 'V' )
+              <?php $estado = "Vendido";   $estilo="background-color:#ff5d5d;"; ?>
+              <td class="puestoArriba" style="{{ $estilo }}"> <a data-toggle="tooltip" data-placement="left" data-html="true" title="<b>Nombre:</b> {{ $dato->id }} <br>  <b>Precio:</b> {{ $dato->precio }} Bs.<br> <b>Tipo:</b> {{ $dato->tipo }} <br> <b>Dimension:</b>  {{ $dato->dimension }} m. <br> <b>Estado:</b>  {{ $estado }}  <br> <b>Area:</b>  {{ $area }} <br> <b>Usuario:</b> {{ $dato->name }} "> Puesto {{ $dato->id }} </a> </td>
+            @endif
+            @endforeach
 
           <?php
-          $sql = mysql_query(
-            "select puestos.*, costos.tipo, costos.precio, usuarios.nombres from puestos ".
-            "INNER JOIN costos ON puestos.id_costo = costos.id  ".
-            "INNER JOIN usuarios ON puestos.id_usuario = usuarios.id  ".
-            "where puestos.lado = 'P3A2' order by puestos.nombre asc ", $cn);
-            while( $f = mysql_fetch_array($sql) ){
-              $area = explode('x', $f[6]);
+            $datos = \DB::table('puestos')->join('costos', 'puestos.costo_id', '=', 'costos.id')
+                                        ->join('users', 'puestos.user_id', '=', 'users.id')
+                                        ->where('puestos.lado', '=', 'P3A2')
+                                        ->select('puestos.*', 'costos.tipo', 'costos.precio', 'users.name')->orderBy('puestos.id', 'asc')->get();
+            ?>
+            @foreach($datos as $dato)
+            <?php
+              $area = explode(" x ", $dato->dimension);
               $area = $area[0] * $area[1];
-              if($f[7] == 'N') {
-                $estado = "No vendido";  $estilo="background-color:#cff4d3; ";
-                echo '<td class="puestoCostado" style="'.$estilo.'"> <a href="reserva.php?puesto='.$f[0].'&planta='.$_GET['planta'].'" data-toggle="tooltip" data-placement="left" data-html="true" title="<b>Nombre:</b> '.$f[3].'<br>  <b>Precio:</b> '.$f[10].' Bs.<br> <b>Tipo:</b> '.$f[9].'<br> <b>Dimension:</b>  '.$f[6].' m. <br> <b>Estado:</b>  '.$estado.' <br> <b>Area:</b>  '.$area.' <br> <b>Usuario:</b>  '.$f[11].' ">'.$f[3].'</a> </td>';
-              }
-              elseif ($f[7] == 'R') {$estado = "Reservado"; $estilo="background-color:#ffd49c;";
-                echo '<td class="puestoCostado" style="'.$estilo.'"> <a data-toggle="tooltip" data-placement="left" data-html="true" title="<b>Nombre:</b> '.$f[3].'<br>  <b>Precio:</b> '.$f[10].' Bs.<br> <b>Tipo:</b> '.$f[9].'<br> <b>Dimension:</b>  '.$f[6].' m. <br> <b>Estado:</b>  '.$estado.' <br> <b>Area:</b>  '.$area.' <br> <b>Usuario:</b>  '.$f[11].' ">'.$f[3].'</a>   <a href="eliminarReserva.php?id='.$f[0].'&planta='. addslashes($_GET['planta']).'" style="color:#ff5555;"> <i class="fa fa-trash"></i> </a>   </td>';
-              }
-              elseif ($f[7] == 'V') {$estado = "Vendido";   $estilo="background-color:#ff5d5d;";
-                echo '<td class="puestoCostado" style="'.$estilo.'"> <a data-toggle="tooltip" data-placement="left" data-html="true" title="<b>Nombre:</b> '.$f[3].'<br>  <b>Precio:</b> '.$f[10].' Bs.<br> <b>Tipo:</b> '.$f[9].'<br> <b>Dimension:</b>  '.$f[6].' m. <br> <b>Estado:</b>  '.$estado.' <br> <b>Area:</b>  '.$area.' <br> <b>Usuario:</b>  '.$f[11].' ">'.$f[3].'</a> </td>';
-              }
-            }
-          ?>
+            ?>
+            @if( $dato->estado == 'N' )
+              <?php $estado = "No vendido"; $estilo="background-color:#cff4d3;"; ?>
+              <td class="puestoCostado" style="{{ $estilo }}"> <a href="{{ asset('index.php/Cobro/Reserva/'.$dato->id.'-'.$pagina)}}" data-toggle="tooltip" data-placement="left" data-html="true" title="<b>Nombre:</b> {{ $dato->id }} <br>  <b>Precio:</b> {{ $dato->precio }} Bs.<br> <b>Tipo:</b> {{ $dato->tipo }} <br> <b>Dimension:</b>  {{ $dato->dimension }} m. <br> <b>Estado:</b>  {{ $estado }} <br> <b>Area:</b>  {{ $area }} <br> <b>Usuario:</b>  {{ $dato->name }} "> Puesto {{ $dato->id }}</a> </td>
+            @elseif( $dato->estado == 'R' )
+              <?php $estado = "Reservado"; $estilo="background-color:#ffd49c;";  ?>
+              <td class="puestoCostado" style="{{ $estilo }}"> <a data-toggle="tooltip" data-placement="left" data-html="true" title="<b>Nombre:</b> {{ $dato->id }} <br>  <b>Precio:</b> {{ $dato->precio }} Bs.<br> <b>Tipo:</b> {{ $dato->tipo }} <br> <b>Dimension:</b>  {{ $dato->dimension }} m. <br> <b>Estado:</b>  {{ $estado }}  <br> <b>Area:</b>  {{ $area }} <br> <b>Usuario:</b> {{ $dato->name }} " href="{{ asset('index.php/Cobro/Eliminar/'.$dato->id.'-'.$pagina)}}" style="color:#ff5555;"> Puesto {{ $dato->id }} <i class="fa fa-trash"></i> </a>   </td>
+            @elseif( $dato->estado == 'V' )
+              <?php $estado = "Vendido";   $estilo="background-color:#ff5d5d;"; ?>
+              <td class="puestoCostado" style="{{ $estilo }}"> <a data-toggle="tooltip" data-placement="left" data-html="true" title="<b>Nombre:</b> {{ $dato->id }} <br>  <b>Precio:</b> {{ $dato->precio }} Bs.<br> <b>Tipo:</b> {{ $dato->tipo }} <br> <b>Dimension:</b>  {{ $dato->dimension }} m. <br> <b>Estado:</b>  {{ $estado }}  <br> <b>Area:</b>  {{ $area }} <br> <b>Usuario:</b> {{ $dato->name }} "> Puesto {{ $dato->id }} </a> </td>
+            @endif
+            @endforeach
 
           <?php
-          $sql = mysql_query(
-            "select puestos.*, costos.tipo, costos.precio, usuarios.nombres from puestos ".
-            "INNER JOIN costos ON puestos.id_costo = costos.id  ".
-            "INNER JOIN usuarios ON puestos.id_usuario = usuarios.id  ".
-            "where puestos.lado = 'P3A3' order by puestos.nombre asc ", $cn);
-            while( $f = mysql_fetch_array($sql) ){
-              $area = explode('x', $f[6]);
+            $datos = \DB::table('puestos')->join('costos', 'puestos.costo_id', '=', 'costos.id')
+                                        ->join('users', 'puestos.user_id', '=', 'users.id')
+                                        ->where('puestos.lado', '=', 'P3A3')
+                                        ->select('puestos.*', 'costos.tipo', 'costos.precio', 'users.name')->orderBy('puestos.id', 'asc')->get();
+            ?>
+            @foreach($datos as $dato)
+            <?php
+              $area = explode(" x ", $dato->dimension);
               $area = $area[0] * $area[1];
-              if($f[7] == 'N') {
-                $estado = "No vendido";  $estilo="background-color:#cff4d3; ";
-                echo '<td class="puestoArriba" style="'.$estilo.'"> <a href="reserva.php?puesto='.$f[0].'&planta='.$_GET['planta'].'" data-toggle="tooltip" data-placement="left" data-html="true" title="<b>Nombre:</b> '.$f[3].'<br>  <b>Precio:</b> '.$f[10].' Bs.<br> <b>Tipo:</b> '.$f[9].'<br> <b>Dimension:</b>  '.$f[6].' m. <br> <b>Estado:</b>  '.$estado.' <br> <b>Area:</b>  '.$area.' <br> <b>Usuario:</b>  '.$f[11].' ">'.$f[3].'</a> </td>';
-              }
-              elseif ($f[7] == 'R') {$estado = "Reservado"; $estilo="background-color:#ffd49c;";
-                echo '<td class="puestoArriba" style="'.$estilo.'"> <a data-toggle="tooltip" data-placement="left" data-html="true" title="<b>Nombre:</b> '.$f[3].'<br>  <b>Precio:</b> '.$f[10].' Bs.<br> <b>Tipo:</b> '.$f[9].'<br> <b>Dimension:</b>  '.$f[6].' m. <br> <b>Estado:</b>  '.$estado.' <br> <b>Area:</b>  '.$area.' <br> <b>Usuario:</b>  '.$f[11].' ">'.$f[3].'</a>   <a href="eliminarReserva.php?id='.$f[0].'&planta='. addslashes($_GET['planta']).'" style="color:#ff5555;"> <i class="fa fa-trash"></i> </a>   </td>';
-              }
-              elseif ($f[7] == 'V') {$estado = "Vendido";   $estilo="background-color:#ff5d5d;";
-                echo '<td class="puestoArriba" style="'.$estilo.'"> <a data-toggle="tooltip" data-placement="left" data-html="true" title="<b>Nombre:</b> '.$f[3].'<br>  <b>Precio:</b> '.$f[10].' Bs.<br> <b>Tipo:</b> '.$f[9].'<br> <b>Dimension:</b>  '.$f[6].' m. <br> <b>Estado:</b>  '.$estado.' <br> <b>Area:</b>  '.$area.' <br> <b>Usuario:</b>  '.$f[11].' ">'.$f[3].'</a> </td>';
-              }
-            }
-          ?>
-
+            ?>
+            @if( $dato->estado == 'N' )
+              <?php $estado = "No vendido"; $estilo="background-color:#cff4d3;"; ?>
+              <td class="puestoArriba" style="{{ $estilo }}"> <a href="{{ asset('index.php/Cobro/Reserva/'.$dato->id.'-'.$pagina)}}" data-toggle="tooltip" data-placement="left" data-html="true" title="<b>Nombre:</b> {{ $dato->id }} <br>  <b>Precio:</b> {{ $dato->precio }} Bs.<br> <b>Tipo:</b> {{ $dato->tipo }} <br> <b>Dimension:</b>  {{ $dato->dimension }} m. <br> <b>Estado:</b>  {{ $estado }} <br> <b>Area:</b>  {{ $area }} <br> <b>Usuario:</b>  {{ $dato->name }} "> Puesto {{ $dato->id }}</a> </td>
+            @elseif( $dato->estado == 'R' )
+              <?php $estado = "Reservado"; $estilo="background-color:#ffd49c;";  ?>
+              <td class="puestoArriba" style="{{ $estilo }}"> <a data-toggle="tooltip" data-placement="left" data-html="true" title="<b>Nombre:</b> {{ $dato->id }} <br>  <b>Precio:</b> {{ $dato->precio }} Bs.<br> <b>Tipo:</b> {{ $dato->tipo }} <br> <b>Dimension:</b>  {{ $dato->dimension }} m. <br> <b>Estado:</b>  {{ $estado }}  <br> <b>Area:</b>  {{ $area }} <br> <b>Usuario:</b> {{ $dato->name }} " href="{{ asset('index.php/Cobro/Eliminar/'.$dato->id.'-'.$pagina)}}" style="color:#ff5555;"> Puesto {{ $dato->id }} <i class="fa fa-trash"></i> </a>   </td>
+            @elseif( $dato->estado == 'V' )
+              <?php $estado = "Vendido";   $estilo="background-color:#ff5d5d;"; ?>
+              <td class="puestoArriba" style="{{ $estilo }}"> <a data-toggle="tooltip" data-placement="left" data-html="true" title="<b>Nombre:</b> {{ $dato->id }} <br>  <b>Precio:</b> {{ $dato->precio }} Bs.<br> <b>Tipo:</b> {{ $dato->tipo }} <br> <b>Dimension:</b>  {{ $dato->dimension }} m. <br> <b>Estado:</b>  {{ $estado }}  <br> <b>Area:</b>  {{ $area }} <br> <b>Usuario:</b> {{ $dato->name }} "> Puesto {{ $dato->id }} </a> </td>
+            @endif
+            @endforeach
           <td class="banio" style=" background-color:#f7952d;; color:white;"> BAÑO </td>
         </tr>
       </table>
@@ -86,50 +104,50 @@
       <tr>
         <td class="ladoIzquiero" style="width:250px;  background-color:gray; color:white;">  Pared  </td>
         <?php
-        $sql = mysql_query(
-          "select puestos.*, costos.tipo, costos.precio, usuarios.nombres from puestos ".
-          "INNER JOIN costos ON puestos.id_costo = costos.id  ".
-          "INNER JOIN usuarios ON puestos.id_usuario = usuarios.id  ".
-          "where puestos.lado = 'P3A4' order by puestos.nombre asc ", $cn);
-          while( $f = mysql_fetch_array($sql) ){
-            $area = explode('x', $f[6]);
+          $datos = \DB::table('puestos')->join('costos', 'puestos.costo_id', '=', 'costos.id')
+                                      ->join('users', 'puestos.user_id', '=', 'users.id')
+                                      ->where('puestos.lado', '=', 'P3A4')
+                                      ->select('puestos.*', 'costos.tipo', 'costos.precio', 'users.name')->orderBy('puestos.id', 'asc')->get();
+          ?>
+          @foreach($datos as $dato)
+          <?php
+            $area = explode(" x ", $dato->dimension);
             $area = $area[0] * $area[1];
-            if($f[7] == 'N') {
-              $estado = "No vendido";  $estilo="background-color:#cff4d3; ";
-              echo '<td class="puestoCostado" style="'.$estilo.'"> <a href="reserva.php?puesto='.$f[0].'&planta='.$_GET['planta'].'" data-toggle="tooltip" data-placement="left" data-html="true" title="<b>Nombre:</b> '.$f[3].'<br>  <b>Precio:</b> '.$f[10].' Bs.<br> <b>Tipo:</b> '.$f[9].'<br> <b>Dimension:</b>  '.$f[6].' m. <br> <b>Estado:</b>  '.$estado.' <br> <b>Area:</b>  '.$area.' <br> <b>Usuario:</b>  '.$f[11].' ">'.$f[3].'</a> </td>';
-            }
-            elseif ($f[7] == 'R') {$estado = "Reservado"; $estilo="background-color:#ffd49c;";
-              echo '<td class="puestoCostado" style="'.$estilo.'"> <a data-toggle="tooltip" data-placement="left" data-html="true" title="<b>Nombre:</b> '.$f[3].'<br>  <b>Precio:</b> '.$f[10].' Bs.<br> <b>Tipo:</b> '.$f[9].'<br> <b>Dimension:</b>  '.$f[6].' m. <br> <b>Estado:</b>  '.$estado.' <br> <b>Area:</b>  '.$area.' <br> <b>Usuario:</b>  '.$f[11].' ">'.$f[3].'</a>   <a href="eliminarReserva.php?id='.$f[0].'&planta='. addslashes($_GET['planta']).'" style="color:#ff5555;"> <i class="fa fa-trash"></i> </a>   </td>';
-            }
-            elseif ($f[7] == 'V') {$estado = "Vendido";   $estilo="background-color:#ff5d5d;";
-              echo '<td class="puestoCostado" style="'.$estilo.'"> <a data-toggle="tooltip" data-placement="left" data-html="true" title="<b>Nombre:</b> '.$f[3].'<br>  <b>Precio:</b> '.$f[10].' Bs.<br> <b>Tipo:</b> '.$f[9].'<br> <b>Dimension:</b>  '.$f[6].' m. <br> <b>Estado:</b>  '.$estado.' <br> <b>Area:</b>  '.$area.' <br> <b>Usuario:</b>  '.$f[11].' ">'.$f[3].'</a> </td>';
-            }
-          }
-        ?>
-
+          ?>
+          @if( $dato->estado == 'N' )
+            <?php $estado = "No vendido"; $estilo="background-color:#cff4d3;"; ?>
+            <td class="puestoCostado" style="{{ $estilo }}"> <a href="{{ asset('index.php/Cobro/Reserva/'.$dato->id.'-'.$pagina)}}" data-toggle="tooltip" data-placement="left" data-html="true" title="<b>Nombre:</b> {{ $dato->id }} <br>  <b>Precio:</b> {{ $dato->precio }} Bs.<br> <b>Tipo:</b> {{ $dato->tipo }} <br> <b>Dimension:</b>  {{ $dato->dimension }} m. <br> <b>Estado:</b>  {{ $estado }} <br> <b>Area:</b>  {{ $area }} <br> <b>Usuario:</b>  {{ $dato->name }} "> Puesto {{ $dato->id }}</a> </td>
+          @elseif( $dato->estado == 'R' )
+            <?php $estado = "Reservado"; $estilo="background-color:#ffd49c;";  ?>
+            <td class="puestoCostado" style="{{ $estilo }}"> <a data-toggle="tooltip" data-placement="left" data-html="true" title="<b>Nombre:</b> {{ $dato->id }} <br>  <b>Precio:</b> {{ $dato->precio }} Bs.<br> <b>Tipo:</b> {{ $dato->tipo }} <br> <b>Dimension:</b>  {{ $dato->dimension }} m. <br> <b>Estado:</b>  {{ $estado }}  <br> <b>Area:</b>  {{ $area }} <br> <b>Usuario:</b> {{ $dato->name }} " href="{{ asset('index.php/Cobro/Eliminar/'.$dato->id.'-'.$pagina)}}" style="color:#ff5555;"> Puesto {{ $dato->id }} <i class="fa fa-trash"></i> </a>   </td>
+          @elseif( $dato->estado == 'V' )
+            <?php $estado = "Vendido";   $estilo="background-color:#ff5d5d;"; ?>
+            <td class="puestoCostado" style="{{ $estilo }}"> <a data-toggle="tooltip" data-placement="left" data-html="true" title="<b>Nombre:</b> {{ $dato->id }} <br>  <b>Precio:</b> {{ $dato->precio }} Bs.<br> <b>Tipo:</b> {{ $dato->tipo }} <br> <b>Dimension:</b>  {{ $dato->dimension }} m. <br> <b>Estado:</b>  {{ $estado }}  <br> <b>Area:</b>  {{ $area }} <br> <b>Usuario:</b> {{ $dato->name }} "> Puesto {{ $dato->id }} </a> </td>
+          @endif
+          @endforeach
         <td class="banio" style="background-color:gray; color:white;"> Escaleras </td>
-
         <?php
-        $sql = mysql_query(
-          "select puestos.*, costos.tipo, costos.precio, usuarios.nombres from puestos ".
-          "INNER JOIN costos ON puestos.id_costo = costos.id  ".
-          "INNER JOIN usuarios ON puestos.id_usuario = usuarios.id  ".
-          "where puestos.lado = 'P3A5' order by puestos.nombre asc ", $cn);
-          while( $f = mysql_fetch_array($sql) ){
-            $area = explode('x', $f[6]);
+          $datos = \DB::table('puestos')->join('costos', 'puestos.costo_id', '=', 'costos.id')
+                                      ->join('users', 'puestos.user_id', '=', 'users.id')
+                                      ->where('puestos.lado', '=', 'P3A5')
+                                      ->select('puestos.*', 'costos.tipo', 'costos.precio', 'users.name')->orderBy('puestos.id', 'asc')->get();
+          ?>
+          @foreach($datos as $dato)
+          <?php
+            $area = explode(" x ", $dato->dimension);
             $area = $area[0] * $area[1];
-            if($f[7] == 'N') {
-              $estado = "No vendido";  $estilo="background-color:#cff4d3; ";
-              echo '<td class="puestoCostado" style="'.$estilo.'"> <a href="reserva.php?puesto='.$f[0].'&planta='.$_GET['planta'].'" data-toggle="tooltip" data-placement="left" data-html="true" title="<b>Nombre:</b> '.$f[3].'<br>  <b>Precio:</b> '.$f[10].' Bs.<br> <b>Tipo:</b> '.$f[9].'<br> <b>Dimension:</b>  '.$f[6].' m. <br> <b>Estado:</b>  '.$estado.' <br> <b>Area:</b>  '.$area.' <br> <b>Usuario:</b>  '.$f[11].' ">'.$f[3].'</a> </td>';
-            }
-            elseif ($f[7] == 'R') {$estado = "Reservado"; $estilo="background-color:#ffd49c;";
-              echo '<td class="puestoCostado" style="'.$estilo.'"> <a data-toggle="tooltip" data-placement="left" data-html="true" title="<b>Nombre:</b> '.$f[3].'<br>  <b>Precio:</b> '.$f[10].' Bs.<br> <b>Tipo:</b> '.$f[9].'<br> <b>Dimension:</b>  '.$f[6].' m. <br> <b>Estado:</b>  '.$estado.' <br> <b>Area:</b>  '.$area.' <br> <b>Usuario:</b>  '.$f[11].' ">'.$f[3].'</a>   <a href="eliminarReserva.php?id='.$f[0].'&planta='. addslashes($_GET['planta']).'" style="color:#ff5555;"> <i class="fa fa-trash"></i> </a>   </td>';
-            }
-            elseif ($f[7] == 'V') {$estado = "Vendido";   $estilo="background-color:#ff5d5d;";
-              echo '<td class="puestoCostado" style="'.$estilo.'"> <a data-toggle="tooltip" data-placement="left" data-html="true" title="<b>Nombre:</b> '.$f[3].'<br>  <b>Precio:</b> '.$f[10].' Bs.<br> <b>Tipo:</b> '.$f[9].'<br> <b>Dimension:</b>  '.$f[6].' m. <br> <b>Estado:</b>  '.$estado.' <br> <b>Area:</b>  '.$area.' <br> <b>Usuario:</b>  '.$f[11].' ">'.$f[3].'</a> </td>';
-            }
-          }
-        ?>
+          ?>
+          @if( $dato->estado == 'N' )
+            <?php $estado = "No vendido"; $estilo="background-color:#cff4d3;"; ?>
+            <td class="puestoCostado" style="{{ $estilo }}"> <a href="{{ asset('index.php/Cobro/Reserva/'.$dato->id.'-'.$pagina)}}" data-toggle="tooltip" data-placement="left" data-html="true" title="<b>Nombre:</b> {{ $dato->id }} <br>  <b>Precio:</b> {{ $dato->precio }} Bs.<br> <b>Tipo:</b> {{ $dato->tipo }} <br> <b>Dimension:</b>  {{ $dato->dimension }} m. <br> <b>Estado:</b>  {{ $estado }} <br> <b>Area:</b>  {{ $area }} <br> <b>Usuario:</b>  {{ $dato->name }} "> Puesto {{ $dato->id }}</a> </td>
+          @elseif( $dato->estado == 'R' )
+            <?php $estado = "Reservado"; $estilo="background-color:#ffd49c;";  ?>
+            <td class="puestoCostado" style="{{ $estilo }}"> <a data-toggle="tooltip" data-placement="left" data-html="true" title="<b>Nombre:</b> {{ $dato->id }} <br>  <b>Precio:</b> {{ $dato->precio }} Bs.<br> <b>Tipo:</b> {{ $dato->tipo }} <br> <b>Dimension:</b>  {{ $dato->dimension }} m. <br> <b>Estado:</b>  {{ $estado }}  <br> <b>Area:</b>  {{ $area }} <br> <b>Usuario:</b> {{ $dato->name }} " href="{{ asset('index.php/Cobro/Eliminar/'.$dato->id.'-'.$pagina)}}" style="color:#ff5555;"> Puesto {{ $dato->id }} <i class="fa fa-trash"></i> </a>   </td>
+          @elseif( $dato->estado == 'V' )
+            <?php $estado = "Vendido";   $estilo="background-color:#ff5d5d;"; ?>
+            <td class="puestoCostado" style="{{ $estilo }}"> <a data-toggle="tooltip" data-placement="left" data-html="true" title="<b>Nombre:</b> {{ $dato->id }} <br>  <b>Precio:</b> {{ $dato->precio }} Bs.<br> <b>Tipo:</b> {{ $dato->tipo }} <br> <b>Dimension:</b>  {{ $dato->dimension }} m. <br> <b>Estado:</b>  {{ $estado }}  <br> <b>Area:</b>  {{ $area }} <br> <b>Usuario:</b> {{ $dato->name }} "> Puesto {{ $dato->id }} </a> </td>
+          @endif
+          @endforeach
         <td class="ladoDerecho"  style="width:250px; background-color:gray; color:white;">  Pared  </td>
       </tr>
     </table>
@@ -137,3 +155,4 @@
   </tr>
 
 </table>
+@endsection

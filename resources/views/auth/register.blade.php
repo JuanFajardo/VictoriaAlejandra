@@ -80,7 +80,7 @@ Administracion de Usuarios
                           <button type="submit" class="btn btn-primary">
                               <i class="fa fa-btn fa-user"></i> Nuevo
                           </button>
-                          <a href="{{asset('/usuarios')}}" class="btn btn-primary">
+                          <a href="{{asset('index.php/usuarios')}}" class="btn btn-primary">
                             <i class="fa fa-btn fa-times-circle"></i> Cancelar</a>
                       </div>
                   </div>

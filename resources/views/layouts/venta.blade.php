@@ -32,7 +32,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#"> FEIPOBOL {{date('Y')}} </a>
+        <a class="navbar-brand" href="{{asset('index.php')}}"> FEIPOBOL {{date('Y')}} </a>
       </div>
       <div id="navbar" class="navbar-collapse collapse my-2 my-lg-0">
         <ul class="nav navbar-nav">
@@ -178,7 +178,7 @@
 
   </body>
   <script type="text/javascript">
-  
+
     $('a').click(function(e){
       var clase = $(this).attr('class');
       clase = clase[0]+clase[1]+clase[2]+clase[3]+clase[4];
