@@ -6,7 +6,6 @@
           <h3 class="panel-title"><i class="glyphicon glyphicon-lock"></i> {{titulo}} </h3>
         </div>
       </div>
-
     </div>
     <div class="panel-body">
       <form autocomplete="off" ng-submit="guardarPersona()" enctype=”multipart/form-data>
@@ -23,16 +22,6 @@
             <div class="col-md-12">
               <label>Profesion</label>
               <input type="text" class="form-control"  placeholder="Profesion "  ng-model="Persona.profesion" id="profesion" required>
-            </div>
-            <div class="col-md-12">
-              <label>Estado Civil</label>
-              <select class="form-control" ng-model="Persona.estado_civil" id="estado_civil">
-                <option ng-repeat="civil in civiles" ng-selected="civil.id == Persona.estado_civil"  value="{{civil.id}}">{{civil.valor}}</option>
-              </select>
-            </div>
-            <div class="col-md-12">
-              <label>Fecha Nacimiento</label>
-              <input type="text" class="form-control"   max="2000-01-01"  min="1950-01-01" ng-model="Persona.fecha_nacimiento" id="fecha_nacimiento" required>
             </div>
             <div class="col-md-12">
               <label>Genero</label>
@@ -59,12 +48,6 @@
               <input type="text" class="form-control"  placeholder="Clave o contraseña"  ng-model="Persona.clave"  ng-bind="Persona.carnet" id="clave"  required>
             </div>
             <div class="col-md-12">
-              <label>Horario</label>
-              <select class="form-control" ng-model="Persona.horario_id" id="horario_id" required>
-                <option ng-repeat="horario in horarios"  ng-selected="Persona.horario_id == horario.id" value="{{horario.id}}">{{horario.horario}}</option>
-              </select>
-            </div>
-            <div class="col-md-12">
               <label>Stand</label>
               <select class="form-control" ng-model="Persona.stand_id" id="stand_id" required>
                 <option ng-repeat="stand in stands" ng-selected="Persona.stand_id == stand.id" value="{{stand.id}}">{{stand.nom_empresa  }}</option>
@@ -72,7 +55,7 @@
             </div>
             <div class="col-md-12">
               <label>Fecha Registro</label>
-              <input type="text" class="form-control"  placeholder="Fecha de registro"  ng-model="Persona.fecha_inscripcion" id="fecha_inscripcion" readonly>
+              <input type="text" class="form-control"  placeholder="Fecha de registro"  ng-model="Persona.created_at" id="created_at  " readonly>
             </div>
             <div class="col-md-12">
               <label>Encargado </label><br>
@@ -87,33 +70,24 @@
               </div>
               <div class="panel-footer">
                 <div class="row">
-
                   <div class="col-md-10">
-
-
-
-
-
-
-
-
-                <div class="row">
-                  <div class="col-md-4">
-                      <label>Imgen</label><br>
-                      <input type="hidden"  ng-model="Persona.imagen" id="imagen" required >
-                      <video id="video" width="200" height="200"  class="img-thumbnail"></video><br/>
-                      <a  id="capture" ng-click="capturar()"> <i class="fa fa-camera"> </i> Tomar foto </a>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <canvas id="canvas" width="200" height="200" style="display: none;"></canvas>
-                        <img class="img-thumbnail" id="photo" ><br>
+                  <div class="row">
+                    <div class="col-md-4">
+                        <label>Imgen</label><br>
+                        <input type="hidden"  ng-model="Persona.imagen" id="imagen" required >
+                        <video id="video" width="200" height="200"  class="img-thumbnail"></video><br/>
+                        <a  id="capture" ng-click="capturar()"> <i class="fa fa-camera"> </i> Tomar foto </a>
                       </div>
-                      <div class="col-md-6" ng-if="(Persona.imagen).length > 0">
-                        <img src="{{Persona.imagen}}" class="img-thumbnail" id="foto" ><br>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <canvas id="canvas" width="200" height="200" style="display: none;"></canvas>
+                          <img class="img-thumbnail" id="photo" ><br>
+                        </div>
+                        <div class="col-md-6" ng-if="(Persona.imagen).length > 0">
+                          <img src="{{Persona.imagen}}" class="img-thumbnail" id="foto" ><br>
+                        </div>
                       </div>
                     </div>
-                  </div>
                   <div class="col-md-1">
                   </div>
                 </div>
@@ -164,7 +138,7 @@
      yearSuffix: ''
    };
   $.datepicker.setDefaults($.datepicker.regional['es']);
-  $("#fecha_nacimiento" ).datepicker({ dateFormat: 'yy-mm-dd' });
+  //$("#fecha_nacimiento" ).datepicker({ dateFormat: 'yy-mm-dd' });
 
   $('input').blur(function(data){
     //console.log( (this.value).toUpperCase() );

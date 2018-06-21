@@ -14,7 +14,7 @@ class StandController extends Controller
 
   public function index(){
     $datos = Stand::select(
-      'id', 'nom_empresa', 'cant_personal', 'descripcion', 'encargado', 'direccion', 'telefono', 'user_id'
+      'id', 'nom_empresa', 'generar_personal', 'cant_personal', 'descripcion', 'encargado', 'direccion', 'telefono', 'user_id'
     )->get();
     return $datos;
   }
@@ -91,6 +91,38 @@ class StandController extends Controller
     $dato = Stand::find($id);
     $dato->delete();
     return response()->json(array("respuesta"=>"200_OK"));
+  }
+
+  public function persona($id){
+    $dato = Stand::find($id);
+    $numero     = $dato->cant_personal;
+    $idStand    = $dato->id;
+    $nombre     = $dato->nom_empresa;
+    $direccion  = $dato->direccion;
+    $telefono   = $dato->telefono;
+    $imagen     = $dato->logo;
+
+    $stand = Stand::find($id);
+    $stand->generar_personal = 1;
+    $stand->save();
+
+    for($i=1; $i<=$numero; $i++){
+      $persona = new \App\Persona;
+      $persona->nombres   = $nombre;
+      $persona->direccion = $direccion;
+      $persona->telefono  = $telefono;
+      $persona->carnet    = '123';
+      $persona->tarjeta   = $idStand."-".date('ydhi')."-".$i;
+      $persona->profesion = 'N';
+      $persona->genero    = 'N';
+      $persona->clave     = 'FEIPOBOL2018';
+      $persona->encargado = 'NO';
+      $persona->imagen    = $imagen;
+      $persona->stand_id  = $idStand;
+      $persona->user_id   = \Auth::user()->id;
+      $persona->save();
+    }
+    return redirect('Stand#/lista');
   }
 
 }

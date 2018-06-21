@@ -66,6 +66,9 @@
                     <li class="@yield('menu1')">
                         <a href="{{asset('/')}}"><i class="fa fa-fw fa-home"></i> Inicio</a>
                     </li>
+                    <li class="@yield('menu8')">
+                        <a href="{{asset('index.php/Stand#/lista')}}"><i class="fa fa-fw fa-dashboard"></i> Stands</a>
+                    </li>
                     <li class="@yield('menu2')">
                         <a href="{{asset('index.php/Personal#/lista')}}"><i class="fa fa-fw fa-users"></i> Personal</a>
                     </li>
@@ -88,19 +91,6 @@
                     <li class="@yield('menu9')">///////Nose
                       <a href="{{asset('index.php/RegistroManual#/crear')}}"><i class="fa fa-fw fa-dashboard"></i> Registro Manual</a>
                     </li>-->
-                    <li class="@yield('menu8')">
-                        <a href="{{asset('index.php/Stand#/lista')}}"><i class="fa fa-fw fa-dashboard"></i> Stands</a>
-                    </li>
-
-                    <li class="@yield('menu10')">
-                        <!--<a href="{{asset('index.php/PreventaLista#/lista')}}"><i class="fa fa-fw fa-gear"></i> Preventa</a>-->
-                        <a href="{{asset('index.php/Preventa#/crear')}}"><i class="fa fa-fw fa-gears"></i> Preventa Puestos</a>
-                    </li>
-
-                    <li class="@yield('menu11')">
-                        <a href="{{asset('index.php/Cobro/Piso/1')}}"><i class="fa fa-fw fa-gears"></i> Venta de Puestos</a>
-                    </li>
-
                     <li class="@yield('menu12')">
                         <a href="{{asset('index.php/Cobro#/lista')}}"><i class="fa fa-fw fa-university"></i> Cobro de Puestos</a>
                     </li>
@@ -113,6 +103,19 @@
                     <li class="@yield('menu15')">
                         <a href="{{asset('index.php/Puesto#/lista')}}"><i class="fa fa-fw fa-retweet"></i> Puesto</a>
                     </li>
+
+                    <li class="@yield('menu10')">
+                        <!--<a href="{{asset('index.php/PreventaLista#/lista')}}"><i class="fa fa-fw fa-gear"></i> Preventa</a>-->
+                        <a href="{{asset('index.php/Preventa#/crear')}}" target="_blank"><i class="fa fa-fw fa-gears"></i> Preventa Puestos</a>
+                    </li>
+
+                    <li class="@yield('menu11')">
+                        <a href="{{asset('index.php/Cobro/Piso/1')}}" target="_blank"><i class="fa fa-fw fa-gears"></i> Venta de Puestos</a>
+                    </li>
+                    <li class="@yield('menu28')">
+                        <a href="{{asset('index.php/RegistroRFID#/crear')}}" target="_blank"><i class="fa fa-fw fa-gears"></i> Registro de Ingreso/Salida</a>
+                    </li>
+
                     @if(\Auth::user()->id == '1' )
                     <li class="@yield('menu7')">
                         <a href="{{asset('index.php/usuarios')}}"><i class="fa fa-fw fa-user"></i> Usuarios</a>

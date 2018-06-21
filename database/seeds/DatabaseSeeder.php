@@ -294,7 +294,7 @@ class DatabaseSeeder extends Seeder
         \DB::table('stands')->insert(array(
           'id'            =>'1',
           'nom_empresa'   =>'FEIPOBOL',
-          'cant_personal' =>'10000',
+          'cant_personal' =>'3',
           'descripcion'   =>'Feria Internacional Potosi - Bolivia',
           'encargado'     =>'Lic. Rommel',
           'direccion'     =>'Por ahis',

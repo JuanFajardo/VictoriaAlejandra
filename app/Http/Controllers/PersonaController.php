@@ -12,41 +12,48 @@ class PersonaController extends Controller
   }
 
   public function index(){
-    //$datos = Persona::all();
-    $datos = \DB::table('personas')->join('horarios', 'personas.horario_id', '=', 'horarios.id')
+    $datos = \DB::table('personas')->join('stands', 'personas.stand_id', '=', 'stands.id')
+                                  ->join('users', 'personas.user_id', '=', 'users.id')
+                                  ->select('personas.*', 'stands.nom_empresa', 'stands.cant_personal'
+                                  , 'users.username')->get();
+    /*$datos = \DB::table('personas')->join('horarios', 'personas.horario_id', '=', 'horarios.id')
                                   ->join('stands', 'personas.stand_id', '=', 'stands.id')
     ->select('personas.id', 'personas.nombres', 'personas.telefono', 'personas.encargado',
        'personas.reserva', 'personas.tarjeta', 'personas.updated_at',
        'personas.fecha_inscripcion', 'personas.horario_id', 'personas.stand_id','horarios.horario',
        'stands.nom_empresa as descripcion' )->get();
-
+       */
     return $datos;
   }
 
   public function show($id){
     $dato = Persona::find($id);
+    /*$dato = \DB::table('personas')->join('stands', 'personas.stand_id', '=', 'stands.id')
+                                  ->join('users', 'personas.user_id', '=', 'users.id')
+                                  ->where('stands.id', '=', $id)
+                                  ->select('personas.*', 'stands.nom_empresa', 'stands.cant_personal'
+                                  , 'users.username')->get();
+                                  */
     return $dato;
   }
 
   public function store(Request $request){
     try {
       $request['user_id'] = 1;
-
-      $request['reserva']   = ($request->reserva == "Victoria Alejandra") ? 'NO' : 'SI';
       $request['encargado'] = isset($request->encargado) ? "SI" : "NO";
-      $request['fecha_nacimiento'] = date('Y-m-d', strtotime($request->fecha_nacimiento) );
-
+      //$request['reserva']   = ($request->reserva == "Victoria Alejandra") ? 'NO' : 'SI';
+      //$request['fecha_nacimiento'] = date('Y-m-d', strtotime($request->fecha_nacimiento) );
       $v = \Validator::make($request->all(), [
             'nombres'   => 'required',
             'telefono'  => 'required',
             'carnet'    => 'required',
             'clave'     => 'required',
-            'fecha_nacimiento'  => 'required',
-            'fecha_inscripcion' => 'required',
-            'horario_id'=> 'required',
+            //'fecha_nacimiento'  => 'required',
+            //'fecha_inscripcion' => 'required',
+            //'horario_id'=> 'required',
+            //'reserva'   => 'required',
             'stand_id'  => 'required',
             'encargado' => 'required',
-            'reserva'   => 'required',
             'user_id'   => 'required'
         ]);
       if ( count($v->errors()) > 0 ){
@@ -80,9 +87,9 @@ class PersonaController extends Controller
             'telefono'  => 'required',
             'carnet'    => 'required',
             'clave'     => 'required',
-            'fecha_nacimiento'  => 'required',
-            'fecha_inscripcion' => 'required',
-            'horario_id'=> 'required',
+            //'fecha_nacimiento'  => 'required',
+            //'fecha_inscripcion' => 'required',
+            //'horario_id'=> 'required',
             'stand_id'  => 'required',
             'user_id'   => 'required'
         ]);

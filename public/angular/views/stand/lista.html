@@ -22,9 +22,9 @@
                   <th>Direccion</th>
                   <th>Telefono</th>
                   <th>Descripcion</th>
-                  <th>Cantidad de personal</th>
+                  <th>Nro Personas</th>
                   <th>Editar</th>
-                  <th>Eliminar</th>
+                  <th>Generar</th>
               </tr>
           </thead>
           <tbody>
@@ -37,7 +37,8 @@
               <td> {{stand.descripcion}} </td>
               <td> {{stand.cant_personal}} </td>
               <td> <a href="#/editar/{{stand.id}}" style="color:#f0ad4e;"> <i class="fa fa-pencil" aria-hidden="true"></i>    </a> </td>
-              <td> <a href="#/eliminar/{{stand.id}}" style="color:#c12e2a;"> <i class="fa fa-trash-o" aria-hidden="true"></i> </a> </td>
+              <td> <a ng-if="stand.generar_personal != 1" href="../index.php/Stand/Persona/{{stand.id}}" target="_blank" > <i class="fa fa-eye" aria-hidden="true"></i>    </a> </td>
+              <!--<td> <a href="#/eliminar/{{stand.id}}" style="color:#c12e2a;"> <i class="fa fa-trash-o" aria-hidden="true"></i> </a> </td> -->
             </tr>
           </tbody>
       </table>

@@ -80,6 +80,8 @@ Route::get('stand', 'StandController@index');
 Route::get('stand/{id}', 'StandController@show');
 Route::post('stand', 'StandController@store');
 Route::delete('stand/{id}', 'StandController@destroy');
+Route::get('Stand/Persona/{id}', 'StandController@persona');
+
 
 Route::get('Preventa', 'PreventaController@angular');
 Route::put('preventa/{id}', 'PreventaController@update');
