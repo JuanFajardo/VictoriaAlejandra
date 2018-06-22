@@ -12,7 +12,6 @@ active
 Registro
 @endsection
 
-
 @section('icono')
 fa fa-user
 @endsection

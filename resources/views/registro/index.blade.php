@@ -12,7 +12,6 @@ active
 Registro
 @endsection
 
-
 @section('icono')
 fa fa-user
 @endsection
@@ -172,7 +171,6 @@ va.factory('RegistroRecursos', function($resource){
 	$http({url:link, method:"GET"}).success(function(data){
 		$scope.registros = data;
 	});
-
 
 	var link = "../index.php/registroPersona/"+$routeParams.id;
 	$http({url:link, method:"GET"}).success(function(data){

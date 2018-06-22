@@ -9,8 +9,6 @@ use App\Repetitivo;
 
 class RegistroController extends Controller
 {
-
-
   public function angularfid(){
     return view('registro.registro');
   }
@@ -20,12 +18,14 @@ class RegistroController extends Controller
   }
 
   public function index(){
-    //$datos = Persona::all();
-    $datos = \DB::table('personas')->join('horarios', 'personas.horario_id', '=', 'horarios.id')
-    ->select(
-    'personas.id', 'personas.nombres', 'personas.direccion', 'personas.telefono', 'personas.carnet', 'personas.tarjeta', 'personas.estado_civil', 'personas.profesion', 'personas.genero',
-    'personas.clave',  'personas.fecha_nacimiento', 'personas.fecha_inscripcion', 'personas.horario_id', 'personas.stand_id', 'personas.user_id','horarios.horario' )->get();
 
+    ['id', 'fecha', 'ingreso', 'salida', 'tarjeta', 'persona_id', 'stand_id', 'user_id'];
+
+    $datos = \DB::table('registros')->join('stands', 'registros.stand_id', '=', 'stands.id')
+                                    ->join('personas', 'registros.persona_id', '=', 'personas.id')
+                                    ->join('users', 'registros.user_id', '=', 'users.id')
+                                    ->select('registros.*', 'personas.nombres',
+                                    )->get();
     return $datos;
   }
 
@@ -97,18 +97,14 @@ class RegistroController extends Controller
             $salidaAM  = $tarjeta[0]->salida_am == '00:00:00' ? '00:00:00' : strtotime($tarjeta[0]->ingreso_pm);
             $ingresoPM = $tarjeta[0]->ingreso_pm == '00:00:00' ? '00:00:00' : strtotime($tarjeta[0]->ingreso_pm) + $tarjeta[0]->tolerancia;
             $salidaPM  = $tarjeta[0]->salida_pm == '00:00:00' ? '00:00:00' : strtotime($tarjeta[0]->salida_pm);
-
             $persona = $tarjeta[0]->personaId;
             $horario = $tarjeta[0]->horarioId;
-
             if($tarjeta[0]->fijo == "NO" ){
               $cont  = \DB::table('repetitivos')->where('persona_id','=', $persona)
                                                   ->where('fecha',      '=', $fecha)
                                                   ->count();
               $ingreso = ( $cont % 2 == 0 ) ? 'INGRESO' : 'SALIDA';
-
               $edad = date('Y') - date('Y',  strtotime($tarjeta[0]->fecha_nacimiento));
-
               if( $edad > 0 && $edad < 12  )
                 $categoria = "NIÑO";
               elseif ($edad >= 12 && $edad < 18  )
@@ -117,7 +113,6 @@ class RegistroController extends Controller
                 $categoria = "ADULTO";
               elseif ($edad >= 18 && $edad < 65  )
                 $categoria = "ADULTO MAYOR";
-
               $dato = new \App\Repetitivo;
               $dato->fecha      = $fecha;
               $dato->hora       = date('H:i:s');
@@ -128,7 +123,6 @@ class RegistroController extends Controller
               $dato->horario_id = $horario;
               $dato->user_id    = 1;//\Auth::user()->id;
               $dato->save();
-
               $respuesta = $tarjeta;
             }else{
               $contador= \DB::table('registros')->where('fecha=', $fecha)
@@ -155,7 +149,6 @@ class RegistroController extends Controller
                                                  ->where('persona_id', '=', $persona)
                                                  ->where('horario_id', '=', $horario)
                                                 ->get();
-
               $dato = Registro::find($registro[0]->id);
               $dato->ingreso_am = $tiqueoHora;
               $dato->salida_am  = $tiqueoHora;
