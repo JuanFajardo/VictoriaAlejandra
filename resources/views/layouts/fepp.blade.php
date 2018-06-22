@@ -106,7 +106,7 @@
 
                     <li class="@yield('menu10')">
                         <!--<a href="{{asset('index.php/PreventaLista#/lista')}}"><i class="fa fa-fw fa-gear"></i> Preventa</a>-->
-                        <a href="{{asset('index.php/Preventa#/crear')}}" target="_blank"><i class="fa fa-fw fa-gears"></i> Preventa Puestos</a>
+                        <a href="{{asset('index.php/Preventa#/crear')}}" target="_blank"><i class="fa fa-fw fa-gears"></i> Inscripcion de empresas</a>
                     </li>
 
                     <li class="@yield('menu11')">

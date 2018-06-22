@@ -17,18 +17,24 @@
           <thead>
               <tr>
                   <th>Nro.</th>
-                  <th>Nombres Apellidos</th>
-                  <th>Celular</th>
-                  <th>Horario</th>
+                  <th>Fecha</th>
+                  <th>Empresa</th>
+                  <th>Nombres</th>
+                  <th>Tarjeta</th>
+                  <th>Ingreso -  Salida</th>
+                  <th>Usuario</th>
                   <th>Ver</th>
               </tr>
           </thead>
           <tbody>
             <tr ng-repeat="persona in personas">
               <td> {{ $index + 1}} </td>
-              <td> {{persona.nombres}} </td>
-              <td> {{persona.telefono}} </td>
-              <td> {{persona.horario}} </td>
+              <td> {{persona.fecha}} </td>
+              <td> {{persona.nom_empresa}} </td>
+              <td> {{persona.nombre}} </td>
+              <td> {{persona.tarjeta}} </td>
+              <td> <p class="label label-success">{{persona.ingreso}} </p>  - <p class="label label-danger">{{persona.salida}}</p> </td>
+              <td> {{persona.username}} </td>
               <td> <a href="#/ver/{{persona.id}}" style="color:#46b8da;"> <i class="fa fa-eye" aria-hidden="true"></i>    </a> </td>
             </tr>
           </tbody>

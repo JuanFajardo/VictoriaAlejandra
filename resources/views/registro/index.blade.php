@@ -24,7 +24,6 @@ Lista de Personas para administracion de registro
 <div ng-view></div>
 @endsection
 
-
 @section('js')
 <script type="text/javascript">
 'use strict';
@@ -101,7 +100,6 @@ va.factory('RegistroRecursos', function($resource){
   $scope.guardarPersona = function(){
 			var link = "../index.php/registroTarjeta/"+$scope.Registro.tarjeta;
 			$http({url:link, method:"GET"}).success(function(data){
-
 					//"respuesta"=>"500_MAL", "msj"=>"Tarjeta NO VALIDA"
           if( (data).length > 0){
 						$scope.nombres = data[0]['nombres'];
