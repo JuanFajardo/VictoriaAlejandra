@@ -52,7 +52,11 @@ class RegistroController extends Controller
     try {
         $stand = (explode('-', $id))[0];
         $datos = \DB::table('personas')->where('tarjeta', '=', $id)->get();
-        $persona = \App\Persona::find($datos[0]->id);
+        //$persona = \App\Persona::find($datos[0]->id);
+        $persona = \DB::table('personas')->join('stands', 'personas.stand_id', '=', 'stands.id')
+                                         ->where('personas.id', '=', $datos[0]->id)
+                                         ->select('personas.*', 'stands.nom_empresa')->get();
+        $persona = $persona[0];
         $fecha = date('Y-m-d');
         if( ( count($datos) > 0 ) ){
           $marcado = \DB::table('registros')->where('registros.tarjeta', '=', $id)->where('fecha', '=', $fecha)->get();

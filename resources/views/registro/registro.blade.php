@@ -53,22 +53,22 @@ va.factory('RegistroRecursos', function($resource){
   $scope.guardarPersona = function(){
 			var link = "../index.php/registroTarjeta/"+$scope.Registro.tarjeta;
 			$http({url:link, method:"GET"}).success(function(data){
-					var hora = (Date()).split(' ');
-					//"respuesta"=>"500_MAL", "msj"=>"Tarjeta NO VALIDA"
-          if( (data).length > 0){
-						$scope.nombres = data[0]['nombres'];
-						$scope.horario = data[0]['horario'];
-						$scope.stand 	 = data[0]['nom_empresa'];
-						$scope.foto 	 = data[0]['imagen'];
+					var hora = (Date()).split(' ')
+
+          if( typeof data['direccion'] !== 'undefined' ){
+						$scope.nombres = data['nombres'];
+						$scope.horario = hora[4];
+						$scope.stand 	 = data['nom_empresa'];
+						$scope.foto 	 = data['imagen'];
 						$scope.panel = "alert alert-info";
-            $scope.msj = "Registro a horas: "+ hora[4];
-          }else if((data['msj']).length >0 ){
+            $scope.msj = "";
+          }else if(  typeof data.msj !== 'undefined' ){ // (data['msj']).length >0 ){
 						$scope.nombres = '';
 						$scope.horario = '';
 						$scope.stand 	 = '';
 						$scope.foto 	 = '';
 						$scope.panel = "alert alert-danger";
-            $scope.msj = data['msj'];
+            $scope.msj = data.msj;
           }else{
 						$scope.nombres = '';
 						$scope.horario = '';
