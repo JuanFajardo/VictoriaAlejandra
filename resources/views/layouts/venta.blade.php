@@ -56,11 +56,12 @@
         <div class="col-md-6">
             <div class="form-inline">
               <div class="col-md-12">
-                <a href="{{asset('index.php/Cobro/Piso/1')}}" class="Bett0 @yield('1')"> MOVILIDADS </a>
-                <a href="{{asset('index.php/Cobro/Piso/2')}}" class="Bett0 @yield('2')"> COMIDAS </a>
-                <a href="{{asset('index.php/Cobro/Piso/3')}}" class="Bett0 @yield('3')"> PYMES </a>
-                <a href="{{asset('index.php/Cobro/Piso/4')}}" class="Bett0 @yield('4')"> BEBIDAS </a>
-                <a href="{{asset('index.php/Cobro/Piso/5')}}" class="Bett0 @yield('5')"> EXTRA </a>
+                <a href="{{asset('index.php/Cobro/Piso/1')}}" class="Bett0 @yield('1')"> Piso 1 </a>
+                <a href="{{asset('index.php/Cobro/Piso/2')}}" class="Bett0 @yield('2')"> Piso 2 </a>
+                <a href="{{asset('index.php/Cobro/Piso/3')}}" class="Bett0 @yield('3')"> Piso 3 </a>
+                <a href="{{asset('index.php/Cobro/Piso/4')}}" class="Bett0 @yield('4')"> Piso 4 </a>
+                <a href="{{asset('index.php/Cobro/Piso/5')}}" class="Bett0 @yield('5')"> Bebidas </a>
+                <a href="{{asset('index.php/Cobro/Piso/6')}}" class="Bett0 @yield('5')"> PyMES </a>
               </div>
             </div>
         </div>
