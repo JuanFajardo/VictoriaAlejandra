@@ -124,6 +124,8 @@ class CobroController extends Controller
       $direccion = 'cobro.pisod';
     }elseif($id == '5'){
       $direccion = 'cobro.pisoe';
+    }elseif($id == '6'){
+      $direccion = 'cobro.pisof';
     }else{
       $direccion = 'cobro.pisoa';
       $pagina = '1';

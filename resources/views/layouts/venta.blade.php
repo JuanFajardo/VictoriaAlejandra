@@ -61,7 +61,7 @@
                 <a href="{{asset('index.php/Cobro/Piso/3')}}" class="Bett0 @yield('3')"> Piso 3 </a>
                 <a href="{{asset('index.php/Cobro/Piso/4')}}" class="Bett0 @yield('4')"> Piso 4 </a>
                 <a href="{{asset('index.php/Cobro/Piso/5')}}" class="Bett0 @yield('5')"> Bebidas </a>
-                <a href="{{asset('index.php/Cobro/Piso/6')}}" class="Bett0 @yield('5')"> PyMES </a>
+                <a href="{{asset('index.php/Cobro/Piso/6')}}" class="Bett0 @yield('6')"> PyMES </a>
               </div>
             </div>
         </div>
