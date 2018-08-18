@@ -262,10 +262,10 @@ class DatabaseSeeder extends Seeder
 \DB::table('puestos')->insert([ 'id'=>'206', 'nombre'=>'P2B1', 'lado'=>'P2B1', 'tipo'=>' PyMES sin stand', 'dimension'=>' 5.2 x 5.45', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
 \DB::table('puestos')->insert([ 'id'=>'207', 'nombre'=>'P2B1', 'lado'=>'P2B1', 'tipo'=>' PyMES sin stand', 'dimension'=>' 5.2 x 5.45', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
 \DB::table('puestos')->insert([ 'id'=>'208', 'nombre'=>'P2B1', 'lado'=>'P2B1', 'tipo'=>' PyMES sin stand', 'dimension'=>' 5.2 x 5.45', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'209', 'nombre'=>'P2B1', 'lado'=>'P2B1', 'tipo'=>' PyMES sin stand', 'dimension'=>' 5.2 x 5.45', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'210', 'nombre'=>'P2B1', 'lado'=>'P2B1', 'tipo'=>' PyMES sin stand', 'dimension'=>' 5.2 x 5.45', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'211', 'nombre'=>'P2B1', 'lado'=>'P2B1', 'tipo'=>' PyMES sin stand', 'dimension'=>' 5.2 x 5.45', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
 
-\DB::table('puestos')->insert([ 'id'=>'209', 'nombre'=>'P2B2', 'lado'=>'P2B2', 'tipo'=>' PyMES con stand', 'dimension'=>' 2.65 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
-\DB::table('puestos')->insert([ 'id'=>'210', 'nombre'=>'P2B2', 'lado'=>'P2B2', 'tipo'=>' PyMES con stand', 'dimension'=>' 2.65 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
-\DB::table('puestos')->insert([ 'id'=>'211', 'nombre'=>'P2B2', 'lado'=>'P2B2', 'tipo'=>' PyMES con stand', 'dimension'=>' 2.65 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
 \DB::table('puestos')->insert([ 'id'=>'212', 'nombre'=>'P2B2', 'lado'=>'P2B2', 'tipo'=>' PyMES con stand', 'dimension'=>' 2.65 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
 \DB::table('puestos')->insert([ 'id'=>'213', 'nombre'=>'P2B2', 'lado'=>'P2B2', 'tipo'=>' PyMES con stand', 'dimension'=>' 2.65 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
 \DB::table('puestos')->insert([ 'id'=>'214', 'nombre'=>'P2B2', 'lado'=>'P2B2', 'tipo'=>' PyMES con stand', 'dimension'=>' 2.65 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
@@ -273,19 +273,19 @@ class DatabaseSeeder extends Seeder
 \DB::table('puestos')->insert([ 'id'=>'216', 'nombre'=>'P2B2', 'lado'=>'P2B2', 'tipo'=>' PyMES con stand', 'dimension'=>' 2.65 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
 \DB::table('puestos')->insert([ 'id'=>'217', 'nombre'=>'P2B2', 'lado'=>'P2B2', 'tipo'=>' PyMES con stand', 'dimension'=>' 2.65 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
 \DB::table('puestos')->insert([ 'id'=>'218', 'nombre'=>'P2B2', 'lado'=>'P2B2', 'tipo'=>' PyMES con stand', 'dimension'=>' 2.65 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'219', 'nombre'=>'P2B2', 'lado'=>'P2B2', 'tipo'=>' PyMES con stand', 'dimension'=>' 2.65 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'220', 'nombre'=>'P2B2', 'lado'=>'P2B2', 'tipo'=>' PyMES con stand', 'dimension'=>' 2.65 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'221', 'nombre'=>'P2B2', 'lado'=>'P2B2', 'tipo'=>' PyMES con stand', 'dimension'=>' 2.65 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
 
-\DB::table('puestos')->insert([ 'id'=>'219', 'nombre'=>'P2B4', 'lado'=>'P2B4', 'tipo'=>' PyMES con stand', 'dimension'=>' 2.65 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
-\DB::table('puestos')->insert([ 'id'=>'220', 'nombre'=>'P2B4', 'lado'=>'P2B4', 'tipo'=>' PyMES con stand', 'dimension'=>' 2.65 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
-\DB::table('puestos')->insert([ 'id'=>'221', 'nombre'=>'P2B4', 'lado'=>'P2B4', 'tipo'=>' PyMES con stand', 'dimension'=>' 2.65 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
 \DB::table('puestos')->insert([ 'id'=>'222', 'nombre'=>'P2B4', 'lado'=>'P2B4', 'tipo'=>' PyMES con stand', 'dimension'=>' 2.65 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
 \DB::table('puestos')->insert([ 'id'=>'223', 'nombre'=>'P2B4', 'lado'=>'P2B4', 'tipo'=>' PyMES con stand', 'dimension'=>' 2.65 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
 \DB::table('puestos')->insert([ 'id'=>'224', 'nombre'=>'P2B4', 'lado'=>'P2B4', 'tipo'=>' PyMES con stand', 'dimension'=>' 2.65 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
 \DB::table('puestos')->insert([ 'id'=>'225', 'nombre'=>'P2B4', 'lado'=>'P2B4', 'tipo'=>' PyMES con stand', 'dimension'=>' 2.65 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
 \DB::table('puestos')->insert([ 'id'=>'226', 'nombre'=>'P2B4', 'lado'=>'P2B4', 'tipo'=>' PyMES con stand', 'dimension'=>' 2.65 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'227', 'nombre'=>'P2B4', 'lado'=>'P2B4', 'tipo'=>' PyMES con stand', 'dimension'=>' 2.65 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'228', 'nombre'=>'P2B4', 'lado'=>'P2B4', 'tipo'=>' PyMES con stand', 'dimension'=>' 2.65 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'229', 'nombre'=>'P2B4', 'lado'=>'P2B4', 'tipo'=>' PyMES con stand', 'dimension'=>' 2.65 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
 
-\DB::table('puestos')->insert([ 'id'=>'227', 'nombre'=>'P2B5', 'lado'=>'P2B5', 'tipo'=>' PyMES con stand', 'dimension'=>' 2.65 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
-\DB::table('puestos')->insert([ 'id'=>'228', 'nombre'=>'P2B5', 'lado'=>'P2B5', 'tipo'=>' PyMES con stand', 'dimension'=>' 2.65 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
-\DB::table('puestos')->insert([ 'id'=>'229', 'nombre'=>'P2B5', 'lado'=>'P2B5', 'tipo'=>' PyMES con stand', 'dimension'=>' 2.65 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
 \DB::table('puestos')->insert([ 'id'=>'230', 'nombre'=>'P2B5', 'lado'=>'P2B5', 'tipo'=>' PyMES con stand', 'dimension'=>' 2.65 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
 \DB::table('puestos')->insert([ 'id'=>'231', 'nombre'=>'P2B5', 'lado'=>'P2B5', 'tipo'=>' PyMES con stand', 'dimension'=>' 2.65 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
 \DB::table('puestos')->insert([ 'id'=>'232', 'nombre'=>'P2B5', 'lado'=>'P2B5', 'tipo'=>' PyMES con stand', 'dimension'=>' 2.65 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
@@ -293,14 +293,14 @@ class DatabaseSeeder extends Seeder
 \DB::table('puestos')->insert([ 'id'=>'234', 'nombre'=>'P2B5', 'lado'=>'P2B5', 'tipo'=>' PyMES con stand', 'dimension'=>' 2.65 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
 \DB::table('puestos')->insert([ 'id'=>'235', 'nombre'=>'P2B5', 'lado'=>'P2B5', 'tipo'=>' PyMES con stand', 'dimension'=>' 2.65 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
 \DB::table('puestos')->insert([ 'id'=>'236', 'nombre'=>'P2B5', 'lado'=>'P2B5', 'tipo'=>' PyMES con stand', 'dimension'=>' 2.65 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'237', 'nombre'=>'P2B5', 'lado'=>'P2B5', 'tipo'=>' PyMES con stand', 'dimension'=>' 2.65 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'238', 'nombre'=>'P2B5', 'lado'=>'P2B5', 'tipo'=>' PyMES con stand', 'dimension'=>' 2.65 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'239', 'nombre'=>'P2B5', 'lado'=>'P2B5', 'tipo'=>' PyMES con stand', 'dimension'=>' 2.65 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
 
-\DB::table('puestos')->insert([ 'id'=>'237', 'nombre'=>'P2C1', 'lado'=>'P2C1', 'tipo'=>' PyMES sin stand', 'dimension'=>' 5.2 x 5.45', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
-\DB::table('puestos')->insert([ 'id'=>'238', 'nombre'=>'P2C1', 'lado'=>'P2C1', 'tipo'=>' PyMES sin stand', 'dimension'=>' 5.2 x 5.45', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
-\DB::table('puestos')->insert([ 'id'=>'239', 'nombre'=>'P2C1', 'lado'=>'P2C1', 'tipo'=>' PyMES sin stand', 'dimension'=>' 5.2 x 5.45', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'240', 'nombre'=>'P2C1', 'lado'=>'P2C1', 'tipo'=>' PyMES sin stand', 'dimension'=>' 5.2 x 5.45', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'241', 'nombre'=>'P2C1', 'lado'=>'P2C1', 'tipo'=>' PyMES sin stand', 'dimension'=>' 5.2 x 5.45', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'242', 'nombre'=>'P2C1', 'lado'=>'P2C1', 'tipo'=>' PyMES sin stand', 'dimension'=>' 5.2 x 5.45', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
 
-\DB::table('puestos')->insert([ 'id'=>'240', 'nombre'=>'P2C2', 'lado'=>'P2C2', 'tipo'=>' PyMES con stand', 'dimension'=>' 2.65 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
-\DB::table('puestos')->insert([ 'id'=>'241', 'nombre'=>'P2C2', 'lado'=>'P2C2', 'tipo'=>' PyMES con stand', 'dimension'=>' 2.65 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
-\DB::table('puestos')->insert([ 'id'=>'242', 'nombre'=>'P2C2', 'lado'=>'P2C2', 'tipo'=>' PyMES con stand', 'dimension'=>' 2.65 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
 \DB::table('puestos')->insert([ 'id'=>'243', 'nombre'=>'P2C2', 'lado'=>'P2C2', 'tipo'=>' PyMES con stand', 'dimension'=>' 2.65 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
 \DB::table('puestos')->insert([ 'id'=>'244', 'nombre'=>'P2C2', 'lado'=>'P2C2', 'tipo'=>' PyMES con stand', 'dimension'=>' 2.65 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
 \DB::table('puestos')->insert([ 'id'=>'245', 'nombre'=>'P2C2', 'lado'=>'P2C2', 'tipo'=>' PyMES con stand', 'dimension'=>' 2.65 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
@@ -308,19 +308,19 @@ class DatabaseSeeder extends Seeder
 \DB::table('puestos')->insert([ 'id'=>'247', 'nombre'=>'P2C2', 'lado'=>'P2C2', 'tipo'=>' PyMES con stand', 'dimension'=>' 2.65 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
 \DB::table('puestos')->insert([ 'id'=>'248', 'nombre'=>'P2C2', 'lado'=>'P2C2', 'tipo'=>' PyMES con stand', 'dimension'=>' 2.65 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
 \DB::table('puestos')->insert([ 'id'=>'249', 'nombre'=>'P2C2', 'lado'=>'P2C2', 'tipo'=>' PyMES con stand', 'dimension'=>' 2.65 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'250', 'nombre'=>'P2C2', 'lado'=>'P2C2', 'tipo'=>' PyMES con stand', 'dimension'=>' 2.65 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'251', 'nombre'=>'P2C2', 'lado'=>'P2C2', 'tipo'=>' PyMES con stand', 'dimension'=>' 2.65 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'252', 'nombre'=>'P2C2', 'lado'=>'P2C2', 'tipo'=>' PyMES con stand', 'dimension'=>' 2.65 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
 
-\DB::table('puestos')->insert([ 'id'=>'250', 'nombre'=>'P2C4', 'lado'=>'P2C4', 'tipo'=>' PyMES con stand', 'dimension'=>' 2.65 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
-\DB::table('puestos')->insert([ 'id'=>'251', 'nombre'=>'P2C4', 'lado'=>'P2C4', 'tipo'=>' PyMES con stand', 'dimension'=>' 2.65 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
-\DB::table('puestos')->insert([ 'id'=>'252', 'nombre'=>'P2C4', 'lado'=>'P2C4', 'tipo'=>' PyMES con stand', 'dimension'=>' 2.65 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
 \DB::table('puestos')->insert([ 'id'=>'253', 'nombre'=>'P2C4', 'lado'=>'P2C4', 'tipo'=>' PyMES con stand', 'dimension'=>' 2.65 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
 \DB::table('puestos')->insert([ 'id'=>'254', 'nombre'=>'P2C4', 'lado'=>'P2C4', 'tipo'=>' PyMES con stand', 'dimension'=>' 2.65 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
 \DB::table('puestos')->insert([ 'id'=>'255', 'nombre'=>'P2C4', 'lado'=>'P2C4', 'tipo'=>' PyMES con stand', 'dimension'=>' 2.65 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
 \DB::table('puestos')->insert([ 'id'=>'256', 'nombre'=>'P2C4', 'lado'=>'P2C4', 'tipo'=>' PyMES con stand', 'dimension'=>' 2.65 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
 \DB::table('puestos')->insert([ 'id'=>'257', 'nombre'=>'P2C4', 'lado'=>'P2C4', 'tipo'=>' PyMES con stand', 'dimension'=>' 2.65 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'258', 'nombre'=>'P2C4', 'lado'=>'P2C4', 'tipo'=>' PyMES con stand', 'dimension'=>' 2.65 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'259', 'nombre'=>'P2C4', 'lado'=>'P2C4', 'tipo'=>' PyMES con stand', 'dimension'=>' 2.65 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'260', 'nombre'=>'P2C4', 'lado'=>'P2C4', 'tipo'=>' PyMES con stand', 'dimension'=>' 2.65 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
 
-\DB::table('puestos')->insert([ 'id'=>'258', 'nombre'=>'P2C5', 'lado'=>'P2C5', 'tipo'=>' PyMES con stand', 'dimension'=>' 2.65 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
-\DB::table('puestos')->insert([ 'id'=>'259', 'nombre'=>'P2C5', 'lado'=>'P2C5', 'tipo'=>' PyMES con stand', 'dimension'=>' 2.65 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
-\DB::table('puestos')->insert([ 'id'=>'260', 'nombre'=>'P2C5', 'lado'=>'P2C5', 'tipo'=>' PyMES con stand', 'dimension'=>' 2.65 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
 \DB::table('puestos')->insert([ 'id'=>'261', 'nombre'=>'P2C5', 'lado'=>'P2C5', 'tipo'=>' PyMES con stand', 'dimension'=>' 2.65 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
 \DB::table('puestos')->insert([ 'id'=>'262', 'nombre'=>'P2C5', 'lado'=>'P2C5', 'tipo'=>' PyMES con stand', 'dimension'=>' 2.65 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
 \DB::table('puestos')->insert([ 'id'=>'263', 'nombre'=>'P2C5', 'lado'=>'P2C5', 'tipo'=>' PyMES con stand', 'dimension'=>' 2.65 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
@@ -328,40 +328,43 @@ class DatabaseSeeder extends Seeder
 \DB::table('puestos')->insert([ 'id'=>'265', 'nombre'=>'P2C5', 'lado'=>'P2C5', 'tipo'=>' PyMES con stand', 'dimension'=>' 2.65 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
 \DB::table('puestos')->insert([ 'id'=>'266', 'nombre'=>'P2C5', 'lado'=>'P2C5', 'tipo'=>' PyMES con stand', 'dimension'=>' 2.65 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
 \DB::table('puestos')->insert([ 'id'=>'267', 'nombre'=>'P2C5', 'lado'=>'P2C5', 'tipo'=>' PyMES con stand', 'dimension'=>' 2.65 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'268', 'nombre'=>'P2C5', 'lado'=>'P2C5', 'tipo'=>' PyMES con stand', 'dimension'=>' 2.65 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'269', 'nombre'=>'P2C5', 'lado'=>'P2C5', 'tipo'=>' PyMES con stand', 'dimension'=>' 2.65 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'270', 'nombre'=>'P2C5', 'lado'=>'P2C5', 'tipo'=>' PyMES con stand', 'dimension'=>' 2.65 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
 
 
 
-\DB::table('puestos')->insert([ 'id'=>'268', 'nombre'=>'P3C1', 'lado'=>'P3C1', 'tipo'=>' PyMES sin stand', 'dimension'=>' 5.2 x 5.45', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
-\DB::table('puestos')->insert([ 'id'=>'269', 'nombre'=>'P3C1', 'lado'=>'P3C1', 'tipo'=>' PyMES sin stand', 'dimension'=>' 5.2 x 5.45', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
-\DB::table('puestos')->insert([ 'id'=>'270', 'nombre'=>'P3C1', 'lado'=>'P3C1', 'tipo'=>' PyMES sin stand', 'dimension'=>' 5.2 x 5.45', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'271', 'nombre'=>'P3C1', 'lado'=>'P3C1', 'tipo'=>' PyMES sin stand', 'dimension'=>' 5.2 x 5.45', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'272', 'nombre'=>'P3C1', 'lado'=>'P3C1', 'tipo'=>' PyMES sin stand', 'dimension'=>' 5.2 x 5.45', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'273', 'nombre'=>'P3C1', 'lado'=>'P3C1', 'tipo'=>' PyMES sin stand', 'dimension'=>' 5.2 x 5.45', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
 
 
 
 
-\DB::table('puestos')->insert([ 'id'=>'271', 'nombre'=>'P4A1', 'lado'=>'P4A1', 'tipo'=>' Bebidas Pequeños', 'dimension'=>' 5.2 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
-\DB::table('puestos')->insert([ 'id'=>'272', 'nombre'=>'P4A2', 'lado'=>'P4A2', 'tipo'=>' Bebidas Grandes', 'dimension'=>' 5.2 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
-\DB::table('puestos')->insert([ 'id'=>'273', 'nombre'=>'P4A2', 'lado'=>'P4A2', 'tipo'=>' Bebidas Grandes', 'dimension'=>' 5.2 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
-\DB::table('puestos')->insert([ 'id'=>'274', 'nombre'=>'P4A2', 'lado'=>'P4A2', 'tipo'=>' Bebidas Grandes', 'dimension'=>' 5.2 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'274', 'nombre'=>'P4A1', 'lado'=>'P4A1', 'tipo'=>' Bebidas Pequeños', 'dimension'=>' 5.2 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
 \DB::table('puestos')->insert([ 'id'=>'275', 'nombre'=>'P4A2', 'lado'=>'P4A2', 'tipo'=>' Bebidas Grandes', 'dimension'=>' 5.2 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
 \DB::table('puestos')->insert([ 'id'=>'276', 'nombre'=>'P4A2', 'lado'=>'P4A2', 'tipo'=>' Bebidas Grandes', 'dimension'=>' 5.2 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
 \DB::table('puestos')->insert([ 'id'=>'277', 'nombre'=>'P4A2', 'lado'=>'P4A2', 'tipo'=>' Bebidas Grandes', 'dimension'=>' 5.2 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
 \DB::table('puestos')->insert([ 'id'=>'278', 'nombre'=>'P4A2', 'lado'=>'P4A2', 'tipo'=>' Bebidas Grandes', 'dimension'=>' 5.2 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
-\DB::table('puestos')->insert([ 'id'=>'279', 'nombre'=>'P4A3', 'lado'=>'P4A3', 'tipo'=>' Bebidas Pequeños', 'dimension'=>' 5.2 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
-\DB::table('puestos')->insert([ 'id'=>'280', 'nombre'=>'P4A4', 'lado'=>'P4A4', 'tipo'=>' Bebidas Grandes', 'dimension'=>' 5.2 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
-\DB::table('puestos')->insert([ 'id'=>'281', 'nombre'=>'P4A5', 'lado'=>'P4A5', 'tipo'=>' Bebidas Grandes', 'dimension'=>' 5.2 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'279', 'nombre'=>'P4A2', 'lado'=>'P4A2', 'tipo'=>' Bebidas Grandes', 'dimension'=>' 5.2 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'280', 'nombre'=>'P4A2', 'lado'=>'P4A2', 'tipo'=>' Bebidas Grandes', 'dimension'=>' 5.2 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'281', 'nombre'=>'P4A2', 'lado'=>'P4A2', 'tipo'=>' Bebidas Grandes', 'dimension'=>' 5.2 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'282', 'nombre'=>'P4A3', 'lado'=>'P4A3', 'tipo'=>' Bebidas Pequeños', 'dimension'=>' 5.2 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'283', 'nombre'=>'P4A4', 'lado'=>'P4A4', 'tipo'=>' Bebidas Grandes', 'dimension'=>' 5.2 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'284', 'nombre'=>'P4A5', 'lado'=>'P4A5', 'tipo'=>' Bebidas Grandes', 'dimension'=>' 5.2 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
 
 
-\DB::table('puestos')->insert([ 'id'=>'282', 'nombre'=>'P5A1', 'lado'=>'P5A1', 'tipo'=>' Bebidas Pequeños', 'dimension'=>' 5.2 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
-\DB::table('puestos')->insert([ 'id'=>'283', 'nombre'=>'P5A2', 'lado'=>'P5A2', 'tipo'=>' Bebidas Grandes', 'dimension'=>' 5.2 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
-\DB::table('puestos')->insert([ 'id'=>'284', 'nombre'=>'P5A2', 'lado'=>'P5A2', 'tipo'=>' Bebidas Grandes', 'dimension'=>' 5.2 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
-\DB::table('puestos')->insert([ 'id'=>'285', 'nombre'=>'P5A2', 'lado'=>'P5A2', 'tipo'=>' Bebidas Grandes', 'dimension'=>' 5.2 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'285', 'nombre'=>'P5A1', 'lado'=>'P5A1', 'tipo'=>' Bebidas Pequeños', 'dimension'=>' 5.2 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
 \DB::table('puestos')->insert([ 'id'=>'286', 'nombre'=>'P5A2', 'lado'=>'P5A2', 'tipo'=>' Bebidas Grandes', 'dimension'=>' 5.2 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
 \DB::table('puestos')->insert([ 'id'=>'287', 'nombre'=>'P5A2', 'lado'=>'P5A2', 'tipo'=>' Bebidas Grandes', 'dimension'=>' 5.2 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
 \DB::table('puestos')->insert([ 'id'=>'288', 'nombre'=>'P5A2', 'lado'=>'P5A2', 'tipo'=>' Bebidas Grandes', 'dimension'=>' 5.2 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
 \DB::table('puestos')->insert([ 'id'=>'289', 'nombre'=>'P5A2', 'lado'=>'P5A2', 'tipo'=>' Bebidas Grandes', 'dimension'=>' 5.2 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
-\DB::table('puestos')->insert([ 'id'=>'290', 'nombre'=>'P5A3', 'lado'=>'P5A3', 'tipo'=>' Bebidas Pequeños', 'dimension'=>' 5.2 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
-\DB::table('puestos')->insert([ 'id'=>'291', 'nombre'=>'P5A4', 'lado'=>'P5A4', 'tipo'=>' Bebidas Grandes', 'dimension'=>' 5.2 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
-\DB::table('puestos')->insert([ 'id'=>'292', 'nombre'=>'P5A5', 'lado'=>'P5A5', 'tipo'=>' Bebidas Grandes', 'dimension'=>' 5.2 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'290', 'nombre'=>'P5A2', 'lado'=>'P5A2', 'tipo'=>' Bebidas Grandes', 'dimension'=>' 5.2 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'291', 'nombre'=>'P5A2', 'lado'=>'P5A2', 'tipo'=>' Bebidas Grandes', 'dimension'=>' 5.2 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'292', 'nombre'=>'P5A2', 'lado'=>'P5A2', 'tipo'=>' Bebidas Grandes', 'dimension'=>' 5.2 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'293', 'nombre'=>'P5A3', 'lado'=>'P5A3', 'tipo'=>' Bebidas Pequeños', 'dimension'=>' 5.2 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'294', 'nombre'=>'P5A4', 'lado'=>'P5A4', 'tipo'=>' Bebidas Grandes', 'dimension'=>' 5.2 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'295', 'nombre'=>'P5A5', 'lado'=>'P5A5', 'tipo'=>' Bebidas Grandes', 'dimension'=>' 5.2 x 3', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
 
 
         \DB::table('stands')->insert(array(

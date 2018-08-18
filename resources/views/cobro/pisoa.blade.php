@@ -50,10 +50,13 @@ Automoviles
                 </td>
               </tr>
               <tr><!-- Passillo -->
-                <td>
-                  <table>
+                <td colspan="2">
+                  <table border="0">
                     <tr>
                       <td class="passillo1"> <center>PASILLO<center> </td>
+                      <td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>
+                      <td style="background-color:#f7952d; border:1px solid black;"> ||||||||||| </td>
                     </tr>
                   </table>
                 </td>

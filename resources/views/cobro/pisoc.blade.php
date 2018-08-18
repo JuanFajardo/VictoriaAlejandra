@@ -12,6 +12,7 @@ Piso 3
 @section('3') btn btn-info @endsection
 @section('4') btn btn-default @endsection
 @section('5') btn btn-default @endsection
+@section('6') btn btn-default @endsection
 
 @section('cuerpo')
 <table border="0">

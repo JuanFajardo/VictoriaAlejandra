@@ -21,7 +21,7 @@ Empresas Medianas
     <td>
       <table border="1">
         <tr>
-          <td class="banio" style=" background-color:#f7952d;; color:white;"> BAÑO </td>
+          <td class="banio" style=" background-color:#f7952d;; color:white;"> <center>BAÑO</center> </td>
           <?php
             $datos = \DB::table('puestos')->join('costos', 'puestos.costo_id', '=', 'costos.id')
                                         ->join('users', 'puestos.user_id', '=', 'users.id')
@@ -90,21 +90,21 @@ Empresas Medianas
               <td class="puestoArriba" style="{{ $estilo }}"> <a data-toggle="tooltip" data-placement="left" data-html="true" title="<b>Nombre:</b> {{ $dato->id }} <br>  <b>Precio:</b> {{ $dato->precio }} Bs.<br> <b>Tipo:</b> {{ $dato->tipo }} <br> <b>Dimension:</b>  {{ $dato->dimension }} m. <br> <b>Estado:</b>  {{ $estado }}  <br> <b>Area:</b>  {{ $area }} <br> <b>Usuario:</b> {{ $dato->name }} "> Puesto {{ $dato->id }} </a> </td>
             @endif
             @endforeach
-          <td class="banio" style=" background-color:#f7952d;; color:white;"> BAÑO </td>
+          <td class="banio" style=" background-color:#f7952d;; color:white;"> <center>BAÑO</center> </td>
         </tr>
       </table>
     </td>
   </tr>
 
   <tr>
-    <td style="height:100px;"></td>
+    <td style="height:100px;"> <center><b>P&nbsp;&nbsp;A&nbsp;&nbsp;S&nbsp;&nbsp;I&nbsp;&nbsp;L&nbsp;&nbsp;L&nbsp;&nbsp;O&nbsp;&nbsp;</b></center> </td>
   </tr>
 
   <tr>
     <td><center>
     <table border="0">
       <tr>
-        <td class="ladoIzquiero" style="width:250px;  background-color:gray; color:white;">  Pared  </td>
+        <td class="ladoIzquiero" style="width:250px;  background-color:white; color:white;">  Pared  </td>
         <?php
           $datos = \DB::table('puestos')->join('costos', 'puestos.costo_id', '=', 'costos.id')
                                       ->join('users', 'puestos.user_id', '=', 'users.id')
@@ -127,7 +127,7 @@ Empresas Medianas
             <td class="puestoCostado" style="{{ $estilo }}"> <a data-toggle="tooltip" data-placement="left" data-html="true" title="<b>Nombre:</b> {{ $dato->id }} <br>  <b>Precio:</b> {{ $dato->precio }} Bs.<br> <b>Tipo:</b> {{ $dato->tipo }} <br> <b>Dimension:</b>  {{ $dato->dimension }} m. <br> <b>Estado:</b>  {{ $estado }}  <br> <b>Area:</b>  {{ $area }} <br> <b>Usuario:</b> {{ $dato->name }} "> Puesto {{ $dato->id }} </a> </td>
           @endif
           @endforeach
-        <td class="banio" style="background-color:gray; color:white;"> Escaleras </td>
+        <td class="banio" style="background-color:gray; color:white;"> <center> Pasillo <center>  </td>
         <?php
           $datos = \DB::table('puestos')->join('costos', 'puestos.costo_id', '=', 'costos.id')
                                       ->join('users', 'puestos.user_id', '=', 'users.id')
@@ -150,7 +150,7 @@ Empresas Medianas
             <td class="puestoCostado" style="{{ $estilo }}"> <a data-toggle="tooltip" data-placement="left" data-html="true" title="<b>Nombre:</b> {{ $dato->id }} <br>  <b>Precio:</b> {{ $dato->precio }} Bs.<br> <b>Tipo:</b> {{ $dato->tipo }} <br> <b>Dimension:</b>  {{ $dato->dimension }} m. <br> <b>Estado:</b>  {{ $estado }}  <br> <b>Area:</b>  {{ $area }} <br> <b>Usuario:</b> {{ $dato->name }} "> Puesto {{ $dato->id }} </a> </td>
           @endif
           @endforeach
-        <td class="ladoDerecho"  style="width:250px; background-color:gray; color:white;">  Pared  </td>
+        <td class="ladoDerecho"  style="width:250px; background-color:white; color:white;">  Pared  </td>
       </tr>
     </table>
   </center></td>
