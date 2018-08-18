@@ -12,6 +12,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // $this->call(UsersTableSeeder::class);
+        \DB::table('users')->insert( [ 'id' => '1', 'name'=>'Federacion Empresarios Privados', 'username'=> 'bett0', 'password'=> \Hash::make('123'), 'email'=> 'fepp@correo.com', 'grupo'=> 'Administrador', 'estado'=> '1' ]);
         \DB::table('users')->insert( [ 'id' => '1', 'name'=>'Federacion Empresarios Privados', 'username'=> 'admin', 'password'=> \Hash::make('123'), 'email'=> 'fepp@correo.com', 'grupo'=> 'Administrador', 'estado'=> '1' ]);
 
         /*
@@ -26,8 +27,26 @@ class DatabaseSeeder extends Seeder
         \DB::table('preventa')->insert(['id'=>'2', 'nombres'=>'Juan Alberto','apellidos'=>'Fajardo Canaza', 'correo'=>'bett0@gmail.com','carnet'=>'12345678', 'fecha_nacimiento'=>'1990-01-01', 'telefono'=>'77889944','genero'=>'masculino', 'imagen'=>'',  'reserva'=>'0', 'persona_id'=>'1']);
         \DB::table('cargos')->insert(['id' =>'1', 'cargo'   =>'Empleado', 'descripcion'=>'Empleado de la FEPP', 'horario_id' =>'1', 'user_id' =>'1']);
         */
-        \DB::table('costos')->insert([ 'id'=>'1', 'tipo'=>'Caros', 'precio'=>'5556']);
+        \DB::table('costos')->insert([ 'id'=>'1', 'tipo'=>'Mineria Costado',      'precio'=>'7500']);
+        \DB::table('costos')->insert([ 'id'=>'2', 'tipo'=>'Mineria Central',      'precio'=>'8000']);
+        \DB::table('costos')->insert([ 'id'=>'3', 'tipo'=>'Empresarial',          'precio'=>'7500']);
+        \DB::table('costos')->insert([ 'id'=>'4', 'tipo'=>'Automovil',            'precio'=>'1500']);
+        \DB::table('costos')->insert([ 'id'=>'5', 'tipo'=>'Comercio y Servicios',  'precio'=>'7500']);
+        \DB::table('costos')->insert([ 'id'=>'6', 'tipo'=>'Cocina +', 'precio'=>'5000']);
+        \DB::table('costos')->insert([ 'id'=>'7', 'tipo'=>'Servicios', 'precio'=>'4000']);
+        \DB::table('costos')->insert([ 'id'=>'8', 'tipo'=>'Pymes Costado', 'precio'=>'3500']);
+        \DB::table('costos')->insert([ 'id'=>'9', 'tipo'=>'Pymes Lateral', 'precio'=>'1800']);
+        \DB::table('costos')->insert([ 'id'=>'10', 'tipo'=>'Pymes Central', 'precio'=>'2000']);
+        \DB::table('costos')->insert([ 'id'=>'11', 'tipo'=>'Pymes Solo', 'precio'=>'3500']);
+        \DB::table('costos')->insert([ 'id'=>'12', 'tipo'=>'Bebidas', 'precio'=>'3000']);
+        \DB::table('costos')->insert([ 'id'=>'13', 'tipo'=>'Bebidas Completo', 'precio'=>'6000']);
+
+
         \DB::table('nivels')->insert([ 'id'=>'1', 'piso'=>'Uno', 'bloque'=>'Central']);
+        \DB::table('nivels')->insert([ 'id'=>'2', 'piso'=>'Dos', 'bloque'=>'Central']);
+        \DB::table('nivels')->insert([ 'id'=>'3', 'piso'=>'Tres', 'bloque'=>'Central']);
+        \DB::table('nivels')->insert([ 'id'=>'4', 'piso'=>'Cuatro', 'bloque'=>'Central']);
+
 
 \DB::table('puestos')->insert([ 'id'=>'1', 'nombre'=>'P0A1', 'lado'=>'P0A1', 'tipo'=>' Movilidad', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
 \DB::table('puestos')->insert([ 'id'=>'2', 'nombre'=>'P0A1', 'lado'=>'P0A1', 'tipo'=>' Movilidad', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);

@@ -98,9 +98,10 @@ va.factory('PuestoRecursos', function($resource){
     )
   .withOption('order', [0, 'asc']);
 }])
-.controller('CrearCtrl', ['$scope', 'PuestoRecursos', 'NivelRecursos', 'CostoRecursos', '$location', '$timeout', function($scope, PuestoRecursos, NivelRecursos, CostoRecursos, $location, $timeout){
+.controller('CrearCtrl', ['$scope', 'PuestoRecursos', 'NivelRecursos', 'CostoRecursos', '$location', '$timeout', '$routeParams', function($scope, PuestoRecursos, NivelRecursos, CostoRecursos, $location, $timeout, $routeParams){
   $scope.Nivels  = NivelRecursos.query();
   $scope.Costos  = CostoRecursos.query();
+
   $scope.titulo = 'Crear Puesto';
   $scope.boton = "Guardar";
 	$scope.botonIcono = "fa fa-save"
@@ -127,7 +128,10 @@ va.factory('PuestoRecursos', function($resource){
   };
 
 }])
-.controller('EditarCtrl', ['$scope', 'PuestoRecursos', '$location', '$timeout', '$routeParams', function($scope, PuestoRecursos, $location, $timeout, $routeParams){
+.controller('EditarCtrl', ['$scope', 'PuestoRecursos', 'NivelRecursos', 'CostoRecursos', '$location', '$timeout', '$routeParams', function($scope, PuestoRecursos, NivelRecursos, CostoRecursos, $location, $timeout, $routeParams){
+  $scope.Nivels  = NivelRecursos.query();
+  $scope.Costos  = CostoRecursos.query();
+
   $scope.titulo = " Editar Puesto";
   $scope.botonIcono = "fa fa-pencil";
   $scope.boton = "Actualizar";
@@ -154,9 +158,6 @@ va.factory('PuestoRecursos', function($resource){
         $scope.msj = "Error: Intente nuevamente ";
       }
     });
-    /*$timeout(function(){
-      $location.path('/lista');
-    }, 1500);*/
   }
 }])
 .controller('EliminarCtrl', ['$scope', 'PuestoRecursos', '$routeParams', '$location', '$timeout', function($scope, PuestoRecursos, $routeParams, $location, $timeout){
