@@ -13,7 +13,7 @@ class DatabaseSeeder extends Seeder
     {
         // $this->call(UsersTableSeeder::class);
         \DB::table('users')->insert( [ 'id' => '1', 'name'=>'Federacion Empresarios Privados', 'username'=> 'bett0', 'password'=> \Hash::make('123'), 'email'=> 'fepp@correo.com', 'grupo'=> 'Administrador', 'estado'=> '1' ]);
-        \DB::table('users')->insert( [ 'id' => '1', 'name'=>'Federacion Empresarios Privados', 'username'=> 'admin', 'password'=> \Hash::make('123'), 'email'=> 'fepp@correo.com', 'grupo'=> 'Administrador', 'estado'=> '1' ]);
+        //\DB::table('users')->insert( [ 'id' => '1', 'name'=>'Federacion Empresarios Privados', 'username'=> 'admin', 'password'=> \Hash::make('123'), 'email'=> 'fepp@correo.com', 'grupo'=> 'Administrador', 'estado'=> '1' ]);
 
         /*
         \DB::table('horarios')->insert(array('id'=>'1', 'horario'=>'Normal', 'descripcion'=>'Horario de oficina', 'ingreso_am'=>'08:00:00', 'salida_am'=>'12:00:00', 'ingreso_pm'=>'14:00:00', 'salida_pm'=>'18:00:00', 'tolerancia'=>'15', 'fijo'=>'SI', 'user_id'=>'1' ));
@@ -29,17 +29,17 @@ class DatabaseSeeder extends Seeder
         */
         \DB::table('costos')->insert([ 'id'=>'1', 'tipo'=>'Mineria Costado',      'precio'=>'7500']);
         \DB::table('costos')->insert([ 'id'=>'2', 'tipo'=>'Mineria Central',      'precio'=>'8000']);
-        \DB::table('costos')->insert([ 'id'=>'3', 'tipo'=>'Empresarial',          'precio'=>'7500']);
-        \DB::table('costos')->insert([ 'id'=>'4', 'tipo'=>'Automovil',            'precio'=>'1500']);
-        \DB::table('costos')->insert([ 'id'=>'5', 'tipo'=>'Comercio y Servicios',  'precio'=>'7500']);
-        \DB::table('costos')->insert([ 'id'=>'6', 'tipo'=>'Cocina +', 'precio'=>'5000']);
-        \DB::table('costos')->insert([ 'id'=>'7', 'tipo'=>'Servicios', 'precio'=>'4000']);
-        \DB::table('costos')->insert([ 'id'=>'8', 'tipo'=>'Pymes Costado', 'precio'=>'3500']);
-        \DB::table('costos')->insert([ 'id'=>'9', 'tipo'=>'Pymes Lateral', 'precio'=>'1800']);
-        \DB::table('costos')->insert([ 'id'=>'10', 'tipo'=>'Pymes Central', 'precio'=>'2000']);
-        \DB::table('costos')->insert([ 'id'=>'11', 'tipo'=>'Pymes Solo', 'precio'=>'3500']);
-        \DB::table('costos')->insert([ 'id'=>'12', 'tipo'=>'Bebidas', 'precio'=>'3000']);
-        \DB::table('costos')->insert([ 'id'=>'13', 'tipo'=>'Bebidas Completo', 'precio'=>'6000']);
+        \DB::table('costos')->insert([ 'id'=>'3', 'tipo'=>'Automovil',            'precio'=>'7500']);
+        \DB::table('costos')->insert([ 'id'=>'4', 'tipo'=>'Empresarial',          'precio'=>'1500']);
+        \DB::table('costos')->insert([ 'id'=>'5', 'tipo'=>'Comercio y Servicios', 'precio'=>'7500']);
+        \DB::table('costos')->insert([ 'id'=>'6', 'tipo'=>'Cocina +',             'precio'=>'5000']);
+        \DB::table('costos')->insert([ 'id'=>'7', 'tipo'=>'Servicios',            'precio'=>'4000']);
+        \DB::table('costos')->insert([ 'id'=>'8', 'tipo'=>'Pymes Costado',        'precio'=>'3500']);
+        \DB::table('costos')->insert([ 'id'=>'9', 'tipo'=>'Pymes Lateral',        'precio'=>'1800']);
+        \DB::table('costos')->insert([ 'id'=>'10', 'tipo'=>'Pymes Central',       'precio'=>'2000']);
+        \DB::table('costos')->insert([ 'id'=>'11', 'tipo'=>'Pymes Solo',          'precio'=>'3500']);
+        \DB::table('costos')->insert([ 'id'=>'12', 'tipo'=>'Bebidas',             'precio'=>'3000']);
+        \DB::table('costos')->insert([ 'id'=>'13', 'tipo'=>'Bebidas Completo',    'precio'=>'6000']);
 
 
         \DB::table('nivels')->insert([ 'id'=>'1', 'piso'=>'Uno', 'bloque'=>'Central']);
@@ -48,81 +48,80 @@ class DatabaseSeeder extends Seeder
         \DB::table('nivels')->insert([ 'id'=>'4', 'piso'=>'Cuatro', 'bloque'=>'Central']);
 
 
-\DB::table('puestos')->insert([ 'id'=>'1', 'nombre'=>'P0A1', 'lado'=>'P0A1', 'tipo'=>' Movilidad', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
-\DB::table('puestos')->insert([ 'id'=>'2', 'nombre'=>'P0A1', 'lado'=>'P0A1', 'tipo'=>' Movilidad', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
-\DB::table('puestos')->insert([ 'id'=>'3', 'nombre'=>'P0A1', 'lado'=>'P0A1', 'tipo'=>' Movilidad', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
-\DB::table('puestos')->insert([ 'id'=>'4', 'nombre'=>'P0A1', 'lado'=>'P0A1', 'tipo'=>' Movilidad', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
-\DB::table('puestos')->insert([ 'id'=>'5', 'nombre'=>'P0A1', 'lado'=>'P0A1', 'tipo'=>' Movilidad', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
-\DB::table('puestos')->insert([ 'id'=>'6', 'nombre'=>'P0A1', 'lado'=>'P0A1', 'tipo'=>' Movilidad', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'1', 'nombre'=>'P0A1', 'lado'=>'P0A1', 'tipo'=>'Mineria ', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'2', 'nombre'=>'P0A1', 'lado'=>'P0A1', 'tipo'=>'Mineria ', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'3', 'nombre'=>'P0A1', 'lado'=>'P0A1', 'tipo'=>'Mineria ', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'4', 'nombre'=>'P0A1', 'lado'=>'P0A1', 'tipo'=>'Mineria ', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'5', 'nombre'=>'P0A1', 'lado'=>'P0A1', 'tipo'=>'Mineria ', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'6', 'nombre'=>'P0A1', 'lado'=>'P0A1', 'tipo'=>'Mineria ', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
 
-\DB::table('puestos')->insert([ 'id'=>'7', 'nombre'=>'P0A2', 'lado'=>'P0A2', 'tipo'=>' Movilidad', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
-\DB::table('puestos')->insert([ 'id'=>'8', 'nombre'=>'P0A2', 'lado'=>'P0A2', 'tipo'=>' Movilidad', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
-\DB::table('puestos')->insert([ 'id'=>'9', 'nombre'=>'P0A2', 'lado'=>'P0A2', 'tipo'=>' Movilidad', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
-\DB::table('puestos')->insert([ 'id'=>'10', 'nombre'=>'P0A2', 'lado'=>'P0A2', 'tipo'=>' Movilidad', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
-\DB::table('puestos')->insert([ 'id'=>'11', 'nombre'=>'P0A2', 'lado'=>'P0A2', 'tipo'=>' Movilidad', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
-\DB::table('puestos')->insert([ 'id'=>'12', 'nombre'=>'P0A2', 'lado'=>'P0A2', 'tipo'=>' Movilidad', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
-\DB::table('puestos')->insert([ 'id'=>'13', 'nombre'=>'P0A2', 'lado'=>'P0A2', 'tipo'=>' Movilidad', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
-\DB::table('puestos')->insert([ 'id'=>'14', 'nombre'=>'P0A2', 'lado'=>'P0A2', 'tipo'=>' Movilidad', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
-\DB::table('puestos')->insert([ 'id'=>'15', 'nombre'=>'P0A2', 'lado'=>'P0A2', 'tipo'=>' Movilidad', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
-\DB::table('puestos')->insert([ 'id'=>'16', 'nombre'=>'P0A2', 'lado'=>'P0A2', 'tipo'=>' Movilidad', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
-\DB::table('puestos')->insert([ 'id'=>'17', 'nombre'=>'P0A2', 'lado'=>'P0A2', 'tipo'=>' Movilidad', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
-\DB::table('puestos')->insert([ 'id'=>'18', 'nombre'=>'P0A2', 'lado'=>'P0A2', 'tipo'=>' Movilidad', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
-\DB::table('puestos')->insert([ 'id'=>'19', 'nombre'=>'P0A2', 'lado'=>'P0A2', 'tipo'=>' Movilidad', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
-\DB::table('puestos')->insert([ 'id'=>'20', 'nombre'=>'P0A2', 'lado'=>'P0A2', 'tipo'=>' Movilidad', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'7', 'nombre'=>'P0A2', 'lado'=>'P0A2', 'tipo'=>'Mineria ', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'2', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'8', 'nombre'=>'P0A2', 'lado'=>'P0A2', 'tipo'=>'Mineria ', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'2', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'9', 'nombre'=>'P0A2', 'lado'=>'P0A2', 'tipo'=>'Mineria ', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'2', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'10', 'nombre'=>'P0A2', 'lado'=>'P0A2', 'tipo'=>'Mineria ', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'2', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'11', 'nombre'=>'P0A2', 'lado'=>'P0A2', 'tipo'=>'Mineria ', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'2', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'12', 'nombre'=>'P0A2', 'lado'=>'P0A2', 'tipo'=>'Mineria ', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'2', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'13', 'nombre'=>'P0A2', 'lado'=>'P0A2', 'tipo'=>'Mineria ', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'2', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'14', 'nombre'=>'P0A2', 'lado'=>'P0A2', 'tipo'=>'Mineria ', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'2', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'15', 'nombre'=>'P0A2', 'lado'=>'P0A2', 'tipo'=>'Mineria ', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'2', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'16', 'nombre'=>'P0A2', 'lado'=>'P0A2', 'tipo'=>'Mineria ', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'2', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'17', 'nombre'=>'P0A2', 'lado'=>'P0A2', 'tipo'=>'Mineria ', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'2', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'18', 'nombre'=>'P0A2', 'lado'=>'P0A2', 'tipo'=>'Mineria ', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'2', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'19', 'nombre'=>'P0A2', 'lado'=>'P0A2', 'tipo'=>'Mineria ', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'2', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'20', 'nombre'=>'P0A2', 'lado'=>'P0A2', 'tipo'=>'Mineria ', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'2', 'nivel_id'=>'1', 'user_id'=>'1' ]);
 
-\DB::table('puestos')->insert([ 'id'=>'21', 'nombre'=>'P0A3', 'lado'=>'P0A3', 'tipo'=>' Movilidad', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
-\DB::table('puestos')->insert([ 'id'=>'22', 'nombre'=>'P0A3', 'lado'=>'P0A3', 'tipo'=>' Movilidad', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
-\DB::table('puestos')->insert([ 'id'=>'23', 'nombre'=>'P0A3', 'lado'=>'P0A3', 'tipo'=>' Movilidad', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
-\DB::table('puestos')->insert([ 'id'=>'24', 'nombre'=>'P0A3', 'lado'=>'P0A3', 'tipo'=>' Movilidad', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
-\DB::table('puestos')->insert([ 'id'=>'25', 'nombre'=>'P0A3', 'lado'=>'P0A3', 'tipo'=>' Movilidad', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
-\DB::table('puestos')->insert([ 'id'=>'26', 'nombre'=>'P0A3', 'lado'=>'P0A3', 'tipo'=>' Movilidad', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
-\DB::table('puestos')->insert([ 'id'=>'27', 'nombre'=>'P0A3', 'lado'=>'P0A3', 'tipo'=>' Movilidad', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
-\DB::table('puestos')->insert([ 'id'=>'28', 'nombre'=>'P0A3', 'lado'=>'P0A3', 'tipo'=>' Movilidad', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
-\DB::table('puestos')->insert([ 'id'=>'29', 'nombre'=>'P0A3', 'lado'=>'P0A3', 'tipo'=>' Movilidad', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
-\DB::table('puestos')->insert([ 'id'=>'30', 'nombre'=>'P0A3', 'lado'=>'P0A3', 'tipo'=>' Movilidad', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
-\DB::table('puestos')->insert([ 'id'=>'31', 'nombre'=>'P0A3', 'lado'=>'P0A3', 'tipo'=>' Movilidad', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
-\DB::table('puestos')->insert([ 'id'=>'32', 'nombre'=>'P0A3', 'lado'=>'P0A3', 'tipo'=>' Movilidad', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
-\DB::table('puestos')->insert([ 'id'=>'33', 'nombre'=>'P0A3', 'lado'=>'P0A3', 'tipo'=>' Movilidad', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
-\DB::table('puestos')->insert([ 'id'=>'34', 'nombre'=>'P0A3', 'lado'=>'P0A3', 'tipo'=>' Movilidad', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'21', 'nombre'=>'P0A3', 'lado'=>'P0A3', 'tipo'=>'Mineria ', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'2', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'22', 'nombre'=>'P0A3', 'lado'=>'P0A3', 'tipo'=>'Mineria ', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'2', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'23', 'nombre'=>'P0A3', 'lado'=>'P0A3', 'tipo'=>'Mineria ', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'2', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'24', 'nombre'=>'P0A3', 'lado'=>'P0A3', 'tipo'=>'Mineria ', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'2', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'25', 'nombre'=>'P0A3', 'lado'=>'P0A3', 'tipo'=>'Mineria ', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'2', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'26', 'nombre'=>'P0A3', 'lado'=>'P0A3', 'tipo'=>'Mineria ', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'2', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'27', 'nombre'=>'P0A3', 'lado'=>'P0A3', 'tipo'=>'Mineria ', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'2', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'28', 'nombre'=>'P0A3', 'lado'=>'P0A3', 'tipo'=>'Mineria ', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'2', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'29', 'nombre'=>'P0A3', 'lado'=>'P0A3', 'tipo'=>'Mineria ', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'2', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'30', 'nombre'=>'P0A3', 'lado'=>'P0A3', 'tipo'=>'Mineria ', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'2', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'31', 'nombre'=>'P0A3', 'lado'=>'P0A3', 'tipo'=>'Mineria ', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'2', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'32', 'nombre'=>'P0A3', 'lado'=>'P0A3', 'tipo'=>'Mineria ', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'2', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'33', 'nombre'=>'P0A3', 'lado'=>'P0A3', 'tipo'=>'Mineria ', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'2', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'34', 'nombre'=>'P0A3', 'lado'=>'P0A3', 'tipo'=>'Mineria ', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'2', 'nivel_id'=>'1', 'user_id'=>'1' ]);
 
-\DB::table('puestos')->insert([ 'id'=>'35', 'nombre'=>'P0B1', 'lado'=>'P0B1', 'tipo'=>' Empresa Peruana', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
-\DB::table('puestos')->insert([ 'id'=>'36', 'nombre'=>'P0B1', 'lado'=>'P0B1', 'tipo'=>' Empresa Peruana', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
-\DB::table('puestos')->insert([ 'id'=>'37', 'nombre'=>'P0B1', 'lado'=>'P0B1', 'tipo'=>' Empresa Peruana', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
-\DB::table('puestos')->insert([ 'id'=>'38', 'nombre'=>'P0B1', 'lado'=>'P0B1', 'tipo'=>' Empresa Peruana', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
-\DB::table('puestos')->insert([ 'id'=>'39', 'nombre'=>'P0B1', 'lado'=>'P0B1', 'tipo'=>' Empresa Peruana', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
-\DB::table('puestos')->insert([ 'id'=>'40', 'nombre'=>'P0B1', 'lado'=>'P0B1', 'tipo'=>' Empresa Peruana', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'35', 'nombre'=>'P0B1', 'lado'=>'P0B1', 'tipo'=>'Automovil', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'3', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'36', 'nombre'=>'P0B1', 'lado'=>'P0B1', 'tipo'=>'Automovil', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'3', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'37', 'nombre'=>'P0B1', 'lado'=>'P0B1', 'tipo'=>'Automovil', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'3', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'38', 'nombre'=>'P0B1', 'lado'=>'P0B1', 'tipo'=>'Automovil', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'3', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'39', 'nombre'=>'P0B1', 'lado'=>'P0B1', 'tipo'=>'Automovil', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'3', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'40', 'nombre'=>'P0B1', 'lado'=>'P0B1', 'tipo'=>'Automovil', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'3', 'nivel_id'=>'1', 'user_id'=>'1' ]);
 
-\DB::table('puestos')->insert([ 'id'=>'41', 'nombre'=>'P0B2', 'lado'=>'P0B2', 'tipo'=>' Movilidad', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
-\DB::table('puestos')->insert([ 'id'=>'42', 'nombre'=>'P0B2', 'lado'=>'P0B2', 'tipo'=>' Movilidad', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
-\DB::table('puestos')->insert([ 'id'=>'43', 'nombre'=>'P0B2', 'lado'=>'P0B2', 'tipo'=>' Movilidad', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
-\DB::table('puestos')->insert([ 'id'=>'44', 'nombre'=>'P0B2', 'lado'=>'P0B2', 'tipo'=>' Movilidad', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
-\DB::table('puestos')->insert([ 'id'=>'45', 'nombre'=>'P0B2', 'lado'=>'P0B2', 'tipo'=>' Movilidad', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
-\DB::table('puestos')->insert([ 'id'=>'46', 'nombre'=>'P0B2', 'lado'=>'P0B2', 'tipo'=>' Movilidad', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
-\DB::table('puestos')->insert([ 'id'=>'47', 'nombre'=>'P0B2', 'lado'=>'P0B2', 'tipo'=>' Movilidad', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
-\DB::table('puestos')->insert([ 'id'=>'48', 'nombre'=>'P0B2', 'lado'=>'P0B2', 'tipo'=>' Movilidad', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
-\DB::table('puestos')->insert([ 'id'=>'49', 'nombre'=>'P0B2', 'lado'=>'P0B2', 'tipo'=>' Movilidad', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
-\DB::table('puestos')->insert([ 'id'=>'50', 'nombre'=>'P0B2', 'lado'=>'P0B2', 'tipo'=>' Movilidad', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
-\DB::table('puestos')->insert([ 'id'=>'51', 'nombre'=>'P0B2', 'lado'=>'P0B2', 'tipo'=>' Movilidad', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
-\DB::table('puestos')->insert([ 'id'=>'52', 'nombre'=>'P0B2', 'lado'=>'P0B2', 'tipo'=>' Movilidad', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
-\DB::table('puestos')->insert([ 'id'=>'53', 'nombre'=>'P0B2', 'lado'=>'P0B2', 'tipo'=>' Movilidad', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
-\DB::table('puestos')->insert([ 'id'=>'54', 'nombre'=>'P0B2', 'lado'=>'P0B2', 'tipo'=>' Movilidad', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'41', 'nombre'=>'P0B2', 'lado'=>'P0B2', 'tipo'=>'Automovil', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'3', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'42', 'nombre'=>'P0B2', 'lado'=>'P0B2', 'tipo'=>'Automovil', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'3', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'43', 'nombre'=>'P0B2', 'lado'=>'P0B2', 'tipo'=>'Automovil', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'3', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'44', 'nombre'=>'P0B2', 'lado'=>'P0B2', 'tipo'=>'Automovil', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'3', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'45', 'nombre'=>'P0B2', 'lado'=>'P0B2', 'tipo'=>'Automovil', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'3', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'46', 'nombre'=>'P0B2', 'lado'=>'P0B2', 'tipo'=>'Automovil', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'3', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'47', 'nombre'=>'P0B2', 'lado'=>'P0B2', 'tipo'=>'Automovil', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'3', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'48', 'nombre'=>'P0B2', 'lado'=>'P0B2', 'tipo'=>'Automovil', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'3', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'49', 'nombre'=>'P0B2', 'lado'=>'P0B2', 'tipo'=>'Automovil', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'3', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'50', 'nombre'=>'P0B2', 'lado'=>'P0B2', 'tipo'=>'Automovil', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'3', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'51', 'nombre'=>'P0B2', 'lado'=>'P0B2', 'tipo'=>'Automovil', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'3', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'52', 'nombre'=>'P0B2', 'lado'=>'P0B2', 'tipo'=>'Automovil', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'3', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'53', 'nombre'=>'P0B2', 'lado'=>'P0B2', 'tipo'=>'Automovil', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'3', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'54', 'nombre'=>'P0B2', 'lado'=>'P0B2', 'tipo'=>'Automovil', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'3', 'nivel_id'=>'1', 'user_id'=>'1' ]);
 
-\DB::table('puestos')->insert([ 'id'=>'55', 'nombre'=>'P0B3', 'lado'=>'P0B3', 'tipo'=>' Movilidad', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
-\DB::table('puestos')->insert([ 'id'=>'56', 'nombre'=>'P0B3', 'lado'=>'P0B3', 'tipo'=>' Movilidad', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
-\DB::table('puestos')->insert([ 'id'=>'57', 'nombre'=>'P0B3', 'lado'=>'P0B3', 'tipo'=>' Movilidad', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
-\DB::table('puestos')->insert([ 'id'=>'58', 'nombre'=>'P0B3', 'lado'=>'P0B3', 'tipo'=>' Movilidad', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
-\DB::table('puestos')->insert([ 'id'=>'59', 'nombre'=>'P0B3', 'lado'=>'P0B3', 'tipo'=>' Movilidad', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
-\DB::table('puestos')->insert([ 'id'=>'60', 'nombre'=>'P0B3', 'lado'=>'P0B3', 'tipo'=>' Movilidad', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
-\DB::table('puestos')->insert([ 'id'=>'61', 'nombre'=>'P0B3', 'lado'=>'P0B3', 'tipo'=>' Movilidad', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
-\DB::table('puestos')->insert([ 'id'=>'62', 'nombre'=>'P0B3', 'lado'=>'P0B3', 'tipo'=>' Movilidad', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
-\DB::table('puestos')->insert([ 'id'=>'63', 'nombre'=>'P0B3', 'lado'=>'P0B3', 'tipo'=>' Movilidad', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
-\DB::table('puestos')->insert([ 'id'=>'64', 'nombre'=>'P0B3', 'lado'=>'P0B3', 'tipo'=>' Movilidad', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
-\DB::table('puestos')->insert([ 'id'=>'65', 'nombre'=>'P0B3', 'lado'=>'P0B3', 'tipo'=>' Movilidad', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
-\DB::table('puestos')->insert([ 'id'=>'66', 'nombre'=>'P0B3', 'lado'=>'P0B3', 'tipo'=>' Movilidad', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
-\DB::table('puestos')->insert([ 'id'=>'67', 'nombre'=>'P0B3', 'lado'=>'P0B3', 'tipo'=>' Movilidad', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
-\DB::table('puestos')->insert([ 'id'=>'68', 'nombre'=>'P0B3', 'lado'=>'P0B3', 'tipo'=>' Movilidad', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
-
-//\DB::table('puestos')->insert([ 'id'=>'67', 'nombre'=>'P0D1', 'lado'=>'P0D1', 'tipo'=>' Puesto Especial', 'dimension'=>' 5 x 4.50', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'55', 'nombre'=>'P0B3', 'lado'=>'P0B3', 'tipo'=>'Automovil', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'3', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'56', 'nombre'=>'P0B3', 'lado'=>'P0B3', 'tipo'=>'Automovil', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'3', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'57', 'nombre'=>'P0B3', 'lado'=>'P0B3', 'tipo'=>'Automovil', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'3', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'58', 'nombre'=>'P0B3', 'lado'=>'P0B3', 'tipo'=>'Automovil', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'3', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'59', 'nombre'=>'P0B3', 'lado'=>'P0B3', 'tipo'=>'Automovil', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'3', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'60', 'nombre'=>'P0B3', 'lado'=>'P0B3', 'tipo'=>'Automovil', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'3', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'61', 'nombre'=>'P0B3', 'lado'=>'P0B3', 'tipo'=>'Automovil', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'3', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'62', 'nombre'=>'P0B3', 'lado'=>'P0B3', 'tipo'=>'Automovil', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'3', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'63', 'nombre'=>'P0B3', 'lado'=>'P0B3', 'tipo'=>'Automovil', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'3', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'64', 'nombre'=>'P0B3', 'lado'=>'P0B3', 'tipo'=>'Automovil', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'3', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'65', 'nombre'=>'P0B3', 'lado'=>'P0B3', 'tipo'=>'Automovil', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'3', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'66', 'nombre'=>'P0B3', 'lado'=>'P0B3', 'tipo'=>'Automovil', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'3', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'67', 'nombre'=>'P0B3', 'lado'=>'P0B3', 'tipo'=>'Automovil', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'3', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+\DB::table('puestos')->insert([ 'id'=>'68', 'nombre'=>'P0B3', 'lado'=>'P0B3', 'tipo'=>'Automovil', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'3', 'nivel_id'=>'1', 'user_id'=>'1' ]);
+//////Piso1
 
 \DB::table('puestos')->insert([ 'id'=>'69', 'nombre'=>'P0C2', 'lado'=>'P0C2', 'tipo'=>' Empresas Grandes', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
 \DB::table('puestos')->insert([ 'id'=>'70', 'nombre'=>'P0C2', 'lado'=>'P0C2', 'tipo'=>' Empresas Grandes', 'dimension'=>' 5.45 x 2.65', 'estado'=>'N', 'costo_id'=>'1', 'nivel_id'=>'1', 'user_id'=>'1' ]);
