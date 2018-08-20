@@ -13,7 +13,11 @@ class DatabaseSeeder extends Seeder
     {
         // $this->call(UsersTableSeeder::class);
         \DB::table('users')->insert( [ 'id' => '1', 'name'=>'Federacion Empresarios Privados', 'username'=> 'bett0', 'password'=> \Hash::make('123'), 'email'=> 'fepp@correo.com', 'grupo'=> 'Administrador', 'estado'=> '1' ]);
-        //\DB::table('users')->insert( [ 'id' => '1', 'name'=>'Federacion Empresarios Privados', 'username'=> 'admin', 'password'=> \Hash::make('123'), 'email'=> 'fepp@correo.com', 'grupo'=> 'Administrador', 'estado'=> '1' ]);
+
+        \DB::table('users')->insert( [ 'id' => '2', 'name'=>'Geovana Yessica Fuertes',        'username'=> 'gfuertes', 'password'=> \Hash::make('123'), 'email'=> 'fepp@correo.com', 'grupo'=> 'Cajero', 'estado'=> '1' ]);
+        \DB::table('users')->insert( [ 'id' => '3', 'name'=>'Jose Miguel Cardenas Gutierrez', 'username'=> 'jcardenas','password'=> \Hash::make('123'), 'email'=> 'fepp@correo.com', 'grupo'=> 'Cajero', 'estado'=> '1' ]);
+        \DB::table('users')->insert( [ 'id' => '4', 'name'=>'Helen Juana Fuertes Chando',     'username'=> 'hfuertes', 'password'=> \Hash::make('123'), 'email'=> 'fepp@correo.com', 'grupo'=> 'Cajero', 'estado'=> '1' ]);
+        \DB::table('users')->insert( [ 'id' => '5', 'name'=>'Litze Clara Condori Monayo',     'username'=> 'lcondori', 'password'=> \Hash::make('123'), 'email'=> 'fepp@correo.com', 'grupo'=> 'Cajero', 'estado'=> '1' ]);
 
         /*
         \DB::table('horarios')->insert(array('id'=>'1', 'horario'=>'Normal', 'descripcion'=>'Horario de oficina', 'ingreso_am'=>'08:00:00', 'salida_am'=>'12:00:00', 'ingreso_pm'=>'14:00:00', 'salida_pm'=>'18:00:00', 'tolerancia'=>'15', 'fijo'=>'SI', 'user_id'=>'1' ));
