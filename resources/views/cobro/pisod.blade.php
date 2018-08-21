@@ -106,7 +106,7 @@ Piso 4
               <?php
                 $datos = \DB::table('puestos')->join('costos', 'puestos.costo_id', '=', 'costos.id')
                                             ->join('users', 'puestos.user_id', '=', 'users.id')
-                                            ->where('puestos.lado', '=', 'P2B1')
+                                            ->where('puestos.lado', '=', 'P3C0')
                                             ->select('puestos.*', 'costos.tipo', 'costos.precio', 'users.name')->orderBy('puestos.id', 'asc')->get();
                 ?>
                 @foreach($datos as $dato)

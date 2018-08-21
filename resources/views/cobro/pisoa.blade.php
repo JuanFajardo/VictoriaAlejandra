@@ -50,13 +50,12 @@ Automoviles
                 </td>
               </tr>
               <tr><!-- Passillo -->
-                <td colspan="2">
-                  <table border="0">
+                <td >
+                  <table border="0" width="100%">
                     <tr>
-                      <td class="passillo1"> <center>PASILLO<center> </td>
-                      <td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>
-                      <td style="background-color:#f7952d; border:1px solid black;"> ||||||||||| </td>
+                      <td width="2%" style="background-color:#f7952d; border:1px solid black;"> ||| </td>
+                      <td class="passillo1"> <center>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        PASILLO&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-right" style="font-size:24px" ></i><center> </td>
                     </tr>
                   </table>
                 </td>
@@ -96,7 +95,7 @@ Automoviles
                       <td><!-- C2 -->
                         <table>
                           <tr>
-                            <td class="passilloMedio"> <center>P<br>A<br>S<br>I<br>L<br>L<br>O<center> </td>
+                            <td class="passilloMedio"> <center>  <i class="fa fa-arrow-up" style="font-size:24px" ></i><br><br><br>P<br>A<br>S<br>I<br>L<br>L<br>O<br><br><br><i class="fa fa-arrow-up" style="font-size:24px" ></i><center> </td>
                           </tr>
                         </table>
                       </td>
@@ -135,7 +134,7 @@ Automoviles
             </table>
           </td>
 
-          <td><table>
+          <td><table border="0">
             <tr>
               <td class="banioGuido"><center>BAÑOS</center></td>
             </tr>
@@ -143,7 +142,7 @@ Automoviles
               <td class="pasilloCostadoGuido"></td>
             </tr>
             <tr>
-              <td class="escaleraGuido"><center>E<br>S<br>C<br>A<br>L<br>E<br>R<br>A<br>S<br><br>S<br>U<br>B<br>I<br>D<br>A</center></td>
+              <td class="escaleraGuido"><center><i class="fa fa-arrow-circle-down" style="font-size:36px"></i><br>E<br>S<br>C<br>A<br>L<br>E<br>R<br>A<br>S<br><br>S<br>U<br>B<br>I<br>D<br>A<br> <i class="fa fa-arrow-circle-down" style="font-size:36px" ></i> </center></td>
             </tr>
 
           </table></td>
@@ -185,7 +184,10 @@ Automoviles
               <td>
                 <table>
                   <tr>
-                    <td class="passillo1" > <center>PASILLO<center> </td>
+                    <td style="background-color:#f7952d; border:1px solid black;"> ||| </td>
+                    <td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+
+                    <td class="passillo1" > <center> PASILLO &nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-left" style="font-size:24px" ></i> <center> </td>
                   </tr>
                 </table>
               </td>
@@ -223,7 +225,7 @@ Automoviles
                     <td><!-- C2 -->
                       <table>
                         <tr>
-                          <td class="passilloMedio"> <center>P<br>A<br>S<br>I<br>L<br>L<br>O<center> </td>
+                          <td class="passilloMedio"> <center> <i class="fa fa-arrow-down" style="font-size:24px" ></i> <br><br><br>P<br>A<br>S<br>I<br>L<br>L<br>O<br><br><br><i class="fa fa-arrow-down" style="font-size:24px" ></i><center> </td>
                         </tr>
                       </table>
                     </td>
@@ -288,7 +290,7 @@ Automoviles
                 @endforeach
             </tr>
             <tr>
-              <td class="escaleraGuido"><center>E<br>S<br>C<br>A<br>L<br>E<br>R<br>A<br>S<br><br>B<br>A<br>J<br>A<br>D<br>A</center></td>
+              <td class="escaleraGuido"><center><i class="fa fa-arrow-circle-up" style="font-size:36px" ></i><br>E<br>S<br>C<br>A<br>L<br>E<br>R<br>A<br>S<br><br>B<br>A<br>J<br>A<br>D<br>A<br><i class="fa fa-arrow-circle-up" style="font-size:36px" ></i></center></td>
             </tr>
           </table></td>
 
@@ -301,9 +303,10 @@ Automoviles
             </tr>
             <tr><!-- Passillo -->
               <td>
-                <table>
+                <table border='0' width="100%">
                   <tr>
-                    <td class="passillo1"> <center>PASILLO<center> </td>
+                    <td class="passillo1" > <center>&nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-left" style="font-size:24px" ></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      PASILLO &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   <i class="fa fa-arrow-left" style="font-size:24px" ></i> <center> </td>
                   </tr>
                 </table>
               </td>
@@ -339,9 +342,11 @@ Automoviles
                       </table>
                     </td>
                     <td><!-- C2 -->
-                      <table>
+                      <table border="0">
                         <tr>
-                          <td class="passilloMedio"> <center>P<br>A<br>S<br>I<br>L<br>L<br>O<center> </td>
+                          <td><i class="fa fa-arrow-up" style="font-size:24px" ></i></td>
+                          <td class="passilloMedio"> <center><br>P<br>A<br>S<br>I<br>L<br>L<br>O<br><center> </td>
+                          <td><i class="fa fa-arrow-down" style="font-size:24px" ></i></td>
                         </tr>
                       </table>
                     </td>
