@@ -90,6 +90,7 @@ Automoviles
                               <tr><td class="puestoCostado" style="{{ $estilo }}"> <a data-toggle="tooltip" data-placement="left" data-html="true" title="<b>Nombre:</b> {{ $dato->id }} <br>  <b>Precio:</b> {{ $dato->precio }} Bs.<br> <b>Tipo:</b> {{ $dato->tipo }} <br> <b>Dimension:</b>  {{ $dato->dimension }} m. <br> <b>Estado:</b>  {{ $estado }}  <br> <b>Area:</b>  {{ $area }} <br> <b>Usuario:</b> {{ $dato->name }} "> Puesto {{ $dato->id }} </a> </td></tr>
                             @endif
                             @endforeach
+                            <tr> <td>Stand Externo</td> </tr>
                         </table>
                       </td>
                       <td><!-- C2 -->
@@ -125,6 +126,10 @@ Automoviles
                               <tr><td class="puestoCostado" style="{{ $estilo }}"> <a data-toggle="tooltip" data-placement="left" data-html="true" title="<b>Nombre:</b> {{ $dato->id }} <br>  <b>Precio:</b> {{ $dato->precio }} Bs.<br> <b>Tipo:</b> {{ $dato->tipo }} <br> <b>Dimension:</b>  {{ $dato->dimension }} m. <br> <b>Estado:</b>  {{ $estado }}  <br> <b>Area:</b>  {{ $area }} <br> <b>Usuario:</b> {{ $dato->name }} "> Puesto {{ $dato->id }} </a> </td></tr>
                             @endif
                             @endforeach
+
+                        </table>
+                        <table width="100%">
+                          <tr><td> <center><i class="fa fa-arrow-left" style="font-size:24px" ></i> <center> </td></tr>
                         </table>
                       </td>
                     </tr>
@@ -133,20 +138,24 @@ Automoviles
               </tr>
             </table>
           </td>
-
-          <td><table border="0">
-            <tr>
-              <td class="banioGuido"><center>BAÑOS</center></td>
-            </tr>
-            <tr>
-              <td class="pasilloCostadoGuido"></td>
-            </tr>
-            <tr>
-              <td class="escaleraGuido"><center><i class="fa fa-arrow-circle-down" style="font-size:36px"></i><br>E<br>S<br>C<br>A<br>L<br>E<br>R<br>A<br>S<br><br>S<br>U<br>B<br>I<br>D<br>A<br> <i class="fa fa-arrow-circle-down" style="font-size:36px" ></i> </center></td>
-            </tr>
-
-          </table></td>
-
+          <td>
+            <table border="0">
+              <tr>
+                <td class="banioGuido"><center>BAÑOS</center></td>
+              </tr>
+              <tr>
+                <td class="escaleraGuido"><center><i class="fa fa-arrow-circle-down" style="font-size:36px"></i><br>E<br>S<br>C<br>A<br>L<br>E<br>R<br>A<br>S<br><br>S<br>U<br>B<br>I<br>D<br>A<br> <i class="fa fa-arrow-circle-down" style="font-size:36px" ></i> </center></td>
+              </tr>
+              <tr>
+                <td>
+                  <table border="1" width="100%">
+                    <tr> <td> <center> Stand Externo </center>  </td> </tr>
+                  </table>
+                </td>
+              </tr>
+              <tr><td> <center><i class="fa fa-arrow-left" style="font-size:24px"></i></center> </td></tr>
+            </table>
+          </td>
           <td><table border="0">
             <tr><!-- Arriba -->
               <td>
@@ -220,6 +229,12 @@ Automoviles
                             <tr><td class="puestoCostado" style="{{ $estilo }}"> <a data-toggle="tooltip" data-placement="left" data-html="true" title="<b>Nombre:</b> {{ $dato->id }} <br>  <b>Precio:</b> {{ $dato->precio }} Bs.<br> <b>Tipo:</b> {{ $dato->tipo }} <br> <b>Dimension:</b>  {{ $dato->dimension }} m. <br> <b>Estado:</b>  {{ $estado }}  <br> <b>Area:</b>  {{ $area }} <br> <b>Usuario:</b> {{ $dato->name }} "> Puesto {{ $dato->id }} </a> </td></tr>
                           @endif
                           @endforeach
+
+                      </table>
+                      <table width="100%">
+                        <tr>
+                          <tr style="border:none;"><td style="border:none;"> <center><i class="fa fa-arrow-left" style="font-size:24px" ></i> <center> </td></tr>
+                        </tr>
                       </table>
                     </td>
                     <td><!-- C2 -->
@@ -253,6 +268,7 @@ Automoviles
                             <tr><td class="puestoCostado" style="{{ $estilo }}"> <a data-toggle="tooltip" data-placement="left" data-html="true" title="<b>Nombre:</b> {{ $dato->id }} <br>  <b>Precio:</b> {{ $dato->precio }} Bs.<br> <b>Tipo:</b> {{ $dato->tipo }} <br> <b>Dimension:</b>  {{ $dato->dimension }} m. <br> <b>Estado:</b>  {{ $estado }}  <br> <b>Area:</b>  {{ $area }} <br> <b>Usuario:</b> {{ $dato->name }} "> Puesto {{ $dato->id }} </a> </td></tr>
                           @endif
                           @endforeach
+                          <tr> <td>Stand Externo</td> </tr>
                       </table>
                     </td>
                   </tr>
@@ -261,16 +277,20 @@ Automoviles
             </tr>
           </table></td>
 
-          <td><table>
+          <td><table border="0">
             <tr>
               <td class="banioGuido"><center>BAÑOS</center></td>
             </tr>
             <tr>
+              <td class="pasilloCostadoGuido"> <center><i class="fa fa-arrow-left" style="font-size:24px" ></i></center>  </td>
+            </tr>
+
+            <!--<tr>
               <?php
                 $datos = \DB::table('puestos')->join('costos', 'puestos.costo_id', '=', 'costos.id')
-                                            ->join('users', 'puestos.user_id', '=', 'users.id')
-                                            ->where('puestos.lado', '=', 'P0D1')
-                                            ->select('puestos.*', 'costos.tipo', 'costos.precio', 'users.name')->orderBy('puestos.id', 'asc')->get();
+                                              ->join('users', 'puestos.user_id', '=', 'users.id')
+                                              ->where('puestos.lado', '=', 'P0D1')
+                                              ->select('puestos.*', 'costos.tipo', 'costos.precio', 'users.name')->orderBy('puestos.id', 'asc')->get();
                 ?>
                 @foreach($datos as $dato)
                 <?php
@@ -288,7 +308,7 @@ Automoviles
                   <td class="puestoArriba" style="{{ $estilo }}"> <a data-toggle="tooltip" data-placement="left" data-html="true" title="<b>Nombre:</b> {{ $dato->id }} <br>  <b>Precio:</b> {{ $dato->precio }} Bs.<br> <b>Tipo:</b> {{ $dato->tipo }} <br> <b>Dimension:</b>  {{ $dato->dimension }} m. <br> <b>Estado:</b>  {{ $estado }}  <br> <b>Area:</b>  {{ $area }} <br> <b>Usuario:</b> {{ $dato->name }} "> Puesto {{ $dato->id }} </a> </td>
                 @endif
                 @endforeach
-            </tr>
+            </tr>-->
             <tr>
               <td class="escaleraGuido"><center><i class="fa fa-arrow-circle-up" style="font-size:36px" ></i><br>E<br>S<br>C<br>A<br>L<br>E<br>R<br>A<br>S<br><br>B<br>A<br>J<br>A<br>D<br>A<br><i class="fa fa-arrow-circle-up" style="font-size:36px" ></i></center></td>
             </tr>
@@ -305,8 +325,11 @@ Automoviles
               <td>
                 <table border='0' width="100%">
                   <tr>
-                    <td class="passillo1" > <center>&nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-left" style="font-size:24px" ></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      PASILLO &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   <i class="fa fa-arrow-left" style="font-size:24px" ></i> <center> </td>
+                    <td class="passillo1" >
+                      <center>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-left" style="font-size:24px" ></i>&nbsp;&nbsp;
+                      PASILLO &nbsp;&nbsp;  <i class="fa fa-arrow-left" style="font-size:24px" ></i> <center>
+                    </td>
+                    <td width="31%" style="background-color:#bdeff9;"> <center>INGRESO</center> </td>
                   </tr>
                 </table>
               </td>

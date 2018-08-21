@@ -94,7 +94,8 @@ Comidas
                     <td><!-- C2 -->
                       <table>
                         <tr>
-                          <td class="passilloMedio"> <center>P<br>A<br>S<br>I<br>L<br>L<br>O<center> </td>
+                          <!--<td class="passilloMedio"> <center>P<br>A<br>S<br>I<br>L<br>L<br>O<center> </td>-->
+                          <td class="passilloMedio"> <center>  <i class="fa fa-arrow-up" style="font-size:24px" ></i><br><br><br>P<br>A<br>S<br>I<br>L<br>L<br>O<br><br><br><i class="fa fa-arrow-up" style="font-size:24px" ></i><center> </td>
                         </tr>
                       </table>
                     </td>
@@ -141,7 +142,7 @@ Comidas
             <td class="pasilloCostadoGuido"></td>
           </tr>
           <tr>
-            <td class="escaleraGuido1"><center>E<br>S<br>C<br>A<br>L<br>E<br>R<br>A<br>S<br><br>S<br>U<br>B<br>I<br>D<br>A</center></td>
+            <td class="escaleraGuido"><center><i class="fa fa-arrow-circle-down" style="font-size:24px"></i><br>E<br>S<br>C<br>A<br>L<br>E<br>R<br>A<br>S<br><br>S<br>U<br>B<br>I<br>D<br>A<br> <i class="fa fa-arrow-circle-down" style="font-size:24px" ></i> </center></td>
           </tr>
 
         </table></td>
@@ -176,9 +177,10 @@ Comidas
                   </tr>
               </table>
             </td>
+            <td width="15%"> <i class="fa fa-arrow-up" style="font-size:24px"></i></td>
           </tr>
           <tr><!-- Passillo -->
-            <td>
+            <td colspan="2">
               <table>
                 <tr>
                   <td class="passillo1"> <center>PASILLO<center> </td>
@@ -187,7 +189,7 @@ Comidas
             </td>
           </tr>
           <tr><!-- Abajo -->
-            <td>
+            <td colspan="2">
               <table>
                 <tr>
                   <td><!-- C1 -->
@@ -221,7 +223,8 @@ Comidas
                   <td><!-- C2 -->
                     <table>
                       <tr>
-                        <td class="passilloMedio"> <center>P<br>A<br>S<br>I<br>L<br>L<br>O<center> </td>
+                        <!--<td class="passilloMedio"> <center>P<br>A<br>S<br>I<br>L<br>L<br>O<center> </td>-->
+                        <td class="passilloMedio"> <center>  <i class="fa fa-arrow-up" style="font-size:24px" ></i><br><br><br>P<br>A<br>S<br>I<br>L<br>L<br>O<br><br><br><i class="fa fa-arrow-up" style="font-size:24px" ></i><center> </td>
                       </tr>
                     </table>
                   </td>
@@ -289,7 +292,7 @@ Comidas
               @endforeach
           </tr>
           <tr>
-            <td class="escaleraGuido1"><center>E<br>S<br>C<br>A<br>L<br>E<br>R<br>A<br>S<br><br>B<br>A<br>J<br>A<br>D<br>A</center></td>
+            <td class="escaleraGuido"><center><i class="fa fa-arrow-circle-up" style="font-size:24px" ></i><br>E<br>S<br>C<br>A<br>L<br>E<br>R<br>A<br>S<br><br>B<br>A<br>J<br>A<br>D<br>A<br><i class="fa fa-arrow-circle-up" style="font-size:24px" ></i></center></td>
           </tr>
         </table></td>
 
@@ -369,7 +372,7 @@ Comidas
                   <td><!-- C2 -->
                     <table>
                       <tr>
-                        <td class="passilloMedio"> <center>P<br>A<br>S<br>I<br>L<br>L<br>O<center> </td>
+                        <td class="passilloMedio"> <center>  <i class="fa fa-arrow-down" style="font-size:24px" ></i><br><br><br>P<br>A<br>S<br>I<br>L<br>L<br>O<br><br><br><i class="fa fa-arrow-down" style="font-size:24px" ></i><center> </td>
                       </tr>
                     </table>
                   </td>
