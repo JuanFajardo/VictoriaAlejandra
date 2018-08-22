@@ -52,9 +52,12 @@ Comidas
             </tr>
             <tr><!-- Passillo -->
               <td>
-                <table>
+                <table border="0">
                   <tr>
-                    <td class="passillo1"> <center>PASILLO<center> </td>
+                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      <i class="fa fa-arrow-left" style="font-size:24px"></i></td>
+                    <td class="passillo1">  <center> PASILLO <center> </td>
+                    <td><i class="fa fa-arrow-right" style="font-size:24px" ></i></td>
                   </tr>
                 </table>
               </td>
@@ -183,7 +186,10 @@ Comidas
             <td colspan="2">
               <table>
                 <tr>
-                  <td class="passillo1"> <center>PASILLO<center> </td>
+                  <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <i class="fa fa-arrow-left" style="font-size:24px"></i></td>
+                  <td class="passillo1">  <center> PASILLO <center> </td>
+                  <td><i class="fa fa-arrow-right" style="font-size:24px" ></i></td>
                 </tr>
               </table>
             </td>
@@ -332,7 +338,8 @@ Comidas
             <td>
               <table>
                 <tr>
-                  <td class="passillo1"> <center>PASILLO<center> </td>
+                  <td class="passillo1">  <center> PASILLO <center> </td>
+                  <td><i class="fa fa-arrow-right" style="font-size:24px" ></i></td>
                 </tr>
               </table>
             </td>

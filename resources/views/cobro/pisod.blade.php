@@ -35,7 +35,8 @@ Piso 4
           <td class="pasilloCostadoGuido"></td>
         </tr>
         <tr>
-          <td class="escaleraGuido3"><center>E<br>S<br>C<br>A<br>L<br>E<br>R<br>A<br>S<br><br>S<br>U<br>B<br>I<br>D<br>A</center></td>
+
+          <td class="escaleraGuido"><center><i class="fa fa-arrow-circle-down" style="font-size:24px"></i><br>E<br>S<br>C<br>A<br>L<br>E<br>R<br>A<br>S<br><br>S<br>U<br>B<br>I<br>D<br>A<br> <i class="fa fa-arrow-circle-down" style="font-size:24px" ></i> </center></td>
         </tr>
       </table>
     </td>
@@ -58,7 +59,7 @@ Piso 4
           <td class="pasilloCostadoGuido"></td>
         </tr>
         <tr>
-          <td class="escaleraGuido3"><center>E<br>S<br>C<br>A<br>L<br>E<br>R<br>A<br>S<br><br>S<br>U<br>B<br>I<br>D<br>A</center></td>
+          <td class="escaleraGuido"><center><i class="fa fa-arrow-circle-up" style="font-size:24px" ></i><br>E<br>S<br>C<br>A<br>L<br>E<br>R<br>A<br>S<br><br>B<br>A<br>J<br>A<br>D<br>A<br><i class="fa fa-arrow-circle-up" style="font-size:24px" ></i></center></td>
         </tr>
       </table>
     </td>
@@ -128,7 +129,7 @@ Piso 4
             </tr>
 
             <tr>
-              <td colspan="6"> <center>PASILLO </center></td>
+              <td colspan="6"> <center>  <i class="fa fa-arrow-right" style="font-size:24px" ></i> PASILLO </center></td>
             </tr>
             <tr>
               <td colspan="6" style="width:150px; height:523px;background-color:#cff4d3;">

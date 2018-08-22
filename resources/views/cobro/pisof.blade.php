@@ -97,7 +97,20 @@ Empresas Medianas
   </tr>
 
   <tr>
-    <td style="height:100px;"> <center><b>P&nbsp;&nbsp;A&nbsp;&nbsp;S&nbsp;&nbsp;I&nbsp;&nbsp;L&nbsp;&nbsp;L&nbsp;&nbsp;O&nbsp;&nbsp;</b></center> </td>
+    <td style="height:100px;"><center>
+      <i class="fa fa-arrow-right" style="font-size:24px" ></i>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <i class="fa fa-arrow-right" style="font-size:24px" ></i>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <i class="fa fa-arrow-right" style="font-size:24px" ></i> <br>
+      <b>P&nbsp;&nbsp;A&nbsp;&nbsp;S&nbsp;&nbsp;I&nbsp;&nbsp;L&nbsp;&nbsp;L&nbsp;&nbsp;O&nbsp;&nbsp;</b><br>
+      <i class="fa fa-arrow-left" style="font-size:24px" ></i>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <i class="fa fa-arrow-left" style="font-size:24px" ></i>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <i class="fa fa-arrow-left" style="font-size:24px" ></i>
+    </center> </td>
+    </td>
   </tr>
 
   <tr>
@@ -127,7 +140,7 @@ Empresas Medianas
             <td class="puestoCostado" style="{{ $estilo }}"> <a data-toggle="tooltip" data-placement="left" data-html="true" title="<b>Nombre:</b> {{ $dato->id }} <br>  <b>Precio:</b> {{ $dato->precio }} Bs.<br> <b>Tipo:</b> {{ $dato->tipo }} <br> <b>Dimension:</b>  {{ $dato->dimension }} m. <br> <b>Estado:</b>  {{ $estado }}  <br> <b>Area:</b>  {{ $area }} <br> <b>Usuario:</b> {{ $dato->name }} "> Puesto {{ $dato->id }} </a> </td>
           @endif
           @endforeach
-        <td class="banio" style="background-color:gray; color:white;"> <center> Pasillo <center>  </td>
+        <td class="banio" style="background-color:gray; color:white;"> <center> ESCALERAS <center>  </td>
         <?php
           $datos = \DB::table('puestos')->join('costos', 'puestos.costo_id', '=', 'costos.id')
                                       ->join('users', 'puestos.user_id', '=', 'users.id')
@@ -150,7 +163,11 @@ Empresas Medianas
             <td class="puestoCostado" style="{{ $estilo }}"> <a data-toggle="tooltip" data-placement="left" data-html="true" title="<b>Nombre:</b> {{ $dato->id }} <br>  <b>Precio:</b> {{ $dato->precio }} Bs.<br> <b>Tipo:</b> {{ $dato->tipo }} <br> <b>Dimension:</b>  {{ $dato->dimension }} m. <br> <b>Estado:</b>  {{ $estado }}  <br> <b>Area:</b>  {{ $area }} <br> <b>Usuario:</b> {{ $dato->name }} "> Puesto {{ $dato->id }} </a> </td>
           @endif
           @endforeach
-        <td class="ladoDerecho"  style="width:250px; background-color:white; color:white;">  Pared  </td>
+        <td class="ladoDerecho"  style="width:250px; background-color:#bdeff9; ">
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-up" style="font-size:24px" ></i>
+          <br>INGRESO<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-up" style="font-size:24px" ></i>
+        </td>
       </tr>
     </table>
   </center></td>
