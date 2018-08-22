@@ -8,6 +8,47 @@
 @section('6') btn btn-default @endsection
 
 @section('cuerpo')
+
+<div id="modalAgregar" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content panel panel-primary">
+
+      <div class="modal-header panel-heading">
+        <b>Insertar nueva Empresa</b>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <div class="modal-body panel-body">
+        {!! Form::open(['accept-charset'=>'UTF-8', 'enctype'=>'multipart/form-data', 'method'=>'POST', 'files'=>true, 'autocomplete'=>'off', 'id'=>'form-insert'] ) !!}
+
+        <div class="form-group">
+          <label for="empresa_" >Nombre de la Empresa</label>
+          {!! Form::text('empresa', null, ['class'=>'form-control', 'placeholder'=>'Empresa', 'id'=>'empresa_', 'required']) !!}
+        </div>
+        <div class="form-group">
+          <label for="celular_" >Numero de Celular de la Empresa o  Encargado</label>
+          {!! Form::text('celular', null, ['class'=>'form-control', 'placeholder'=>'Celular', 'id'=>'celular_', 'required']) !!}
+        </div>
+        <div class="form-group">
+          <label for="direccion_" >Direccion de la Empresa</label>
+          {!! Form::text('direccion', null, ['class'=>'form-control', 'placeholder'=>'Direccion', 'id'=>'direccion_', 'required']) !!}
+        </div>
+        <div class="form-group">
+          <label for="representante_" >Represntante legal de la Empresa</label>
+          {!! Form::text('representante', null, ['class'=>'form-control', 'placeholder'=>'Representante', 'id'=>'representante_', 'required']) !!}
+        </div>
+
+        {!! Form::hidden('id_usuario', '1') !!}
+        {!! Form::submit('A&ntilde;adir', ['class'=>'agregar btn btn-primary']) !!}
+        {!! Form::close() !!}
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
 <div class="row">
   <div class="col-md-3">
     <select class="form-control" name="usuario" id="usuario">
@@ -72,7 +113,9 @@
             <td>{{$dato->precio}}</td>
             <td>{{$dato->monto}}</td>
             <td>{{$dato->username}}</td>
-            <td> <a href="{{asset('index.php/Cobro/EliminarVenta/'.$dato->nro_venta)}}"> <i class="fa fa-trash">Elimnar</i> </a></td>
+            <td> <!--<a href="{{asset('index.php/Cobro/EliminarVenta/'.$dato->nro_venta)}}"> <i class="fa fa-trash">Elimnar</i> </a> -->
+              <center><a href="#modalAgregar"   data-toggle="modal" data-target=""> <li class="fa fa-edit"></li> Edit </a></center>
+            </td>
           </tr>
         @endforeach
         <tr> <td colspan='4'>&nbsp;</td> <td> <b>{{$alto}}x{{$ancho}} m.<b/> </td> <td><b>{{$suma}}<b/></td> </tr>
@@ -80,4 +123,28 @@
     </table>
   </div>
 </div>
+@endsection
+
+@section('js')
+<script type="text/javascript">
+
+$('.eliminar').click(function(event) {
+  event.preventDefault();
+  var fila = $(this).parents('tr');
+  var id = fila.data('id');
+  var form = $('#form-delete');
+  var url = form.attr('action').replace(':DATO_ID',id);
+  var data = form.serialize();
+
+  if(confirm('Esta seguro de eliminar la Empresa'))
+  {
+    $.post(url, data, function(result, textStatus, xhr) {
+      alert(result);
+      fila.fadeOut();
+    }).fail(function(esp){
+      fila.show();
+    });
+  }
+});
+</script>
 @endsection

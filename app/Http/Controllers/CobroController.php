@@ -19,7 +19,6 @@ class CobroController extends Controller
   }
 
   public function index(){
-    //$datos = Cobro::all();
     $datos = \DB::table('cobros')->join('puestos', 'cobros.puesto_id', '=', 'puestos.id')
                                  ->join('costos', 'cobros.precio_id', '=', 'costos.id')
                                  ->join('stands', 'cobros.stand_id', '=', 'stands.id')
@@ -61,6 +60,10 @@ class CobroController extends Controller
     */
   }
 
+
+  /*
+   {"_token":"nCRrxW5Ej6bExidKD4srmKoLZnKo5iOeenLFCdA3","empresa":"FEIPOBOL","nombre":"AAA","telefono":"00","precio1":"15000","precio2":null,"planta":"1","ventas":"1|7500|P0A1, 2|7500|P0A1,","numero":"2"}
+  */
   public function vender(Request $request){
     //return $request->all();
     $stand = \DB::table('stands')->where('nom_empresa', '=', $request->empresa)->get();
@@ -87,7 +90,9 @@ class CobroController extends Controller
     $datos = explode(',', $request->ventas);
     $nro_venta = \DB::table('cobros')->max('nro_venta');
     $nro_venta = $nro_venta + 1;
-    for($i=0; $i<$request->numero; $i++){
+
+    $numero = $request->numero;
+    for($i=0; $i<$numero; $i++){
       $columnas = explode('|', $datos[$i]);
       $puesto = \App\Puesto::find($columnas[0]);
 
@@ -96,7 +101,7 @@ class CobroController extends Controller
       $cobro->encargado   = $request->nombre;
       $cobro->telefono    = $request->telefono;
       $cobro->nro_venta   = $nro_venta;
-      $cobro->monto       = $request->precio2 === null ? $request->precio1 : $request->precio2;
+      $cobro->monto       = $request->precio2 === null ? ($request->precio1)/$numero : ($request->precio2)/$numero;
       $cobro->fecha       = date('Y-m-d');
       $cobro->puesto_id   = $puesto->id;
       $cobro->precio_id   = $puesto->costo_id;
@@ -108,8 +113,11 @@ class CobroController extends Controller
       $puesto->user_id  = \Auth::user()->id;
       $puesto->save();
     }
+
     return redirect('Cobro/Piso/'.$request->planta);
   }
+
+
 
   public function piso($id){
     $direccion = "";
