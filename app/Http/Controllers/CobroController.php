@@ -203,5 +203,11 @@ class CobroController extends Controller
     return redirect('Cobro/Reporte/2018');
   }
 
+  public function dinero($id){
+    $cobros = \DB::table('cobros')->where('nro_venta', '=', $id)->get();
+    $puestos = \DB::table('cobros')->where('nro_venta', '=', $id)->count();
+    return vie('cobro.dinero', compact('cobros', 'puestos'));
+  }
+
 
 }

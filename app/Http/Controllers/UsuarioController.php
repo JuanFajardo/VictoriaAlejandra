@@ -59,6 +59,7 @@ class UsuarioController extends Controller
   }
 
   public function update(Request $request, $id){
+    //return $request->all();
     $user = User::find($id);
     $estado = false;
     if($request->input('estado') == 'on'){
@@ -69,7 +70,7 @@ class UsuarioController extends Controller
     $user->email      = $request->input('email');
     if( strlen($request->input('password')) > 0 )
       $user->password = bcrypt($request->input('password'));
-    $user->grupo_id   = $request->input('grupo');
+    $user->grupo      = $request->input('grupo');
     $user->estado     = $estado;
     $user->save();
     return  redirect()->action('UsuarioController@index');

@@ -18,9 +18,9 @@ Route::group(['middleware' => ['web']], function () {
 
 Route::get('/', function () {
   if (Auth::guest())
-    return view('auth.login');
+    return redirect('/index.php/login');//view('auth.login');
   else
-    return view('home');
+    return view('/home');
 });
 
 Auth::routes();
@@ -150,12 +150,16 @@ Route::post('cobro', 'CobroController@store');
 Route::put('cobro/{id}', 'CobroController@update');
 Route::delete('cobro/{id}', 'CobroController@destroy');
 
+
 Route::get('Cobro/Piso/{id}', 'CobroController@piso');
 Route::get('Cobro/Reserva/{id}', 'CobroController@reserva');
 Route::get('Cobro/Eliminar/{id}', 'CobroController@eliminar');
 Route::post('Cobro/Vender', 'CobroController@vender');
 Route::get('Cobro/Reporte/{id}', 'CobroController@reporte');
 Route::get('Cobro/EliminarVenta/{id}', 'CobroController@eliminarVenta');
+
+Route::get('Cobro/Actualizar/{id}', 'CobroController@dinero');
+Route::post('Cobro/Actualizar/{id}', 'CobroController@dineroUpdate');
 
 
 
