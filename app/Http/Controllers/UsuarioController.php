@@ -101,13 +101,14 @@ class UsuarioController extends Controller
         $estado = true;
     }
     $user->name       = $request->input('name');
-    $user->username   = $request->input('username');
+    //$user->username   = $request->input('username');
     $user->email      = $request->input('email');
     if( strlen($request->input('password')) > 0 )
       $user->password = bcrypt($request->input('password'));
-    $user->grupo_id   = $request->input('grupo');
+    //$user->grupo      = $request->input('grupo');
     $user->estado     = $estado;
     $user->save();
     return  redirect('usuarios/info/ver?msj=1');
   }
 }
+
